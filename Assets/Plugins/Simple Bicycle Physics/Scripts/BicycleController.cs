@@ -398,7 +398,7 @@ namespace SBPScripts
                     //машина дрифтит
                     wheelFrictionSettings.rFriction.x = 0.45f;
                     wheelFrictionSettings.rFriction.y = 0.35f;
-                    fWheelRb.AddForce(-fWheelRb.velocity * 3f);
+                    rWheelRb.AddForce(transform.right * steerAngle.Evaluate(customSteerAxis));
                 }
                 else
                 {
