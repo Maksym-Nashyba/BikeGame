@@ -140,9 +140,11 @@ namespace SBPScripts
         public float BunnyHopStrength;
         public WayPointSystem WayPointSystem;
         public AirTimeSettings AirTimeSettings;
+        private IBikeInputProvider _inputProvider;
 
         void Awake()
         {
+            _inputProvider = GetComponent<IBikeInputProvider>();
             transform.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y, 0);
         }
 
@@ -352,6 +354,7 @@ namespace SBPScripts
         }
         void Update()
         {
+            DrawDebugLines();
             ApplyCustomInput();
 
             //GetKeyUp/Down requires an Update Cycle
@@ -386,10 +389,11 @@ namespace SBPScripts
         {
             if (WayPointSystem.recordingState == WayPointSystem.RecordingState.DoNothing || WayPointSystem.recordingState == WayPointSystem.RecordingState.Record)
             {
-                CustomInput("Horizontal", ref SteerAxis, 5, 5, false);
-                CustomInput("Vertical", ref AccelerationAxis, 1, 1, false);
-                CustomInput("Horizontal", ref LeanAxis, 1, 1, false);
-                CustomInput("Vertical", ref rawAcceleration, 1, 1, true);
+                InputValues inputs = _inputProvider.GetCurrentInput(transform);
+                CustomInput(inputs.Steer, ref SteerAxis, 5, 5, false);
+                CustomInput(inputs.Acceleration, ref AccelerationAxis, 1, 1, false);
+                CustomInput(inputs.Steer, ref LeanAxis, 1, 1, false);
+                CustomInput(inputs.Acceleration, ref rawAcceleration, 1, 1, true);
 
                 sprint = Input.GetKey(KeyCode.LeftShift);
 
@@ -403,8 +407,8 @@ namespace SBPScripts
                 else
                 {
                     //машина не дрифтит
-                    wheelFrictionSettings.rFriction.x = 0.6f;
-                    wheelFrictionSettings.rFriction.y = 0.5f;
+                    wheelFrictionSettings.rFriction.x = 0.85f;
+                    wheelFrictionSettings.rFriction.y = 0.7f;
                 }
 
                 //Stateful Input - bunny hopping
@@ -449,17 +453,16 @@ namespace SBPScripts
         }
 
         //Input Manager Controls
-        float CustomInput(string name, ref float axis, float sensitivity, float gravity, bool isRaw)
-        {
-            var r = Input.GetAxisRaw(name);
-            var time = Time.unscaledDeltaTime;
+        float CustomInput(float raw, ref float axis, float sensitivity, float gravity, bool isRaw)
+        { 
+            float time = Time.unscaledDeltaTime;
 
             if (isRaw)
-                axis = r;
+                axis = raw;
             else
             {
-                if (r != 0)
-                    axis = Mathf.Clamp(axis + r * sensitivity * time, -1f, 1f);
+                if (raw != 0)
+                    axis = Mathf.Clamp(axis + raw * sensitivity * time, -1f, 1f);
                 else
                     axis = Mathf.Clamp01(Mathf.Abs(axis) - gravity * time) * Mathf.Sign(axis);
             }
@@ -491,6 +494,11 @@ namespace SBPScripts
             yield return null;
         }
 
+        
+        private void DrawDebugLines()
+        {
+            Debug.DrawRay(transform.position, lastVelocity, Color.magenta);
+        }
     }
 }
 
