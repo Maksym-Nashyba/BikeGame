@@ -393,6 +393,20 @@ namespace SBPScripts
 
                 sprint = Input.GetKey(KeyCode.LeftShift);
 
+                if (Input.GetKey(KeyCode.C) && !isAirborne)
+                {
+                    //машина дрифтит
+                    wheelFrictionSettings.rFriction.x = 0.45f;
+                    wheelFrictionSettings.rFriction.y = 0.35f;
+                    fWheelRb.AddForce(-fWheelRb.velocity * 3f);
+                }
+                else
+                {
+                    //машина не дрифтит
+                    wheelFrictionSettings.rFriction.x = 0.6f;
+                    wheelFrictionSettings.rFriction.y = 0.5f;
+                }
+
                 //Stateful Input - bunny hopping
                 if (Input.GetKey(KeyCode.Space))
                     bunnyHopInputState = 1;
@@ -438,18 +452,16 @@ namespace SBPScripts
         float CustomInput(string name, ref float axis, float sensitivity, float gravity, bool isRaw)
         {
             var r = Input.GetAxisRaw(name);
-            var s = sensitivity;
-            var g = gravity;
-            var t = Time.unscaledDeltaTime;
+            var time = Time.unscaledDeltaTime;
 
             if (isRaw)
                 axis = r;
             else
             {
                 if (r != 0)
-                    axis = Mathf.Clamp(axis + r * s * t, -1f, 1f);
+                    axis = Mathf.Clamp(axis + r * sensitivity * time, -1f, 1f);
                 else
-                    axis = Mathf.Clamp01(Mathf.Abs(axis) - g * t) * Mathf.Sign(axis);
+                    axis = Mathf.Clamp01(Mathf.Abs(axis) - gravity * time) * Mathf.Sign(axis);
             }
 
             return axis;
@@ -457,19 +469,16 @@ namespace SBPScripts
 
         float WayPointInput(float instruction, ref float axis, float sensitivity, float gravity, bool isRaw)
         {
-            var r = instruction;
-            var s = sensitivity;
-            var g = gravity;
-            var t = Time.unscaledDeltaTime;
+            var time = Time.unscaledDeltaTime;
 
             if (isRaw)
-                axis = r;
+                axis = instruction;
             else
             {
-                if (r != 0)
-                    axis = Mathf.Clamp(axis + r * s * t, -1f, 1f);
+                if (instruction != 0)
+                    axis = Mathf.Clamp(axis + instruction * sensitivity * time, -1f, 1f);
                 else
-                    axis = Mathf.Clamp01(Mathf.Abs(axis) - g * t) * Mathf.Sign(axis);
+                    axis = Mathf.Clamp01(Mathf.Abs(axis) - gravity * time) * Mathf.Sign(axis);
             }
 
             return axis;
