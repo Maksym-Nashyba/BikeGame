@@ -17,6 +17,7 @@ namespace SBPScripts
         public GameObject inactiveColliders;
         BicycleController bicycleController;
         Rigidbody rb;
+        
         void Start()
         {
             bicycleController = GetComponent<BicycleController>();
@@ -95,7 +96,7 @@ namespace SBPScripts
                 while (t <= 1)
                 {
                     t += Time.deltaTime * 5;
-                    bicycleController._steerAxis = -Mathf.Abs(instruction - t);
+                    bicycleController.SteerAxis = -Mathf.Abs(instruction - t);
                     yield return null;
                 }
                 bicycleController.enabled = false;

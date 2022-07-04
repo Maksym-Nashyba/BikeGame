@@ -148,15 +148,21 @@ public class ProceduralIKHandler : MonoBehaviour
         //Chest Target Position
         cVOsc = Mathf.Sin(Mathf.Deg2Rad * (bicycleController.crankSpeed * 2 + 90)) * bicycleController.oscillationAmount * chestVerticalOscillation;
         cHCOsc = Mathf.Sin(Mathf.Deg2Rad * (bicycleController.crankSpeed + 90)) * bicycleController.oscillationAmount * chestHorizontalCounterRotation;
+        chestIKTarget.transform.localPosition = new Vector3(-cHCOsc * 0.001f + distanceToAlignmentZ*centered * stuntModeBody, -cVOsc * 0.001f + yDampChest * bodyDampingProperties.chestDampAmount - bicycleController.BunnyHopAmount*0.01f + bunnyHopCounterWeight*0.2f, Mathf.Clamp(-yDampChest * bodyDampingProperties.chestDampAmount, 0, 1) + distanceToAlignmentX * stuntModeBody) + chestOffset + impactDirection*bodyDampingProperties.impactIntensity*0.05f;
+        chestIKTarget.transform.rotation = Quaternion.Lerp(Quaternion.Euler((bicycleController.transform.rotation.eulerAngles.x + initialChestRotationX - yDampChest * bodyDampingProperties.chestCurveIn + bicycleController.BunnyHopAmount - bunnyHopCounterWeight*15), bicycleController.transform.rotation.eulerAngles.y + (animatedNoise*300 * (1.5f-bicycleController.pickUpSpeed)) + bicycleController.cycleOscillation * chestMovementAggression * -0.1f, -bicycleController.cycleOscillation + bicycleController.turnLeanAmount), chestIKTarget.transform.rotation,  stuntModeRotation);
 
         //Hip Target Position
         hVOsc = Mathf.Sin(Mathf.Deg2Rad * (bicycleController.crankSpeed * 2 + 90)) * bicycleController.oscillationAmount * hipVerticalOscillation;
         hHCOsc = Mathf.Sin(Mathf.Deg2Rad * (bicycleController.crankSpeed + 90)) * bicycleController.oscillationAmount * hipHorizontalCounterRotation;
+        hipIKTarget.transform.localPosition = new Vector3(-hHCOsc * 0.001f + distanceToAlignmentZ*centered * stuntModeBody, -hVOsc * 0.001f + yDampHip * bodyDampingProperties.hipDampAmount - bicycleController.BunnyHopAmount*0.1f + bunnyHopCounterWeight*0.2f, - bicycleController.BunnyHopAmount*0.05f + distanceToAlignmentX * stuntModeBody) + hipOffset + impactDirection*bodyDampingProperties.impactIntensity*0.1f;
+        hipIKTarget.transform.rotation = Quaternion.Lerp(Quaternion.Euler(bicycleController.transform.rotation.eulerAngles.x + initialHipRotationX - bicycleController.BunnyHopAmount, bicycleController.transform.rotation.eulerAngles.y - (animatedNoise*300 * (1.5f-bicycleController.pickUpSpeed)) - bicycleController.BunnyHopAmount, bicycleController.cycleOscillation * hipMovementAggression * 0.1f + bicycleController.turnLeanAmount), hipIKTarget.transform.rotation, stuntModeRotation);
 
         //Head Target Position
+        if(bicycleController.isAirborne && bicycleController.AirTimeSettings.freestyle)
         stuntModeHead = transform.InverseTransformDirection(bicycleController.rb.velocity);
         else
         stuntModeHead = Vector3.Lerp(stuntModeHead,Vector3.zero,Time.deltaTime*10);
+        headIKTarget.transform.localPosition = new Vector3(bicycleController.LeanAxis * 1.5f + animatedNoise*bicycleController.pickUpSpeed + stuntModeHead.x, 1-(bicycleController.pickUpSpeed*1.5f)+animatedNoise - bicycleController.BunnyHopAmount*0.5f + bunnyHopCounterWeight * 1.5f,animatedNoise*3 + stuntModeHead.z) + headOffset + impactDirection*bodyDampingProperties.impactIntensity;
 
         //Additional Features
         //Hip Vertical Oscillation increases on slopes
