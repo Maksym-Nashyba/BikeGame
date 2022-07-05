@@ -14,8 +14,8 @@ namespace SBPScripts
 
         public InputValues GetCurrentInput(Transform bikeTransform)
         {
-            Vector3 bikeforward = bikeTransform.forward;
-            Vector2 flatBikeDirection = new Vector2(bikeforward.x, bikeforward.z);
+            Vector3 bikeForward = bikeTransform.forward;
+            Vector2 flatBikeDirection = new Vector2(bikeForward.x, bikeForward.z);
             Vector3 cameraDirection = GetCameraDirection();
             Vector2 joystickValue = GetJoystickValue();
             
@@ -24,7 +24,12 @@ namespace SBPScripts
             Vector2 targetDirection = flatCameraDirection.RotatedBy(joystickAngle);
             float steer = Vector2.SignedAngle(flatBikeDirection, targetDirection)/180f;
             float acceleration = joystickValue.magnitude;
-            return new InputValues(-steer, acceleration);
+            float sign = -1 * Mathf.Sign(steer);
+            steer = Mathf.Min(-Mathf.Log10(Mathf.Abs(steer)), 1f) * sign;
+            //steer = Mathf.Pow(steer, 0.5f) * sign;
+            Debug.DrawRay(bikeTransform.position, new Vector3(targetDirection.x, 0, targetDirection.y) * 3, Color.red);
+
+            return new InputValues(steer, acceleration);
         }
 
         private Vector3 GetCameraDirection()
