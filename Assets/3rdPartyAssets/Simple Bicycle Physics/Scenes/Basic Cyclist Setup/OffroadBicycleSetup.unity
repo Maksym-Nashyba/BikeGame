@@ -8736,6 +8736,7 @@ GameObject:
   - component: {fileID: 6695011780124142156}
   - component: {fileID: 6695011780124142155}
   - component: {fileID: 6695011780124142154}
+  - component: {fileID: 8616613004729284872}
   m_Layer: 0
   m_Name: Offroad Bicycle
   m_TagString: Untagged
@@ -9946,6 +9947,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &8616613004729284872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6695011780124142153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 860c87f3753747ce8249ad4b76475f7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8648278167298636938
 GameObject:
   m_ObjectHideFlags: 0

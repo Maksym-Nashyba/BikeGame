@@ -397,18 +397,17 @@ namespace SBPScripts
 
                 sprint = Input.GetKey(KeyCode.LeftShift);
 
-                if (Input.GetKey(KeyCode.C) && !isAirborne)
+                if (Input.GetKey(KeyCode.C) && Input.GetKey(KeyCode.A) && !isAirborne)
                 {
-                    //машина дрифтит
-                    wheelFrictionSettings.rFriction.x = 0.45f;
-                    wheelFrictionSettings.rFriction.y = 0.35f;
-                    rWheelRb.AddForce(transform.right * steerAngle.Evaluate(customSteerAxis));
+                    fWheelRb.AddForce(-transform.right * 10f);
+                    rWheelRb.AddForce(transform.right * 25f);
+                    fWheelRb.velocity *= 0.975f * (1f - Time.deltaTime);
                 }
-                else
+                else if (Input.GetKey(KeyCode.C) && Input.GetKey(KeyCode.D) && !isAirborne)
                 {
-                    //машина не дрифтит
-                    wheelFrictionSettings.rFriction.x = 0.85f;
-                    wheelFrictionSettings.rFriction.y = 0.7f;
+                    fWheelRb.AddForce(transform.right * 10f);
+                    rWheelRb.AddForce(-transform.right * 25f);
+                    fWheelRb.velocity *= 0.975f * (1f - Time.deltaTime);
                 }
 
                 //Stateful Input - bunny hopping
