@@ -22,8 +22,8 @@ namespace SBPScripts
             float joystickAngle = Vector2.SignedAngle(Vector2.up, joystickValue);
             Vector2 flatCameraDirection = new Vector2(cameraDirection.x, cameraDirection.z);
             Vector2 targetDirection = flatCameraDirection.RotatedBy(joystickAngle);
-            float steer = Vector2.SignedAngle(flatBikeDirection, targetDirection)/180f;
-            float acceleration = joystickValue.magnitude * (1f-Mathf.Abs(steer));
+            float steer = Vector2.SignedAngle(flatBikeDirection, targetDirection)/200f;
+            float acceleration = Mathf.Pow(joystickValue.magnitude,4f) * (1f-Mathf.Abs(steer));
             float sign = -1 * Mathf.Sign(steer);
             steer = Mathf.Min(-Mathf.Log10(Mathf.Abs(steer)), 1f) * sign;
             if (acceleration < 0.01f) steer = 0;

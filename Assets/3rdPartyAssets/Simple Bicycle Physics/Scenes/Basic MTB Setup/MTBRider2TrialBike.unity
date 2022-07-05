@@ -1540,7 +1540,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4657635610763773202, guid: c35bda782e10ae34f8f9d898ddfba4ae, type: 3}
   m_PrefabInstance: {fileID: 2423878774764189601}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &561229837
+--- !u!114 &561229845
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1549,9 +1549,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 561229829}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 860c87f3753747ce8249ad4b76475f7b, type: 3}
+  m_Script: {fileID: 11500000, guid: ebdebd10e6024ce985a05f3948edd595, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _cameraTransform: {fileID: 1710195839}
+  _joystick: {fileID: 1387838332}
 --- !u!1 &604651547
 GameObject:
   m_ObjectHideFlags: 0
@@ -2692,25 +2694,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1048805079}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1061598549 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4657635610763773202, guid: c35bda782e10ae34f8f9d898ddfba4ae, type: 3}
-  m_PrefabInstance: {fileID: 2423878774764189601}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1061598557
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1061598549}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ebdebd10e6024ce985a05f3948edd595, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _cameraTransform: {fileID: 1710195839}
-  _joystick: {fileID: 1387838332}
 --- !u!1 &1063827418
 GameObject:
   m_ObjectHideFlags: 0
@@ -6345,71 +6328,15 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4657635610763773205, guid: c35bda782e10ae34f8f9d898ddfba4ae, type: 3}
-      propertyPath: steerAngle.m_Curve.Array.size
-      value: 3
+      propertyPath: torque
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 4657635610763773205, guid: c35bda782e10ae34f8f9d898ddfba4ae, type: 3}
-      propertyPath: steerAngle.m_Curve.Array.data[0].time
-      value: -0.13853198
+      propertyPath: topSpeed
+      value: 10
       objectReference: {fileID: 0}
-    - target: {fileID: 4657635610763773205, guid: c35bda782e10ae34f8f9d898ddfba4ae, type: 3}
-      propertyPath: steerAngle.m_Curve.Array.data[1].time
-      value: 5.3958573
-      objectReference: {fileID: 0}
-    - target: {fileID: 4657635610763773205, guid: c35bda782e10ae34f8f9d898ddfba4ae, type: 3}
-      propertyPath: steerAngle.m_Curve.Array.data[2].time
-      value: 19.799225
-      objectReference: {fileID: 0}
-    - target: {fileID: 4657635610763773205, guid: c35bda782e10ae34f8f9d898ddfba4ae, type: 3}
-      propertyPath: steerAngle.m_Curve.Array.data[0].value
-      value: 59.591354
-      objectReference: {fileID: 0}
-    - target: {fileID: 4657635610763773205, guid: c35bda782e10ae34f8f9d898ddfba4ae, type: 3}
-      propertyPath: steerAngle.m_Curve.Array.data[1].value
-      value: 39.77929
-      objectReference: {fileID: 0}
-    - target: {fileID: 4657635610763773205, guid: c35bda782e10ae34f8f9d898ddfba4ae, type: 3}
-      propertyPath: steerAngle.m_Curve.Array.data[2].value
-      value: 29.88379
-      objectReference: {fileID: 0}
-    - target: {fileID: 4657635610763773205, guid: c35bda782e10ae34f8f9d898ddfba4ae, type: 3}
-      propertyPath: steerAngle.m_Curve.Array.data[0].inSlope
-      value: -3.5798104
-      objectReference: {fileID: 0}
-    - target: {fileID: 4657635610763773205, guid: c35bda782e10ae34f8f9d898ddfba4ae, type: 3}
-      propertyPath: steerAngle.m_Curve.Array.data[1].inSlope
-      value: -0.9330411
-      objectReference: {fileID: 0}
-    - target: {fileID: 4657635610763773205, guid: c35bda782e10ae34f8f9d898ddfba4ae, type: 3}
-      propertyPath: steerAngle.m_Curve.Array.data[2].inSlope
-      value: -0.26518682
-      objectReference: {fileID: 0}
-    - target: {fileID: 4657635610763773205, guid: c35bda782e10ae34f8f9d898ddfba4ae, type: 3}
-      propertyPath: steerAngle.m_Curve.Array.data[0].outSlope
-      value: -3.5798104
-      objectReference: {fileID: 0}
-    - target: {fileID: 4657635610763773205, guid: c35bda782e10ae34f8f9d898ddfba4ae, type: 3}
-      propertyPath: steerAngle.m_Curve.Array.data[1].outSlope
-      value: -0.9330411
-      objectReference: {fileID: 0}
-    - target: {fileID: 4657635610763773205, guid: c35bda782e10ae34f8f9d898ddfba4ae, type: 3}
-      propertyPath: steerAngle.m_Curve.Array.data[2].inWeight
-      value: 0.14960778
-      objectReference: {fileID: 0}
-    - target: {fileID: 4657635610763773205, guid: c35bda782e10ae34f8f9d898ddfba4ae, type: 3}
-      propertyPath: steerAngle.m_Curve.Array.data[2].outSlope
-      value: -0.26518682
-      objectReference: {fileID: 0}
-    - target: {fileID: 4657635610763773205, guid: c35bda782e10ae34f8f9d898ddfba4ae, type: 3}
-      propertyPath: steerAngle.m_Curve.Array.data[1].outWeight
-      value: 0.23347145
-      objectReference: {fileID: 0}
-    - target: {fileID: 4657635610763773205, guid: c35bda782e10ae34f8f9d898ddfba4ae, type: 3}
-      propertyPath: steerAngle.m_Curve.Array.data[1].tangentMode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4657635610763773205, guid: c35bda782e10ae34f8f9d898ddfba4ae, type: 3}
-      propertyPath: steerAngle.m_Curve.Array.data[2].tangentMode
+    - target: {fileID: 4657635610763773206, guid: c35bda782e10ae34f8f9d898ddfba4ae, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4893847629431622995, guid: c35bda782e10ae34f8f9d898ddfba4ae, type: 3}

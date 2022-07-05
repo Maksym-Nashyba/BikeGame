@@ -391,7 +391,7 @@ namespace SBPScripts
                 InputValues inputs = _inputProvider.GetCurrentInput(transform);
                 
                 CustomInput(inputs.Steer, ref SteerAxis, 5, 5, false);
-                CustomInput(inputs.Acceleration, ref AccelerationAxis, 1, 1, false);
+                CustomInput(inputs.Acceleration, ref AccelerationAxis, 1, 1, true);
                 CustomInput(inputs.Steer, ref LeanAxis, 1, 1, false);
                 CustomInput(inputs.Acceleration, ref rawAcceleration, 1, 1, true);
 
