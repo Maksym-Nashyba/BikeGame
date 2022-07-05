@@ -110,7 +110,7 @@ namespace SBPScripts
         [HideInInspector]
         public float turnLeanAmount;
         RaycastHit hit;
-        [HideInInspector]
+        //[HideInInspector]
         public float SteerAxis, LeanAxis, AccelerationAxis, rawAcceleration;
         bool isRaw, sprint;
         [HideInInspector]
@@ -354,7 +354,6 @@ namespace SBPScripts
         }
         void Update()
         {
-            DrawDebugLines();
             ApplyCustomInput();
 
             //GetKeyUp/Down requires an Update Cycle
@@ -390,6 +389,7 @@ namespace SBPScripts
             if (WayPointSystem.recordingState == WayPointSystem.RecordingState.DoNothing || WayPointSystem.recordingState == WayPointSystem.RecordingState.Record)
             {
                 InputValues inputs = _inputProvider.GetCurrentInput(transform);
+                
                 CustomInput(inputs.Steer, ref SteerAxis, 5, 5, false);
                 CustomInput(inputs.Acceleration, ref AccelerationAxis, 1, 1, false);
                 CustomInput(inputs.Steer, ref LeanAxis, 1, 1, false);
@@ -492,12 +492,6 @@ namespace SBPScripts
             yield return new WaitForSeconds(0.5f);
             isBunnyHopping = false;
             yield return null;
-        }
-
-        
-        private void DrawDebugLines()
-        {
-            Debug.DrawRay(transform.position, lastVelocity, Color.magenta);
         }
     }
 }

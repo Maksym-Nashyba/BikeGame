@@ -225,6 +225,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2929252283123773938, guid: aaa2c939c0359ac4dbce3f49e8b90252, type: 3}
   m_PrefabInstance: {fileID: 793074}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &95425150 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2929252283123773951, guid: aaa2c939c0359ac4dbce3f49e8b90252, type: 3}
+  m_PrefabInstance: {fileID: 793074}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45977bbae16431c46a013576a1aea384, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -395,14 +406,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: -0.14034648, y: -0.8735938, z: 0.46404082, w: 0.04246038}
-  m_LocalPosition: {x: 151.6, y: 131.5, z: 74.9}
+  m_LocalRotation: {x: -0.0071369843, y: -0.8847668, z: 0.45234802, w: 0.11188395}
+  m_LocalPosition: {x: 129.3, y: 148.3, z: 80.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 53.02, y: -160.131, z: 28.239}
+  m_LocalEulerAnglesHint: {x: 53.02, y: -160.131, z: 10.91}
 --- !u!1 &1016024036
 GameObject:
   m_ObjectHideFlags: 0
@@ -741,7 +752,7 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -462981019419857548, guid: fc8c5b6008ceae449a1e597475fc1ed0, type: 3}
---- !u!114 &1727956176
+--- !u!114 &1727956184
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -750,6 +761,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 1201827561}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 860c87f3753747ce8249ad4b76475f7b, type: 3}
+  m_Script: {fileID: 11500000, guid: ebdebd10e6024ce985a05f3948edd595, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _cameraTransform: {fileID: 963194228}
+  _joystick: {fileID: 95425150}

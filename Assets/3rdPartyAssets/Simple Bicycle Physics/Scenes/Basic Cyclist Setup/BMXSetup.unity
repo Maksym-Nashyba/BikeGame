@@ -1419,12 +1419,40 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: a6100cd144e9f7a488d49dab99f3b95f, type: 2}
     - target: {fileID: 1358852723722513872, guid: f0e58d5211c2de24f885f349256f82d7, type: 3}
+      propertyPath: topSpeed
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1358852723722513872, guid: f0e58d5211c2de24f885f349256f82d7, type: 3}
       propertyPath: inelasticCollision
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1358852723722513872, guid: f0e58d5211c2de24f885f349256f82d7, type: 3}
       propertyPath: pedalAdjustments.pedalingSpeed
       value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1358852723722513872, guid: f0e58d5211c2de24f885f349256f82d7, type: 3}
+      propertyPath: steerAngle.m_Curve.Array.data[1].time
+      value: 11.837891
+      objectReference: {fileID: 0}
+    - target: {fileID: 1358852723722513872, guid: f0e58d5211c2de24f885f349256f82d7, type: 3}
+      propertyPath: steerAngle.m_Curve.Array.data[1].value
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1358852723722513872, guid: f0e58d5211c2de24f885f349256f82d7, type: 3}
+      propertyPath: steerAngle.m_Curve.Array.data[0].inSlope
+      value: -0.33789805
+      objectReference: {fileID: 0}
+    - target: {fileID: 1358852723722513872, guid: f0e58d5211c2de24f885f349256f82d7, type: 3}
+      propertyPath: steerAngle.m_Curve.Array.data[1].inSlope
+      value: -0.33789805
+      objectReference: {fileID: 0}
+    - target: {fileID: 1358852723722513872, guid: f0e58d5211c2de24f885f349256f82d7, type: 3}
+      propertyPath: steerAngle.m_Curve.Array.data[0].outSlope
+      value: -0.33789805
+      objectReference: {fileID: 0}
+    - target: {fileID: 1358852723722513872, guid: f0e58d5211c2de24f885f349256f82d7, type: 3}
+      propertyPath: steerAngle.m_Curve.Array.data[1].outSlope
+      value: -0.33789805
       objectReference: {fileID: 0}
     - target: {fileID: 1358852723722513875, guid: f0e58d5211c2de24f885f349256f82d7, type: 3}
       propertyPath: m_Name
