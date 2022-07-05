@@ -397,13 +397,13 @@ namespace SBPScripts
 
                 sprint = Input.GetKey(KeyCode.LeftShift);
 
-                if (Input.GetKey(KeyCode.C) && Input.GetKey(KeyCode.A) && !isAirborne)
+                if (Input.GetKey(KeyCode.C) && inputs.Steer < 0f && !isAirborne)
                 {
                     fWheelRb.AddForce(-transform.right * 10f);
                     rWheelRb.AddForce(transform.right * 25f);
                     fWheelRb.velocity *= 0.975f * (1f - Time.deltaTime);
                 }
-                else if (Input.GetKey(KeyCode.C) && Input.GetKey(KeyCode.D) && !isAirborne)
+                else if (Input.GetKey(KeyCode.C) && inputs.Steer > 0f && !isAirborne)
                 {
                     fWheelRb.AddForce(transform.right * 10f);
                     rWheelRb.AddForce(-transform.right * 25f);
