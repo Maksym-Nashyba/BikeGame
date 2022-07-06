@@ -22,11 +22,13 @@ namespace SBPScripts
             float joystickAngle = Vector2.SignedAngle(Vector2.up, joystickValue);
             Vector2 flatCameraDirection = new Vector2(cameraDirection.x, cameraDirection.z);
             Vector2 targetDirection = flatCameraDirection.RotatedBy(joystickAngle);
-            float steer = Vector2.SignedAngle(flatBikeDirection, targetDirection)/200f;
+            
+            float steer = Vector2.SignedAngle(flatBikeDirection, targetDirection)/180f;
             float acceleration = Mathf.Pow(joystickValue.magnitude,4f) * (1f-Mathf.Abs(steer));
             float sign = -1 * Mathf.Sign(steer);
-            steer = Mathf.Min(-Mathf.Log10(Mathf.Abs(steer)), 1f) * sign;
+            steer = Mathf.Max(1f+Mathf.Log10(Mathf.Abs(steer)), 0f) * sign;
             if (acceleration < 0.01f) steer = 0;
+            Debug.DrawRay(bikeTransform.position, bikeForward, Color.magenta, 20f);
             return new InputValues(steer, acceleration);
         }
 

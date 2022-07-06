@@ -1540,7 +1540,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4657635610763773202, guid: c35bda782e10ae34f8f9d898ddfba4ae, type: 3}
   m_PrefabInstance: {fileID: 2423878774764189601}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &561229845
+--- !u!114 &561229853
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6333,7 +6333,47 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4657635610763773205, guid: c35bda782e10ae34f8f9d898ddfba4ae, type: 3}
       propertyPath: topSpeed
-      value: 10
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 4657635610763773205, guid: c35bda782e10ae34f8f9d898ddfba4ae, type: 3}
+      propertyPath: axisAngle
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 4657635610763773205, guid: c35bda782e10ae34f8f9d898ddfba4ae, type: 3}
+      propertyPath: steerAngle.m_Curve.Array.data[0].value
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 4657635610763773205, guid: c35bda782e10ae34f8f9d898ddfba4ae, type: 3}
+      propertyPath: steerAngle.m_Curve.Array.data[1].value
+      value: 22
+      objectReference: {fileID: 0}
+    - target: {fileID: 4657635610763773205, guid: c35bda782e10ae34f8f9d898ddfba4ae, type: 3}
+      propertyPath: leanCurve.m_Curve.Array.data[1].inSlope
+      value: -0.030481504
+      objectReference: {fileID: 0}
+    - target: {fileID: 4657635610763773205, guid: c35bda782e10ae34f8f9d898ddfba4ae, type: 3}
+      propertyPath: leanCurve.m_Curve.Array.data[1].outSlope
+      value: -0.030481504
+      objectReference: {fileID: 0}
+    - target: {fileID: 4657635610763773205, guid: c35bda782e10ae34f8f9d898ddfba4ae, type: 3}
+      propertyPath: steerAngle.m_Curve.Array.data[0].inSlope
+      value: -0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4657635610763773205, guid: c35bda782e10ae34f8f9d898ddfba4ae, type: 3}
+      propertyPath: steerAngle.m_Curve.Array.data[1].inSlope
+      value: -0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4657635610763773205, guid: c35bda782e10ae34f8f9d898ddfba4ae, type: 3}
+      propertyPath: leanCurve.m_Curve.Array.data[1].outWeight
+      value: 0.5239726
+      objectReference: {fileID: 0}
+    - target: {fileID: 4657635610763773205, guid: c35bda782e10ae34f8f9d898ddfba4ae, type: 3}
+      propertyPath: steerAngle.m_Curve.Array.data[0].outSlope
+      value: -0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4657635610763773205, guid: c35bda782e10ae34f8f9d898ddfba4ae, type: 3}
+      propertyPath: steerAngle.m_Curve.Array.data[1].outSlope
+      value: -0.4
       objectReference: {fileID: 0}
     - target: {fileID: 4657635610763773206, guid: c35bda782e10ae34f8f9d898ddfba4ae, type: 3}
       propertyPath: m_Enabled
