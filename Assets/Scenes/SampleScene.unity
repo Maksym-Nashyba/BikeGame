@@ -237,7 +237,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fc8c5b6008ceae449a1e597475fc1ed0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 79.92
+      value: 71.6
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fc8c5b6008ceae449a1e597475fc1ed0, type: 3}
       propertyPath: m_LocalPosition.y
@@ -245,7 +245,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fc8c5b6008ceae449a1e597475fc1ed0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5.71
+      value: -5.4
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fc8c5b6008ceae449a1e597475fc1ed0, type: 3}
       propertyPath: m_LocalRotation.w
@@ -388,43 +388,43 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 186861679914842178, guid: 3ab47840993e3924eb6621b3fdf90428, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 88.249016
+      value: 81.284
       objectReference: {fileID: 0}
     - target: {fileID: 186861679914842178, guid: 3ab47840993e3924eb6621b3fdf90428, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 108.483246
+      value: 109.44
       objectReference: {fileID: 0}
     - target: {fileID: 186861679914842178, guid: 3ab47840993e3924eb6621b3fdf90428, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 16.602968
+      value: 13.773
       objectReference: {fileID: 0}
     - target: {fileID: 186861679914842178, guid: 3ab47840993e3924eb6621b3fdf90428, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7532699
+      value: 0.84743756
       objectReference: {fileID: 0}
     - target: {fileID: 186861679914842178, guid: 3ab47840993e3924eb6621b3fdf90428, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.106453486
+      value: -0.01644592
       objectReference: {fileID: 0}
     - target: {fileID: 186861679914842178, guid: 3ab47840993e3924eb6621b3fdf90428, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.64265364
+      value: 0.53058046
       objectReference: {fileID: 0}
     - target: {fileID: 186861679914842178, guid: 3ab47840993e3924eb6621b3fdf90428, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.090821005
+      value: -0.007961052
       objectReference: {fileID: 0}
     - target: {fileID: 186861679914842178, guid: 3ab47840993e3924eb6621b3fdf90428, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 16.088
+      value: -1.113
       objectReference: {fileID: 0}
     - target: {fileID: 186861679914842178, guid: 3ab47840993e3924eb6621b3fdf90428, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 80.938
+      value: 64.119
       objectReference: {fileID: 0}
     - target: {fileID: 186861679914842178, guid: 3ab47840993e3924eb6621b3fdf90428, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: -1.774
       objectReference: {fileID: 0}
     - target: {fileID: 3716333145644078608, guid: 3ab47840993e3924eb6621b3fdf90428, type: 3}
       propertyPath: m_Name
@@ -432,15 +432,39 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7763693495198784921, guid: 3ab47840993e3924eb6621b3fdf90428, type: 3}
       propertyPath: torque
-      value: 12
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 7763693495198784921, guid: 3ab47840993e3924eb6621b3fdf90428, type: 3}
       propertyPath: topSpeed
-      value: 15
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 7763693495198784921, guid: 3ab47840993e3924eb6621b3fdf90428, type: 3}
       propertyPath: axisAngle
       value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7763693495198784921, guid: 3ab47840993e3924eb6621b3fdf90428, type: 3}
+      propertyPath: relaxedSpeed
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7763693495198784921, guid: 3ab47840993e3924eb6621b3fdf90428, type: 3}
+      propertyPath: inelasticCollision
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7763693495198784921, guid: 3ab47840993e3924eb6621b3fdf90428, type: 3}
+      propertyPath: wheelFrictionSettings.fFriction.x
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7763693495198784921, guid: 3ab47840993e3924eb6621b3fdf90428, type: 3}
+      propertyPath: wheelFrictionSettings.fFriction.y
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7763693495198784921, guid: 3ab47840993e3924eb6621b3fdf90428, type: 3}
+      propertyPath: wheelFrictionSettings.rFriction.x
+      value: 0.58
+      objectReference: {fileID: 0}
+    - target: {fileID: 7763693495198784921, guid: 3ab47840993e3924eb6621b3fdf90428, type: 3}
+      propertyPath: wheelFrictionSettings.rFriction.y
+      value: 0.58
       objectReference: {fileID: 0}
     - target: {fileID: 7763693495198784921, guid: 3ab47840993e3924eb6621b3fdf90428, type: 3}
       propertyPath: steerAngle.m_Curve.Array.data[1].time

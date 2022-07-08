@@ -397,12 +397,13 @@ namespace SBPScripts
 
                 sprint = Input.GetKey(KeyCode.LeftShift);
 
-                if (Input.GetKey(KeyCode.C) && Mathf.Abs(inputs.Steer) < 0f && !isAirborne)
+                if (inputs.BrakesHit && Mathf.Abs(inputs.Steer) > 0f && !isAirborne)
                 {
-                    float sign = Mathf.Sign(inputs.Steer);
-                    fWheelRb.AddForce(transform.right * 10f * sign);
-                    rWheelRb.AddForce(transform.right * 25f * sign);
-                    fWheelRb.velocity *= 0.975f * (1f - Time.deltaTime);
+                    float sign = inputs.Steer / Mathf.Abs(inputs.Steer);
+                    Vector3 right = transform.right;
+                    fWheelRb.AddForce(right * 30f * sign); 
+                    rWheelRb.AddForce(right * 80f * -sign);
+                    fWheelRb.velocity *= (1f - Time.deltaTime) * 0.85f;
                 }
 
                 //Stateful Input - bunny hopping
@@ -426,7 +427,6 @@ namespace SBPScripts
                     }
                 }
             }
-
             else
             {
                 if (WayPointSystem.recordingState == WayPointSystem.RecordingState.Playback)

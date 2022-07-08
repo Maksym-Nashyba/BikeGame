@@ -24,12 +24,15 @@ namespace SBPScripts
             Vector2 targetDirection = flatCameraDirection.RotatedBy(joystickAngle);
             
             float steer = Vector2.SignedAngle(flatBikeDirection, targetDirection)/180f;
-            float acceleration = Mathf.Pow(joystickValue.magnitude,4f) * (1f-Mathf.Abs(steer));
+            float acceleration = Mathf.Pow(joystickValue.magnitude,2f) * (1f-Mathf.Abs(steer));
             float sign = -1 * Mathf.Sign(steer);
+            
             steer = Mathf.Max(1f+Mathf.Log10(Mathf.Abs(steer)), 0f) * sign;
             if (acceleration < 0.01f) steer = 0;
+
             Debug.DrawRay(bikeTransform.position, bikeForward, Color.magenta, 20f);
-            return new InputValues(steer, acceleration);
+            bool brakes = GetBrakesHit();
+            return new InputValues(steer, acceleration, brakes);  
         }
 
         private Vector3 GetCameraDirection()
@@ -41,10 +44,14 @@ namespace SBPScripts
         {
             return _joystick.Direction;
         }
-        
-        public static float Remap (float value, float from1, float to1, float from2, float to2) {
-            return (value - from1) / (to1 - from1) * (to2 - from2) + from2;
+
+        private bool GetBrakesHit()
+        {
+            return Input.GetKey(KeyCode.C);
         }
         
+        public static float Remap(float value, float from1, float to1, float from2, float to2) {
+            return (value - from1) / (to1 - from1) * (to2 - from2) + from2;
+        }
     }
 }
