@@ -4,6 +4,7 @@ using Misc;
 using UnityEditor;
 
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace SBPScripts
 {
@@ -11,6 +12,7 @@ namespace SBPScripts
     {
         [SerializeField] private Transform _cameraTransform;
         [SerializeField] private Joystick _joystick;
+        [SerializeField] private Button _brakesButton;
 
         public InputValues GetCurrentInput(Transform bikeTransform)
         {
@@ -48,10 +50,6 @@ namespace SBPScripts
         private bool GetBrakesHit()
         {
             return Input.GetKey(KeyCode.C);
-        }
-        
-        public static float Remap(float value, float from1, float to1, float from2, float to2) {
-            return (value - from1) / (to1 - from1) * (to2 - from2) + from2;
         }
     }
 }
