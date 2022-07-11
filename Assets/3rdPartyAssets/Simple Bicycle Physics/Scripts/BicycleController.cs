@@ -397,13 +397,9 @@ namespace SBPScripts
 
                 sprint = Input.GetKey(KeyCode.LeftShift);
 
-                if (inputs.BrakesHit && Mathf.Abs(inputs.Steer) > 0f && !isAirborne)
+                if (inputs.BrakesHit && isReversing == false && !isAirborne)
                 {
-                    float sign = inputs.Steer / Mathf.Abs(inputs.Steer);
-                    Vector3 right = transform.right;
-                    fWheelRb.AddForce(right * 30f * sign); 
-                    rWheelRb.AddForce(right * 80f * -sign);
-                    fWheelRb.velocity *= (1f - Time.deltaTime) * 0.85f;
+                    rb.AddForce(-transform.forward * (accelerationCurve.Evaluate(AccelerationAxis) * 0.39f)); 
                 }
 
                 //Stateful Input - bunny hopping
