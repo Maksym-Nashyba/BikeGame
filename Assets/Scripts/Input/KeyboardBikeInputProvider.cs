@@ -9,7 +9,8 @@ namespace SBPScripts
             float steer = Input.GetAxis("Horizontal");
             float acceleration = Input.GetAxis("Vertical");
             bool brakes = Input.GetKey(KeyCode.C);
-            return new InputValues(steer, acceleration, brakes);
+            bool sprint = Input.GetKey(KeyCode.LeftShift);
+            return new InputValues(steer, acceleration, brakes, sprint);
         }
     }
 }

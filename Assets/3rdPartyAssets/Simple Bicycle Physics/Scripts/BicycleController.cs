@@ -144,7 +144,7 @@ namespace SBPScripts
 
         private void Awake()
         {
-            _inputProvider = GetComponent<IBikeInputProvider>();
+            _inputProvider = GetComponent<IBikeInputProvider>();//TODO resolve dependencies through service locator
             transform.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y, 0);
         }
 
@@ -395,20 +395,12 @@ namespace SBPScripts
                 CustomInput(inputs.Steer, ref LeanAxis, 1, 1, false);
                 CustomInput(inputs.Acceleration, ref rawAcceleration, 1, 1, true);
 
-                sprint = Input.GetKey(KeyCode.LeftShift);
+                sprint = inputs.SprintHit;
 
                 if (inputs.BrakesHit && isReversing == false && !isAirborne)
                 {
                     rb.AddForce(-transform.forward * (accelerationCurve.Evaluate(AccelerationAxis) * 0.39f)); 
                 }
-
-                //Stateful Input - bunny hopping
-                if (Input.GetKey(KeyCode.Space))
-                    bunnyHopInputState = 1;
-                else if (Input.GetKeyUp(KeyCode.Space))
-                    bunnyHopInputState = -1;
-                else
-                    bunnyHopInputState = 0;
 
                 //Record
                 if (WayPointSystem.recordingState == WayPointSystem.RecordingState.Record)
@@ -444,32 +436,40 @@ namespace SBPScripts
 
         //Input Manager Controls
         private void CustomInput(float raw, ref float axis, float sensitivity, float gravity, bool isRaw)
-        { 
+        {
+            if (isRaw)
+            {
+                axis = raw;
+                return;
+            }
             float deltaTime = Time.unscaledDeltaTime;
 
-            if (isRaw)
-                axis = raw;
+            if (raw >= Mathf.Epsilon)
+            {
+                axis = Mathf.Clamp(axis + raw * sensitivity * deltaTime, -1f, 1f);
+            }
             else
             {
-                if (raw >=Mathf.Epsilon)
-                    axis = Mathf.Clamp(axis + raw * sensitivity * deltaTime, -1f, 1f);
-                else
-                    axis = Mathf.Clamp01(Mathf.Abs(axis) - gravity * deltaTime) * Mathf.Sign(axis);
+                axis = Mathf.Clamp01(Mathf.Abs(axis) - gravity * deltaTime) * Mathf.Sign(axis);
             }
         }
 
         private void WayPointInput(float instruction, ref float axis, float sensitivity, float gravity, bool isRaw)
         {
-            var time = Time.unscaledDeltaTime;
-
             if (isRaw)
+            {
                 axis = instruction;
+                return;
+            }
+            float time = Time.unscaledDeltaTime;
+
+            if (instruction != 0)
+            {
+                axis = Mathf.Clamp(axis + instruction * sensitivity * time, -1f, 1f);
+            }
             else
             {
-                if (instruction != 0)
-                    axis = Mathf.Clamp(axis + instruction * sensitivity * time, -1f, 1f);
-                else
-                    axis = Mathf.Clamp01(Mathf.Abs(axis) - gravity * time) * Mathf.Sign(axis);
+                axis = Mathf.Clamp01(Mathf.Abs(axis) - gravity * time) * Mathf.Sign(axis);
             }
         }
 

@@ -34,7 +34,8 @@ namespace SBPScripts
 
             Debug.DrawRay(bikeTransform.position, bikeForward, Color.magenta, 20f);
             bool brakes = GetBrakesHit();
-            return new InputValues(steer, acceleration, brakes);  
+            bool sprint = GetSprintHit();
+            return new InputValues(steer, acceleration, brakes, sprint);  
         }
 
         private Vector3 GetCameraDirection()
@@ -48,6 +49,11 @@ namespace SBPScripts
         }
 
         private bool GetBrakesHit()
+        {
+            return Input.GetKey(KeyCode.C);
+        }
+        
+        private bool GetSprintHit()
         {
             return Input.GetKey(KeyCode.C);
         }

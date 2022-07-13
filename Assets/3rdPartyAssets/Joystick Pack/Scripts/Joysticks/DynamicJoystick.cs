@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using Joystick_Pack.Scripts.Base;
+﻿using Joystick_Pack.Scripts.Base;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
