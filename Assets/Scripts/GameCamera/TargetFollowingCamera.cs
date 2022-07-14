@@ -4,27 +4,47 @@ namespace GameCamera
 {
     public class TargetFollowingCamera : MonoBehaviour
     {
-        [SerializeField] private Rigidbody _playerRigidbody;
-        [SerializeField] private Transform _playerTransform;
-        [SerializeField] private float _cameraSpeed;
+        [SerializeField] private Rigidbody _playerRigidbody; 
+        [SerializeField] private float _minDistance;
+        [SerializeField] private float _maxDistance;
+        private Transform _playerTransform;
         private Transform _cameraTransform;
-        private Vector3 _offset;
+        private Vector3 _direction;
     
         private void Awake()
         {
             _cameraTransform = GetComponent<Transform>();
+            _playerTransform = _playerRigidbody.GetComponent<Transform>();
         }
 
         private void Start()
         {
-            _offset = _cameraTransform.position - _playerTransform.position;
+            _direction = CalculateDirection();
         }
 
         private void LateUpdate()
         {
-            float playerSpeed = _playerRigidbody.velocity.magnitude;
-            Vector3 nextCameraPosition = _playerTransform.position + _offset;
-            _cameraTransform.position = Vector3.Lerp(_cameraTransform.position, nextCameraPosition, _cameraSpeed * Time.deltaTime);
+            Vector3 nextCameraPosition = GetNextCameraPosition();
+            MoveCameraToPosition(nextCameraPosition);
+        }
+        
+        private Vector3 CalculateDirection()
+        {
+            Vector3 direction = _cameraTransform.position - _playerTransform.position;
+            direction = direction.normalized;
+            return direction;
+        }
+        
+        private Vector3 GetNextCameraPosition()
+        {
+            float distance = _minDistance + (_maxDistance - _minDistance) * _playerRigidbody.velocity.magnitude / 20f;
+            Vector3 nextCameraPosition = _playerTransform.position + (distance * _direction);
+            return nextCameraPosition;
+        }
+
+        private void MoveCameraToPosition(Vector3 nextCameraPosition)
+        {
+            _cameraTransform.position = Vector3.Lerp(_cameraTransform.position, nextCameraPosition, 500f * Time.deltaTime);
         }
     }
 }
