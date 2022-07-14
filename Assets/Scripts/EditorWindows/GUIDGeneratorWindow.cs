@@ -38,7 +38,7 @@ namespace EditorWindows
 
         private void GenerateNewGUID()
         {
-            _lastGenerated = GUIDGenerator.GetNew();
+            _lastGenerated = GUIDs.GetNew();
         }
 
         private void CopyCurrentGUIDToClipboard()
