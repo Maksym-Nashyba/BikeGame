@@ -1,9 +1,10 @@
-﻿using UnityEngine;
+﻿using UI;
+using UnityEngine;
 using UnityEngine.EventSystems;
 
 namespace Joystick_Pack.Scripts.Base
 {
-    public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointerUpHandler
+    public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointerUpHandler, IJoystick
     {
         public float Horizontal { get { return (snapX) ? SnapFloat(input.x, AxisOptions.Horizontal) : input.x; } }
         public float Vertical { get { return (snapY) ? SnapFloat(input.y, AxisOptions.Vertical) : input.y; } }
@@ -144,6 +145,11 @@ namespace Joystick_Pack.Scripts.Base
                 return localPoint - (background.anchorMax * baseRect.sizeDelta) + pivotOffset;
             }
             return Vector2.zero;
+        }
+
+        public Vector2 GetDirection()
+        {
+            return Direction;
         }
     }
 

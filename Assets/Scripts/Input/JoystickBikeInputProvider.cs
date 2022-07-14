@@ -1,7 +1,6 @@
 ﻿using System;
-using Joystick_Pack.Scripts.Base;
 using Misc;
-using UnityEditor;
+using UI;
 
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,8 +10,14 @@ namespace SBPScripts
     public class JoystickBikeInputProvider : MonoBehaviour, IBikeInputProvider
     {
         [SerializeField] private Transform _cameraTransform;
-        [SerializeField] private Joystick _joystick;
+        [SerializeField] private GameObject _joystickObject;
+        private IJoystick _joystick;
         [SerializeField] private Button _brakesButton;
+
+        private void Awake()
+        {
+            _joystick = _joystickObject.GetComponent<IJoystick>();
+        }
 
         public InputValues GetCurrentInput(Transform bikeTransform)
         {
@@ -45,7 +50,7 @@ namespace SBPScripts
 
         private Vector2 GetJoystickValue()
         {
-            return _joystick.Direction;
+            return _joystick.GetDirection();
         }
 
         private bool GetBrakesHit()
