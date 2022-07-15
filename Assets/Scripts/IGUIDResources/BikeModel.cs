@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using SaveSystem.Models;
+using UnityEngine;
 
 namespace IGUIDResources
 {
@@ -14,6 +15,14 @@ namespace IGUIDResources
         public string GetGUID()
         {
             return name;
+        }
+
+        public PersistentBike MakeCleanSaveObject()
+        {
+            return new PersistentBike(false,
+                AllSkins[0].GetGUID(),
+                new []{AllSkins[0].GetGUID()},
+                GetGUID());
         }
     }
 }
