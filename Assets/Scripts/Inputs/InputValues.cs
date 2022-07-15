@@ -1,4 +1,4 @@
-﻿namespace SBPScripts
+﻿namespace Inputs
 {
     public readonly ref struct InputValues
     {

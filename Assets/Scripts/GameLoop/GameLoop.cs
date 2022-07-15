@@ -10,7 +10,7 @@ namespace GameLoop
     {
         public event Action Started;
         public event Action<LevelAchievements> Ended;
-        private Queue<Objective> _objectives = ServiceLocator.LevelStructure.Objectives;
+        private Queue<Objective> _objectives = ServiceLocator.LevelStructure.ObjectiveQueue;
         private LevelAchievements _levelAchievements = ServiceLocator.LevelStructure.InstantiateAchievements();
 
         private void Start()
@@ -20,8 +20,20 @@ namespace GameLoop
         
         private void StartFirstObjective()
         {
-            Started?.Invoke();
             StartObjective(_objectives.Peek());
+            Started?.Invoke();
+        }
+
+        private void OnObjectiveComplete(Objective objective)
+        {
+            DeQueueObjective(objective);
+            StartObjective(objective);
+        }
+        
+        private void DeQueueObjective(Objective objective)
+        {
+            objective.Completed -= OnObjectiveComplete;
+            _objectives.Dequeue();
         }
         
         private void StartObjective(Objective objective)
@@ -33,17 +45,6 @@ namespace GameLoop
             }
             objective.Completed += OnObjectiveComplete;
             objective.Start(_levelAchievements);
-        }
-
-        private void DeQueueObjective(Objective objective)
-        {
-            objective.Completed -= OnObjectiveComplete;
-            _objectives.Dequeue();
-        }
-
-        private void OnObjectiveComplete(Objective objective)
-        {
-            StartObjective(objective);
         }
     }
 }

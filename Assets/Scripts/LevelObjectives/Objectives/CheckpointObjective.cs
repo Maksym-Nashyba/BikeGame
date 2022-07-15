@@ -1,13 +1,15 @@
 ﻿using System;
 using GameLoop;
+using UnityEngine;
 
 namespace LevelObjectives.Objectives
 {
+    [Serializable]
     public class CheckpointObjective : Objective
     {
         
         public event Action<Objective> Completed;
-        private Checkpoint _checkpoint;
+        [SerializeField]private Checkpoint _checkpoint;
 
         public override void Start(LevelAchievements levelAchievements)
         {

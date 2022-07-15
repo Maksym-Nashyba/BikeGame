@@ -1,22 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using GameLoop;
 using LevelObjectives.Objectives;
 using UnityEngine;
 
 namespace LevelObjectives
 {
-    [Serializable]
     public class LevelStructure : MonoBehaviour
     {
-        internal Queue<Objective> Objectives;
+        public Queue<Objective> ObjectiveQueue { get; private set; }
+        [SerializeField] private ObjectivesQueue objectivesQueue;
 
         private void Awake()
         {
-            Objectives = new Queue<Objective>();
+            ObjectiveQueue = objectivesQueue.ToQueue();
         }
 
-        internal LevelAchievements InstantiateAchievements()
+        internal virtual LevelAchievements InstantiateAchievements()
         {
             return new LevelAchievements();
         }
