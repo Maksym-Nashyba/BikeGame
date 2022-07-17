@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using GameLoop;
+using GameCycle;
 using LevelObjectives.Objectives;
 using UnityEngine;
 

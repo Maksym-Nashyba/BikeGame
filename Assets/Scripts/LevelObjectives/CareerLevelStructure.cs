@@ -1,4 +1,4 @@
-﻿using GameLoop;
+﻿using GameCycle;
 
 namespace LevelObjectives
 {

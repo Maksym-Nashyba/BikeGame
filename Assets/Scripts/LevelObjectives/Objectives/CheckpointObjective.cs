@@ -1,5 +1,5 @@
 ﻿using System;
-using GameLoop;
+using GameCycle;
 using UnityEngine;
 
 namespace LevelObjectives.Objectives

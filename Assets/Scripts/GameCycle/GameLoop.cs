@@ -4,7 +4,7 @@ using LevelObjectives.Objectives;
 using Misc;
 using UnityEngine;
 
-namespace GameLoop
+namespace GameCycle
 {
     public class GameLoop : MonoBehaviour
     {
