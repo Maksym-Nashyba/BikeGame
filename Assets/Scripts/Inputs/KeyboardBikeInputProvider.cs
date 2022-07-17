@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace SBPScripts
+namespace Inputs
 {
     public class KeyboardBikeInputProvider : MonoBehaviour, IBikeInputProvider
     {

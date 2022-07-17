@@ -16,7 +16,7 @@ namespace Misc
         {
             get => _serviceLocator._levelStructure;
         }
-        private LevelStructure _levelStructure;
+        [SerializeField]private LevelStructure _levelStructure;
         
         public Camera Camera { get; private set; }
 

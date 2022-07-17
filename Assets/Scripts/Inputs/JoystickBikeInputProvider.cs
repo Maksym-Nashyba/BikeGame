@@ -1,11 +1,9 @@
-﻿using System;
-using Misc;
+﻿using Misc;
 using UI;
-
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace SBPScripts
+namespace Inputs
 {
     public class JoystickBikeInputProvider : MonoBehaviour, IBikeInputProvider
     {

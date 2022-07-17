@@ -10,8 +10,14 @@ namespace GameLoop
     {
         public event Action Started;
         public event Action<LevelAchievements> Ended;
-        private Queue<Objective> _objectives = ServiceLocator.LevelStructure.Objectives;
-        private LevelAchievements _levelAchievements = ServiceLocator.LevelStructure.InstantiateAchievements();
+        private Queue<Objective> _objectives;
+        private LevelAchievements _levelAchievements;
+
+        private void Awake()
+        {
+            _objectives = ServiceLocator.LevelStructure.ObjectiveQueue;
+            _levelAchievements = ServiceLocator.LevelStructure.InstantiateAchievements();
+        }
 
         private void Start()
         {
@@ -20,11 +26,23 @@ namespace GameLoop
         
         private void StartFirstObjective()
         {
+            StartNextObjective(_objectives.Peek());
             Started?.Invoke();
-            StartObjective(_objectives.Peek());
+        }
+
+        private void OnObjectiveComplete(Objective objective)
+        {
+            DeQueueObjective();
+            StartNextObjective(_objectives.Peek());
         }
         
-        private void StartObjective(Objective objective)
+        private void DeQueueObjective()
+        {
+            Objective dequeuedObjective = _objectives.Dequeue();
+            dequeuedObjective.Completed -= OnObjectiveComplete;
+        }
+        
+        private void StartNextObjective(Objective objective)
         {
             if (_objectives.Count == 0)
             {
@@ -32,18 +50,7 @@ namespace GameLoop
                 return;
             }
             objective.Completed += OnObjectiveComplete;
-            objective.Start(_levelAchievements);
-        }
-
-        private void DeQueueObjective(Objective objective)
-        {
-            objective.Completed -= OnObjectiveComplete;
-            _objectives.Dequeue();
-        }
-
-        private void OnObjectiveComplete(Objective objective)
-        {
-            StartObjective(objective);
+            objective.Begin(_levelAchievements);
         }
     }
 }

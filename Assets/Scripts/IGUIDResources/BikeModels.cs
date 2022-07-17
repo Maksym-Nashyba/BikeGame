@@ -15,7 +15,7 @@ namespace IGUIDResources
         
         public BikeModel GetDefault()
         {
-            return Get(GUIDGenerator.Default);
+            return Models[0];
         }
     }
 }

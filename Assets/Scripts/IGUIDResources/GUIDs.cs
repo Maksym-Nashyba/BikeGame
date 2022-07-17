@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace IGUIDResources
 {
-    public static class GUIDGenerator
+    public static class GUIDs
     {
         public const string Default = "111111111";
         public const int Length = 9;
@@ -19,6 +19,11 @@ namespace IGUIDResources
             const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
             return new string(Enumerable.Repeat(chars, length)
                 .Select(s => s[random.Next(s.Length)]).ToArray());
+        }
+
+        public static bool IsValidGUID(string guid)
+        {
+            return guid.Length == 9;
         }
     }
 }

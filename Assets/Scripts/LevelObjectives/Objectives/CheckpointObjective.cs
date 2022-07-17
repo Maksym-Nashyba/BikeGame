@@ -1,22 +1,22 @@
 ﻿using System;
 using GameLoop;
+using UnityEngine;
 
 namespace LevelObjectives.Objectives
 {
+    [Serializable]
     public class CheckpointObjective : Objective
     {
-        
-        public event Action<Objective> Completed;
-        private Checkpoint _checkpoint;
+        [SerializeField]private Checkpoint _checkpoint;
 
-        public override void Start(LevelAchievements levelAchievements)
+        public override void Begin(LevelAchievements levelAchievements)
         {
-            _checkpoint.Activated += InvokeCompleted;
+            _checkpoint.Activated += End;
         }
 
-        private void InvokeCompleted()
+        private void OnDestroy()
         {
-            Completed?.Invoke(this);
+            _checkpoint.Activated -= End;
         }
     }
 }
