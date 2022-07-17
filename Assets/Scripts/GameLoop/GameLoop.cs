@@ -10,8 +10,14 @@ namespace GameLoop
     {
         public event Action Started;
         public event Action<LevelAchievements> Ended;
-        private Queue<Objective> _objectives = ServiceLocator.LevelStructure.ObjectiveQueue;
-        private LevelAchievements _levelAchievements = ServiceLocator.LevelStructure.InstantiateAchievements();
+        private Queue<Objective> _objectives;
+        private LevelAchievements _levelAchievements;
+
+        private void Awake()
+        {
+            _objectives = ServiceLocator.LevelStructure.ObjectiveQueue;
+            _levelAchievements = ServiceLocator.LevelStructure.InstantiateAchievements();
+        }
 
         private void Start()
         {
@@ -20,23 +26,23 @@ namespace GameLoop
         
         private void StartFirstObjective()
         {
-            StartObjective(_objectives.Peek());
+            StartNextObjective(_objectives.Peek());
             Started?.Invoke();
         }
 
         private void OnObjectiveComplete(Objective objective)
         {
-            DeQueueObjective(objective);
-            StartObjective(objective);
+            DeQueueObjective();
+            StartNextObjective(_objectives.Peek());
         }
         
-        private void DeQueueObjective(Objective objective)
+        private void DeQueueObjective()
         {
-            objective.Completed -= OnObjectiveComplete;
-            _objectives.Dequeue();
+            Objective dequeuedObjective = _objectives.Dequeue();
+            dequeuedObjective.Completed -= OnObjectiveComplete;
         }
         
-        private void StartObjective(Objective objective)
+        private void StartNextObjective(Objective objective)
         {
             if (_objectives.Count == 0)
             {
@@ -44,7 +50,7 @@ namespace GameLoop
                 return;
             }
             objective.Completed += OnObjectiveComplete;
-            objective.Start(_levelAchievements);
+            objective.Begin(_levelAchievements);
         }
     }
 }

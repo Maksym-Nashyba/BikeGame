@@ -7,13 +7,13 @@ namespace LevelObjectives
 {
     public class LevelStructure : MonoBehaviour
     {
-        public Queue<Objective> ObjectiveQueue { get; private set; }
-        [SerializeField] private ObjectivesQueue objectivesQueue;
-
-        private void Awake()
+        public Queue<Objective> ObjectiveQueue
         {
-            ObjectiveQueue = objectivesQueue.ToQueue();
+            get => _objectivesQueue.ToQueue();
+            private set => ObjectiveQueue = value;
         }
+        
+        [SerializeField] private ObjectivesQueue _objectivesQueue;
 
         internal virtual LevelAchievements InstantiateAchievements()
         {
