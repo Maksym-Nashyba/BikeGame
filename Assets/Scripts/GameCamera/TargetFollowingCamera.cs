@@ -1,8 +1,9 @@
+using Pausing;
 using UnityEngine;
 
 namespace GameCamera
 {
-    public class TargetFollowingCamera : MonoBehaviour
+    public class TargetFollowingCamera : MonoBehaviour,IPausable
     {
         [SerializeField] private Rigidbody _playerRigidbody; 
         [SerializeField] private float _minDistance;
@@ -10,6 +11,7 @@ namespace GameCamera
         private Transform _playerTransform;
         private Transform _cameraTransform;
         private Vector3 _direction;
+        private bool _isPaused;
     
         private void Awake()
         {
@@ -24,6 +26,7 @@ namespace GameCamera
 
         private void LateUpdate()
         {
+            if (_isPaused) return;
             Vector3 nextCameraPosition = GetNextCameraPosition();
             MoveCameraToPosition(nextCameraPosition);
         }
@@ -45,6 +48,16 @@ namespace GameCamera
         private void MoveCameraToPosition(Vector3 nextCameraPosition)
         {
             _cameraTransform.position = Vector3.Lerp(_cameraTransform.position, nextCameraPosition, 500f * Time.deltaTime);
+        }
+
+        public void Pause()
+        {
+            _isPaused = true;
+        }
+
+        public void Continue()
+        {
+            _isPaused = false;
         }
     }
 }
