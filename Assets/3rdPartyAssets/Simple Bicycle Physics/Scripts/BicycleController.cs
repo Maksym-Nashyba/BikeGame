@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Inputs;
 using UnityEngine;
 
 // Please use using SBPScripts; directive to refer to or append the SBP library
