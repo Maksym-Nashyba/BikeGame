@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using IGUIDResources;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace LevelLoading
 {
@@ -13,9 +14,14 @@ namespace LevelLoading
             _resourceLocator = GUIDResourceLocator.Initialize();
         }
 
-        public static BikeSelection Display()
+        public static async Task<BikeSelection> Display()
         {
-            return null;//TODO display additive scene
+            AsyncOperation loadingProcess = SceneManager.LoadSceneAsync("BikeSelection", LoadSceneMode.Additive);
+            while (!loadingProcess.isDone)
+            {
+                await Task.Yield();
+            }
+            return FindObjectOfType<BikeSelection>();
         }
         
         public Task<BikeModel> RetrieveSelectedBikeModel()

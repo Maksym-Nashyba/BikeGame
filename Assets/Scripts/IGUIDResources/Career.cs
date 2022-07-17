@@ -13,6 +13,7 @@ namespace IGUIDResources
         {
             foreach (Level level in this)
             {
+                if (level is null) continue;
                 if (level.GetGUID() == guid) return level;
             }
 
