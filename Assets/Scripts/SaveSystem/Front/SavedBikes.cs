@@ -11,7 +11,7 @@ namespace SaveSystem.Front
     {
         private Persistency _persistency;
         private GUIDResourceLocator _resources;
-        private SaveData Save => _persistency.Current;
+        private SaveData Save => Persistency.Current;
         
         public SavedBikes(Persistency persistency, GUIDResourceLocator resourceLocator)
         {

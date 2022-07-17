@@ -7,5 +7,11 @@ namespace SaveSystem.Models
     {
         public long Dollans;
         public long Pedals;
+
+        public PersistentCurrencies(long dollans, long pedals)
+        {
+            Dollans = dollans;
+            Pedals = pedals;
+        }
     }
 }

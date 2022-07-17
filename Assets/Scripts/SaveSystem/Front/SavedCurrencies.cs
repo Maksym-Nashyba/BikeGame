@@ -7,7 +7,7 @@ namespace SaveSystem.Front
     public class SavedCurrencies
     {
         private Persistency _persistency;
-        private SaveData Save => _persistency.Current;
+        private SaveData Save => Persistency.Current;
 
         public SavedCurrencies(Persistency persistency)
         {

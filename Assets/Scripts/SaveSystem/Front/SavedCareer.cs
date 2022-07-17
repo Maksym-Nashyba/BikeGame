@@ -3,7 +3,6 @@ using System.Linq;
 using IGUIDResources;
 using SaveSystem.Models;
 using SaveSystem.PersistencyAndSerialization;
-using UnityEngine;
 
 namespace SaveSystem.Front
 {
@@ -11,7 +10,7 @@ namespace SaveSystem.Front
     {
         private Persistency _persistency;
         private GUIDResourceLocator _resources;
-        private SaveData Save => _persistency.Current;
+        private SaveData Save => Persistency.Current;
 
         public SavedCareer(Persistency persistency, GUIDResourceLocator resources)
         {
@@ -32,9 +31,9 @@ namespace SaveSystem.Front
         public void SetLevelCompleted(string levelGUID)
         {
             if (IsCompleted(levelGUID)) return;
-            PersistentLevel levelSave = GetLevelWithGUID(levelGUID);
-            //levelSave.Completed;
-            ////TODO | Bullshit. Levels are only serialized if they're completed. Hence, no sense to have IsCompletedVariable;
+            Array.Resize(ref Save.CareerLevels, Save.CareerLevels.Length+1);
+            Save.CareerLevels[^1] = PersistentLevel.GetNewLevelWithGUID(levelGUID);
+            _persistency.Push();
         }
 
         public float GetBestTime(Level level)
@@ -84,7 +83,6 @@ namespace SaveSystem.Front
             AssertLevelCompleted(levelGUID);
             PersistentLevel levelSave = GetLevelWithGUID(levelGUID);
             if (levelSave.PedalCollected) return;
-            levelSave.Completed = true;
             _persistency.Push();
         }
         

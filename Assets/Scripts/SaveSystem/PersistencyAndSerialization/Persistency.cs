@@ -5,8 +5,13 @@ namespace SaveSystem.PersistencyAndSerialization
 {
     public class Persistency : IDisposable
     {
-        public SaveData Current { get; private set; }
+        public static SaveData Current { get; private set; }
         private IPersistencyProvider _persistencyProvider;
+
+        public Persistency(IPersistencyProvider persistencyProvider)
+        {
+            _persistencyProvider = persistencyProvider;
+        }
 
         public async void Push()
         {
