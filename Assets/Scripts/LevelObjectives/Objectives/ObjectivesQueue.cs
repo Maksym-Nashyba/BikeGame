@@ -9,10 +9,7 @@ namespace LevelObjectives.Objectives
     {
         [SerializeField]private List<Objective> _objectives;
 
-        public ObjectivesQueue()
-        {
-            
-        }
+        public ObjectivesQueue() { }
         
         public ObjectivesQueue(int size)
         {
