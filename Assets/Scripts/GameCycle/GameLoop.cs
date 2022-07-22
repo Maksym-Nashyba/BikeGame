@@ -33,6 +33,11 @@ namespace GameCycle
         private void OnObjectiveComplete(Objective objective)
         {
             DeQueueObjective();
+            if (_objectives.Count == 0)
+            {
+                Ended?.Invoke(_levelAchievements);
+                return;
+            }
             StartNextObjective(_objectives.Peek());
         }
         
@@ -44,11 +49,6 @@ namespace GameCycle
         
         private void StartNextObjective(Objective objective)
         {
-            if (_objectives.Count == 0)
-            {
-                Ended?.Invoke(_levelAchievements);
-                return;
-            }
             objective.Completed += OnObjectiveComplete;
             objective.Begin(_levelAchievements);
         }
