@@ -3,7 +3,7 @@ using SaveSystem.Models;
 
 namespace SaveSystem.PersistencyAndSerialization
 {
-    public class DebugPersistencyProvider : IPersistencyProvider
+    public class DebugPersistencyProvider : IPersistencyProvider<ISaveDataSerializer>
     {
         public Task Save(SaveData toSave)
         {

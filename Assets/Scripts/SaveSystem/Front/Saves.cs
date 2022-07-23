@@ -1,4 +1,5 @@
-﻿using IGUIDResources;
+﻿using System;
+using IGUIDResources;
 using SaveSystem.PersistencyAndSerialization;
 
 namespace SaveSystem.Front
@@ -17,8 +18,10 @@ namespace SaveSystem.Front
 
         public static Saves Initialize()
         {
+
+            throw new NotImplementedException();
             GUIDResourceLocator resources = GUIDResourceLocator.Initialize();
-            IPersistencyProvider persistencyProvider = new DebugPersistencyProvider();
+            IPersistencyProvider<BinarySaveDataSerializer> persistencyProvider = null;
             Persistency persistency = new Persistency(persistencyProvider);
             Saves result = new Saves(persistency);
             persistency.Pull();
