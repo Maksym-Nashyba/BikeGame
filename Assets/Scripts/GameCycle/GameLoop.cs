@@ -36,6 +36,8 @@ namespace GameCycle
             if (_objectives.Count == 0)
             {
                 Ended?.Invoke(_levelAchievements);
+                ServiceLocator.Pause.PauseAll();
+                Debug.Log("Ended");
                 return;
             }
             StartNextObjective(_objectives.Peek());
