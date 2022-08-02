@@ -6,15 +6,18 @@ namespace SaveSystem.Models
     [Serializable]
     public class SaveData
     {
+        public byte Version;
         public PersistentLevel[] CareerLevels;
         public PersistentBike[] Bikes;
         public PersistentCurrencies Currencies;
-
+        private const byte _currentVerion = 1;
+        
         public SaveData(PersistentLevel[] careerLevels, PersistentBike[] bikes, PersistentCurrencies currencies)
         {
             CareerLevels = careerLevels;
             Bikes = bikes;
             Currencies = currencies;
+            Version = _currentVerion;
         }
 
         public static SaveData GetDefault()

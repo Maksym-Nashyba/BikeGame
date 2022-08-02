@@ -10,22 +10,27 @@ namespace SaveSystem.Front
         public SavedCareer Career { get; private set; }
         private Persistency _persistency;
 
-        private Saves(Persistency persistency)
+        private Saves(Persistency persistency, GUIDResourceLocator resources)
         {
             _persistency = persistency;
+            Bikes = new SavedBikes(persistency, resources);
+            Career = new SavedCareer(persistency, resources);
+            Currencies = new SavedCurrencies(persistency);
         }
 
         public static Saves Initialize()
         {
             GUIDResourceLocator resources = GUIDResourceLocator.Initialize();
-            IPersistencyProvider persistencyProvider = new DebugPersistencyProvider();
+            IPersistencyProvider<ISaveDataSerializer> persistencyProvider = BuildPersistencyProvider();
             Persistency persistency = new Persistency(persistencyProvider);
-            Saves result = new Saves(persistency);
+            Saves result = new Saves(persistency, resources);
             persistency.Pull();
-            result.Bikes = new SavedBikes(persistency, resources);
-            result.Career = new SavedCareer(persistency, resources);
-            result.Currencies = new SavedCurrencies(persistency);
             return result;
+        }
+
+        private static IPersistencyProvider<ISaveDataSerializer> BuildPersistencyProvider()
+        {
+            return new DebugPersistencyProvider();
         }
     }
 }

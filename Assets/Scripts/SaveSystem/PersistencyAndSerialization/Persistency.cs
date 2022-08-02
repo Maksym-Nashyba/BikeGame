@@ -6,9 +6,9 @@ namespace SaveSystem.PersistencyAndSerialization
     public class Persistency : IDisposable
     {
         public static SaveData Current { get; private set; }
-        private IPersistencyProvider _persistencyProvider;
+        private IPersistencyProvider<ISaveDataSerializer> _persistencyProvider;
 
-        public Persistency(IPersistencyProvider persistencyProvider)
+        public Persistency(IPersistencyProvider<ISaveDataSerializer> persistencyProvider)
         {
             _persistencyProvider = persistencyProvider;
         }
