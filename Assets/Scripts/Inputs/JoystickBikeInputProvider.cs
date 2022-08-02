@@ -12,11 +12,24 @@ namespace Inputs
         private IJoystick _joystick;
         [SerializeField] private Button _brakesButton;
 
+        private PlayerNewInput _playerNewInput;
+
         private void Awake()
         {
             _joystick = _joystickObject.GetComponent<IJoystick>();
+            _playerNewInput = new PlayerNewInput();
+        }
+        
+        private void OnEnable()
+        {
+            _playerNewInput.Enable();
         }
 
+        private void OnDisable()
+        {
+            _playerNewInput.Disable();
+        }
+        
         public InputValues GetCurrentInput(Transform bikeTransform)
         {
             Vector3 bikeForward = bikeTransform.forward;
@@ -53,12 +66,12 @@ namespace Inputs
 
         private bool GetBrakesHit()
         {
-            return Input.GetKey(KeyCode.C);
+            return _playerNewInput.Player.Brake.IsPressed();
         }
         
         private bool GetSprintHit()
         {
-            return Input.GetKey(KeyCode.C);
+            return _playerNewInput.Player.Sprint.IsPressed();
         }
     }
 }

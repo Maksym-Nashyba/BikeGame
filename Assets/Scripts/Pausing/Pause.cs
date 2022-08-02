@@ -12,7 +12,7 @@ namespace Pausing
             CurrentState = State.Playing;
         }
 
-        private void Update()
+        /*private void Update()
         {
             if (Input.GetKeyDown(KeyCode.P))
             {
@@ -22,7 +22,7 @@ namespace Pausing
             {
                 ContinueAll();
             }
-        }
+        }*/
         
         public void PauseAll()
         {

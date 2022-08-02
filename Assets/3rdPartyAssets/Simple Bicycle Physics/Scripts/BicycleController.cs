@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Inputs;
+using Pausing;
 using UnityEngine;
 
 // Please use using SBPScripts; directive to refer to or append the SBP library
@@ -56,7 +57,7 @@ namespace SBPScripts
         public float heightThreshold;
         public float groundSnapSensitivity;
     }
-    public class BicycleController : MonoBehaviour
+    public class BicycleController : MonoBehaviour, IPausable
     {
         public CycleGeometry cycleGeometry;
         public GameObject fPhysicsWheel, rPhysicsWheel;
@@ -143,6 +144,8 @@ namespace SBPScripts
         public AirTimeSettings AirTimeSettings;
         private IBikeInputProvider _inputProvider;
 
+        private bool _isPaused;
+
         private void Awake()
         {
             _inputProvider = GetComponent<IBikeInputProvider>();//TODO resolve dependencies through service locator
@@ -181,6 +184,7 @@ namespace SBPScripts
 
         private void FixedUpdate()
         {
+            if (_isPaused) return;
 
             //Physics based Steering Control.
             fPhysicsWheel.transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y + SteerAxis * steerAngle.Evaluate(rb.velocity.magnitude) + oscillationSteerEffect, 0);
@@ -355,6 +359,8 @@ namespace SBPScripts
         }
         private void Update()
         {
+            if (_isPaused) return;
+            
             ApplyCustomInput();
 
             //GetKeyUp/Down requires an Update Cycle
@@ -479,6 +485,18 @@ namespace SBPScripts
             yield return new WaitForSeconds(0.5f);
             isBunnyHopping = false;
             yield return null;
+        }
+
+        public void Pause()
+        {
+            rb.isKinematic = true;
+            _isPaused = true;
+        }
+
+        public void Continue()
+        {
+            rb.isKinematic = false;
+            _isPaused = false;
         }
     }
 }
