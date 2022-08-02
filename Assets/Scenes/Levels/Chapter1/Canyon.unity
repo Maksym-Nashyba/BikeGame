@@ -1724,7 +1724,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &201881127
 RectTransform:
   m_ObjectHideFlags: 0
@@ -26667,6 +26667,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27a2b426c3994a8b929570114f38a7b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _endGameScreen: {fileID: 1730316987}
 --- !u!4 &1895601751 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
@@ -29522,7 +29523,7 @@ Light:
     m_CustomResolution: -1
     m_Strength: 1
     m_Bias: 0.05
-    m_NormalBias: 0.005
+    m_NormalBias: 0.4
     m_NearPlane: 0.2
     m_CullingMatrixOverride:
       e00: 1
