@@ -7,6 +7,7 @@ namespace LevelObjectives.Objectives
     public abstract class Objective : MonoBehaviour
     {
         public event Action<Objective> Completed;
+        private LevelAchievements _levelAchievements;
         protected void End()
         {
             OnLevelEnd();
@@ -15,6 +16,16 @@ namespace LevelObjectives.Objectives
         }
 
         protected virtual void OnLevelEnd() { }
-        public abstract void Begin(LevelAchievements levelAchievements);
+
+        public virtual void Begin(LevelAchievements levelAchievements)
+        {
+            _levelAchievements = levelAchievements;
+            AddScore();
+        }
+        
+        private void AddScore()
+        {
+            _levelAchievements.TotalScore += 50;
+        }
     }
 }

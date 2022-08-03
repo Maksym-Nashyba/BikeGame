@@ -9110,6 +9110,7 @@ GameObject:
   - component: {fileID: 543450653141310841}
   - component: {fileID: 3469287836992017116}
   - component: {fileID: 1711813856150349334}
+  - component: {fileID: 3469287836992017117}
   m_Layer: 0
   m_Name: TreeCrooked
   m_TagString: Untagged
@@ -19262,6 +19263,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 919132148680705987}
   m_Mesh: {fileID: 4112401465815477025, guid: 7e29d850316363145ad5d6daafbc081d, type: 3}
+--- !u!65 &3469287836992017117
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132148680705987}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.4292756, y: 4.003516, z: 1.2502846}
+  m_Center: {x: -0.19641364, y: 1.8090136, z: 0.15917}
 --- !u!33 &3469287837000504189
 MeshFilter:
   m_ObjectHideFlags: 0
