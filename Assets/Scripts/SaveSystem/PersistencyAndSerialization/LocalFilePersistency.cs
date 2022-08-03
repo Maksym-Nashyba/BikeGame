@@ -1,6 +1,7 @@
-﻿using System;
+﻿using System.Data;
 using System.IO;
 using System.Runtime.Serialization;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using SaveSystem.Models;
@@ -23,24 +24,22 @@ namespace SaveSystem.PersistencyAndSerialization
 
         public async Task Save(SaveData toSave)
         {
-            CancellationToken cancellationToken = _cancellationTokenSource.Token;
-            bool serialized = await _serializer.TrySerialize(toSave, out string serializedData); 
+            bool serialized = await _serializer.TrySerialize(toSave, out byte[] serializedData); 
             if (!serialized) throw new SerializationException($"Serializer: {_serializer.GetType()}. SaveFile: {toSave}");
             
-            if (cancellationToken.IsCancellationRequested) return;
+            if (IsCancelled()) return;
             await WriteToFile(TempFilePath, serializedData);
             
-            if (cancellationToken.IsCancellationRequested) return;
+            if (IsCancelled()) return;
             await ApplyTemporaryFile();
         }
 
         public async Task<SaveData> Load()
         {
-            CancellationToken cancellationToken = _cancellationTokenSource.Token;
-            string readData = await ReadFromFile(SaveFilePath);
-            if (String.IsNullOrWhiteSpace(readData)) throw new IOException("Read data is null, empty or whitespace");
+            byte[] readData = await ReadFromFile(SaveFilePath);
+            ValidateData(readData);
             
-            if (cancellationToken.IsCancellationRequested) return null;
+            if (IsCancelled()) return null;
             bool deserialized = await _serializer.TryDeserialize(readData, out SaveData data);
             if(!deserialized) throw new SerializationException($"Serializer: {_serializer.GetType()}. SaveFile: {readData}");
             return data;
@@ -56,9 +55,11 @@ namespace SaveSystem.PersistencyAndSerialization
         public void Cancel()
         {
             _cancellationTokenSource.Cancel(false);
+            _cancellationTokenSource.Dispose();
+            _cancellationTokenSource = new CancellationTokenSource();
         }
 
-        private Task WriteToFile(string path, string data)
+        private Task WriteToFile(string path, byte[] data)
         {
             File.Delete(path);
             using (StreamWriter writer = File.CreateText(path))
@@ -68,10 +69,27 @@ namespace SaveSystem.PersistencyAndSerialization
             return Task.CompletedTask;
         }
 
-        private Task<string> ReadFromFile(string path)
+        private Task<byte[]> ReadFromFile(string path)
         {
             if (!File.Exists(path)) throw new FileNotFoundException($"No file found at '{path}'");
-            return Task.FromResult(File.ReadAllText(path));
+            string readData = File.ReadAllText(path);
+            return Task.FromResult(Encoding.ASCII.GetBytes(readData));
+        }
+
+        private void ValidateData(byte[] data)
+        {
+            if (data is null || data.Length < 2) throw new DataException("Read data is null or empty");
+            if(data[0] != _serializer.GetSerializerIndex()) 
+                throw new DataException($"Serializer index ({_serializer.GetSerializerIndex()})" +
+                                        $" doesn't math data's serializer index ({data[0]})");
+            if(data[1] != _serializer.GetVersion())
+                throw new DataException($"Serializer version ({_serializer.GetVersion()})" + 
+                                        $" doesn't math data's serializer version ({data[1]})");
+        }
+
+        private bool IsCancelled()
+        {
+            return _cancellationTokenSource.Token.IsCancellationRequested;
         }
     }
 }
