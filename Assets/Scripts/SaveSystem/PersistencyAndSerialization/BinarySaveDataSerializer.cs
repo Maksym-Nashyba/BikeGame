@@ -27,8 +27,9 @@ namespace SaveSystem.PersistencyAndSerialization
         public Task<bool> TryDeserialize(byte[] serializedData, out SaveData saveData)
         {
             BinaryFormatter formatter = new BinaryFormatter();
-            MemoryStream stream = new MemoryStream(serializedData.Length - 2);
+            MemoryStream stream = new MemoryStream();
             new BinaryWriter(stream).Write(serializedData, 2, serializedData.Length - 2);
+            stream.Position = 0;
             saveData = formatter.Deserialize(stream) as SaveData;
             stream.Close();
             return Task.FromResult(true);

@@ -33,7 +33,7 @@ namespace SaveSystem.Front
         {
             foreach (PersistentBike bike in Save.Bikes)
             {
-                if (!bike.IsBought) continue;
+                if (!IsBikeUnlocked(bike.GUID)) continue;
                 if (bike.UnlockedSkins.Contains(skinGUID)) return true;
             }
 

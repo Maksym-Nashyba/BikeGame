@@ -5,17 +5,28 @@ namespace SaveSystem.Models
     [Serializable]
     public class PersistentBike
     {
-        public PersistentBike(bool isBought, string selectedSkinGUID, string[] unlockedSkins, string guid)
+        public string SelectedSkinGUID;
+        public string[] UnlockedSkins;
+        public string GUID;
+        
+        public PersistentBike(string selectedSkinGUID, string[] unlockedSkins, string guid)
         {
-            IsBought = isBought;
             SelectedSkinGUID = selectedSkinGUID;
             UnlockedSkins = unlockedSkins;
             GUID = guid;
         }
 
-        public bool IsBought;
-        public string SelectedSkinGUID;
-        public string[] UnlockedSkins;
-        public string GUID;
+        public override bool Equals(object obj)
+        {
+            if (obj is not PersistentBike other) return false;
+            if (GUID != other.GUID 
+                || SelectedSkinGUID != other.SelectedSkinGUID
+                || SelectedSkinGUID.Length != other.SelectedSkinGUID.Length) return false;
+            for (int i = 0; i < UnlockedSkins.Length; i++)
+            {
+                if (UnlockedSkins[i] != other.UnlockedSkins[i]) return false;
+            }
+            return true;
+        }
     }
 }

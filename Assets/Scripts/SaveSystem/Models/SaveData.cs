@@ -27,5 +27,23 @@ namespace SaveSystem.Models
                 new []{resources.Bikes.GetDefault().MakeCleanSaveObject()},
                 new PersistentCurrencies(5000, 5000));
         }
+
+        public override bool Equals(object obj)
+        {
+            if (obj is not SaveData other) return false;
+            if (Version != other.Version || !Equals(Currencies, other.Currencies)) return false;
+
+            if (CareerLevels.Length != other.CareerLevels.Length) return false;
+            if (Bikes.Length != other.Bikes.Length) return false;
+            for (int i = 0; i < CareerLevels.Length; i++)
+            {
+                if (!Equals(CareerLevels[i], other.CareerLevels[i])) return false;
+            }
+            for (int i = 0; i < Bikes.Length; i++)
+            {
+                if (!Equals(Bikes[i], other.Bikes[i])) return false;
+            }
+            return true;
+        }
     }
 }
