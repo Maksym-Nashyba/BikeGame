@@ -16,7 +16,9 @@ namespace LevelLoading
         {
             BikeSelection bikeSelection = await BikeSelection.Display();
             BikeModel selectedBike = await bikeSelection.RetrieveSelectedBikeModel();
+            
             string sceneName = _resourceLocator.Career.GetLevelWithGUID(levelGUID).SceneName;
+            
             LevelLoadContext context = new LevelLoadContext(sceneName, selectedBike.Prefab, selectedBike.AllSkins[0].Material);
             LoadLevel(context);
         }

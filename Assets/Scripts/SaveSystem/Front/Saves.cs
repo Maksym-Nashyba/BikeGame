@@ -1,5 +1,4 @@
-﻿using System;
-using IGUIDResources;
+﻿using IGUIDResources;
 using SaveSystem.PersistencyAndSerialization;
 
 namespace SaveSystem.Front
@@ -11,24 +10,27 @@ namespace SaveSystem.Front
         public SavedCareer Career { get; private set; }
         private Persistency _persistency;
 
-        private Saves(Persistency persistency)
+        private Saves(Persistency persistency, GUIDResourceLocator resources)
         {
             _persistency = persistency;
+            Bikes = new SavedBikes(persistency, resources);
+            Career = new SavedCareer(persistency, resources);
+            Currencies = new SavedCurrencies(persistency);
         }
 
         public static Saves Initialize()
         {
-
-            throw new NotImplementedException();
             GUIDResourceLocator resources = GUIDResourceLocator.Initialize();
-            IPersistencyProvider<BinarySaveDataSerializer> persistencyProvider = null;
+            IPersistencyProvider<ISaveDataSerializer> persistencyProvider = BuildPersistencyProvider();
             Persistency persistency = new Persistency(persistencyProvider);
-            Saves result = new Saves(persistency);
+            Saves result = new Saves(persistency, resources);
             persistency.Pull();
-            result.Bikes = new SavedBikes(persistency, resources);
-            result.Career = new SavedCareer(persistency, resources);
-            result.Currencies = new SavedCurrencies(persistency);
             return result;
+        }
+
+        private static IPersistencyProvider<ISaveDataSerializer> BuildPersistencyProvider()
+        {
+            return new DebugPersistencyProvider();
         }
     }
 }
