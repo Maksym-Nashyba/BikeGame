@@ -1,27 +1,15 @@
 ﻿using System;
-using System.Linq;
 using IGUIDResources;
-using NUnit.Framework;
 using SaveSystem.Models;
-using SaveSystem.PersistencyAndSerialization;
 using UnityEngine;
 using Random = UnityEngine.Random;
+using System.Linq;
 
 namespace Tests
 {
-    public class SerializersTests
+    public static class MockData
     {
-        [Test]
-        public void BinarySerializerDeserialize()
-        {
-            SaveData originalData = GenerateMockSaveData();
-            BinarySaveDataSerializer serializer = new BinarySaveDataSerializer();
-            serializer.TrySerialize(originalData, out byte[] serializedData);
-            serializer.TryDeserialize(serializedData, out SaveData deserializedData);
-            Assert.True(Equals(originalData, deserializedData));
-        }
-
-        private SaveData GenerateMockSaveData()
+        public static SaveData GenerateMockSaveData()
         {
             PersistentLevel[] levels = {GenerateRandomPersistentLevel(), GenerateRandomPersistentLevel()};
             PersistentBike[] bikes = {GenerateRandomPersistentBike()};
@@ -29,7 +17,7 @@ namespace Tests
             return new SaveData(levels, bikes, currencies);
         }
 
-        private PersistentLevel GenerateRandomPersistentLevel()
+        public static PersistentLevel GenerateRandomPersistentLevel()
         {
             float bestTime = Random.Range(3f, 6f);
             bool pedalCollected = Random.Range(0, 1) > 0.5f;
@@ -40,7 +28,7 @@ namespace Tests
             return level;
         }
 
-        private PersistentBike GenerateRandomPersistentBike()
+        public static PersistentBike GenerateRandomPersistentBike()
         {
             GUIDResourceLocator resources = GUIDResourceLocator.Initialize();
             BikeModel bikeModel = resources.Bikes.Models[0];
