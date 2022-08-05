@@ -52,7 +52,7 @@ namespace SaveSystem.PersistencyAndSerialization
             return Task.CompletedTask;
         }
 
-        public void Cancel()
+        public void CancelAllOperations()
         {
             _cancellationTokenSource.Cancel(false);
             _cancellationTokenSource.Dispose();

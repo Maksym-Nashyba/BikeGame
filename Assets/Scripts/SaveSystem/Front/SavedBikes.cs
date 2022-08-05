@@ -9,19 +9,24 @@ namespace SaveSystem.Front
 {
     public class SavedBikes
     {
-        private Persistency _persistency;
+        public event Action Changed;
         private GUIDResourceLocator _resources;
-        private SaveData Save => Persistency.Current;
+        private SaveData _saveData;
         
-        public SavedBikes(Persistency persistency, GUIDResourceLocator resourceLocator)
+        public SavedBikes(SaveData saveData, GUIDResourceLocator resourceLocator)
         {
-            _persistency = persistency;
+            UpdateData(saveData);
             _resources = resourceLocator;
+        }
+        
+        private void UpdateData(SaveData saveData)
+        {
+            _saveData = saveData;
         }
 
         public PersistentBike WithGUID(string guid)
         {
-            return Save.Bikes.First(bike => bike.GUID == guid);
+            return _saveData.Bikes.First(bike => bike.GUID == guid);
         }
 
         public bool IsSkinUnlocked(Skin skin)
@@ -31,7 +36,7 @@ namespace SaveSystem.Front
 
         private bool IsSkinUnlocked(string skinGUID)
         {
-            foreach (PersistentBike bike in Save.Bikes)
+            foreach (PersistentBike bike in _saveData.Bikes)
             {
                 if (!IsBikeUnlocked(bike.GUID)) continue;
                 if (bike.UnlockedSkins.Contains(skinGUID)) return true;
@@ -47,7 +52,7 @@ namespace SaveSystem.Front
 
         public bool IsBikeUnlocked(string guid)
         {
-            foreach (PersistentBike bike in Save.Bikes)
+            foreach (PersistentBike bike in _saveData.Bikes)
             {
                 if (bike.GUID == guid) return true;
             }
@@ -86,9 +91,9 @@ namespace SaveSystem.Front
         public void UnlockBike(string bikeGUID)
         {
             if (IsBikeUnlocked(bikeGUID)) throw new Exception($"Bike already unlocked. GUID: {bikeGUID}");
-            Array.Resize(ref Save.Bikes, Save.Bikes.Length+1);
-            Save.Bikes[^1] = _resources.Bikes.Get(bikeGUID).MakeCleanSaveObject();
-            _persistency.Push();
+            Array.Resize(ref _saveData.Bikes, _saveData.Bikes.Length+1);
+            _saveData.Bikes[^1] = _resources.Bikes.Get(bikeGUID).MakeCleanSaveObject();
+            Changed?.Invoke();
         }
 
         public void UnlockSkin(string bikeGUID, string skinGUID)
@@ -97,7 +102,7 @@ namespace SaveSystem.Front
             PersistentBike targetBike = WithGUID(bikeGUID);
             Array.Resize(ref targetBike.UnlockedSkins, targetBike.UnlockedSkins.Length + 1);
             targetBike.UnlockedSkins[^1] = skinGUID;
-            _persistency.Push();
+            Changed?.Invoke();
         }
     }
 }

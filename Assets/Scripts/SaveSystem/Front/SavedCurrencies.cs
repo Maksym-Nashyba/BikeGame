@@ -6,25 +6,30 @@ namespace SaveSystem.Front
 {
     public class SavedCurrencies
     {
-        private Persistency _persistency;
-        private SaveData Save => Persistency.Current;
+        public event Action Changed;
+        private SaveData _saveData;
 
-        public SavedCurrencies(Persistency persistency)
+        public SavedCurrencies(SaveData saveData)
         {
-            _persistency = persistency;
+            UpdateData(saveData);
         }
         
+        private void UpdateData(SaveData saveData)
+        {
+            _saveData = saveData;
+        }
+
         public long Dollans
         {
             get
             {
-                return Save.Currencies.Dollans;
+                return _saveData.Currencies.Dollans;
             }
             set
             {
                 value = Math.Clamp(value, 0, long.MaxValue);
-                Save.Currencies.Dollans = value;
-                _persistency.Push();
+                _saveData.Currencies.Dollans = value;
+                Changed?.Invoke();
             }
         }
         
@@ -32,13 +37,13 @@ namespace SaveSystem.Front
         {
             get
             {
-                return Save.Currencies.Pedals;
+                return _saveData.Currencies.Pedals;
             }
             set
             {
                 value = Math.Clamp(value, 0, long.MaxValue);
-                Save.Currencies.Pedals = value;
-                _persistency.Push();
+                _saveData.Currencies.Pedals = value;
+                Changed?.Invoke();
             }
         }
     }
