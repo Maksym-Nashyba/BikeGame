@@ -9,7 +9,7 @@ namespace Tests.PlayMode
         [UnityTest]
         public IEnumerator Initialize()
         {
-            Saves saves = Saves.Initialize();
+            
             yield return null;
         }
     }

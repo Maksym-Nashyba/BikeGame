@@ -1,36 +1,25 @@
 ﻿using IGUIDResources;
 using SaveSystem.PersistencyAndSerialization;
+using UnityEngine;
 
 namespace SaveSystem.Front
 {
-    public class Saves
+    public class Saves : MonoBehaviour
     {
         public SavedBikes Bikes { get; private set; }
         public SavedCurrencies Currencies { get; private set; }
         public SavedCareer Career { get; private set; }
         private Persistency _persistency;
-
-        private Saves(Persistency persistency, GUIDResourceLocator resources)
+        private bool _isValid = false;
+        
+        public void Initialize(Persistency persistency)
         {
+            GUIDResourceLocator resourceLocator = GUIDResourceLocator.Initialize();
             _persistency = persistency;
-            Bikes = new SavedBikes(persistency, resources);
-            Career = new SavedCareer(persistency, resources);
+            Bikes = new SavedBikes(persistency, resourceLocator);
+            Career = new SavedCareer(persistency, resourceLocator);
             Currencies = new SavedCurrencies(persistency);
-        }
-
-        public static Saves Initialize()
-        {
-            GUIDResourceLocator resources = GUIDResourceLocator.Initialize();
-            IPersistencyProvider<ISaveDataSerializer> persistencyProvider = BuildPersistencyProvider();
-            Persistency persistency = new Persistency(persistencyProvider);
-            Saves result = new Saves(persistency, resources);
-            persistency.Pull();
-            return result;
-        }
-
-        private static IPersistencyProvider<ISaveDataSerializer> BuildPersistencyProvider()
-        {
-            return new DebugPersistencyProvider();
+            _isValid = true;
         }
     }
 }
