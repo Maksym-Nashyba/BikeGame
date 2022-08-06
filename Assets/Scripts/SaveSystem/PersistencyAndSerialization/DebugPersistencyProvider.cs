@@ -15,6 +15,11 @@ namespace SaveSystem.PersistencyAndSerialization
             return Task.FromResult(SaveData.GetDefault());
         }
 
+        public Task<bool> SaveExists()
+        {
+            return Task.FromResult(true);
+        }
+
         public void CancelAllOperations()
         {
             

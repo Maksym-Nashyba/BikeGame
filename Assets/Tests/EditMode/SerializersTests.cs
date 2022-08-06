@@ -2,7 +2,7 @@
 using SaveSystem.Models;
 using SaveSystem.PersistencyAndSerialization;
 
-namespace Tests
+namespace Tests.EditMode
 {
     public class SerializersTests
     {

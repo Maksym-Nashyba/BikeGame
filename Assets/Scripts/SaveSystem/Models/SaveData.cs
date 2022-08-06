@@ -23,9 +23,9 @@ namespace SaveSystem.Models
         public static SaveData GetDefault()
         {
             GUIDResourceLocator resources = GUIDResourceLocator.Initialize();
-            return new SaveData(new []{PersistentLevel.GetNewLevelWithGUID("3UR5PKXKM")},
+            return new SaveData(new []{PersistentLevel.GetNewLevelWithGUID(resources.Career.GetFirstLevel().GetGUID())},
                 new []{resources.Bikes.GetDefault().MakeCleanSaveObject()},
-                new PersistentCurrencies(5000, 5000));
+                new PersistentCurrencies(0, 0));
         }
 
         public override bool Equals(object obj)

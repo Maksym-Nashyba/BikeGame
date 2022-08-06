@@ -17,17 +17,19 @@ namespace SaveSystem.Front
         private IPersistencyProvider<ISaveDataSerializer> _persistencyProvider;
         private SaveData _currentData;
         private bool _isValid = false;
-        
+
+        #region Initialization
+
         public async void Initialize(IPersistencyProvider<ISaveDataSerializer> persistencyProvider)
         {
-            GUIDResourceLocator resourceLocator = GUIDResourceLocator.Initialize();
-            InitializeFacades(resourceLocator);
-            
             _persistencyProvider = persistencyProvider;
             
-            await Pull();
+            GUIDResourceLocator resourceLocator = GUIDResourceLocator.Initialize();
+            InitializeFacades(resourceLocator);
+
+            await EnsureSaveExists();
+            _currentData = await _persistencyProvider.Load();
             _isValid = true;
-            
             Initialized?.Invoke();
         }
 
@@ -42,22 +44,31 @@ namespace SaveSystem.Front
             Currencies.Changed += Push;
         }
 
-        public async void Push()
+        private async Task EnsureSaveExists()
         {
-            if (_isValid == false)
-            {
-                throw new InvalidOperationException($"Class saves should be initialize with {nameof(SavesInitializer)}");
-            }
-            await _persistencyProvider.Save(_currentData);
+            bool saveExists = await _persistencyProvider.SaveExists();
+            if (!saveExists) await _persistencyProvider.Save(SaveData.GetDefault());
         }
 
+        #endregion
+        
+        public async void Push()
+        {
+            await Push(_currentData);
+        }
+        
         public async Task Pull()
         {
-            if (_isValid == false)
-            {
-                throw new InvalidOperationException($"Class saves should be initialize with {nameof(SavesInitializer)}");
-            }
+            if (!_isValid) throw new InvalidOperationException($"Class saves should be initialize with {nameof(SavesInitializer)}");
+            
             _currentData = await _persistencyProvider.Load();
+        }
+        
+        private async Task Push(SaveData saveData)
+        {
+            if (!_isValid) throw new InvalidOperationException($"Class saves should be initialize with {nameof(SavesInitializer)}");
+            
+            await _persistencyProvider.Save(saveData);
         }
 
         private void OnDestroy()

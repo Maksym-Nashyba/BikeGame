@@ -17,8 +17,9 @@ namespace SaveSystem.Front
             IPersistencyProvider<ISaveDataSerializer> persistencyProvider = BuildPersistencyProvider(_persistencyProvider, serializer);
             Saves saves = InstantiateObjectWithSavesComponent();
             saves.Initialize(persistencyProvider);
+            DontDestroyOnLoad(saves);
         }
-
+    
         private IPersistencyProvider<ISaveDataSerializer> BuildPersistencyProvider(PersistencyProvider persistencyProvider, ISaveDataSerializer serializer)
         {
             switch (persistencyProvider)

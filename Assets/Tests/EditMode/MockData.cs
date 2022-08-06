@@ -1,11 +1,11 @@
 ﻿using System;
+using System.Linq;
 using IGUIDResources;
 using SaveSystem.Models;
 using UnityEngine;
 using Random = UnityEngine.Random;
-using System.Linq;
 
-namespace Tests
+namespace Tests.EditMode
 {
     public static class MockData
     {

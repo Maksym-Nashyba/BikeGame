@@ -13,6 +13,7 @@ namespace SaveSystem.PersistencyAndSerialization
     {
         private string SaveFilePath => Application.persistentDataPath+"/Saves/SaveFile.ngr";
         private string TempFilePath => Application.persistentDataPath+"/Saves/TempSaveFile.ngr";
+        private string DirectoryPath => Application.persistentDataPath + "/Saves";
         private ISaveDataSerializer _serializer;
         private CancellationTokenSource _cancellationTokenSource;
 
@@ -45,6 +46,20 @@ namespace SaveSystem.PersistencyAndSerialization
             return data;
         }
 
+        public Task<bool> SaveExists()
+        {
+            EnsureDirectoryExists();
+            return Task.FromResult(File.Exists(SaveFilePath));
+        }
+
+        private void EnsureDirectoryExists()
+        {
+            if (!Directory.Exists(DirectoryPath))
+            {
+                Directory.CreateDirectory(DirectoryPath);
+            }            
+        }
+        
         private Task ApplyTemporaryFile()
         {
             File.Delete(SaveFilePath);
@@ -61,7 +76,6 @@ namespace SaveSystem.PersistencyAndSerialization
 
         private Task WriteToFile(string path, byte[] data)
         {
-            File.Delete(path);
             using (StreamWriter writer = File.CreateText(path))
             {
                 writer.Write(data);
@@ -79,12 +93,12 @@ namespace SaveSystem.PersistencyAndSerialization
         private void ValidateData(byte[] data)
         {
             if (data is null || data.Length < 2) throw new DataException("Read data is null or empty");
-            if(data[0] != _serializer.GetSerializerIndex()) 
+            if (data[0] != _serializer.GetSerializerIndex()) 
                 throw new DataException($"Serializer index ({_serializer.GetSerializerIndex()})" +
-                                        $" doesn't math data's serializer index ({data[0]})");
-            if(data[1] != _serializer.GetVersion())
+                                        $" doesn't match data's serializer index ({data[0]})");
+            if (data[1] != _serializer.GetVersion())
                 throw new DataException($"Serializer version ({_serializer.GetVersion()})" + 
-                                        $" doesn't math data's serializer version ({data[1]})");
+                                        $" doesn't match data's serializer version ({data[1]})");
         }
 
         private bool IsCancelled()

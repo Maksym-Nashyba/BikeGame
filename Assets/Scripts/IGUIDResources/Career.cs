@@ -60,5 +60,15 @@ namespace IGUIDResources
             }
 
         }
+
+        public Level GetFirstLevel()
+        {
+            foreach (Level level in this)
+            {
+                if (level is not null) return level;
+            }
+
+            throw new Exception("There are not levels");
+        }
     }
 }

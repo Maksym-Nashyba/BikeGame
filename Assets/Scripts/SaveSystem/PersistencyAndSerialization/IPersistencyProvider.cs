@@ -8,6 +8,8 @@ namespace SaveSystem.PersistencyAndSerialization
         public Task Save(SaveData toSave);
         public Task<SaveData> Load();
 
+        public Task<bool> SaveExists();
+
         public void CancelAllOperations();
     }
 }
