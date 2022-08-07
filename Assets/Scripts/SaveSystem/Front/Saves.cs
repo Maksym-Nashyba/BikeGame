@@ -10,13 +10,13 @@ namespace SaveSystem.Front
     public class Saves : MonoBehaviour
     {
         public event Action Initialized;
+        public bool IsValid { get; private set; }
         public SavedBikes Bikes { get; private set; }
         public SavedCurrencies Currencies { get; private set; }
         public SavedCareer Career { get; private set; }
         
         private IPersistencyProvider<ISaveDataSerializer> _persistencyProvider;
         private SaveData _currentData;
-        private bool _isValid = false;
 
         #region Initialization
 
@@ -29,7 +29,7 @@ namespace SaveSystem.Front
 
             await EnsureSaveExists();
             _currentData = await _persistencyProvider.Load();
-            _isValid = true;
+            IsValid = true;
             Initialized?.Invoke();
         }
 
@@ -59,14 +59,14 @@ namespace SaveSystem.Front
         
         public async Task Pull()
         {
-            if (!_isValid) throw new InvalidOperationException($"Class saves should be initialize with {nameof(SavesInitializer)}");
+            if (!IsValid) throw new InvalidOperationException($"Class saves should be initialize with {nameof(SavesInitializer)}");
             
             _currentData = await _persistencyProvider.Load();
         }
         
         private async Task Push(SaveData saveData)
         {
-            if (!_isValid) throw new InvalidOperationException($"Class saves should be initialize with {nameof(SavesInitializer)}");
+            if (!IsValid) throw new InvalidOperationException($"Class saves should be initialize with {nameof(SavesInitializer)}");
             
             await _persistencyProvider.Save(saveData);
         }

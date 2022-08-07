@@ -76,18 +76,15 @@ namespace SaveSystem.PersistencyAndSerialization
 
         private Task WriteToFile(string path, byte[] data)
         {
-            using (StreamWriter writer = File.CreateText(path))
-            {
-                writer.Write(data);
-            }
+            File.Create(path).Dispose();
+            File.WriteAllBytes(path, data);
             return Task.CompletedTask;
         }
 
         private Task<byte[]> ReadFromFile(string path)
         {
             if (!File.Exists(path)) throw new FileNotFoundException($"No file found at '{path}'");
-            string readData = File.ReadAllText(path);
-            return Task.FromResult(Encoding.ASCII.GetBytes(readData));
+            return Task.FromResult(File.ReadAllBytes(path));
         }
 
         private void ValidateData(byte[] data)
