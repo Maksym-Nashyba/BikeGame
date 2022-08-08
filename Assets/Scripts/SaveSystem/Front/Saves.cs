@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using IGUIDResources;
 using SaveSystem.Models;
@@ -17,12 +18,15 @@ namespace SaveSystem.Front
         
         private IPersistencyProvider<ISaveDataSerializer> _persistencyProvider;
         private SaveData _currentData;
+        private Queue<SaveData> _pushQueue;
+        private bool _isSaving;
 
         #region Initialization
 
         public async void Initialize(IPersistencyProvider<ISaveDataSerializer> persistencyProvider)
         {
             _persistencyProvider = persistencyProvider;
+            _pushQueue = new Queue<SaveData>();
             
             GUIDResourceLocator resourceLocator = GUIDResourceLocator.Initialize();
             InitializeFacades(resourceLocator);
@@ -66,9 +70,18 @@ namespace SaveSystem.Front
         
         private async Task Push(SaveData saveData)
         {
-            if (!IsValid) throw new InvalidOperationException($"Class saves should be initialize with {nameof(SavesInitializer)}");
+            if (!IsValid) throw new InvalidOperationException($"Class {nameof(Saves)} should be initialized with {nameof(SavesInitializer)}");
             
-            await _persistencyProvider.Save(saveData);
+            _pushQueue.Enqueue(saveData.MakeDeepCopy());
+
+            if (_isSaving) return;
+            _isSaving = true;
+            while (_pushQueue.Count > 0)
+            {
+                await _persistencyProvider.Save(_pushQueue.Dequeue());
+            }
+
+            _isSaving = false;
         }
 
         private void OnDestroy()

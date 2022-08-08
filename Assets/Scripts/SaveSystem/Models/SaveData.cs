@@ -1,5 +1,6 @@
 ﻿using System;
 using IGUIDResources;
+using SaveSystem.PersistencyAndSerialization;
 
 namespace SaveSystem.Models
 {
@@ -11,7 +12,7 @@ namespace SaveSystem.Models
         public PersistentBike[] Bikes;
         public PersistentCurrencies Currencies;
         private const byte _currentVerion = 1;
-        
+
         public SaveData(PersistentLevel[] careerLevels, PersistentBike[] bikes, PersistentCurrencies currencies)
         {
             CareerLevels = careerLevels;
@@ -44,6 +45,14 @@ namespace SaveSystem.Models
                 if (!Equals(Bikes[i], other.Bikes[i])) return false;
             }
             return true;
+        }
+
+        public SaveData MakeDeepCopy()
+        {
+            BinarySaveDataSerializer serializer = new BinarySaveDataSerializer();
+            serializer.TrySerialize(this, out byte[] serializedData);
+            serializer.TryDeserialize(serializedData, out SaveData result);
+            return result;
         }
     }
 }
