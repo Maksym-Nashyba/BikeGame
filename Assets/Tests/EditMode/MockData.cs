@@ -2,6 +2,7 @@
 using System.Linq;
 using IGUIDResources;
 using SaveSystem.Models;
+using SaveSystem.PersistencyAndSerialization;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -15,6 +16,14 @@ namespace Tests.EditMode
             PersistentBike[] bikes = {GenerateRandomPersistentBike()};
             PersistentCurrencies currencies = new PersistentCurrencies(4, 5);
             return new SaveData(levels, bikes, currencies);
+        }
+
+        public static byte[] GenerateMockSerializedData()
+        {
+            BinarySaveDataSerializer serializer = new BinarySaveDataSerializer();
+            if (!serializer.TrySerialize(GenerateMockSaveData(), out byte[] result).Result)
+                throw new Exception("Failed to serialize mock data");
+            return result;
         }
 
         public static PersistentLevel GenerateRandomPersistentLevel()

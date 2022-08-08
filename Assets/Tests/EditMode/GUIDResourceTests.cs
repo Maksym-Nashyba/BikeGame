@@ -3,7 +3,7 @@ using IGUIDResources;
 using NUnit.Framework;
 using UnityEngine;
 
-namespace Tests
+namespace Tests.EditMode
 {
     public class GUIDResourceTests
     {
