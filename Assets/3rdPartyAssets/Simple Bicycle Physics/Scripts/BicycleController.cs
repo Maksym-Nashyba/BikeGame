@@ -143,13 +143,15 @@ namespace SBPScripts
         public WayPointSystem WayPointSystem;
         public AirTimeSettings AirTimeSettings;
         private IBikeInputProvider _inputProvider;
-
+        private Transform _transform;
+        
         private bool _isPaused;
 
         private void Awake()
         {
+            _transform = transform;
             _inputProvider = GetComponent<IBikeInputProvider>();//TODO resolve dependencies through service locator
-            transform.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y, 0);
+            _transform.rotation = Quaternion.Euler(0, _transform.rotation.eulerAngles.y, 0);
         }
 
         private void Start()
@@ -187,12 +189,12 @@ namespace SBPScripts
             if (_isPaused) return;
 
             //Physics based Steering Control.
-            fPhysicsWheel.transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y + SteerAxis * steerAngle.Evaluate(rb.velocity.magnitude) + oscillationSteerEffect, 0);
+            fPhysicsWheel.transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, 
+                _transform.rotation.eulerAngles.y + SteerAxis * steerAngle.Evaluate(rb.velocity.magnitude) + oscillationSteerEffect, 0);
             fPhysicsWheelConfigJoint.axis = new Vector3(1, 0, 0);
 
             //Power Control. Wheel Torque + Acceleration curves
-
-            //cache rb velocity
+            
             float currentSpeed = rb.velocity.magnitude;
 
             if (!sprint)
@@ -201,21 +203,18 @@ namespace SBPScripts
                 currentTopSpeed = Mathf.Lerp(currentTopSpeed, topSpeed, Time.deltaTime);
 
             if (currentSpeed < currentTopSpeed && rawAcceleration > 0)
-                rWheelRb.AddTorque(transform.right * torque * AccelerationAxis);
+                rWheelRb.AddTorque(_transform.right * torque * AccelerationAxis);
 
             if (currentSpeed < currentTopSpeed && rawAcceleration > 0 && !isAirborne && !isBunnyHopping)
                 rb.AddForce(transform.forward * accelerationCurve.Evaluate(AccelerationAxis));
 
             if (currentSpeed < reversingSpeed && rawAcceleration < 0 && !isAirborne && !isBunnyHopping)
-                rb.AddForce(-transform.forward * accelerationCurve.Evaluate(AccelerationAxis) * 0.5f);
+                rb.AddForce(-_transform.forward * accelerationCurve.Evaluate(AccelerationAxis) * 0.5f);
 
-            if (transform.InverseTransformDirection(rb.velocity).z < 0)
-                isReversing = true;
-            else
-                isReversing = false;
+            isReversing = transform.InverseTransformDirection(rb.velocity).z < 0;
 
             if (rawAcceleration < 0 && isReversing == false && !isAirborne && !isBunnyHopping)
-                rb.AddForce(-transform.forward * accelerationCurve.Evaluate(AccelerationAxis) * 2);
+                rb.AddForce(-_transform.forward * accelerationCurve.Evaluate(AccelerationAxis) * 2);
 
             // Center of Mass handling
             if (stuntMode)
@@ -230,8 +229,8 @@ namespace SBPScripts
             cycleGeometry.lowerFork.transform.localRotation = Quaternion.Euler(0, SteerAxis * steerAngle.Evaluate(currentSpeed) + oscillationSteerEffect * 5, SteerAxis * -axisAngle) * initialLowerForkLocalRotaion;
 
             //FWheelVisual
-            xQuat = Mathf.Sin(Mathf.Deg2Rad * (transform.rotation.eulerAngles.y));
-            zQuat = Mathf.Cos(Mathf.Deg2Rad * (transform.rotation.eulerAngles.y));
+            xQuat = Mathf.Sin(Mathf.Deg2Rad * _transform.rotation.eulerAngles.y);
+            zQuat = Mathf.Cos(Mathf.Deg2Rad * _transform.rotation.eulerAngles.y);
             cycleGeometry.fWheelVisual.transform.rotation = Quaternion.Euler(xQuat * (SteerAxis * -axisAngle), SteerAxis * steerAngle.Evaluate(currentSpeed) + oscillationSteerEffect * 5, zQuat * (SteerAxis * -axisAngle));
             cycleGeometry.fWheelVisual.transform.GetChild(0).transform.localRotation = cycleGeometry.RWheel.transform.rotation;
 
@@ -255,14 +254,14 @@ namespace SBPScripts
             cycleGeometry.rPedal.transform.localPosition = pedalAdjustments.rPedalOffset + new Vector3(0, Mathf.Cos(Mathf.Deg2Rad * (crankSpeed)) * pedalAdjustments.crankRadius, Mathf.Sin(Mathf.Deg2Rad * (crankSpeed)) * pedalAdjustments.crankRadius);
 
             //FGear
-            if (cycleGeometry.fGear != null)
+            if (cycleGeometry.fGear is not null)
                 cycleGeometry.fGear.transform.rotation = cycleGeometry.crank.transform.rotation;
             //RGear
-            if (cycleGeometry.rGear != null)
+            if (cycleGeometry.rGear is not null)
                 cycleGeometry.rGear.transform.rotation = rPhysicsWheel.transform.rotation;
 
             //CycleOscillation
-            if ((sprint && currentSpeed > 5 && isReversing == false) || isAirborne || isBunnyHopping)
+            if ((sprint && currentSpeed > 5 && !isReversing) || isAirborne || isBunnyHopping)
                 pickUpSpeed += Time.deltaTime * 2;
             else
                 pickUpSpeed -= Time.deltaTime * 2;
@@ -311,7 +310,8 @@ namespace SBPScripts
             }
 
             //AirControl
-            if (Physics.Raycast(transform.position + new Vector3(0, 1f, 0), Vector3.down, out hit, Mathf.Infinity))
+            if (Physics.Raycast(transform.position + new Vector3(0, 1f, 0), 
+                    Vector3.down, out hit, Mathf.Infinity))
             {
                 if (hit.distance > 1.5f || impactFrames > 0)
                 {
@@ -334,8 +334,8 @@ namespace SBPScripts
                     stuntMode = true;
                     // Stunt + flips controls (Not available for Waypoint system as of yet)
                     // You may use Numpad Inputs as well.
-                    rb.AddTorque(Vector3.up * SteerAxis * 4 * AirTimeSettings.airTimeRotationSensitivity, ForceMode.Impulse);
-                    rb.AddTorque(transform.right * rawAcceleration * -3 * AirTimeSettings.airTimeRotationSensitivity, ForceMode.Impulse);
+                    rb.AddTorque(Vector3.up * (SteerAxis * 4 * AirTimeSettings.airTimeRotationSensitivity), ForceMode.Impulse);
+                    rb.AddTorque(transform.right * (rawAcceleration * -3 * AirTimeSettings.airTimeRotationSensitivity), ForceMode.Impulse);
                 }
                 else
                     stuntMode = false;
@@ -345,14 +345,24 @@ namespace SBPScripts
             if (AirTimeSettings.freestyle)
             {
                 if (!stuntMode && isAirborne)
-                    transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, transform.rotation.eulerAngles.y, turnLeanAmount + cycleOscillation + GroundConformity(groundConformity)), Time.deltaTime * AirTimeSettings.groundSnapSensitivity);
+                    _transform.rotation = Quaternion.Lerp(_transform.rotation, 
+                        Quaternion.Euler(0, 
+                            _transform.rotation.eulerAngles.y, 
+                            turnLeanAmount + cycleOscillation + GroundConformity(groundConformity)), 
+                        Time.deltaTime * AirTimeSettings.groundSnapSensitivity);
+                
                 else if (!stuntMode && !isAirborne)
-                    transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, turnLeanAmount + cycleOscillation + GroundConformity(groundConformity)), Time.deltaTime * 10 * AirTimeSettings.groundSnapSensitivity);
+                    _transform.rotation = Quaternion.Lerp(_transform.rotation, 
+                        Quaternion.Euler(_transform.rotation.eulerAngles.x, 
+                            _transform.rotation.eulerAngles.y, 
+                            turnLeanAmount + cycleOscillation + GroundConformity(groundConformity)), 
+                        Time.deltaTime * 10 * AirTimeSettings.groundSnapSensitivity);
             }
             else
             {
-                //Pre-version 1.5
-                transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, turnLeanAmount + cycleOscillation + GroundConformity(groundConformity));
+                _transform.rotation = Quaternion.Euler(_transform.rotation.eulerAngles.x, 
+                    _transform.rotation.eulerAngles.y, 
+                    turnLeanAmount + cycleOscillation + GroundConformity(groundConformity));
             }
 
 
@@ -374,7 +384,7 @@ namespace SBPScripts
                 StartCoroutine(DelayBunnyHop());
 
             if (bunnyHopInputState == -1 && !isAirborne)
-                rb.AddForce(transform.up * BunnyHopAmount * BunnyHopStrength, ForceMode.VelocityChange);
+                rb.AddForce(transform.up * (BunnyHopAmount * BunnyHopStrength), ForceMode.VelocityChange);
             else
                 BunnyHopAmount = Mathf.Lerp(BunnyHopAmount, 0, Time.deltaTime * 8f);
 
