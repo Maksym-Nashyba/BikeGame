@@ -6,14 +6,10 @@ namespace ProgressionStore
     {
         private Garage _garage;
 
-        public void Open()
-        {
-            
-        }
+        public abstract void Open();
 
-        public void Close()
-        {
-            
-        }
+        public abstract void Close();
+
     }
+
 }

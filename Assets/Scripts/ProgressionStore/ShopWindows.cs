@@ -4,8 +4,8 @@ namespace ProgressionStore
 {
     public class ShopWindows : MonoBehaviour
     {
+        [SerializeField] private ShopWindow[] _windows;
         private ShopWindow _openedWindow;
-        private ShopWindow[] _windows;
 
         public void OpenWindow(int index)
         {
