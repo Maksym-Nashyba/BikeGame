@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Threading.Tasks;
 using IGUIDResources;
+using SaveSystem.Front;
+using SaveSystem.Models;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -13,31 +15,35 @@ namespace LevelLoading
         
         [SerializeField] private Button _nextButton;
         [SerializeField] private Button _previousButton;
-        
+
+        private Saves _saves;
         private GUIDResourceLocator _resourceLocator;
-        private BikeModel[] _bikes;
+        private PersistentBike[] _persistentBikes;
+        private BikeModels _bikeModels;
         private BikeModel _currentBike;
         private GameObject _spawnedBike;
         private int _currentIndex;
         
         private void Awake()
         {
+            _saves = FindObjectOfType<Saves>();
+            _persistentBikes = _saves.Bikes.GetAllUnlockedBikes();
             _resourceLocator = GUIDResourceLocator.Initialize();
-            _bikes = _resourceLocator.Bikes.Models;
+            _bikeModels = _resourceLocator.Bikes;
         }
         
         private void Start()
         {
             _currentIndex = 0;
-            DisplayBike(_bikes[_currentIndex]);
+            DisplayBike(_persistentBikes[_currentIndex]);
         }
         
         public void ShowNextBike()
         {
-            if (_currentIndex >= _bikes.Length - 1) return;
+            if (_currentIndex >= _persistentBikes.Length - 1) return;
             
             _currentIndex++;
-            DisplayBike(_bikes[_currentIndex]);
+            DisplayBike(_persistentBikes[_currentIndex]);
         }
         
         public void ShowPreviousBike()
@@ -45,17 +51,17 @@ namespace LevelLoading
             if (_currentIndex <= 0) return;
 
             _currentIndex--;
-            DisplayBike(_bikes[_currentIndex]);
+            DisplayBike(_persistentBikes[_currentIndex]);
         }
         
-        private void DisplayBike(BikeModel bike)
+        private void DisplayBike(PersistentBike bike)
         {
             if (_spawnedBike is not null)
             {
                 Destroy(_spawnedBike);
             }
             
-            _currentBike = bike;
+            _currentBike = _bikeModels.Get(bike.GUID);
             _spawnedBike = Instantiate(_currentBike.Prefab);
             BikeChanged?.Invoke(_currentBike);
         }
@@ -71,7 +77,7 @@ namespace LevelLoading
                 _previousButton.interactable = true;
             }
 
-            if (_currentIndex >= _bikes.Length - 1)
+            if (_currentIndex >= _persistentBikes.Length - 1)
             {
                 _nextButton.interactable = false;
             }
