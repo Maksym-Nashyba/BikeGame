@@ -408,8 +408,7 @@ namespace SBPScripts
                 {
                     rb.AddForce(-transform.forward * (accelerationCurve.Evaluate(AccelerationAxis) * 0.39f)); 
                 }
-
-                //Record
+                
                 if (WayPointSystem.recordingState == WayPointSystem.RecordingState.Record)
                 {
                     if (Time.frameCount % WayPointSystem.frameIncrement == 0)
