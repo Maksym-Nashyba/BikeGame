@@ -23,7 +23,8 @@ namespace LevelLoading
         private BikeModel _currentBike;
         private GameObject _spawnedBike;
         private int _currentIndex;
-        
+        private TaskCompletionSource<BikeModel> _taskCompletionSource;
+
         private void Awake()
         {
             _saves = FindObjectOfType<Saves>();
@@ -89,7 +90,7 @@ namespace LevelLoading
 
         public void SelectBike()
         {
-            RetrieveSelectedBikeModel();
+            _taskCompletionSource.SetResult(_currentBike);
         }
         
         public static async Task<BikeSelection> DisplayBikeSelection()
@@ -102,9 +103,9 @@ namespace LevelLoading
             return FindObjectOfType<BikeSelection>();
         }
         
-        public Task<BikeModel> RetrieveSelectedBikeModel()
+        public void RegisterTaskCompletionSource(TaskCompletionSource<BikeModel> taskCompletionSource)
         {
-            return Task.FromResult(_currentBike);
+            _taskCompletionSource = taskCompletionSource;
         }
     }
 }

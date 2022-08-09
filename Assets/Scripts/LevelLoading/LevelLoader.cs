@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using IGUIDResources;
 using UnityEngine.SceneManagement;
 
@@ -12,10 +13,12 @@ namespace LevelLoading
             _resourceLocator = GUIDResourceLocator.Initialize();
         }
 
-        public async void LoadLevelWithBikeSelection(string levelGUID)
+        public async Task LoadLevelWithBikeSelection(string levelGUID)
         {
             BikeSelection bikeSelection = await BikeSelection.DisplayBikeSelection();
-            BikeModel selectedBike = await bikeSelection.RetrieveSelectedBikeModel();
+            TaskCompletionSource<BikeModel> taskCompletionSource = new TaskCompletionSource<BikeModel>();
+            bikeSelection.RegisterTaskCompletionSource(taskCompletionSource);
+            BikeModel selectedBike = await taskCompletionSource.Task;
             
             string sceneName = _resourceLocator.Career.GetLevelWithGUID(levelGUID).SceneName;
             
