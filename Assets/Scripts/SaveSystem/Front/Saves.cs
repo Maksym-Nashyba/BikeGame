@@ -12,6 +12,7 @@ namespace SaveSystem.Front
     {
         public event Action Initialized;
         public bool IsValid { get; private set; }
+        public bool IsSaving { get; private set; }
         public SavedBikes Bikes { get; private set; }
         public SavedCurrencies Currencies { get; private set; }
         public SavedCareer Career { get; private set; }
@@ -19,7 +20,6 @@ namespace SaveSystem.Front
         private IPersistencyProvider<ISaveDataSerializer> _persistencyProvider;
         private SaveData _currentData;
         private Queue<SaveData> _pushQueue;
-        private bool _isSaving;
 
         #region Initialization
 
@@ -29,10 +29,10 @@ namespace SaveSystem.Front
             _pushQueue = new Queue<SaveData>();
             
             GUIDResourceLocator resourceLocator = GUIDResourceLocator.Initialize();
-            InitializeFacades(resourceLocator);
-
             await EnsureSaveExists();
             _currentData = await _persistencyProvider.Load();
+            InitializeFacades(resourceLocator);
+            
             IsValid = true;
             Initialized?.Invoke();
         }
@@ -74,14 +74,20 @@ namespace SaveSystem.Front
             
             _pushQueue.Enqueue(saveData.MakeDeepCopy());
 
-            if (_isSaving) return;
-            _isSaving = true;
+            if (IsSaving) return;
+            IsSaving = true;
             while (_pushQueue.Count > 0)
             {
                 await _persistencyProvider.Save(_pushQueue.Dequeue());
             }
 
-            _isSaving = false;
+            IsSaving = false;
+        }
+
+        public void ClearSaves()
+        {
+            _currentData = SaveData.GetDefault();
+            Push();
         }
 
         private void OnDestroy()

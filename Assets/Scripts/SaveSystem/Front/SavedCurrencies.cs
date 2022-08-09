@@ -1,6 +1,7 @@
 ﻿using System;
 using SaveSystem.Models;
 using SaveSystem.PersistencyAndSerialization;
+using UnityEngine;
 
 namespace SaveSystem.Front
 {
@@ -19,32 +20,48 @@ namespace SaveSystem.Front
             _saveData = saveData;
         }
 
-        public long Dollans
+        public long GetDollans()
         {
-            get
-            {
-                return _saveData.Currencies.Dollans;
-            }
-            set
-            {
-                value = Math.Clamp(value, 0, long.MaxValue);
-                _saveData.Currencies.Dollans = value;
-                Changed?.Invoke();
-            }
+            return _saveData.Currencies.Dollans;   
+        }
+
+        public void AddDollans(long amount)
+        {
+            if (amount < 1) throw new ArgumentOutOfRangeException(nameof(amount), "Can't add less than one dollan");
+            amount = Math.Clamp(amount, 1, long.MaxValue - _saveData.Currencies.Dollans);
+            _saveData.Currencies.Dollans += amount;
+            Changed?.Invoke();
         }
         
-        public long Pedals
+        public void SubtractDollans(long amount)
         {
-            get
-            {
-                return _saveData.Currencies.Pedals;
-            }
-            set
-            {
-                value = Math.Clamp(value, 0, long.MaxValue);
-                _saveData.Currencies.Pedals = value;
-                Changed?.Invoke();
-            }
+            if (amount < 1) throw new ArgumentOutOfRangeException(nameof(amount), "Can't subtract less than one dollan");
+            if (amount > _saveData.Currencies.Dollans) throw new ArgumentOutOfRangeException(nameof(amount), "Can't substract more than there is");
+            amount = Math.Clamp(amount, 1, _saveData.Currencies.Dollans);
+            _saveData.Currencies.Dollans -= amount;
+            Changed?.Invoke();
+        }
+
+        public long GetPedals()
+        {
+            return _saveData.Currencies.Pedals;
+        }
+
+        public void AddPedals(long amount)
+        {
+            if (amount < 1) throw new ArgumentOutOfRangeException(nameof(amount), "Can't add less than one pedal");
+            amount = Math.Clamp(amount, 1, long.MaxValue - _saveData.Currencies.Pedals);
+            _saveData.Currencies.Pedals += amount;
+            Changed?.Invoke();
+        }
+        
+        public void SubtractPedals(long amount)
+        {
+            if (amount < 1) throw new ArgumentOutOfRangeException(nameof(amount), "Can't subtract less than one pedal");
+            if (amount > _saveData.Currencies.Pedals) throw new ArgumentOutOfRangeException(nameof(amount), "Can't substract more than there is");
+            amount = Math.Clamp(amount, 1, _saveData.Currencies.Pedals);
+            _saveData.Currencies.Pedals -= amount;
+            Changed?.Invoke();
         }
     }
 }
