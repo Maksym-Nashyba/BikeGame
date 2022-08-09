@@ -14,7 +14,7 @@ namespace LevelLoading
 
         public async void LoadLevelWithBikeSelection(string levelGUID)
         {
-            BikeSelection bikeSelection = await BikeSelection.Display();
+            BikeSelection bikeSelection = await BikeSelection.DisplayBikeSelection();
             BikeModel selectedBike = await bikeSelection.RetrieveSelectedBikeModel();
             
             string sceneName = _resourceLocator.Career.GetLevelWithGUID(levelGUID).SceneName;
