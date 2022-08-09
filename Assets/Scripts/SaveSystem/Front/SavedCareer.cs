@@ -8,14 +8,19 @@ namespace SaveSystem.Front
 {
     public class SavedCareer
     {
-        private Persistency _persistency;
+        public event Action Changed;
         private GUIDResourceLocator _resources;
-        private SaveData Save => Persistency.Current;
+        private SaveData _saveData;
 
-        public SavedCareer(Persistency persistency, GUIDResourceLocator resources)
+        public SavedCareer(SaveData saveData, GUIDResourceLocator resources)
         {
-            _persistency = persistency;
+            UpdateData(saveData);
             _resources = resources;
+        }
+
+        private void UpdateData(SaveData saveData)
+        {
+            _saveData = saveData;
         }
 
         public bool IsCompleted(Level level)
@@ -25,15 +30,15 @@ namespace SaveSystem.Front
         
         public bool IsCompleted(string guid)
         {
-            return Save.CareerLevels.Any(level => level.GUID == guid);
+            return _saveData.CareerLevels.Any(level => level.GUID == guid);
         }
 
         public void SetLevelCompleted(string levelGUID)
         {
             if (IsCompleted(levelGUID)) return;
-            Array.Resize(ref Save.CareerLevels, Save.CareerLevels.Length+1);
-            Save.CareerLevels[^1] = PersistentLevel.GetNewLevelWithGUID(levelGUID);
-            _persistency.Push();
+            Array.Resize(ref _saveData.CareerLevels, _saveData.CareerLevels.Length+1);
+            _saveData.CareerLevels[^1] = PersistentLevel.GetNewLevelWithGUID(levelGUID);
+            Changed?.Invoke();
         }
 
         public float GetBestTime(Level level)
@@ -59,7 +64,7 @@ namespace SaveSystem.Front
             PersistentLevel levelSave = GetLevelWithGUID(levelGUID);
             if (newBestTime >= levelSave.BestTime) return;
             levelSave.BestTime = newBestTime;
-            _persistency.Push();
+            Changed?.Invoke();
         }
 
         public bool IsPedalCollected(Level level)
@@ -83,7 +88,7 @@ namespace SaveSystem.Front
             AssertLevelCompleted(levelGUID);
             PersistentLevel levelSave = GetLevelWithGUID(levelGUID);
             if (levelSave.PedalCollected) return;
-            _persistency.Push();
+            Changed?.Invoke();
         }
         
         private void AssertLevelCompleted(string levelGUID)
@@ -93,7 +98,7 @@ namespace SaveSystem.Front
         
         private PersistentLevel GetLevelWithGUID(string guid)
         {
-            return Save.CareerLevels.First(level => level.GUID == guid);
+            return _saveData.CareerLevels.First(level => level.GUID == guid);
         }
     }
 }

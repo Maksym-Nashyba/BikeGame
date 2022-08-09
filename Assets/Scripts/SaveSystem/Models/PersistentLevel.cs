@@ -20,5 +20,15 @@ namespace SaveSystem.Models
         {
             return new PersistentLevel(0, false, guid);
         }
+
+        public override bool Equals(object obj)
+        {
+            if (obj is not PersistentLevel other) return false;
+            if (Math.Abs(BestTime - other.BestTime) > 0.1f
+                || PedalCollected != other.PedalCollected
+                || GUID != other.GUID)
+                return false;
+            return true;
+        }
     }
 }

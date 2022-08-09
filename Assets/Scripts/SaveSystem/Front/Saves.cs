@@ -1,34 +1,102 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using IGUIDResources;
+using SaveSystem.Models;
 using SaveSystem.PersistencyAndSerialization;
+using UnityEngine;
 
 namespace SaveSystem.Front
 {
-    public class Saves
+    public class Saves : MonoBehaviour
     {
+        public event Action Initialized;
+        public bool IsValid { get; private set; }
+        public bool IsSaving { get; private set; }
         public SavedBikes Bikes { get; private set; }
         public SavedCurrencies Currencies { get; private set; }
         public SavedCareer Career { get; private set; }
-        private Persistency _persistency;
+        
+        private IPersistencyProvider<ISaveDataSerializer> _persistencyProvider;
+        private SaveData _currentData;
+        private Queue<SaveData> _pushQueue;
 
-        private Saves(Persistency persistency)
+        #region Initialization
+
+        public async void Initialize(IPersistencyProvider<ISaveDataSerializer> persistencyProvider)
         {
-            _persistency = persistency;
+            _persistencyProvider = persistencyProvider;
+            _pushQueue = new Queue<SaveData>();
+            
+            GUIDResourceLocator resourceLocator = GUIDResourceLocator.Initialize();
+            await EnsureSaveExists();
+            _currentData = await _persistencyProvider.Load();
+            InitializeFacades(resourceLocator);
+            
+            IsValid = true;
+            Initialized?.Invoke();
         }
 
-        public static Saves Initialize()
+        private void InitializeFacades(GUIDResourceLocator resourceLocator)
         {
+            Bikes = new SavedBikes(_currentData, resourceLocator);
+            Career = new SavedCareer(_currentData, resourceLocator);
+            Currencies = new SavedCurrencies(_currentData);
 
-            throw new NotImplementedException();
-            GUIDResourceLocator resources = GUIDResourceLocator.Initialize();
-            IPersistencyProvider<BinarySaveDataSerializer> persistencyProvider = null;
-            Persistency persistency = new Persistency(persistencyProvider);
-            Saves result = new Saves(persistency);
-            persistency.Pull();
-            result.Bikes = new SavedBikes(persistency, resources);
-            result.Career = new SavedCareer(persistency, resources);
-            result.Currencies = new SavedCurrencies(persistency);
-            return result;
+            Bikes.Changed += Push;
+            Career.Changed += Push;
+            Currencies.Changed += Push;
+        }
+
+        private async Task EnsureSaveExists()
+        {
+            bool saveExists = await _persistencyProvider.SaveExists();
+            if (!saveExists) await _persistencyProvider.Save(SaveData.GetDefault());
+        }
+
+        #endregion
+        
+        public async void Push()
+        {
+            await Push(_currentData);
+        }
+        
+        public async Task Pull()
+        {
+            if (!IsValid) throw new InvalidOperationException($"Class saves should be initialize with {nameof(SavesInitializer)}");
+            
+            _currentData = await _persistencyProvider.Load();
+        }
+        
+        private async Task Push(SaveData saveData)
+        {
+            if (!IsValid) throw new InvalidOperationException($"Class {nameof(Saves)} should be initialized with {nameof(SavesInitializer)}");
+            
+            _pushQueue.Enqueue(saveData.MakeDeepCopy());
+
+            if (IsSaving) return;
+            IsSaving = true;
+            while (_pushQueue.Count > 0)
+            {
+                await _persistencyProvider.Save(_pushQueue.Dequeue());
+            }
+
+            IsSaving = false;
+        }
+
+        public void ClearSaves()
+        {
+            _currentData = SaveData.GetDefault();
+            Push();
+        }
+
+        private void OnDestroy()
+        {
+            _persistencyProvider.CancelAllOperations();
+            
+            Bikes.Changed -= Push;
+            Career.Changed -= Push;
+            Currencies.Changed -= Push;
         }
     }
 }

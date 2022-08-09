@@ -11,6 +11,7 @@ namespace LevelObjectives.Objectives
 
         public override void Begin(LevelAchievements levelAchievements)
         {
+            base.Begin(levelAchievements);
             _checkpoint.Activated += End;
         }
 

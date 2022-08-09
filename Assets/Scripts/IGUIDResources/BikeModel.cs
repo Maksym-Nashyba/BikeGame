@@ -19,7 +19,7 @@ namespace IGUIDResources
 
         public PersistentBike MakeCleanSaveObject()
         {
-            return new PersistentBike(false,
+            return new PersistentBike(
                 AllSkins[0].GetGUID(),
                 new []{AllSkins[0].GetGUID()},
                 GetGUID());
