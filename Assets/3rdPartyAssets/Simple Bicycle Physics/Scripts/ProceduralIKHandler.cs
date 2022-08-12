@@ -110,14 +110,14 @@ public class ProceduralIKHandler : MonoBehaviour
         if (bodyDampingProperties.useBodyDamping)
         {
             //Chest Damping
-            yCurrentPosChest = bicycleController.cycleGeometry.lowerFork.transform.position.y;
+            yCurrentPosChest = bicycleController.bicycleParts.lowerFork.transform.position.y;
             yDampChestCurrent = yLastPosChest - yCurrentPosChest;
             yLastPosChest = yCurrentPosChest;
             yDampChest = Mathf.Lerp(yDampChest, yDampChestCurrent, Time.deltaTime * bodyDampingProperties.chestDampTime);
             yDampChest = Mathf.Clamp(yDampChest, -0.005f, 0.005f);
 
             //Hip Damping
-            yCurrentPosHip = bicycleController.cycleGeometry.rGear.transform.position.y;
+            yCurrentPosHip = bicycleController.bicycleParts.rGear.transform.position.y;
             yDampHipCurrent = yLastPosHip - yCurrentPosHip;
             yLastPosHip = yCurrentPosHip;
             yDampHip = Mathf.Lerp(yDampHip, yDampHipCurrent, Time.deltaTime * bodyDampingProperties.hipDampTime);
