@@ -10,7 +10,6 @@ namespace Inputs
         [SerializeField] private Transform _cameraTransform;
         [SerializeField] private GameObject _joystickObject;
         private IJoystick _joystick;
-        [SerializeField] private Button _brakesButton;
 
         private PlayerNewInput _playerNewInput;
 
@@ -42,13 +41,12 @@ namespace Inputs
             Vector2 targetDirection = flatCameraDirection.RotatedBy(joystickAngle);
             
             float steer = Vector2.SignedAngle(flatBikeDirection, targetDirection)/180f;
-            float acceleration = Mathf.Pow(joystickValue.magnitude,2f) * (1f-Mathf.Abs(steer));
+            float acceleration = Mathf.Pow(joystickValue.magnitude,4f) * (1f-Mathf.Abs(steer));
             float sign = -1 * Mathf.Sign(steer);
             
             steer = Mathf.Max(1f+Mathf.Log10(Mathf.Abs(steer)), 0f) * sign;
             if (acceleration < 0.01f) steer = 0;
-
-            Debug.DrawRay(bikeTransform.position, bikeForward, Color.magenta, 20f);
+            
             bool brakes = GetBrakesHit();
             bool sprint = GetSprintHit();
             return new InputValues(steer, acceleration, brakes, sprint);  
