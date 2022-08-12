@@ -110,14 +110,14 @@ public class ProceduralIKHandler : MonoBehaviour
         if (bodyDampingProperties.useBodyDamping)
         {
             //Chest Damping
-            yCurrentPosChest = bicycleController.cycleGeometry.lowerFork.transform.position.y;
+            yCurrentPosChest = bicycleController.bicycleParts.lowerFork.transform.position.y;
             yDampChestCurrent = yLastPosChest - yCurrentPosChest;
             yLastPosChest = yCurrentPosChest;
             yDampChest = Mathf.Lerp(yDampChest, yDampChestCurrent, Time.deltaTime * bodyDampingProperties.chestDampTime);
             yDampChest = Mathf.Clamp(yDampChest, -0.005f, 0.005f);
 
             //Hip Damping
-            yCurrentPosHip = bicycleController.cycleGeometry.rGear.transform.position.y;
+            yCurrentPosHip = bicycleController.bicycleParts.rGear.transform.position.y;
             yDampHipCurrent = yLastPosHip - yCurrentPosHip;
             yLastPosHip = yCurrentPosHip;
             yDampHip = Mathf.Lerp(yDampHip, yDampHipCurrent, Time.deltaTime * bodyDampingProperties.hipDampTime);
@@ -162,7 +162,7 @@ public class ProceduralIKHandler : MonoBehaviour
         stuntModeHead = transform.InverseTransformDirection(bicycleController.rb.velocity);
         else
         stuntModeHead = Vector3.Lerp(stuntModeHead,Vector3.zero,Time.deltaTime*10);
-        headIKTarget.transform.localPosition = new Vector3(bicycleController.LeanAxis * 1.5f + animatedNoise*bicycleController.pickUpSpeed + stuntModeHead.x, 1-(bicycleController.pickUpSpeed*1.5f)+animatedNoise - bicycleController.BunnyHopAmount*0.5f + bunnyHopCounterWeight * 1.5f,animatedNoise*3 + stuntModeHead.z) + headOffset + impactDirection*bodyDampingProperties.impactIntensity;
+        headIKTarget.transform.localPosition = new Vector3(bicycleController.LeanInput * 1.5f + animatedNoise*bicycleController.pickUpSpeed + stuntModeHead.x, 1-(bicycleController.pickUpSpeed*1.5f)+animatedNoise - bicycleController.BunnyHopAmount*0.5f + bunnyHopCounterWeight * 1.5f,animatedNoise*3 + stuntModeHead.z) + headOffset + impactDirection*bodyDampingProperties.impactIntensity;
 
         //Additional Features
         //Hip Vertical Oscillation increases on slopes

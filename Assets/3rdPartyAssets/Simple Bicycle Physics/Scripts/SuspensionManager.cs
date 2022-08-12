@@ -78,13 +78,13 @@ namespace SBPScripts
             if (!enable) return;
 
             Vector3 position = bicycleController.fPhysicsWheel.transform.position;
-            bicycleController.cycleGeometry.fWheelVisual.transform.position = new Vector3(
+            bicycleController.bicycleParts.fWheelVisual.transform.position = new Vector3(
                 position.x,
                 position.y,
                 position.z);
             if (chain != null) chain.transform.rotation = rSuspension.transform.rotation;
             if (frontSuspensionMesh != null)
-                frontSuspensionMesh.transform.rotation = bicycleController.cycleGeometry.lowerFork.transform.rotation;
+                frontSuspensionMesh.transform.rotation = bicycleController.bicycleParts.lowerFork.transform.rotation;
             if (spring != null && rSuspension != null)
                 if (rSuspension.transform.eulerAngles.x > 0 && rSuspension.transform.eulerAngles.x < 20)
                     spring.transform.localScale = new Vector3(initialSpringScale.x,
