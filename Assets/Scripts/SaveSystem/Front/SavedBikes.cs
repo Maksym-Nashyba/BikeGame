@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using IGUIDResources;
 using SaveSystem.Models;
-using SaveSystem.PersistencyAndSerialization;
 
 namespace SaveSystem.Front
 {
@@ -29,6 +28,11 @@ namespace SaveSystem.Front
             return _saveData.Bikes.First(bike => bike.GUID == guid);
         }
 
+        public PersistentBike[] GetAllUnlockedBikes()
+        {
+            return _saveData.Bikes;
+        }
+        
         public bool IsSkinUnlocked(Skin skin)
         {
             return IsSkinUnlocked(skin.GetGUID());
