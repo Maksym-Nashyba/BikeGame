@@ -12,5 +12,10 @@ namespace ProgressionStore
         public Shop Shop { get; private set; }
         private BikeModel[] _bikes;
         private Saves _saves;
+
+        private void Start()
+        {
+           NewBikeSelected?.Invoke(GUIDResourceLocator.Initialize().Bikes.GetDefault());
+        }
     }
 }
