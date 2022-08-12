@@ -135,7 +135,9 @@ namespace SBPScripts
         public float turnLeanAmount;
         RaycastHit hit;
         //[HideInInspector]
-        public float SteerMultiplier, LeanAxis, AccelerationInput, rawAccelerationInput;
+        [FormerlySerializedAs("SteerMultiplier")] public float SteerInput;
+        [FormerlySerializedAs("LeanAxis")] public float LeanInput;
+        public float AccelerationInput, rawAccelerationInput;
         bool isRaw, _isSprinting;
         [HideInInspector]
         public int bunnyHopInputState;
@@ -207,7 +209,7 @@ namespace SBPScripts
                 WayPointSystem.bHopInstructionSet.Clear();
             }
         }
-
+        
         private void FixedUpdate()
         {
             if (_isPaused) return;
@@ -224,38 +226,18 @@ namespace SBPScripts
             RotateGearStars();
             UpdateVisuals(currentSpeed);
             
-            //CycleOscillation
-            if ((_isSprinting && currentSpeed > 5 && !isMovingBackwards) || isAirborne || isBunnyHopping)
-                pickUpSpeed += Time.deltaTime * 2;
-            else
-                pickUpSpeed -= Time.deltaTime * 2;
+            CalculateSideToSideWobbling(currentSpeed);
 
-            pickUpSpeed = Mathf.Clamp(pickUpSpeed, 0.1f, 1);
-
-            cycleOscillation = -Mathf.Sin(Mathf.Deg2Rad * (crankSpeed + 90)) * (oscillationAmount * Mathf.Clamp(currentTopSpeed / currentSpeed, 1f, 1.5f)) * pickUpSpeed;
-            turnLeanAmount = -leanCurve.Evaluate(LeanAxis) * Mathf.Clamp(currentSpeed * 0.1f, 0, 1);
-            oscillationSteerEffect = cycleOscillation * Mathf.Clamp01(AccelerationInput) * (oscillationAffectSteerRatio * Mathf.Clamp(topSpeed / currentSpeed, 1f, 1.5f));
-            
             ApplyFriction();
+            
+            DetectLanding();
 
-            //Impact sensing
-            deceleration = (fWheelRb.velocity - lastVelocity) / Time.fixedDeltaTime;
-            lastVelocity = fWheelRb.velocity;
-            impactFrames--;
-            impactFrames = Mathf.Clamp(impactFrames, 0, 15);
-            if (deceleration.y > 200 && lastDeceleration.y < -1)
-                impactFrames = 30;
+            ApplyAirControlForces();
+        }
 
-            lastDeceleration = deceleration;
-
-            if (impactFrames > 0 && inelasticCollision)
-            {
-                fWheelRb.velocity = new Vector3(fWheelRb.velocity.x, -Mathf.Abs(fWheelRb.velocity.y), fWheelRb.velocity.z);
-                rWheelRb.velocity = new Vector3(rWheelRb.velocity.x, -Mathf.Abs(rWheelRb.velocity.y), rWheelRb.velocity.z);
-            }
-
-            //AirControl
-            if (Physics.Raycast(transform.position + new Vector3(0, 1f, 0), 
+        private void ApplyAirControlForces()
+        {
+            if (Physics.Raycast(transform.position + new Vector3(0, 1f, 0),
                     Vector3.down, out hit, Mathf.Infinity))
             {
                 if (hit.distance > 1.5f || impactFrames > 0)
@@ -272,6 +254,7 @@ namespace SBPScripts
                     isAirborne = false;
                     restingCrank = 10;
                 }
+
                 // For stunts
                 // 5f is the snap to ground distance
                 if (hit.distance > AirTimeSettings.heightThreshold && AirTimeSettings.freestyle)
@@ -279,8 +262,10 @@ namespace SBPScripts
                     stuntMode = true;
                     // Stunt + flips controls (Not available for Waypoint system as of yet)
                     // You may use Numpad Inputs as well.
-                    rb.AddTorque(Vector3.up * (SteerMultiplier * 4 * AirTimeSettings.airTimeRotationSensitivity), ForceMode.Impulse);
-                    rb.AddTorque(transform.right * (rawAccelerationInput * -3 * AirTimeSettings.airTimeRotationSensitivity), ForceMode.Impulse);
+                    rb.AddTorque(Vector3.up * (SteerInput * 4 * AirTimeSettings.airTimeRotationSensitivity),
+                        ForceMode.Impulse);
+                    rb.AddTorque(transform.right * (rawAccelerationInput * -3 * AirTimeSettings.airTimeRotationSensitivity),
+                        ForceMode.Impulse);
                 }
                 else
                     stuntMode = false;
@@ -290,25 +275,60 @@ namespace SBPScripts
             if (AirTimeSettings.freestyle)
             {
                 if (!stuntMode && isAirborne)
-                    _transform.rotation = Quaternion.Lerp(_transform.rotation, 
-                        Quaternion.Euler(0, 
-                            _transform.rotation.eulerAngles.y, 
-                            turnLeanAmount + cycleOscillation + GroundConformity(groundConformity)), 
+                    _transform.rotation = Quaternion.Lerp(_transform.rotation,
+                        Quaternion.Euler(0,
+                            _transform.rotation.eulerAngles.y,
+                            turnLeanAmount + cycleOscillation + GroundConformity(groundConformity)),
                         Time.deltaTime * AirTimeSettings.groundSnapSensitivity);
-                
+
                 else if (!stuntMode && !isAirborne)
-                    _transform.rotation = Quaternion.Lerp(_transform.rotation, 
-                        Quaternion.Euler(_transform.rotation.eulerAngles.x, 
-                            _transform.rotation.eulerAngles.y, 
-                            turnLeanAmount + cycleOscillation + GroundConformity(groundConformity)), 
+                    _transform.rotation = Quaternion.Lerp(_transform.rotation,
+                        Quaternion.Euler(_transform.rotation.eulerAngles.x,
+                            _transform.rotation.eulerAngles.y,
+                            turnLeanAmount + cycleOscillation + GroundConformity(groundConformity)),
                         Time.deltaTime * 10 * AirTimeSettings.groundSnapSensitivity);
             }
             else
             {
-                _transform.rotation = Quaternion.Euler(_transform.rotation.eulerAngles.x, 
-                    _transform.rotation.eulerAngles.y, 
+                _transform.rotation = Quaternion.Euler(_transform.rotation.eulerAngles.x,
+                    _transform.rotation.eulerAngles.y,
                     turnLeanAmount + cycleOscillation + GroundConformity(groundConformity));
             }
+        }
+
+        private void DetectLanding()
+        {
+            deceleration = (fWheelRb.velocity - lastVelocity) / Time.fixedDeltaTime;
+            lastVelocity = fWheelRb.velocity;
+            impactFrames--;
+            impactFrames = Mathf.Clamp(impactFrames, 0, 15);
+            if (deceleration.y > 200 && lastDeceleration.y < -1)
+                impactFrames = 30;
+
+            lastDeceleration = deceleration;
+
+            if (impactFrames > 0 && inelasticCollision)
+            {
+                fWheelRb.velocity = new Vector3(fWheelRb.velocity.x, -Mathf.Abs(fWheelRb.velocity.y), fWheelRb.velocity.z);
+                rWheelRb.velocity = new Vector3(rWheelRb.velocity.x, -Mathf.Abs(rWheelRb.velocity.y), rWheelRb.velocity.z);
+            }
+        }
+
+        private void CalculateSideToSideWobbling(float currentSpeed)
+        {
+            bool isSprintingForward = _isSprinting && currentSpeed > 5 && !isMovingBackwards;
+            if (isSprintingForward || isAirborne || isBunnyHopping)
+                pickUpSpeed += Time.deltaTime * 2;
+            else
+                pickUpSpeed -= Time.deltaTime * 2;
+
+            pickUpSpeed = Mathf.Clamp(pickUpSpeed, 0.1f, 1);
+
+            cycleOscillation = -Mathf.Sin(Mathf.Deg2Rad * (crankSpeed + 90)) *
+                               (oscillationAmount * Mathf.Clamp(currentTopSpeed / currentSpeed, 1f, 1.5f)) * pickUpSpeed;
+            turnLeanAmount = -leanCurve.Evaluate(LeanInput) * Mathf.Clamp(currentSpeed * 0.1f, 0, 1);
+            oscillationSteerEffect = cycleOscillation * Mathf.Clamp01(AccelerationInput) *
+                                     (oscillationAffectSteerRatio * Mathf.Clamp(topSpeed / currentSpeed, 1f, 1.5f));
         }
 
         private float CalculateCurrentTopSpeed(bool isSprinting)
@@ -320,7 +340,7 @@ namespace SBPScripts
         private void RotateForwardPhysicsWheel(float angle)
         {
             fPhysicsWheel.transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, 
-                _transform.rotation.eulerAngles.y + angle * SteerMultiplier + oscillationSteerEffect, 0);
+                _transform.rotation.eulerAngles.y + angle * SteerInput + oscillationSteerEffect, 0);
         }
 
         private void ApplyAccelerationForces(float currentSpeed, bool isGrounded)
@@ -349,12 +369,12 @@ namespace SBPScripts
 
         private void RotateHandles(float currentSpeed)
         {
-            bicycleParts.handles.transform.localRotation = Quaternion.Euler(0, SteerMultiplier * velocityToSteerAngleCurve.Evaluate(currentSpeed) + oscillationSteerEffect * 5, 0) * initialHandlesRotation;
+            bicycleParts.handles.transform.localRotation = Quaternion.Euler(0, SteerInput * velocityToSteerAngleCurve.Evaluate(currentSpeed) + oscillationSteerEffect * 5, 0) * initialHandlesRotation;
         }
 
         private void RotateLowerFork(float currentSpeed)
         {
-            bicycleParts.lowerFork.transform.localRotation = Quaternion.Euler(0, SteerMultiplier * velocityToSteerAngleCurve.Evaluate(currentSpeed) + oscillationSteerEffect * 5, SteerMultiplier * -axisAngle) * initialLowerForkLocalRotaion;
+            bicycleParts.lowerFork.transform.localRotation = Quaternion.Euler(0, SteerInput * velocityToSteerAngleCurve.Evaluate(currentSpeed) + oscillationSteerEffect * 5, SteerInput * -axisAngle) * initialLowerForkLocalRotaion;
         }
 
         private void RotateForwardWheel(float currentSpeed)
@@ -362,7 +382,7 @@ namespace SBPScripts
             Quaternion rotation = _transform.rotation;
             xQuat = Mathf.Sin(Mathf.Deg2Rad * rotation.eulerAngles.y);
             zQuat = Mathf.Cos(Mathf.Deg2Rad * rotation.eulerAngles.y);
-            bicycleParts.fWheelVisual.transform.rotation = Quaternion.Euler(xQuat * (SteerMultiplier * -axisAngle), SteerMultiplier * velocityToSteerAngleCurve.Evaluate(currentSpeed) + oscillationSteerEffect * 5, zQuat * (SteerMultiplier * -axisAngle));
+            bicycleParts.fWheelVisual.transform.rotation = Quaternion.Euler(xQuat * (SteerInput * -axisAngle), SteerInput * velocityToSteerAngleCurve.Evaluate(currentSpeed) + oscillationSteerEffect * 5, zQuat * (SteerInput * -axisAngle));
             bicycleParts.fWheelVisual.transform.GetChild(0).transform.localRotation = bicycleParts.RWheel.transform.rotation;
             _transform.rotation = rotation;
         }
@@ -472,9 +492,9 @@ namespace SBPScripts
             {
                 InputValues inputs = _inputProvider.GetCurrentInput(transform);
                 
-                CustomInput(inputs.Steer, ref SteerMultiplier, 5, 5, true);
+                CustomInput(inputs.Steer, ref SteerInput, 5, 5, true);
                 CustomInput(inputs.Acceleration, ref AccelerationInput, 1, 1, true);
-                CustomInput(inputs.Steer, ref LeanAxis, 1, 1, false);
+                CustomInput(inputs.Steer, ref LeanInput, 1, 1, false);
                 CustomInput(inputs.Acceleration, ref rawAccelerationInput, 1, 1, true);
 
                 _isSprinting = inputs.SprintHit;
@@ -504,9 +524,9 @@ namespace SBPScripts
                     {
                         transform.position = Vector3.Lerp(_transform.position, WayPointSystem.bicyclePositionTransform[Time.frameCount / WayPointSystem.frameIncrement], Time.deltaTime * WayPointSystem.frameIncrement);
                         transform.rotation = Quaternion.Lerp(_transform.rotation, WayPointSystem.bicycleRotationTransform[Time.frameCount / WayPointSystem.frameIncrement], Time.deltaTime * WayPointSystem.frameIncrement);
-                        WayPointInput(WayPointSystem.movementInstructionSet[Time.frameCount / WayPointSystem.frameIncrement].x, ref SteerMultiplier, 5, 5, false);
+                        WayPointInput(WayPointSystem.movementInstructionSet[Time.frameCount / WayPointSystem.frameIncrement].x, ref SteerInput, 5, 5, false);
                         WayPointInput(WayPointSystem.movementInstructionSet[Time.frameCount / WayPointSystem.frameIncrement].y, ref AccelerationInput, 1, 1, false);
-                        WayPointInput(WayPointSystem.movementInstructionSet[Time.frameCount / WayPointSystem.frameIncrement].x, ref LeanAxis, 1, 1, false);
+                        WayPointInput(WayPointSystem.movementInstructionSet[Time.frameCount / WayPointSystem.frameIncrement].x, ref LeanInput, 1, 1, false);
                         WayPointInput(WayPointSystem.movementInstructionSet[Time.frameCount / WayPointSystem.frameIncrement].y, ref rawAccelerationInput, 1, 1, true);
                         _isSprinting = WayPointSystem.sprintInstructionSet[Time.frameCount / WayPointSystem.frameIncrement];
                         bunnyHopInputState = WayPointSystem.bHopInstructionSet[Time.frameCount / WayPointSystem.frameIncrement];

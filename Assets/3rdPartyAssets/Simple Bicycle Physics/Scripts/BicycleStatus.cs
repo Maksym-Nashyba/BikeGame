@@ -96,7 +96,7 @@ namespace SBPScripts
                 while (t <= 1)
                 {
                     t += Time.deltaTime * 5;
-                    bicycleController.SteerMultiplier = -Mathf.Abs(instruction - t);
+                    bicycleController.SteerInput = -Mathf.Abs(instruction - t);
                     yield return null;
                 }
                 bicycleController.enabled = false;

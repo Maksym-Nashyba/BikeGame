@@ -162,7 +162,7 @@ public class ProceduralIKHandler : MonoBehaviour
         stuntModeHead = transform.InverseTransformDirection(bicycleController.rb.velocity);
         else
         stuntModeHead = Vector3.Lerp(stuntModeHead,Vector3.zero,Time.deltaTime*10);
-        headIKTarget.transform.localPosition = new Vector3(bicycleController.LeanAxis * 1.5f + animatedNoise*bicycleController.pickUpSpeed + stuntModeHead.x, 1-(bicycleController.pickUpSpeed*1.5f)+animatedNoise - bicycleController.BunnyHopAmount*0.5f + bunnyHopCounterWeight * 1.5f,animatedNoise*3 + stuntModeHead.z) + headOffset + impactDirection*bodyDampingProperties.impactIntensity;
+        headIKTarget.transform.localPosition = new Vector3(bicycleController.LeanInput * 1.5f + animatedNoise*bicycleController.pickUpSpeed + stuntModeHead.x, 1-(bicycleController.pickUpSpeed*1.5f)+animatedNoise - bicycleController.BunnyHopAmount*0.5f + bunnyHopCounterWeight * 1.5f,animatedNoise*3 + stuntModeHead.z) + headOffset + impactDirection*bodyDampingProperties.impactIntensity;
 
         //Additional Features
         //Hip Vertical Oscillation increases on slopes
