@@ -5,6 +5,7 @@ using Inputs;
 using Pausing;
 using UnityEngine;
 using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 namespace SBPScripts
 {
@@ -111,8 +112,12 @@ namespace SBPScripts
         float oscillationSteerEffect;
         [HideInInspector]
         public float cycleOscillation;
+        [FormerlySerializedAs("rigidbody")] [FormerlySerializedAs("rb")] [HideInInspector]
+        public Rigidbody Rigidbody;
+
         [HideInInspector]
-        public Rigidbody rb, fWheelRb, rWheelRb;
+        public Rigidbody fWheelRb, rWheelRb;
+
         float turnAngle;
         float xQuat, zQuat;
 
@@ -179,8 +184,8 @@ namespace SBPScripts
 
         private void Start()
         {
-            rb = GetComponent<Rigidbody>();
-            rb.maxAngularVelocity = Mathf.Infinity;
+            Rigidbody = GetComponent<Rigidbody>();
+            Rigidbody.maxAngularVelocity = Mathf.Infinity;
 
             fWheelRb = fPhysicsWheel.GetComponent<Rigidbody>();
             fWheelRb.maxAngularVelocity = Mathf.Infinity;
@@ -224,7 +229,7 @@ namespace SBPScripts
                 StartCoroutine(DelayBunnyHop());
 
             if (bunnyHopInputState == -1 && !isAirborne)
-                rb.AddForce(transform.up * (BunnyHopAmount * BunnyHopStrength), ForceMode.VelocityChange);
+                Rigidbody.AddForce(transform.up * (BunnyHopAmount * BunnyHopStrength), ForceMode.VelocityChange);
             else
                 BunnyHopAmount = Mathf.Lerp(BunnyHopAmount, 0, Time.deltaTime * 8f);
 
@@ -236,7 +241,7 @@ namespace SBPScripts
         {
             if (_isPaused) return;
 
-            float currentSpeed = rb.velocity.magnitude;
+            float currentSpeed = Rigidbody.velocity.magnitude;
             
             RotateForwardPhysicsWheel(velocityToSteerAngleCurve.Evaluate(currentSpeed));
             fPhysicsWheelConfigJoint.axis = new Vector3(1, 0, 0);
@@ -251,6 +256,28 @@ namespace SBPScripts
             ApplyFriction(currentSpeed);
             DetectLanding();
             ApplyAirControlForces();
+            if (DetectSidewaysSliding(currentSpeed))
+            {
+                AlignToMovementDirection();
+            }
+        }
+
+        private void AlignToMovementDirection()
+        {
+            Vector3 direction = Rigidbody.velocity.normalized;
+            //Rigidbody.MoveRotation(Quaternion.Euler(direction));
+            Debug.Log("FIRED");
+        }
+
+        private bool DetectSidewaysSliding(float currentSpeed)
+        {
+            if(currentSpeed < 2 || isAirborne) return false;
+            Vector3 bikeForward = _transform.InverseTransformDirection(_transform.forward);
+            bikeForward.y = 0;
+            Vector3 movementDirection = _transform.InverseTransformDirection(Rigidbody.velocity.normalized);
+            movementDirection.y = 0;
+            float angle = Vector3.Angle(bikeForward, movementDirection)/180f;
+            return Mathf.Sin(angle * Mathf.PI) > 0.40f;
         }
 
         private void ApplyAirControlForces()
@@ -280,9 +307,9 @@ namespace SBPScripts
                     stuntMode = true;
                     // Stunt + flips controls (Not available for Waypoint system as of yet)
                     // You may use Numpad Inputs as well.
-                    rb.AddTorque(Vector3.up * (SteerInput * 4 * AirTimeSettings.airTimeRotationSensitivity),
+                    Rigidbody.AddTorque(Vector3.up * (SteerInput * 4 * AirTimeSettings.airTimeRotationSensitivity),
                         ForceMode.Impulse);
-                    rb.AddTorque(transform.right * (rawAccelerationInput * -3 * AirTimeSettings.airTimeRotationSensitivity),
+                    Rigidbody.AddTorque(transform.right * (rawAccelerationInput * -3 * AirTimeSettings.airTimeRotationSensitivity),
                         ForceMode.Impulse);
                 }
                 else
@@ -369,20 +396,20 @@ namespace SBPScripts
             if(!isGrounded) return;
             
             if (currentSpeed < currentTopSpeed && rawAccelerationInput > 0) //accelerate forward if input forward
-                rb.AddForce(_transform.forward * accelerationCurve.Evaluate(AccelerationInput));
+                Rigidbody.AddForce(_transform.forward * accelerationCurve.Evaluate(AccelerationInput));
 
             if (currentSpeed < reversingSpeed && rawAccelerationInput < 0) //accelerate backwards if input backwards
-                rb.AddForce(-_transform.forward * (accelerationCurve.Evaluate(AccelerationInput) * 0.5f));
+                Rigidbody.AddForce(-_transform.forward * (accelerationCurve.Evaluate(AccelerationInput) * 0.5f));
 
-            isMovingBackwards = transform.InverseTransformDirection(rb.velocity).z < 0;
+            isMovingBackwards = transform.InverseTransformDirection(Rigidbody.velocity).z < 0;
 
             if (rawAccelerationInput < 0 && !isMovingBackwards) //slow down faster
-                rb.AddForce(-_transform.forward * (accelerationCurve.Evaluate(AccelerationInput) * 2));
+                Rigidbody.AddForce(-_transform.forward * (accelerationCurve.Evaluate(AccelerationInput) * 2));
         }
 
         private void PositionCenterOfForce(bool stuntModeIsOn)
         {
-            rb.centerOfMass = stuntModeIsOn ? GetComponent<BoxCollider>().center : Vector3.zero + centerOfMassOffset;
+            Rigidbody.centerOfMass = stuntModeIsOn ? GetComponent<BoxCollider>().center : Vector3.zero + centerOfMassOffset;
         }
 
         private void RotateHandles(float currentSpeed)
@@ -502,7 +529,7 @@ namespace SBPScripts
 
                 if (inputs.BrakesHit && isMovingBackwards == false && !isAirborne)
                 {
-                    rb.AddForce(-transform.forward * (accelerationCurve.Evaluate(AccelerationInput) * 0.39f)); 
+                    Rigidbody.AddForce(-transform.forward * (accelerationCurve.Evaluate(AccelerationInput) * 0.39f)); 
                 }
                 
                 if (WayPointSystem.recordingState == WayPointSystem.RecordingState.Record)
@@ -583,13 +610,13 @@ namespace SBPScripts
 
         public void Pause()
         {
-            rb.isKinematic = true;
+            Rigidbody.isKinematic = true;
             _isPaused = true;
         }
 
         public void Continue()
         {
-            rb.isKinematic = false;
+            Rigidbody.isKinematic = false;
             _isPaused = false;
         }
     }

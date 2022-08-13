@@ -1,7 +1,6 @@
 ﻿using Misc;
 using UI;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Inputs
 {

@@ -45,7 +45,7 @@ namespace SBPScripts
         {
             if (cyclist != null && externalCharacter != null)
             {
-                if (Input.GetKeyDown(KeyCode.Return) && bicycleController.transform.InverseTransformDirection(bicycleController.rb.velocity).z <= 0.1f && waitTime == 0)
+                if (Input.GetKeyDown(KeyCode.Return) && bicycleController.transform.InverseTransformDirection(bicycleController.Rigidbody.velocity).z <= 0.1f && waitTime == 0)
                 {
                     waitTime = 1.5f;
                     externalCharacter.transform.position = cyclist.transform.root.position - transform.right * 0.5f + transform.forward * 0.1f;
@@ -74,7 +74,7 @@ namespace SBPScripts
             waitTime = Mathf.Clamp(waitTime, 0, 1.5f);
 
 
-            speed = bicycleController.transform.InverseTransformDirection(bicycleController.rb.velocity).z;
+            speed = bicycleController.transform.InverseTransformDirection(bicycleController.Rigidbody.velocity).z;
             isAirborne = bicycleController.isAirborne;
             anim.SetFloat("Speed", speed);
             anim.SetBool("isAirborne", isAirborne);

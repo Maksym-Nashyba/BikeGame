@@ -42,7 +42,7 @@ namespace SBPScripts
                 {
                     bicycleController.fPhysicsWheel.GetComponent<SphereCollider>().enabled = false;
                     bicycleController.rPhysicsWheel.GetComponent<SphereCollider>().enabled = false;
-                    bicycleController.rb.centerOfMass = bicycleController.GetComponent<BoxCollider>().center;
+                    bicycleController.Rigidbody.centerOfMass = bicycleController.GetComponent<BoxCollider>().center;
                     bicycleController.enabled = false;
                     inactiveColliders.SetActive(true);
                     instantiatedRagdoll = Instantiate(ragdollPrefab);
@@ -52,7 +52,7 @@ namespace SBPScripts
                     bicycleController.fPhysicsWheel.GetComponent<SphereCollider>().enabled = true;
                     bicycleController.rPhysicsWheel.GetComponent<SphereCollider>().enabled = true;
                     bicycleController.enabled = true;
-                    bicycleController.rb.centerOfMass = bicycleController.centerOfMassOffset;
+                    bicycleController.Rigidbody.centerOfMass = bicycleController.centerOfMassOffset;
                     inactiveColliders.SetActive(false);
                     Destroy(instantiatedRagdoll);
                 }
