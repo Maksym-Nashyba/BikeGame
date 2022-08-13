@@ -22,7 +22,7 @@ namespace LevelLoading
         private BikeModels _bikeModels;
         private BikeModel _currentBike;
         private GameObject _spawnedBike;
-        private int _currentIndex;
+        private int _currentIndex = 0;
         private TaskCompletionSource<BikeModel> _taskCompletionSource;
 
         private void Awake()
@@ -32,13 +32,12 @@ namespace LevelLoading
             _resourceLocator = GUIDResourceLocator.Initialize();
             _bikeModels = _resourceLocator.Bikes;
         }
-        
-        private void Start()
+
+        private void OnEnable()
         {
-            _currentIndex = 0;
             DisplayBike(_persistentBikes[_currentIndex]);
         }
-        
+
         public void ShowNextBike()
         {
             if (_currentIndex >= _persistentBikes.Length - 1) return;
@@ -100,6 +99,8 @@ namespace LevelLoading
             {
                 await Task.Yield();
             }
+
+            SceneManager.SetActiveScene(SceneManager.GetSceneByName("BikeSelection"));
             return FindObjectOfType<BikeSelection>();
         }
         

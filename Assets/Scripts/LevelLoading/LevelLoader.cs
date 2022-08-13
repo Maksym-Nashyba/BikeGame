@@ -16,6 +16,7 @@ namespace LevelLoading
         public async Task LoadLevelWithBikeSelection(string levelGUID)
         {
             BikeSelection bikeSelection = await BikeSelection.DisplayBikeSelection();
+            SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
             TaskCompletionSource<BikeModel> taskCompletionSource = new TaskCompletionSource<BikeModel>();
             bikeSelection.RegisterTaskCompletionSource(taskCompletionSource);
             BikeModel selectedBike = await taskCompletionSource.Task;
