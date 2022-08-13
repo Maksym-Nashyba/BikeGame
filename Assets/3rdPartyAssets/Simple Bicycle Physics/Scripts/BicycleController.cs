@@ -425,10 +425,10 @@ namespace SBPScripts
 
         private void ApplyFriction(float currentSpeed)
         {
-            float fFriction = 0.68f + currentSpeed / 15f * 0.2f;
+            float fFriction = 0.64f + currentSpeed / 15f * 0.15f;
             wheelFrictionSettings.fFriction = new Vector2(fFriction, fFriction);
             
-            float rFriction = 0.65f + currentSpeed / 15f * 0.19f;
+            float rFriction = 0.69f + currentSpeed / 15f * 0.19f;
             wheelFrictionSettings.rFriction = new Vector2(rFriction, rFriction);
             
             wheelFrictionSettings.fPhysicMaterial.staticFriction = wheelFrictionSettings.fFriction.x;

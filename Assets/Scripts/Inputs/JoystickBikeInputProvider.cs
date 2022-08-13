@@ -43,12 +43,20 @@ namespace Inputs
             float steer = Vector2.SignedAngle(flatBikeDirection, targetDirection)/180f;
             float acceleration = Mathf.Pow(joystickValue.magnitude,4f) * (1f-Mathf.Abs(steer));
             float sign = -1 * Mathf.Sign(steer);
-            
-            steer = Mathf.Max(1f+Mathf.Log10(Mathf.Abs(steer)), 0f) * sign;
+
+            steer = Mathf.Sqrt(Mathf.Abs(steer)) * sign;
             if (acceleration < 0.01f) steer = 0;
             
             bool brakes = GetBrakesHit();
             bool sprint = GetSprintHit();
+
+            Debug.DrawRay(bikeTransform.position + Vector3.up*0.5f, targetDirection, Color.red);
+            Vector2 flatBikeForward = new Vector2(bikeForward.x, bikeForward.z).RotatedBy(-90f * steer);
+            Vector3 bikeSteerDirection = new Vector3(flatBikeForward.x, 0f, flatBikeForward.y);
+            Debug.DrawRay(bikeTransform.position + Vector3.up*0.5f, bikeSteerDirection, Color.cyan);
+            
+            
+            
             return new InputValues(steer, acceleration, brakes, sprint);  
         }
 
