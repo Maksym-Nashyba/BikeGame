@@ -435,21 +435,25 @@ namespace SBPScripts
             wheelFrictionSettings.rPhysicMaterial.dynamicFriction = wheelFrictionSettings.rFriction.y;
 
             if (Physics.Raycast(fPhysicsWheel.transform.position, Vector3.down, out hit, Mathf.Infinity))
-                if (hit.distance < 0.5f)
-                {
-                    Vector3 velocityF = fPhysicsWheel.transform.InverseTransformDirection(fWheelRb.velocity);
-                    velocityF.x *= Mathf.Clamp01(1 / (wheelFrictionSettings.fFriction.x + wheelFrictionSettings.fFriction.y));
-                    fWheelRb.velocity = fPhysicsWheel.transform.TransformDirection(velocityF);
-                }
+            {
+                if (hit.distance < 0.5f) 
+                    UpdateWheelVelocity(fPhysicsWheel, fWheelRb, wheelFrictionSettings.fFriction);
+            }
+            
             if (Physics.Raycast(rPhysicsWheel.transform.position, Vector3.down, out hit, Mathf.Infinity))
-                if (hit.distance < 0.5f)
-                {
-                    Vector3 velocityR = rPhysicsWheel.transform.InverseTransformDirection(rWheelRb.velocity);
-                    velocityR.x *= Mathf.Clamp01(1 / (wheelFrictionSettings.rFriction.x + wheelFrictionSettings.rFriction.y));
-                    rWheelRb.velocity = rPhysicsWheel.transform.TransformDirection(velocityR);
-                }
+            {
+                if (hit.distance < 0.5f) 
+                    UpdateWheelVelocity(rPhysicsWheel, rWheelRb, wheelFrictionSettings.rFriction);
+            }
+            
+            void UpdateWheelVelocity(GameObject physicsWheel, Rigidbody wheelRigidbody, Vector2 wheelFriction)
+            {
+                Vector3 calculatedVelocity = physicsWheel.transform.InverseTransformDirection(wheelRigidbody.velocity);
+                calculatedVelocity.x *= Mathf.Clamp01(1 / (wheelFriction.x + wheelFriction.y));
+                wheelRigidbody.velocity = physicsWheel.transform.TransformDirection(calculatedVelocity);
+            }
         }
-                
+
         private void UpdatePedalsPosition()
         {
             bicycleParts.lPedal.transform.localPosition = pedalAdjustments.lPedalOffset + new Vector3(0, Mathf.Cos(Mathf.Deg2Rad * (crankSpeed + 180)) * pedalAdjustments.crankRadius, Mathf.Sin(Mathf.Deg2Rad * (crankSpeed + 180)) * pedalAdjustments.crankRadius);
@@ -472,8 +476,6 @@ namespace SBPScripts
             lastFraRearWheelRevolution = CurrentRearWheelRevolution;
             bicycleParts.crank.transform.localRotation = Quaternion.Euler(crankSpeed, 0, 0);
         }
-        
-
         
         private float GroundConformity(bool toggle)
         {

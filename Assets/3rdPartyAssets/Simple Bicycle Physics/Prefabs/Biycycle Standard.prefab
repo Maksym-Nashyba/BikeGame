@@ -1690,7 +1690,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4324bb9ea5c33ce4e8cc74c3b9ff7d62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cycleGeometry:
+  bicycleParts:
     handles: {fileID: 5011878677303943436}
     lowerFork: {fileID: 7439184344371964929}
     fWheelVisual: {fileID: 4526251078685344464}
@@ -1749,23 +1749,32 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  steerAngle:
+  velocityToSteerAngleCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 14
-      inSlope: -0.2
-      outSlope: -0.2
+      value: 65
+      inSlope: -8.123752
+      outSlope: -8.123752
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
+      time: 4.9238334
+      value: 25
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
       time: 20
-      value: 10
-      inSlope: -0.2
-      outSlope: -0.2
+      value: 15
+      inSlope: -0.6632986
+      outSlope: -0.6632986
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -1812,7 +1821,7 @@ MonoBehaviour:
   relaxedSpeed: 0.5
   reversingSpeed: 0.5
   centerOfMassOffset: {x: 0, y: 0, z: 0}
-  isReversing: 0
+  isMovingBackwards: 0
   isAirborne: 0
   stuntMode: 0
   oscillationAmount: 3
@@ -1822,8 +1831,8 @@ MonoBehaviour:
   fWheelRb: {fileID: 0}
   rWheelRb: {fileID: 0}
   crankSpeed: 0
-  crankCurrentQuat: 0
-  crankLastQuat: 0
+  CurrentRearWheelRevolution: 0
+  lastFraRearWheelRevolution: 0
   restingCrank: 0
   pedalAdjustments:
     crankRadius: 0.17
@@ -1831,10 +1840,10 @@ MonoBehaviour:
     rPedalOffset: {x: 0.2, y: 0.35, z: -0.03}
     pedalingSpeed: 3
   turnLeanAmount: 0
-  customSteerAxis: 0
-  customLeanAxis: 0
-  customAccelerationAxis: 0
-  rawCustomAccelerationAxis: 0
+  SteerInput: 0
+  LeanInput: 0
+  AccelerationInput: 0
+  rawAccelerationInput: 0
   bunnyHopInputState: 0
   currentTopSpeed: 0
   pickUpSpeed: 0
@@ -1843,17 +1852,17 @@ MonoBehaviour:
   lastVelocity: {x: 0, y: 0, z: 0}
   deceleration: {x: 0, y: 0, z: 0}
   lastDeceleration: {x: 0, y: 0, z: 0}
-  bunnyHopAmount: 0
-  bunnyHopStrength: 5
-  wayPointSystem:
+  BunnyHopAmount: 0
+  BunnyHopStrength: 0
+  WayPointSystem:
     recordingState: 0
-    frameIncrement: 8
+    frameIncrement: 0
     bicyclePositionTransform: []
     bicycleRotationTransform: []
     movementInstructionSet: []
     sprintInstructionSet: 
     bHopInstructionSet: 
-  airTimeSettings:
+  AirTimeSettings:
     freestyle: 0
     airTimeRotationSensitivity: 0
     heightThreshold: 0
