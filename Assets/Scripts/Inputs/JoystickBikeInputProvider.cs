@@ -50,13 +50,6 @@ namespace Inputs
             bool brakes = GetBrakesHit();
             bool sprint = GetSprintHit();
 
-            Debug.DrawRay(bikeTransform.position + Vector3.up*0.5f, targetDirection, Color.red);
-            Vector2 flatBikeForward = new Vector2(bikeForward.x, bikeForward.z).RotatedBy(-90f * steer);
-            Vector3 bikeSteerDirection = new Vector3(flatBikeForward.x, 0f, flatBikeForward.y);
-            Debug.DrawRay(bikeTransform.position + Vector3.up*0.5f, bikeSteerDirection, Color.cyan);
-            
-            
-            
             return new InputValues(steer, acceleration, brakes, sprint);  
         }
 

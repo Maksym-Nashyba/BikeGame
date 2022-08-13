@@ -6,12 +6,10 @@ using Pausing;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-// Please use using SBPScripts; directive to refer to or append the SBP library
 namespace SBPScripts
 {
     #region LocalClasses
-
-    // Cycle Geometry Class - Holds Gameobjects pertaining to the specific bicycle
+    
     [Serializable]
     public class CycleGeometry
     {
