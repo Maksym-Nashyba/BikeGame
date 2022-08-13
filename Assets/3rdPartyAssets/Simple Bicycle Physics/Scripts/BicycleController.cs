@@ -439,19 +439,19 @@ namespace SBPScripts
             if (Physics.Raycast(fPhysicsWheel.transform.position, Vector3.down, out hit, Mathf.Infinity))
                 if (hit.distance < 0.5f)
                 {
-                    Vector3 velf = fPhysicsWheel.transform.InverseTransformDirection(fWheelRb.velocity);
-                    velf.x *= Mathf.Clamp01(1 / (wheelFrictionSettings.fFriction.x + wheelFrictionSettings.fFriction.y));
-                    fWheelRb.velocity = fPhysicsWheel.transform.TransformDirection(velf);
+                    Vector3 velocityF = fPhysicsWheel.transform.InverseTransformDirection(fWheelRb.velocity);
+                    velocityF.x *= Mathf.Clamp01(1 / (wheelFrictionSettings.fFriction.x + wheelFrictionSettings.fFriction.y));
+                    fWheelRb.velocity = fPhysicsWheel.transform.TransformDirection(velocityF);
                 }
             if (Physics.Raycast(rPhysicsWheel.transform.position, Vector3.down, out hit, Mathf.Infinity))
                 if (hit.distance < 0.5f)
                 {
-                    Vector3 velr = rPhysicsWheel.transform.InverseTransformDirection(rWheelRb.velocity);
-                    velr.x *= Mathf.Clamp01(1 / (wheelFrictionSettings.rFriction.x + wheelFrictionSettings.rFriction.y));
-                    rWheelRb.velocity = rPhysicsWheel.transform.TransformDirection(velr);
+                    Vector3 velocityR = rPhysicsWheel.transform.InverseTransformDirection(rWheelRb.velocity);
+                    velocityR.x *= Mathf.Clamp01(1 / (wheelFrictionSettings.rFriction.x + wheelFrictionSettings.rFriction.y));
+                    rWheelRb.velocity = rPhysicsWheel.transform.TransformDirection(velocityR);
                 }
         }
-        
+                
         private void UpdatePedalsPosition()
         {
             bicycleParts.lPedal.transform.localPosition = pedalAdjustments.lPedalOffset + new Vector3(0, Mathf.Cos(Mathf.Deg2Rad * (crankSpeed + 180)) * pedalAdjustments.crankRadius, Mathf.Sin(Mathf.Deg2Rad * (crankSpeed + 180)) * pedalAdjustments.crankRadius);
