@@ -170,7 +170,6 @@ namespace SBPScripts
         private Transform _transform;
         private bool _isPaused;
         
-
         #endregion
 
         private void Awake()
@@ -210,6 +209,31 @@ namespace SBPScripts
             }
         }
         
+        private void Update()
+        {
+            if (_isPaused) return;
+            
+            ApplyCustomInput();
+
+            //GetKeyUp/Down requires an Update Cycle
+            //BunnyHopping
+            if (bunnyHopInputState == 1)
+            {
+                isBunnyHopping = true;
+                BunnyHopAmount += Time.deltaTime * 8f;
+            }
+            if (bunnyHopInputState == -1)
+                StartCoroutine(DelayBunnyHop());
+
+            if (bunnyHopInputState == -1 && !isAirborne)
+                rb.AddForce(transform.up * (BunnyHopAmount * BunnyHopStrength), ForceMode.VelocityChange);
+            else
+                BunnyHopAmount = Mathf.Lerp(BunnyHopAmount, 0, Time.deltaTime * 8f);
+
+            BunnyHopAmount = Mathf.Clamp01(BunnyHopAmount);
+
+        }
+        
         private void FixedUpdate()
         {
             if (_isPaused) return;
@@ -222,16 +246,12 @@ namespace SBPScripts
             currentTopSpeed = CalculateCurrentTopSpeed(_isSprinting);
             ApplyAccelerationForces(currentSpeed, !isAirborne && !isBunnyHopping);
             PositionCenterOfForce(stuntMode);
-
             RotateGearStars();
             UpdateVisuals(currentSpeed);
-            
+            RotateForwardWheel(currentSpeed);
             CalculateSideToSideWobbling(currentSpeed);
-
-            ApplyFriction();
-            
+            ApplyFriction(currentSpeed);
             DetectLanding();
-
             ApplyAirControlForces();
         }
 
@@ -391,8 +411,6 @@ namespace SBPScripts
         {
             RotateHandles(currentSpeed);
             RotateLowerFork(currentSpeed);
-            RotateForwardWheel(currentSpeed);
-            RotateForwardWheel(currentSpeed);
             RotateGears();
             UpdatePedalsPosition();
         }
@@ -405,8 +423,14 @@ namespace SBPScripts
                 bicycleParts.rGear.transform.rotation = rPhysicsWheel.transform.rotation;
         }
 
-        private void ApplyFriction()
+        private void ApplyFriction(float currentSpeed)
         {
+            float fFriction = 0.68f + currentSpeed / 15f * 0.2f;
+            wheelFrictionSettings.fFriction = new Vector2(fFriction, fFriction);
+            
+            float rFriction = 0.65f + currentSpeed / 15f * 0.19f;
+            wheelFrictionSettings.rFriction = new Vector2(rFriction, rFriction);
+            
             wheelFrictionSettings.fPhysicMaterial.staticFriction = wheelFrictionSettings.fFriction.x;
             wheelFrictionSettings.fPhysicMaterial.dynamicFriction = wheelFrictionSettings.fFriction.y;
             wheelFrictionSettings.rPhysicMaterial.staticFriction = wheelFrictionSettings.rFriction.x;
@@ -415,19 +439,19 @@ namespace SBPScripts
             if (Physics.Raycast(fPhysicsWheel.transform.position, Vector3.down, out hit, Mathf.Infinity))
                 if (hit.distance < 0.5f)
                 {
-                    Vector3 velf = fPhysicsWheel.transform.InverseTransformDirection(fWheelRb.velocity);
-                    velf.x *= Mathf.Clamp01(1 / (wheelFrictionSettings.fFriction.x + wheelFrictionSettings.fFriction.y));
-                    fWheelRb.velocity = fPhysicsWheel.transform.TransformDirection(velf);
+                    Vector3 velocityF = fPhysicsWheel.transform.InverseTransformDirection(fWheelRb.velocity);
+                    velocityF.x *= Mathf.Clamp01(1 / (wheelFrictionSettings.fFriction.x + wheelFrictionSettings.fFriction.y));
+                    fWheelRb.velocity = fPhysicsWheel.transform.TransformDirection(velocityF);
                 }
             if (Physics.Raycast(rPhysicsWheel.transform.position, Vector3.down, out hit, Mathf.Infinity))
                 if (hit.distance < 0.5f)
                 {
-                    Vector3 velr = rPhysicsWheel.transform.InverseTransformDirection(rWheelRb.velocity);
-                    velr.x *= Mathf.Clamp01(1 / (wheelFrictionSettings.rFriction.x + wheelFrictionSettings.rFriction.y));
-                    rWheelRb.velocity = rPhysicsWheel.transform.TransformDirection(velr);
+                    Vector3 velocityR = rPhysicsWheel.transform.InverseTransformDirection(rWheelRb.velocity);
+                    velocityR.x *= Mathf.Clamp01(1 / (wheelFrictionSettings.rFriction.x + wheelFrictionSettings.rFriction.y));
+                    rWheelRb.velocity = rPhysicsWheel.transform.TransformDirection(velocityR);
                 }
         }
-        
+                
         private void UpdatePedalsPosition()
         {
             bicycleParts.lPedal.transform.localPosition = pedalAdjustments.lPedalOffset + new Vector3(0, Mathf.Cos(Mathf.Deg2Rad * (crankSpeed + 180)) * pedalAdjustments.crankRadius, Mathf.Sin(Mathf.Deg2Rad * (crankSpeed + 180)) * pedalAdjustments.crankRadius);
@@ -451,30 +475,7 @@ namespace SBPScripts
             bicycleParts.crank.transform.localRotation = Quaternion.Euler(crankSpeed, 0, 0);
         }
         
-        private void Update()
-        {
-            if (_isPaused) return;
-            
-            ApplyCustomInput();
 
-            //GetKeyUp/Down requires an Update Cycle
-            //BunnyHopping
-            if (bunnyHopInputState == 1)
-            {
-                isBunnyHopping = true;
-                BunnyHopAmount += Time.deltaTime * 8f;
-            }
-            if (bunnyHopInputState == -1)
-                StartCoroutine(DelayBunnyHop());
-
-            if (bunnyHopInputState == -1 && !isAirborne)
-                rb.AddForce(transform.up * (BunnyHopAmount * BunnyHopStrength), ForceMode.VelocityChange);
-            else
-                BunnyHopAmount = Mathf.Lerp(BunnyHopAmount, 0, Time.deltaTime * 8f);
-
-            BunnyHopAmount = Mathf.Clamp01(BunnyHopAmount);
-
-        }
         
         private float GroundConformity(bool toggle)
         {
