@@ -99,8 +99,6 @@ namespace LevelLoading
             {
                 await Task.Yield();
             }
-
-            SceneManager.SetActiveScene(SceneManager.GetSceneByName("BikeSelection"));
             return FindObjectOfType<BikeSelection>();
         }
         
