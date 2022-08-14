@@ -100,11 +100,6 @@ namespace SBPScripts
                 else
                 {
                     cyclist.SetActive(false);
-                    if(Input.GetKeyDown(KeyCode.R))
-                    {
-                        cyclist.SetActive(true);
-                        bicycleStatus.dislodged = false;
-                    }
                 }
             }
             else
