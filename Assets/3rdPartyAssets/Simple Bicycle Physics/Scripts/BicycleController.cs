@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Inputs;
 using Pausing;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
@@ -235,6 +236,10 @@ namespace SBPScripts
 
             BunnyHopAmount = Mathf.Clamp01(BunnyHopAmount);
 
+            if (DetectSidewaysSliding(Rigidbody.velocity.magnitude))
+            {
+                AlignToMovementDirection();
+            }
         }
         
         private void FixedUpdate()
@@ -256,17 +261,12 @@ namespace SBPScripts
             ApplyFriction(currentSpeed);
             DetectLanding();
             ApplyAirControlForces();
-            if (DetectSidewaysSliding(currentSpeed))
-            {
-                AlignToMovementDirection();
-            }
         }
 
         private void AlignToMovementDirection()
         {
             Vector3 direction = Rigidbody.velocity.normalized;
-            Rigidbody.MoveRotation(Quaternion.Euler(direction));
-            Debug.Log("FIRED");
+            transform.forward = Vector3.Lerp(transform.forward, direction, Mathf.Clamp01(15f * Time.deltaTime));
         }
 
         private bool DetectSidewaysSliding(float currentSpeed)
@@ -277,7 +277,7 @@ namespace SBPScripts
             Vector3 movementDirection = _transform.InverseTransformDirection(Rigidbody.velocity.normalized);
             movementDirection.y = 0;
             float angle = Vector3.Angle(bikeForward, movementDirection)/180f;
-            return Mathf.Sin(angle * Mathf.PI) > 0.40f;
+            return Mathf.Sin(angle * Mathf.PI) > 0.45f;
         }
 
         private void ApplyAirControlForces()
