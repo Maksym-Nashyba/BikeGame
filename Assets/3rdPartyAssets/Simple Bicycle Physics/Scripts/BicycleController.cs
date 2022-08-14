@@ -265,7 +265,7 @@ namespace SBPScripts
         private void AlignToMovementDirection()
         {
             Vector3 direction = Rigidbody.velocity.normalized;
-            //Rigidbody.MoveRotation(Quaternion.Euler(direction));
+            Rigidbody.MoveRotation(Quaternion.Euler(direction));
             Debug.Log("FIRED");
         }
 
