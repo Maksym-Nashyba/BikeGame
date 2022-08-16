@@ -2,11 +2,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Inputs;
+using Misc;
 using Pausing;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.Serialization;
-using UnityEngine.UI;
 
 namespace SBPScripts
 {
@@ -179,7 +178,7 @@ namespace SBPScripts
         private void Awake()
         {
             _transform = transform;
-            _inputProvider = GetComponent<IBikeInputProvider>();//TODO resolve dependencies through service locator
+            _inputProvider = ServiceLocator.InputProvider;
             _transform.rotation = Quaternion.Euler(0, _transform.rotation.eulerAngles.y, 0);
         }
 
