@@ -4,7 +4,12 @@ namespace ProgressionStore
 {
     public abstract class ShopWindow : MonoBehaviour
     {
-        private Garage _garage;
+        protected Garage Garage;
+        
+        protected virtual void Awake()
+        {
+            Garage = FindObjectOfType<Garage>();
+        }
 
         public abstract void Open();
 
