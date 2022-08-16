@@ -16,7 +16,11 @@ namespace ProgressionStore
         private void Start()
         {
            NewBikeSelected?.Invoke(GUIDResourceLocator.Initialize().Bikes.GetDefault());
-           NewSkinSelected?.Invoke(GUIDResourceLocator.Initialize().Bikes.GetDefault().AllSkins[0]);
+        }
+
+        public void SelectSkin(Skin skin)
+        {
+            NewSkinSelected?.Invoke(skin);
         }
     }
 }
