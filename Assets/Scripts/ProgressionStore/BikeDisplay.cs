@@ -23,7 +23,7 @@ namespace ProgressionStore
         {
             if(_currentBike is not null) Destroy(_currentBike); 
             _currentBike = Instantiate(bikeModel.Prefab,_bikeSpawnPoint.position,_bikeSpawnPoint.rotation);
-            _currentBike.transform.localScale = new Vector3(4.07f,4.07f,4.07f);
+            _currentBike.transform.localScale = new Vector3(51f,51f,51f);
         }
 
         private void ChangeSkin(Skin skin)
