@@ -27,11 +27,11 @@ namespace IGUIDResources
 
         public class CareerEnumerator : IEnumerator
         {
-            public object Current => _chapters[_chapterIndex].Levels[_levelIndex];
+            public object Current => CurrentChapter.Levels[_levelIndex];
             private Chapter CurrentChapter => _chapters[_chapterIndex];
             private Chapter[] _chapters;
-            private int _chapterIndex;
-            private int _levelIndex;
+            private int _chapterIndex = 0;
+            private int _levelIndex = -1;
 
             public CareerEnumerator(Chapter[] chapters)
             {
@@ -56,7 +56,7 @@ namespace IGUIDResources
             public void Reset()
             {
                 _chapterIndex = 0;
-                _levelIndex = 0;
+                _levelIndex = -1;
             }
 
         }
