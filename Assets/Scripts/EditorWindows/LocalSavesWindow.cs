@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.IO;
 using SaveSystem.Front;
+using SaveSystem.Models;
 using SaveSystem.PersistencyAndSerialization;
 using UnityEditor;
 using UnityEngine;
@@ -21,26 +22,91 @@ namespace EditorWindows
             window.Show();
         }
 
+        private void OnEnable()
+        {
+            EditorApplication.playModeStateChanged += _ => Close();
+        }
+
         private void OnGUI()
         {
             if (GUILayout.Button("Open Folder"))
-            {   
+            {
                 OpenFolderInExplorer();
             }
-            
+
             if (GUILayout.Button("Clear"))
             {
                 DeleteSaveFile();
             }
-            
-            if (GUILayout.Button("Pull"))
+
+            if (GUILayout.Button("Display current SaveData"))
             {
                 _saves = GetSaves();
             }
-            
-            if(_saves is null) return;
-            
-            GUILayout.Label($"{_saves.Bikes.GetAllUnlockedBikes()[0].GUID}");
+
+            if (_saves is null) return;
+            DisplayCurrentSave();
+        }
+
+        private void DisplayCurrentSave()
+        {
+            GUILayout.Space(10f);
+            DisplayCurrencies();
+            GUILayout.Label("_____________________________________________________________________");
+            DisplayCareer();
+            GUILayout.Label("_____________________________________________________________________");
+            DisplayBikes();
+        }
+
+        private void DisplayCurrencies()
+        {
+            SavedCurrencies currencies = _saves.Currencies;
+            GUILayout.BeginHorizontal();
+            GUILayout.Label($"Dollans: {currencies.GetDollans()}");
+            GUILayout.Label($"Pedals: {currencies.GetPedals()}");
+            GUILayout.EndHorizontal();
+        }
+
+        private void DisplayCareer()
+        {
+            GUILayout.Label("Levels: ", EditorStyles.boldLabel);
+            PersistentLevel[] levels = _saves.Career.GetAllCompletedLevels();
+
+            foreach (PersistentLevel level in levels)
+            {
+                using (new GUILayout.VerticalScope(EditorStyles.helpBox))
+                {
+                    GUILayout.Label($"GUID: {level.GUID}");
+                    GUILayout.Label($"Best time: {level.BestTime}");
+                    GUILayout.BeginHorizontal();
+                    GUILayout.Label("Pedal: ", GUILayout.Width(50f));
+                    GUILayout.Toggle(level.PedalCollected, "");
+                    GUILayout.EndHorizontal();
+                }
+            }
+        }
+
+        private void DisplayBikes()
+        {
+            GUILayout.Label("Bikes: ", EditorStyles.boldLabel);
+            PersistentBike[] bikes = _saves.Bikes.GetAllUnlockedBikes();
+
+            foreach (PersistentBike bike in bikes)
+            {
+                using (new GUILayout.VerticalScope(EditorStyles.helpBox))
+                {
+                    GUILayout.Label($"GUID: {bike.GUID}");
+                    GUILayout.Label($"Selected skin: {bike.SelectedSkinGUID}");
+                    GUILayout.Label("Bought skins:");
+                    using (new GUILayout.VerticalScope(EditorStyles.helpBox))
+                    {
+                        foreach (string skinGUID in bike.UnlockedSkins)
+                        {
+                            GUILayout.Label(skinGUID);
+                        }
+                    }
+                }
+            }
         }
 
         private Saves GetSaves()
@@ -54,10 +120,11 @@ namespace EditorWindows
             else
             {
                 ISaveDataSerializer serializer = new BinarySaveDataSerializer();
-                IPersistencyProvider<ISaveDataSerializer> persistencyProvider = new LocalFilePersistency<ISaveDataSerializer>(serializer);
+                IPersistencyProvider<ISaveDataSerializer> persistencyProvider =
+                    new LocalFilePersistency<ISaveDataSerializer>(serializer);
                 Saves saves = new GameObject().AddComponent<Saves>();
                 saves.Initialize(persistencyProvider);
-                
+
                 if (saves is null) throw new Exception("Couldn't initialize saves object");
                 return saves;
             }
@@ -78,7 +145,7 @@ namespace EditorWindows
 
         private void OnDisable()
         {
-            if(_saves is not null) DestroyImmediate(_saves.gameObject);
+            if (_saves is not null) DestroyImmediate(_saves.gameObject);
         }
     }
 }

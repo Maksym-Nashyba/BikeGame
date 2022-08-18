@@ -23,6 +23,11 @@ namespace SaveSystem.Front
             _saveData = saveData;
         }
 
+        public PersistentLevel[] GetAllCompletedLevels()
+        {
+            return _saveData.CareerLevels;
+        }
+        
         public bool IsCompleted(Level level)
         {
             return IsCompleted(level.GetGUID());
