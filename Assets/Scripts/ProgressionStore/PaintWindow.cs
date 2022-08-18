@@ -14,13 +14,13 @@ namespace ProgressionStore
         [SerializeField] private GameObject _buttonPrefab;
         [SerializeField] private GameObject _layoutGroup;
         [SerializeField] private GameObject _closeButton;
-        private List<Button> _currentButtons;
+        private List<GameObject> _currentButtons;
 
         protected override void Awake()
         {
             base.Awake();
             Garage.NewBikeSelected += InstantiateSkinButtons;
-            _currentButtons = new List<Button>();
+            _currentButtons = new List<GameObject>();
         }
 
         public override void Open()
@@ -39,7 +39,7 @@ namespace ProgressionStore
 
         private void DestroyButtons()
         {
-            foreach (Button button in _currentButtons)
+            foreach (GameObject button in _currentButtons)
             {
                 Destroy(button);
             }
@@ -53,10 +53,10 @@ namespace ProgressionStore
             { 
                 int ii = i; 
                 GameObject currentButtonObject = Instantiate(_buttonPrefab,_layoutGroup.transform);
-                _currentButtons.Add(currentButtonObject.GetComponent<Button>()); 
-                TextMeshProUGUI currentButtonChildren = currentButtonObject.GetComponentInChildren<TextMeshProUGUI>();
-                currentButtonChildren.text = $"{i+1}";
-                _currentButtons[ii].onClick.AddListener((() =>
+                _currentButtons.Add(currentButtonObject);
+                TextMeshProUGUI buttonText = currentButtonObject.GetComponentInChildren<TextMeshProUGUI>();
+                buttonText.text = $"{i+1}";
+                _currentButtons[ii].GetComponent<Button>().onClick.AddListener((() =>
                 {
                     Garage.SelectSkin(bikeModel.AllSkins[ii]);
                 }));
