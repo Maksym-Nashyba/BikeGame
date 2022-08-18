@@ -46,8 +46,8 @@ namespace Tests.PlayMode
             Saves writingSaves = Object.FindObjectOfType<Saves>();
             while (!writingSaves.IsValid) yield return null;
             writingSaves.ClearSaves();
-            writingSaves.Currencies.AddDollans(50);
-            writingSaves.Currencies.SubtractDollans(50);
+            writingSaves.Currencies.AddDollans(550);
+            writingSaves.Currencies.SubtractDollans(550);
             writingSaves.Currencies.AddDollans(50);
             writingSaves.Currencies.AddDollans(50);
             while (writingSaves.IsSaving) yield return null;
