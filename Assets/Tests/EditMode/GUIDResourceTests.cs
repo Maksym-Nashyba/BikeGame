@@ -29,7 +29,7 @@ namespace Tests.EditMode
         [Test]
         public void AllSkinsUsed()
         {
-            Skin[] allSkins = Resources.FindObjectsOfTypeAll<Skin>();
+            Skin[] allSkins = Resources.LoadAll<Skin>("GUIDResources/Bikes");
             BikeModel[] bikeModels = Resources.FindObjectsOfTypeAll<BikeModel>();
             foreach (Skin skin in allSkins)
             {
@@ -49,7 +49,7 @@ namespace Tests.EditMode
         [Test]
         public void AllBikesUsed()
         {
-            BikeModel[] bikeModels = Resources.FindObjectsOfTypeAll<BikeModel>();
+            BikeModel[] bikeModels = Resources.LoadAll<BikeModel>("GUIDResources/Bikes");
             BikeModels modelList = GUIDResourceLocator.Initialize().Bikes;
             foreach (BikeModel model in bikeModels)
             {
@@ -60,12 +60,14 @@ namespace Tests.EditMode
         [Test]
         public void AllLevelsUsed()
         {
-            Level[] levels = Resources.FindObjectsOfTypeAll<Level>();
+            Level[] levels = Resources.LoadAll<Level>("GUIDResources/Career");
             Career career = GUIDResourceLocator.Initialize().Career;
+            if(levels is null || levels.Length < 1) Assert.Fail("No levels found");
             foreach (Level level in levels)
             {
-                Assert.True(LevelUsed(level), $"Level: {level.GetGUID()} is never used");
+                if(!LevelUsed(level)) Assert.Fail( $"Level: {level.GetGUID()} is never used");
             }
+            Assert.Pass();
 
             bool LevelUsed(Level searchedLevel)
             {
@@ -101,7 +103,7 @@ namespace Tests.EditMode
         [Test]
         public void AllBikesHaveAtLeastOneSkin()
         {
-            BikeModel[] bikeModels = Resources.FindObjectsOfTypeAll<BikeModel>();
+            BikeModel[] bikeModels = Resources.LoadAll<BikeModel>("GUIDResources/Bikes");
             foreach (BikeModel bikeModel in bikeModels)
             {
                 if (bikeModel.AllSkins is null || bikeModel.AllSkins.Length < 1) Assert.Fail();

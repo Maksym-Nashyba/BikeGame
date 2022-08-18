@@ -12,7 +12,7 @@ namespace IGUIDResources
         {
             return Models.First(model => model.GetGUID() == GUID);
         }
-        
+
         public BikeModel GetDefault()
         {
             return Models[0];

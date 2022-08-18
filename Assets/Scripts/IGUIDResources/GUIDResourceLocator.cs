@@ -19,5 +19,17 @@ namespace IGUIDResources
             Career career = Resources.Load<Career>("GUIDResources/Career/Career");
             return new GUIDResourceLocator(bikes, career);
         }
+        
+        public static GUIDResourceLocator InitializeBikes()
+        {
+            BikeModels bikes = Resources.Load<BikeModels>("GUIDResources/Bikes/BikesRegistry");
+            return new GUIDResourceLocator(bikes, null);
+        }
+        
+        public static GUIDResourceLocator InitializeCareer()
+        {
+            Career career = Resources.Load<Career>("GUIDResources/Career/Career");
+            return new GUIDResourceLocator(null, career);
+        }
     }
 }

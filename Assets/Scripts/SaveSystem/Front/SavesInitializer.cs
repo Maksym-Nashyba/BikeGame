@@ -9,7 +9,7 @@ namespace SaveSystem.Front
         [SerializeField] private Serializers _serializer;
         [SerializeField] private PersistencyProvider _persistencyProvider;
 
-        private void Awake()
+        public void Awake()
         {
             if (AlreadyInitialized()) return;
             
@@ -50,6 +50,7 @@ namespace SaveSystem.Front
         private Saves InstantiateObjectWithSavesComponent()
         {
             GameObject gameObject = new GameObject();
+            gameObject.name = "Saves";
             return gameObject.AddComponent<Saves>();
         }
         
