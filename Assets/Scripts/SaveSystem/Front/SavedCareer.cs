@@ -93,6 +93,7 @@ namespace SaveSystem.Front
             AssertLevelCompleted(levelGUID);
             PersistentLevel levelSave = GetLevelWithGUID(levelGUID);
             if (levelSave.PedalCollected) return;
+            levelSave.PedalCollected = true;
             Changed?.Invoke();
         }
         
