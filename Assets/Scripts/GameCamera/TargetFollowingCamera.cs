@@ -1,3 +1,4 @@
+using Misc;
 using Pausing;
 using UnityEngine;
 
@@ -5,9 +6,9 @@ namespace GameCamera
 {
     public class TargetFollowingCamera : MonoBehaviour,IPausable
     {
-        [SerializeField] private Rigidbody _playerRigidbody; 
         [SerializeField] private float _minDistance;
         [SerializeField] private float _maxDistance;
+        private Rigidbody _playerRigidbody;
         private Transform _playerTransform;
         private Transform _cameraTransform;
         private Vector3 _direction;
@@ -15,8 +16,14 @@ namespace GameCamera
     
         private void Awake()
         {
+            ServiceLocator.PlayerSpawner.Respawned += ResolvePlayerDependencies;
             _cameraTransform = GetComponent<Transform>();
-            _playerTransform = _playerRigidbody.GetComponent<Transform>();
+        }
+
+        private void ResolvePlayerDependencies(GameObject player)
+        {
+            _playerTransform = player.transform;
+            _playerRigidbody = player.GetComponent<Rigidbody>();
         }
 
         private void Start()
@@ -48,6 +55,11 @@ namespace GameCamera
         private void MoveCameraToPosition(Vector3 nextCameraPosition)
         {
             _cameraTransform.position = Vector3.Lerp(_cameraTransform.position, nextCameraPosition, 500f * Time.deltaTime);
+        }
+
+        private void OnDisable()
+        {
+            ServiceLocator.PlayerSpawner.Respawned -= ResolvePlayerDependencies;
         }
 
         public void Pause()

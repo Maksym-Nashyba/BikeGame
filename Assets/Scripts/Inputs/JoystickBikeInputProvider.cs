@@ -6,14 +6,16 @@ namespace Inputs
 {
     public class JoystickBikeInputProvider : MonoBehaviour, IBikeInputProvider
     {
-        [SerializeField] private Transform _cameraTransform;
-        [SerializeField] private GameObject _joystickObject;
+        private Transform _cameraTransform;
+        private GameObject _joystickObject;
         private IJoystick _joystick;
 
         private PlayerNewInput _playerNewInput;
 
         private void Awake()
         {
+            _cameraTransform = ServiceLocator.Camera.transform;
+            _joystickObject = ServiceLocator.InGameUI.JoystickObject;
             _joystick = _joystickObject.GetComponent<IJoystick>();
             _playerNewInput = new PlayerNewInput();
         }

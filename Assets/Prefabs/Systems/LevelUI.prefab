@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 3450610688255414153}
   - component: {fileID: 3450610688255414158}
   - component: {fileID: 3450610688255414159}
-  - component: {fileID: 8431742332327848503}
   m_Layer: 0
   m_Name: UICanvas
   m_TagString: Untagged
@@ -102,21 +101,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &8431742332327848503
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3450610688255414157}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27a2b426c3994a8b929570114f38a7b3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _endGameScreen: {fileID: 3450610688413362246}
-  _scoreValue: {fileID: 3450610689998863081}
-  _timeValue: {fileID: 3450610688459985081}
 --- !u!1 &3450610688328312729
 GameObject:
   m_ObjectHideFlags: 0
@@ -750,6 +734,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3450610689635875412}
+  - component: {fileID: 3324949092329091513}
   m_Layer: 0
   m_Name: LevelUI
   m_TagString: Untagged
@@ -774,6 +759,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3324949092329091513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3450610689635875413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27a2b426c3994a8b929570114f38a7b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  JoystickObject: {fileID: 524039667472215684}
+  _endGameScreen: {fileID: 3450610688413362246}
+  _scoreValue: {fileID: 3450610689998863081}
+  _timeValue: {fileID: 3450610688459985081}
 --- !u!1 &3450610689998863087
 GameObject:
   m_ObjectHideFlags: 0
@@ -1535,6 +1536,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aaa2c939c0359ac4dbce3f49e8b90252, type: 3}
+--- !u!1 &524039667472215684 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2929252283123773939, guid: aaa2c939c0359ac4dbce3f49e8b90252, type: 3}
+  m_PrefabInstance: {fileID: 3450610688378871671}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &524039667472215685 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2929252283123773938, guid: aaa2c939c0359ac4dbce3f49e8b90252, type: 3}
