@@ -11,6 +11,7 @@ namespace LevelObjectives.LevelObjects
         {
             base.OnTriggerEnter(other);
             _respawnPoint = new Transformation(other.transform);
+            ServiceLocator.PlayerSpawner.UnlockCheckpoint(this);
         }
 
         public Transformation GetRespawnTransformation()

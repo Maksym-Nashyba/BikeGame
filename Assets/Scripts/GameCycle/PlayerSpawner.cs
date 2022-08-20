@@ -37,8 +37,6 @@ namespace GameCycle
         {
             GameObject player = Instantiate(_playerPrefab, _spawnPoint.position, _spawnPoint.rotation);
             Respawned?.Invoke(player);
-            
-            //TODO Applying dependencies through ServiceLocator
         }
 
         private void OnDestroy()

@@ -16,18 +16,14 @@ namespace GameCamera
     
         private void Awake()
         {
-            ServiceLocator.PlayerSpawner.Respawned += ResolvePlayerDependencies;
+            ServiceLocator.PlayerSpawner.Respawned += ResolveDependencies;
             _cameraTransform = GetComponent<Transform>();
         }
 
-        private void ResolvePlayerDependencies(GameObject player)
+        private void ResolveDependencies(GameObject player)
         {
             _playerTransform = player.transform;
             _playerRigidbody = player.GetComponent<Rigidbody>();
-        }
-
-        private void Start()
-        {
             _direction = CalculateDirection();
         }
 
@@ -59,7 +55,7 @@ namespace GameCamera
 
         private void OnDisable()
         {
-            ServiceLocator.PlayerSpawner.Respawned -= ResolvePlayerDependencies;
+            ServiceLocator.PlayerSpawner.Respawned -= ResolveDependencies;
         }
 
         public void Pause()

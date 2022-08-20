@@ -1,4 +1,5 @@
 using System.Collections;
+using Misc;
 using UnityEngine;
 
 namespace SBPScripts
@@ -53,6 +54,7 @@ namespace SBPScripts
                     _bicycleController.enabled = false;
                     inactiveColliders.SetActive(true);
                     instantiatedRagdoll = Instantiate(ragdollPrefab);
+                    ServiceLocator.GameLoop.InvokeDied();
                 }
                 else
                 {

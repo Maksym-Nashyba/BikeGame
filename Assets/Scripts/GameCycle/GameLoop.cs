@@ -56,5 +56,7 @@ namespace GameCycle
             objective.Completed += OnObjectiveComplete;
             objective.Begin(_levelAchievements);
         }
+
+        public void InvokeDied() => Died?.Invoke();
     }
 }
