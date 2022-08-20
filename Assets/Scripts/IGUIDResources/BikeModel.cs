@@ -11,7 +11,7 @@ namespace IGUIDResources
         public float stat1;
         public float stat2;
         public float stat3;
-        
+
         public string GetGUID()
         {
             return name;
