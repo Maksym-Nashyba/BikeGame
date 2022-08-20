@@ -27,6 +27,7 @@ namespace GameCycle
 
         private void SpawnPlayer()
         {
+            if (_lastReachedCheckpoint is null) return;
             GameObject player = Instantiate(_playerPrefab);
             Transformation checkpointTransformation = _lastReachedCheckpoint.GetRespawnTransformation();
             player.transform.Apply(checkpointTransformation);
