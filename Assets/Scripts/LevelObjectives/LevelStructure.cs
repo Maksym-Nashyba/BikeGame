@@ -22,7 +22,7 @@ namespace LevelObjectives
 
         internal virtual LevelAchievements InstantiateAchievements()
         {
-            return new LevelAchievements();
+            return new CareerLevelAchievements();
         }
     }
 }

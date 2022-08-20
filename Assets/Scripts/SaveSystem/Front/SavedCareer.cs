@@ -79,7 +79,7 @@ namespace SaveSystem.Front
         
         public bool IsPedalCollected(string levelGUID)
         {
-            AssertLevelCompleted(levelGUID);
+            if (!IsCompleted(levelGUID)) return false;
             return GetLevelWithGUID(levelGUID).PedalCollected;
         }
 
