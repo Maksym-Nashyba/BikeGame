@@ -8,6 +8,7 @@ namespace UI
 {
     public class InGameUI: MonoBehaviour
     {
+        public GameObject JoystickObject;
         [SerializeField] private GameObject _endGameScreen;
         [SerializeField] private TextMeshProUGUI _scoreValue;
         [SerializeField] private TextMeshProUGUI _timeValue;
