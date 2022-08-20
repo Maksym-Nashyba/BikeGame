@@ -1,5 +1,5 @@
 ﻿using System;
-using LevelObjectives;
+using LevelObjectives.LevelObjects;
 using Misc;
 using UnityEngine;
 
@@ -27,15 +27,15 @@ namespace GameCycle
 
         private void SpawnPlayer()
         {
-            GameObject playerGameObject = Instantiate(_playerPrefab);
-            playerGameObject.transform.position = _lastReachedCheckpoint.GetPlayerTransform().position;
-            playerGameObject.transform.rotation = _lastReachedCheckpoint.GetPlayerTransform().rotation;
+            GameObject player = Instantiate(_playerPrefab);
+            Transformation checkpointTransformation = _lastReachedCheckpoint.GetRespawnTransformation();
+            player.transform.Apply(checkpointTransformation);
+            Respawned?.Invoke(player);
         }
         
         private void SpawnPlayerOnStart()
         {
             GameObject player = Instantiate(_playerPrefab, _spawnPoint.position, _spawnPoint.rotation);
-            player.SetActive(true);
             Respawned?.Invoke(player);
             
             //TODO Applying dependencies through ServiceLocator
