@@ -1,6 +1,7 @@
 ﻿using GameCycle;
 using Inputs;
 using LevelObjectives;
+using LevelObjectives.LevelObjects;
 using Pausing;
 using SaveSystem.Front;
 using UI;
@@ -37,6 +38,9 @@ namespace Misc
 
         public static Saves Saves => _serviceLocator._saves;
         private Saves _saves;
+
+        public static Pedal Pedal => _serviceLocator._pedal;
+        [SerializeField] private Pedal _pedal;
         
         public static IBikeInputProvider InputProvider => _serviceLocator._inputProvider;
         [SerializeField] private GameObject _inputProviderObject;
