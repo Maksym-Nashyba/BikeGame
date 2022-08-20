@@ -10,6 +10,8 @@ namespace GameCycle
     {
         public event Action Started;
         public event Action<LevelAchievements> Ended;
+        public event Action Died;
+        
         private Queue<Objective> _objectives;
         private LevelAchievements _levelAchievements;
 
