@@ -13,10 +13,13 @@ namespace LevelObjectives.LevelObjects
 
         private void Start()
         {
-            if (IsAlreadyCollected())
+            ServiceLocator.Saves.ExecuteWhenReady(() =>
             {
-                _pedalTriggerObject.SetActive(false);
-            }
+                if (IsAlreadyCollected())
+                {
+                    _pedalTriggerObject.SetActive(false);
+                }   
+            });
 
             _pedalTriggerObject.GetComponent<PlayerTrigger>().Activated += OnPedalTriggered;
             ServiceLocator.GameLoop.Ended += OnLevelEnded;

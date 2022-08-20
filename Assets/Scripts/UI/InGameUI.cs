@@ -2,6 +2,7 @@
 using Misc;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace UI
 {
@@ -10,6 +11,7 @@ namespace UI
         [SerializeField] private GameObject _endGameScreen;
         [SerializeField] private TextMeshProUGUI _scoreValue;
         [SerializeField] private TextMeshProUGUI _timeValue;
+        [SerializeField] private Toggle _pedalCollectedToggle;
         private GameLoop _gameLoop;
 
         private void Awake()
@@ -33,6 +35,7 @@ namespace UI
         {
             _scoreValue.text = levelAchievements.TotalScore.ToString();
             _timeValue.text = levelAchievements.PlayerPerformanceTime.ToString();
+            _pedalCollectedToggle.isOn = ((CareerLevelAchievements)levelAchievements).IsPedalCollected;
         }
 
         private void OnDisable()

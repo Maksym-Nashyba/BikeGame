@@ -84,6 +84,18 @@ namespace SaveSystem.Front
             IsSaving = false;
         }
 
+        public void ExecuteWhenReady(Action action)
+        {
+            if (IsValid)
+            {
+                action.Invoke();
+            }
+            else
+            {
+                Initialized += action;
+            }
+        }
+        
         public void ClearSaves()
         {
             _currentData = SaveData.GetDefault();
