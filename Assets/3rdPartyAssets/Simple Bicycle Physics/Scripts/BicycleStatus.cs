@@ -18,7 +18,12 @@ namespace SBPScripts
         public GameObject inactiveColliders;
         private BicycleController _bicycleController;
         private Rigidbody _rigidbody;
-        
+
+        private void Awake()
+        {
+            ServiceLocator.PlayerSpawner.Respawned += DestroyOldBikeEntities;
+        }
+
         void Start()
         {
             _bicycleController = GetComponent<BicycleController>();
@@ -55,6 +60,8 @@ namespace SBPScripts
                     inactiveColliders.SetActive(true);
                     instantiatedRagdoll = Instantiate(ragdollPrefab);
                     ServiceLocator.GameLoop.InvokeDied();
+                    
+                    //TODO Kill ragdoll and bike
                 }
                 else
                 {
@@ -81,6 +88,17 @@ namespace SBPScripts
                 }
             }
             _prevOnBike = onBike;
+        }
+
+        private void DestroyOldBikeEntities(GameObject newPlayer)
+        {
+            Destroy(instantiatedRagdoll);
+            if (_bicycleController is not null)
+            {
+                Destroy(_bicycleController.gameObject);
+            }
+            _bicycleController = newPlayer.GetComponent<BicycleController>();
+            dislodged = false;
         }
 
         IEnumerator BikeStand(int instruction)
@@ -120,6 +138,11 @@ namespace SBPScripts
                 transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, 5);
                 _rigidbody.constraints = RigidbodyConstraints.FreezeAll;
             }
+        }
+
+        private void OnDestroy()
+        {
+            ServiceLocator.PlayerSpawner.Respawned -= DestroyOldBikeEntities;
         }
     }
 }
