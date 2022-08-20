@@ -1,4 +1,5 @@
-﻿using GameCycle;
+﻿using System.Globalization;
+using GameCycle;
 using Misc;
 using TMPro;
 using UnityEngine;
@@ -10,6 +11,8 @@ namespace UI
     {
         public GameObject JoystickObject;
         [SerializeField] private GameObject _endGameScreen;
+        [SerializeField] private GameObject _pauseScreen;
+        [SerializeField] private GameObject _controlls;
         [SerializeField] private TextMeshProUGUI _scoreValue;
         [SerializeField] private TextMeshProUGUI _timeValue;
         [SerializeField] private Toggle _pedalCollectedToggle;
@@ -34,11 +37,35 @@ namespace UI
 
         private void SetAchievementsValues(LevelAchievements levelAchievements)
         {
-            _scoreValue.text = levelAchievements.TotalScore.ToString();
-            _timeValue.text = levelAchievements.PlayerPerformanceTime.ToString();
+            _scoreValue.text = levelAchievements.TotalScore.ToString(CultureInfo.InvariantCulture);
+            _timeValue.text = levelAchievements.PlayerPerformanceTime.ToString(CultureInfo.InvariantCulture);
             _pedalCollectedToggle.isOn = ((CareerLevelAchievements)levelAchievements).IsPedalCollected;
         }
 
+        public void OnPauseButton()
+        {
+            ServiceLocator.Pause.PauseAll();
+            _controlls.SetActive(false);
+            DisplayPauseMenu();
+        }
+        
+        public void OnUnpauseButton()
+        {
+            ServiceLocator.Pause.ContinueAll();
+            _controlls.SetActive(true);
+            HidePauseMenu();
+        }
+
+        private void HidePauseMenu()
+        {
+            _pauseScreen.SetActive(false);
+        }
+
+        private void DisplayPauseMenu()
+        {
+            _pauseScreen.SetActive(true);
+        }
+        
         private void OnDisable()
         {
             _gameLoop.Ended -= ShowEndGameScreen;
