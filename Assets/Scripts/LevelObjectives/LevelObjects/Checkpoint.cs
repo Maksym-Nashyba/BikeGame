@@ -1,18 +1,19 @@
-﻿using UnityEngine;
+﻿using Misc;
+using UnityEngine;
 
 namespace LevelObjectives.LevelObjects
 {
     public class Checkpoint : PlayerTrigger
     {
-        private Vector3 _respawnPoint;
+        private Transformation _respawnPoint;
         
         protected override void OnTriggerEnter(Collider other)
         {
             base.OnTriggerEnter(other);
-            _respawnPoint = other.transform.position;
+            _respawnPoint = new Transformation(other.transform);
         }
 
-        public Vector3 GetRespawnPoint()
+        public Transformation GetRespawnTransformation()
         {
             return _respawnPoint;
         }
