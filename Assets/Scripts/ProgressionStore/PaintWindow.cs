@@ -25,16 +25,16 @@ namespace ProgressionStore
 
         public override void Open()
         {
-            if (!_animator.GetCurrentAnimatorStateInfo(0).IsName("Hidden")) return;
-            _animator.Play("Open");
+            if (!_animator.GetCurrentAnimatorStateInfo(0).IsName("HiddenCamera")) return;
+            _animator.Play("OpenPaintWindow");
             _closeButton.SetActive(true);
         }
 
         public override void Close()
         {
             _closeButton.SetActive(false);
-            if (!_animator.GetCurrentAnimatorStateInfo(0).IsName("Shown")) return;
-            _animator.Play("Close");
+            if (!_animator.GetCurrentAnimatorStateInfo(0).IsName("ShownPaintWindow")) return;
+            _animator.Play("ClosePaintWindow");
         }
 
         private void DestroyButtons()
