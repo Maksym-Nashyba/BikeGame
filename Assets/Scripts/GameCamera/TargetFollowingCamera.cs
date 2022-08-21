@@ -8,23 +8,23 @@ namespace GameCamera
     {
         [SerializeField] private float _minDistance;
         [SerializeField] private float _maxDistance;
+        [SerializeField] private Vector3 _direction;
         private Rigidbody _playerRigidbody;
         private Transform _playerTransform;
         private Transform _cameraTransform;
-        private Vector3 _direction;
         private bool _isPaused;
     
         private void Awake()
         {
             ServiceLocator.PlayerSpawner.Respawned += ResolveDependencies;
             _cameraTransform = GetComponent<Transform>();
+            _direction = _direction.normalized;
         }
 
         private void ResolveDependencies(GameObject player)
         {
-            _playerTransform = player.transform;
+            _playerTransform = player.GetComponent<Transform>();
             _playerRigidbody = player.GetComponent<Rigidbody>();
-            _direction = CalculateDirection();
         }
 
         private void LateUpdate()
@@ -33,13 +33,7 @@ namespace GameCamera
             Vector3 nextCameraPosition = GetNextCameraPosition();
             MoveCameraToPosition(nextCameraPosition);
         }
-        
-        private Vector3 CalculateDirection()
-        {
-            Vector3 direction = _cameraTransform.position - _playerTransform.position;
-            direction = direction.normalized;
-            return direction;
-        }
+
         
         private Vector3 GetNextCameraPosition()
         {
