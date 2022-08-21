@@ -92,6 +92,9 @@ Material:
     m_Ints: []
     m_Floats:
     - _AlphaClip: 0
+    - _BaseHeight: 0.01
+    - _BaseScale: 0.015
+    - _BaseSpeed: 0.01
     - _Blend: 0
     - _BumpScale: 1
     - _ClearCoatMask: 0
@@ -100,6 +103,9 @@ Material:
     - _Cutoff: 0.5
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
+    - _DetailsScale: 0.01
+    - _DetailsSpeed: 0.05
+    - _DetaisHeight: 0.002
     - _DstBlend: 0
     - _EnvironmentReflections: 1
     - _GlossMapScale: 0
@@ -108,22 +114,25 @@ Material:
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.005
+    - _PatternScale: 0.02
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
-    - _Speed: 0.1
+    - _Speed: 0.01
     - _SrcBlend: 1
     - _Surface: 0
-    - _WaveHeight: 0.1
+    - _Transparency: 16.42
+    - _WaveHeight: 0.43
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
+    - _BottomColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _MainColor: {r: 0.7877358, g: 0.95990574, b: 1, a: 0.9215686}
+    - _MainColor: {r: 0.7264151, g: 0.7264151, b: 0.7264151, a: 0.9215686}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
   m_BuildTextureStacks: []
