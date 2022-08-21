@@ -308,7 +308,7 @@ namespace SBPScripts
                     // You may use Numpad Inputs as well.
                     Rigidbody.AddTorque(Vector3.up * (SteerInput * 4 * AirTimeSettings.airTimeRotationSensitivity),
                         ForceMode.Impulse);
-                    Rigidbody.AddTorque(transform.right * (rawAccelerationInput * -3 * AirTimeSettings.airTimeRotationSensitivity),
+                    Rigidbody.AddTorque(transform.right * (rawAccelerationInput * -0.5f* AirTimeSettings.airTimeRotationSensitivity),
                         ForceMode.Impulse);
                 }
                 else
