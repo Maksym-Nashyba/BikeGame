@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 540124091}
   - component: {fileID: 540124093}
   - component: {fileID: 540124092}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Score
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -144,13 +144,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1388599956}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: PauseScreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1388599956
 RectTransform:
   m_ObjectHideFlags: 0
@@ -186,7 +186,7 @@ GameObject:
   - component: {fileID: 1499141148}
   - component: {fileID: 1499141147}
   - component: {fileID: 1499141146}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: UnpauseButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -319,7 +319,7 @@ GameObject:
   - component: {fileID: 1650107471}
   - component: {fileID: 1650107473}
   - component: {fileID: 1650107472}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -454,7 +454,7 @@ GameObject:
   - component: {fileID: 1695283881}
   - component: {fileID: 1695283883}
   - component: {fileID: 1695283882}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -530,7 +530,7 @@ GameObject:
   - component: {fileID: 7311365309987614011}
   - component: {fileID: 7606755171505207081}
   - component: {fileID: 7981854492683109257}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Checkmark
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -607,7 +607,7 @@ GameObject:
   - component: {fileID: 3450610688255414153}
   - component: {fileID: 3450610688255414158}
   - component: {fileID: 3450610688255414159}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: UICanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -708,7 +708,7 @@ GameObject:
   - component: {fileID: 3450610688328312728}
   - component: {fileID: 3450610688328312730}
   - component: {fileID: 3450610688328312731}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -841,7 +841,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3450610688413362241}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: EndGameScreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -883,7 +883,7 @@ GameObject:
   - component: {fileID: 3450610688459985086}
   - component: {fileID: 3450610688459985080}
   - component: {fileID: 3450610688459985081}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Time
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1020,7 +1020,7 @@ GameObject:
   - component: {fileID: 3450610688477626343}
   - component: {fileID: 3450610688477626340}
   - component: {fileID: 3450610688477626341}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ControllsCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1123,7 +1123,7 @@ GameObject:
   - component: {fileID: 3450610689074035429}
   - component: {fileID: 3450610689074035431}
   - component: {fileID: 3450610689074035428}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1199,7 +1199,7 @@ GameObject:
   - component: {fileID: 3450610689195147843}
   - component: {fileID: 3450610689195147869}
   - component: {fileID: 3450610689195147842}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: TimeValue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1333,7 +1333,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3450610689635875412}
   - component: {fileID: 3324949092329091513}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: LevelUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1371,7 +1371,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   JoystickObject: {fileID: 524039667472215684}
   _endGameScreen: {fileID: 3450610688413362246}
-  _pauseScreen: {fileID: 0}
+  _pauseScreen: {fileID: 1388599955}
+  _controlls: {fileID: 3450610688477626347}
   _scoreValue: {fileID: 3450610689998863081}
   _timeValue: {fileID: 3450610688459985081}
   _pedalCollectedToggle: {fileID: 2447094145610324000}
@@ -1386,7 +1387,7 @@ GameObject:
   - component: {fileID: 3450610689998863086}
   - component: {fileID: 3450610689998863080}
   - component: {fileID: 3450610689998863081}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Score
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1522,7 +1523,7 @@ GameObject:
   - component: {fileID: 3450610690043675305}
   - component: {fileID: 3450610690043675307}
   - component: {fileID: 3450610690043675304}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ScoreValue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1658,7 +1659,7 @@ GameObject:
   - component: {fileID: 3450610690074338070}
   - component: {fileID: 3450610690074338071}
   - component: {fileID: 3450610690074338068}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: BrakesButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1778,7 +1779,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2691186822869785410}
   - component: {fileID: 2447094145610324000}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: PedalCollected
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1866,7 +1867,7 @@ GameObject:
   - component: {fileID: 2425349053577253665}
   - component: {fileID: 5224074590802676070}
   - component: {fileID: 2138440299308468432}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2004,7 +2005,7 @@ GameObject:
   - component: {fileID: 7721603906063351938}
   - component: {fileID: 4178939053933649407}
   - component: {fileID: 1806172982253661106}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: SprintInput
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2125,7 +2126,7 @@ GameObject:
   - component: {fileID: 2755718907454030017}
   - component: {fileID: 7065565160722467823}
   - component: {fileID: 8244607820431825829}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2202,7 +2203,7 @@ GameObject:
   - component: {fileID: 8851899534598910115}
   - component: {fileID: 1852921976298562573}
   - component: {fileID: 6428675291111108144}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2283,7 +2284,7 @@ GameObject:
   - component: {fileID: 7696854569769909648}
   - component: {fileID: 2788059901008854981}
   - component: {fileID: 2546931903312243284}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: PauseButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}

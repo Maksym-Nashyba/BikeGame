@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.45141846, g: 0.50058436, b: 0.5705903, a: 1}
+  m_IndirectSpecularColor: {r: 0.16557619, g: 0.18226174, b: 0.3311358, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -581,7 +581,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 186961813}
   m_LocalRotation: {x: 0.006107504, y: -0.98290205, z: 0.033163443, w: 0.1810149}
-  m_LocalPosition: {x: 138.98, y: 101.95, z: -51.82}
+  m_LocalPosition: {x: 138.938, y: 103.518, z: -51.915}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -616,7 +616,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 217449388}
   m_LocalRotation: {x: -0, y: 0.69098425, z: -0, w: 0.72286993}
-  m_LocalPosition: {x: -25.08, y: -22.427, z: 28.43}
+  m_LocalPosition: {x: -24.08, y: -21.45, z: 28.48}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -705,7 +705,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 335554109}
   m_LocalRotation: {x: -0, y: 0.19318724, z: -0, w: 0.9811619}
-  m_LocalPosition: {x: -140.447, y: -75.822, z: 111.038}
+  m_LocalPosition: {x: -140.386, y: -75.999, z: 111.187}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1036,22 +1036,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1740430354}
     m_Modifications:
-    - target: {fileID: 1388599955, guid: 00d2a432ee975de4daec9ce2ae29a94f, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3324949092329091513, guid: 00d2a432ee975de4daec9ce2ae29a94f, type: 3}
-      propertyPath: _controlls
-      value: 
-      objectReference: {fileID: 1635876416}
-    - target: {fileID: 3324949092329091513, guid: 00d2a432ee975de4daec9ce2ae29a94f, type: 3}
-      propertyPath: _pauseButton
-      value: 
-      objectReference: {fileID: 1296118956}
-    - target: {fileID: 3324949092329091513, guid: 00d2a432ee975de4daec9ce2ae29a94f, type: 3}
-      propertyPath: _pauseScreen
-      value: 
-      objectReference: {fileID: 1388599955}
     - target: {fileID: 3450610689635875412, guid: 00d2a432ee975de4daec9ce2ae29a94f, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -2632,11 +2616,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 779c00be8a79e57418ba733f02830e4c, type: 3}
   m_PrefabInstance: {fileID: 1990300943}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1296118956 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8921187682800203383, guid: 00d2a432ee975de4daec9ce2ae29a94f, type: 3}
-  m_PrefabInstance: {fileID: 526170328}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1310093915
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2783,7 +2762,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 54fec350d60cd894b846a88d177b7799, type: 3}
       propertyPath: m_CastShadows
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 54fec350d60cd894b846a88d177b7799, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -2878,7 +2857,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 0.415849, g: 0.3915094, b: 1, a: 1}
-  m_Intensity: 0.1
+  m_Intensity: 0.2
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -3018,11 +2997,6 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: f0a4afb9f58501c4ba77cb6e6a2adea5, type: 3}
   m_PrefabInstance: {fileID: 977726953}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1388599955 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1388599955, guid: 00d2a432ee975de4daec9ce2ae29a94f, type: 3}
-  m_PrefabInstance: {fileID: 526170328}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1400093731
 GameObject:
@@ -3450,6 +3424,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: 90838916a80523547abf80a653830c90, type: 2}
     - target: {fileID: 882129737928793925, guid: a251a511b3f14f24cb2c445d1d5831fe, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 882129737928793925, guid: a251a511b3f14f24cb2c445d1d5831fe, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 90838916a80523547abf80a653830c90, type: 2}
@@ -3463,7 +3441,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2786534777698132407, guid: a251a511b3f14f24cb2c445d1d5831fe, type: 3}
       propertyPath: m_CastShadows
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2786534777698132407, guid: a251a511b3f14f24cb2c445d1d5831fe, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -3480,6 +3458,10 @@ PrefabInstance:
     - target: {fileID: 6507901977716847365, guid: a251a511b3f14f24cb2c445d1d5831fe, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 7339356831882890532, guid: a251a511b3f14f24cb2c445d1d5831fe, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7339356831882890532, guid: a251a511b3f14f24cb2c445d1d5831fe, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -3735,11 +3717,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f0a4afb9f58501c4ba77cb6e6a2adea5, type: 3}
---- !u!1 &1635876416 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3450610688477626347, guid: 00d2a432ee975de4daec9ce2ae29a94f, type: 3}
-  m_PrefabInstance: {fileID: 526170328}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1645012456
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3896,8 +3873,8 @@ Transform:
   m_GameObject: {fileID: 1670723722}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.01, y: 1.01, z: 1.01}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4254357741280474410}
   - {fileID: 1501236254}
@@ -4307,7 +4284,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1721070070}
   m_LocalRotation: {x: -0, y: 0.71662474, z: -0, w: -0.6974589}
-  m_LocalPosition: {x: -79.311, y: -38.361, z: 31.686}
+  m_LocalPosition: {x: -79.237, y: -37.586, z: 31.688}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4403,7 +4380,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 0.9339623, g: 0.36580566, b: 0.09251513, a: 1}
-  m_Intensity: 1
+  m_Intensity: 1.25
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -4442,10 +4419,10 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 1
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 1
+  m_BounceIntensity: 1.1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
@@ -8533,7 +8510,7 @@ GameObject:
   - component: {fileID: 4688410036497599541}
   - component: {fileID: 577391991598631886}
   - component: {fileID: 4688410036497599542}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: DeadTreeDown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8732,7 +8709,7 @@ GameObject:
   - component: {fileID: 3469287838066280652}
   - component: {fileID: 1711813855079234566}
   - component: {fileID: 3469287838066280653}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: TreeSimple
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8805,7 +8782,7 @@ GameObject:
   - component: {fileID: 3469287838000965254}
   - component: {fileID: 1711813855282303564}
   - component: {fileID: 3469287838000965255}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: TreeSimple (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8932,7 +8909,7 @@ GameObject:
   - component: {fileID: 3469287837839202469}
   - component: {fileID: 1711813854917160047}
   - component: {fileID: 3469287837839202470}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: TreeCrooked (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9983,7 +9960,7 @@ GameObject:
   - component: {fileID: 3469287836992017116}
   - component: {fileID: 1711813856150349334}
   - component: {fileID: 3469287836992017117}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: TreeCrooked
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17954,7 +17931,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1769983920761028633}
-  m_Mesh: {fileID: 5668788170693331272, guid: b6dc59d463765794db2177ca1a5e31c0, type: 3}
+  m_Mesh: {fileID: 5668788170693331272, guid: e6c6216264aef314ebb06a4d0ec5a60f, type: 3}
 --- !u!65 &2626783608720987399
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -18745,7 +18722,7 @@ GameObject:
   - component: {fileID: 1284958296464955875}
   - component: {fileID: 3905150338250632489}
   - component: {fileID: 3905150338250632490}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: TreeLong (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19137,7 +19114,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 919132148995585385}
-  m_Mesh: {fileID: 5668788170693331272, guid: b6dc59d463765794db2177ca1a5e31c0, type: 3}
+  m_Mesh: {fileID: 5668788170693331272, guid: e6c6216264aef314ebb06a4d0ec5a60f, type: 3}
 --- !u!65 &3469287836635275383
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -20193,7 +20170,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 919132148261642214}
-  m_Mesh: {fileID: 5668788170693331272, guid: b6dc59d463765794db2177ca1a5e31c0, type: 3}
+  m_Mesh: {fileID: 5668788170693331272, guid: e6c6216264aef314ebb06a4d0ec5a60f, type: 3}
 --- !u!65 &3469287838451337978
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -20214,7 +20191,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 919132148254769141}
-  m_Mesh: {fileID: 5668788170693331272, guid: b6dc59d463765794db2177ca1a5e31c0, type: 3}
+  m_Mesh: {fileID: 5668788170693331272, guid: e6c6216264aef314ebb06a4d0ec5a60f, type: 3}
 --- !u!33 &3469287838460350244
 MeshFilter:
   m_ObjectHideFlags: 0

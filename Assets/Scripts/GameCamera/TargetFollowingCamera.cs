@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using Misc;
 using Pausing;
 using UnityEngine;
@@ -13,12 +15,15 @@ namespace GameCamera
         private Transform _playerTransform;
         private Transform _cameraTransform;
         private bool _isPaused;
-    
+        private float _lastCameraElevation;
+        private Queue<Vector3> _lookaheadOffsetHistory; 
+
         private void Awake()
         {
             ServiceLocator.PlayerSpawner.Respawned += ResolveDependencies;
             _cameraTransform = GetComponent<Transform>();
             _direction = _direction.normalized;
+            _lookaheadOffsetHistory = new Queue<Vector3>(10);
         }
 
         private void ResolveDependencies(GameObject player)
@@ -37,9 +42,60 @@ namespace GameCamera
         
         private Vector3 GetNextCameraPosition()
         {
-            float distance = _minDistance + (_maxDistance - _minDistance) * _playerRigidbody.velocity.magnitude / 20f;
-            Vector3 nextCameraPosition = _playerTransform.position + (distance * _direction);
+            Vector3 nextCameraPosition = _playerTransform.position + OffsetFromPlayerPosition();
+            nextCameraPosition = ApplyLookahead(nextCameraPosition);
+            nextCameraPosition = MoveToAvoidCollisions(nextCameraPosition);
             return nextCameraPosition;
+        }
+
+        private Vector3 MoveToAvoidCollisions(Vector3 rawCameraPosition)
+        {
+            Vector3 raycastOrigin = _cameraTransform.position;
+            Vector3 raycastTarget = _playerTransform.position;
+            Vector3 originToTarget = raycastTarget - raycastOrigin;
+            
+            Ray ray = new Ray(raycastOrigin, originToTarget);
+            bool directlyObstructed = Physics.Raycast(ray, out RaycastHit hit, originToTarget.magnitude - 1f);
+            _lastCameraElevation += directlyObstructed ? Time.deltaTime * 4f : -Time.deltaTime;
+
+            Vector3 velocity = _playerRigidbody.velocity.WithZeroY();
+            if (velocity.magnitude > 2f)
+            {
+                raycastOrigin += velocity / 3f;
+                raycastTarget += velocity / 3f;
+                originToTarget = raycastTarget - raycastOrigin;
+                
+                Ray predictionRay = new Ray(raycastOrigin, originToTarget);
+                bool forwardObstructed = Physics.Raycast(predictionRay, out RaycastHit predictionHit, originToTarget.magnitude - 1f);
+                _lastCameraElevation += forwardObstructed ? Time.deltaTime * 4f : -Time.deltaTime;
+            }
+            
+            _lastCameraElevation = Mathf.Clamp(_lastCameraElevation, 0, 5f);
+            return rawCameraPosition + Vector3.up * _lastCameraElevation;
+        }
+
+        private Vector3 ApplyLookahead(Vector3 rawCameraPosition)
+        {
+            Vector3 velocity = _playerRigidbody.velocity;
+            float speed = velocity.magnitude / 20f;
+            velocity = velocity.WithZeroY().normalized;
+
+            Vector3 cameraRight = _cameraTransform.right.WithZeroY();
+            float lookaheadToCameraAngle = Vector3.Angle(cameraRight, velocity) / 180f;
+            Vector3 offset = velocity * (7.5f * speed * (1f- Mathf.Sin(lookaheadToCameraAngle * Mathf.PI) / 1.3f));
+
+            _lookaheadOffsetHistory.Enqueue(offset);
+            Vector3 historyAverageOffset = GetAverage(_lookaheadOffsetHistory);
+            offset += historyAverageOffset;
+            offset /= 2f;
+            
+            return rawCameraPosition + offset;
+        }
+
+        private Vector3 OffsetFromPlayerPosition()
+        {
+            float distance = _minDistance + (_maxDistance - _minDistance) * _playerRigidbody.velocity.magnitude / 20f;
+            return distance * _direction;   
         }
 
         private void MoveCameraToPosition(Vector3 nextCameraPosition)
@@ -47,6 +103,17 @@ namespace GameCamera
             _cameraTransform.position = Vector3.Lerp(_cameraTransform.position, nextCameraPosition, 500f * Time.deltaTime);
         }
 
+        private Vector3 GetAverage(Queue<Vector3> queue)
+        {
+            Vector3 result = Vector3.zero;
+            foreach (Vector3 vector in queue)
+            {
+                result += vector;
+            }
+
+            return result / queue.Count;
+        }
+        
         private void OnDisable()
         {
             ServiceLocator.PlayerSpawner.Respawned -= ResolveDependencies;
