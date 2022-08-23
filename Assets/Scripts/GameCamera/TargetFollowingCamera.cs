@@ -58,6 +58,11 @@ namespace GameCamera
             bool directlyObstructed = Physics.Raycast(ray, out RaycastHit hit, originToTarget.magnitude - 1f);
             _lastCameraElevation += directlyObstructed ? Time.deltaTime * 4f : -Time.deltaTime;
 
+            if (directlyObstructed && hit.transform.TryGetComponent(out CameraObstruction transparencyToggle))
+            {
+                transparencyToggle.MakeTransparentForSomeTime();
+            }
+
             Vector3 velocity = _playerRigidbody.velocity.WithZeroY();
             if (velocity.magnitude > 2f)
             {
