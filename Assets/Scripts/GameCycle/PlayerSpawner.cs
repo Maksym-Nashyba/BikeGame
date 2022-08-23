@@ -14,7 +14,7 @@ namespace GameCycle
         
         private Checkpoint _lastReachedCheckpoint;
 
-        private void Start()
+        private void Awake()
         {
             ServiceLocator.GameLoop.Started += SpawnPlayerOnStart;
             ServiceLocator.GameLoop.Died += SpawnPlayer;
