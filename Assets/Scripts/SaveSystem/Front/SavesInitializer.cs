@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using SaveSystem.PersistencyAndSerialization;
 using UnityEngine;
 
@@ -8,19 +9,44 @@ namespace SaveSystem.Front
     {
         [SerializeField] private Serializers _serializer;
         [SerializeField] private PersistencyProvider _persistencyProvider;
-
-        public void Awake()
+        [SerializeField] private InitializationType _initializationType;
+        private bool _startedInitializing;
+        
+        public async void Awake()
         {
-            if (AlreadyInitialized()) return;
-            
-            ISaveDataSerializer serializer = BuildSerializer(_serializer);
-            IPersistencyProvider<ISaveDataSerializer> persistencyProvider = BuildPersistencyProvider(_persistencyProvider, serializer);
-            Saves saves = InstantiateObjectWithSavesComponent();
-            saves.Initialize(persistencyProvider);
-            DontDestroyOnLoad(saves);
+            if (_initializationType != InitializationType.Automatic || AlreadyInitialized()) Destroy(this);
+
+            await Initialize();
         }
-    
-        private IPersistencyProvider<ISaveDataSerializer> BuildPersistencyProvider(PersistencyProvider persistencyProvider, ISaveDataSerializer serializer)
+
+        public Task<Saves> InitializeOnDemand()
+        {
+            if (_initializationType != InitializationType.OnDemand)
+            {
+                throw new InvalidOperationException(
+                    $"This {nameof(SavesInitializer)}'s initialization type is not set to {nameof(InitializationType.OnDemand)}");
+            }
+
+            return Initialize();
+        }
+        
+        private async Task<Saves> Initialize()
+        {
+            Saves saves = InitializeSavesObject();
+            DontDestroyOnLoad(saves);
+
+            bool initialized = false;
+            saves.ExecuteWhenReady(() =>
+            {
+                initialized = true;
+            });
+            while (!initialized) await Task.Yield();
+            return saves;
+        }
+        
+        private IPersistencyProvider<ISaveDataSerializer> BuildPersistencyProvider(
+            PersistencyProvider persistencyProvider,
+            ISaveDataSerializer serializer)
         {
             switch (persistencyProvider)
             {
@@ -47,16 +73,26 @@ namespace SaveSystem.Front
             }
         }
 
-        private Saves InstantiateObjectWithSavesComponent()
+        private Saves InitializeSavesObject()
         {
-            GameObject gameObject = new GameObject();
-            gameObject.name = "Saves";
-            return gameObject.AddComponent<Saves>();
+            ISaveDataSerializer serializer = BuildSerializer(_serializer);
+            IPersistencyProvider<ISaveDataSerializer> persistencyProvider = BuildPersistencyProvider(_persistencyProvider, serializer);
+            
+            GameObject gameObject = new GameObject { name = "Saves" };
+            Saves saves = gameObject.AddComponent<Saves>();
+            saves.Initialize(persistencyProvider);
+            return saves;
         }
         
         private bool AlreadyInitialized()
         {
             return FindObjectOfType<Saves>() is not null;
+        }
+
+        private enum InitializationType
+        {
+            Automatic,
+            OnDemand
         }
         
         private enum Serializers

@@ -10,13 +10,12 @@ namespace SaveSystem.Front
 {
     public class Saves : MonoBehaviour
     {
-        public event Action Initialized;
         public bool IsValid { get; private set; }
         public bool IsSaving { get; private set; }
         public SavedBikes Bikes { get; private set; }
         public SavedCurrencies Currencies { get; private set; }
         public SavedCareer Career { get; private set; }
-        
+        private event Action Initialized;
         private IPersistencyProvider<ISaveDataSerializer> _persistencyProvider;
         private SaveData _currentData;
         private Queue<SaveData> _pushQueue;
