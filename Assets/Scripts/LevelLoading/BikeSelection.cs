@@ -68,23 +68,13 @@ namespace LevelLoading
         
         private void Update()
         {
-            if (_currentIndex == 0)
-            {
-                _previousButton.interactable = false;
-            }
-            else
-            {
-                _previousButton.interactable = true;
-            }
-
-            if (_currentIndex >= _persistentBikes.Length - 1)
-            {
-                _nextButton.interactable = false;
-            }
-            else
-            {
-                _nextButton.interactable = true;
-            }
+            UpdateButtonsStatus(_currentIndex, _persistentBikes.Length);
+        }
+        
+        private void UpdateButtonsStatus(int currentIndex, int levelsCount)
+        {
+            _nextButton.interactable = currentIndex < levelsCount - 1;
+            _previousButton.interactable = currentIndex > 0;
         }
 
         public void SelectBike()
