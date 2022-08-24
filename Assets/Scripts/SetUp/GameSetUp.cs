@@ -9,21 +9,21 @@ namespace SetUp
     public class GameSetUp : MonoBehaviour
     {
         internal event Action FinishedSetUp;
-        internal bool RegistrationOpen => !StartedSetUp;
-        private bool StartedSetUp;
-        private List<Task> SetUpTasks;
+        internal bool RegistrationOpen => !_startedSetUp;
+        private bool _startedSetUp;
+        private List<Task> _setUpTasks;
 
         private void Awake()
         {
-            SetUpTasks = new List<Task>();
+            _setUpTasks = new List<Task>();
             RegisterSetUpTask(FindObjectOfType<SavesInitializer>().InitializeOnDemand());
         }
 
         private async void Update()
         {
-            if (!StartedSetUp)
+            if (!_startedSetUp)
             {
-                StartedSetUp = true;
+                _startedSetUp = true;
                 await PerformSetUp();
             }
         }
@@ -32,17 +32,16 @@ namespace SetUp
         {
             if (!RegistrationOpen) throw new Exception("Start up tasks should be registered in Start/Awake");
             
-            SetUpTasks.Add(task);
+            _setUpTasks.Add(task);
         }
 
         private async Task PerformSetUp()
         {
-            foreach (Task task in SetUpTasks)
+            foreach (Task task in _setUpTasks)
             {
                 await task;
             }
             FinishedSetUp?.Invoke();
-            Debug.Log(FindObjectOfType<Saves>().Bikes.GetAllUnlockedBikes()[0].GUID);
         }
     }
 }
