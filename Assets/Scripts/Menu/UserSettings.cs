@@ -38,6 +38,7 @@ namespace Menu
         public static void SetGraphicsTier(GraphicsTier graphicsTier)
         {
             PlayerPrefs.SetInt(_graphicsKey, (int)graphicsTier);
+            PlayerPrefs.Save();
         }
         
         public enum GraphicsTier
