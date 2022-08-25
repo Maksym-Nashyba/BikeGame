@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using SaveSystem.Front;
 using UnityEngine;
 
 namespace SetUp
@@ -10,13 +9,12 @@ namespace SetUp
     {
         internal event Action FinishedSetUp;
         internal bool RegistrationOpen => !_startedSetUp;
+        private List<Task> _setUpTasks = new List<Task>();
         private bool _startedSetUp;
-        private List<Task> _setUpTasks;
 
         private void Awake()
         {
-            _setUpTasks = new List<Task>();
-            RegisterSetUpTask(FindObjectOfType<SavesInitializer>().InitializeOnDemand());
+            FinishedSetUp += OnSetUpPerformed;
         }
 
         private async void Update()
@@ -42,6 +40,12 @@ namespace SetUp
                 await task;
             }
             FinishedSetUp?.Invoke();
+        }
+
+        private void OnSetUpPerformed()
+        {
+            FinishedSetUp -= OnSetUpPerformed;
+            enabled = false;
         }
     }
 }

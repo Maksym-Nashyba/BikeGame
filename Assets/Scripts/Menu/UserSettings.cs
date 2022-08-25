@@ -32,7 +32,7 @@ namespace Menu
 
         public static GraphicsTier GetGraphicsTier()
         {
-            return (GraphicsTier)PlayerPrefs.GetInt(_graphicsKey, 0);
+            return (GraphicsTier)PlayerPrefs.GetInt(_graphicsKey, 1);
         }
 
         public static void SetGraphicsTier(GraphicsTier graphicsTier)

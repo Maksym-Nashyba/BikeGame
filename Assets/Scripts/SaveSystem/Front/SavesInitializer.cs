@@ -14,7 +14,7 @@ namespace SaveSystem.Front
         
         public async void Awake()
         {
-            if (_initializationType != InitializationType.Automatic || AlreadyInitialized()) Destroy(this);
+            if (_initializationType != InitializationType.Automatic || AlreadyInitialized()) Destroy(gameObject);
 
             await Initialize();
         }
