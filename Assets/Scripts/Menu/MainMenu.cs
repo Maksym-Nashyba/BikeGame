@@ -20,5 +20,16 @@ namespace Menu
             LevelLoader levelLoader = new LevelLoader();
             await levelLoader.LoadLevelWithBikeSelection(selectedLevel.GetGUID());
         }
+
+        public void LoadScene(string sceneName)
+        {
+            SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
+        }
+
+        public void Quit()
+        {
+            Application.Quit();
+            Debug.Log("Quited");
+        }
     }
 }

@@ -26,7 +26,7 @@ namespace Menu
 
         public static void SetAmbientVolume(float value)
         {
-            PlayerPrefs.SetFloat(_effectsKey, value);
+            PlayerPrefs.SetFloat(_ambientKey, value);
             PlayerPrefs.Save();
         }
 
