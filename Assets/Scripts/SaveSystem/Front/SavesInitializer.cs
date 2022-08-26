@@ -14,7 +14,11 @@ namespace SaveSystem.Front
         
         public async void Awake()
         {
-            if (_initializationType != InitializationType.Automatic || AlreadyInitialized()) Destroy(gameObject);
+            if (_initializationType != InitializationType.Automatic || AlreadyInitialized())
+            {
+                Destroy(gameObject);
+                return;
+            }
 
             await Initialize();
         }
@@ -25,6 +29,11 @@ namespace SaveSystem.Front
             {
                 throw new InvalidOperationException(
                     $"This {nameof(SavesInitializer)}'s initialization type is not set to {nameof(InitializationType.OnDemand)}");
+            }
+
+            if (AlreadyInitialized())
+            {
+                throw new Exception("Already initialized");
             }
 
             return Initialize();

@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -24,7 +23,6 @@ namespace SetUp
         {
             _sceneLoadingProcess = SceneManager.LoadSceneAsync("MainMenu", LoadSceneMode.Additive);
             _sceneLoadingProcess.allowSceneActivation = false;
-            StartCoroutine(LoadSceneAsync(_sceneLoadingProcess));
         }
 
         private async Task ActivateMainMenuSceneWhenLoaded()
@@ -40,11 +38,6 @@ namespace SetUp
                     SceneManager.UnloadSceneAsync("SetUp");
                 }
             }
-        }
-
-        private IEnumerator LoadSceneAsync(AsyncOperation process)
-        {
-            yield return process;
         }
     }
 }

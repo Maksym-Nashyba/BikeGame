@@ -734,6 +734,7 @@ GameObject:
   - component: {fileID: 1486081672}
   - component: {fileID: 1486081673}
   - component: {fileID: 1486081674}
+  - component: {fileID: 1486081675}
   m_Layer: 0
   m_Name: SetUp
   m_TagString: Untagged
@@ -795,6 +796,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _audioMixer: {fileID: 24100000, guid: 7214612e2321bc54ea92dc5602362d70, type: 2}
+--- !u!114 &1486081675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1486081670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7728e4820d75441b8592f5856458718d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _savesInitializer: {fileID: 2592393706603501643}
 --- !u!1 &1701289251
 GameObject:
   m_ObjectHideFlags: 0
@@ -1127,3 +1141,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a244af734f9ef664cbf4ae305e0bfc7c, type: 3}
+--- !u!114 &2592393706603501643 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2592393705913606262, guid: a244af734f9ef664cbf4ae305e0bfc7c, type: 3}
+  m_PrefabInstance: {fileID: 2592393706603501642}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86132300f2e84971acceeee66d8dab04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
