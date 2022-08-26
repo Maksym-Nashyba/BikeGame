@@ -14,7 +14,7 @@ namespace ProgressionStore
 
         private void Start()
         {
-           NewBikeSelected?.Invoke(GUIDResourceLocator.Initialize().Bikes.GetDefault());
+           SelectBike(GUIDResourceLocator.Initialize().Bikes.GetDefault());
         }
 
         public void SelectBike(BikeModel bikeModel)

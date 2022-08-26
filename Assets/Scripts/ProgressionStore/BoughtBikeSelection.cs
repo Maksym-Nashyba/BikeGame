@@ -1,7 +1,5 @@
-﻿using System;
-using IGUIDResources;
+﻿using IGUIDResources;
 using UnityEngine;
-using UnityEngine.InputSystem.HID;
 using UnityEngine.UI;
 
 namespace ProgressionStore
@@ -12,7 +10,7 @@ namespace ProgressionStore
         [SerializeField] private Button _rightButton;
         private GUIDResourceLocator _resourceLocator;
         private Garage _garage;
-        int _currentBikeIndex;
+        private int _currentBikeIndex;
 
         private void Awake()
         {
