@@ -2,7 +2,7 @@
 
 namespace ProgressionStore
 {
-    public abstract class ShopWindow : MonoBehaviour
+    public abstract class GarageShop : MonoBehaviour
     {
         protected Garage Garage;
         

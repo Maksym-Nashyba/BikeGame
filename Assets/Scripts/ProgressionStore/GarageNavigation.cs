@@ -2,9 +2,9 @@
 
 namespace ProgressionStore
 {
-    public class ShopWindows : MonoBehaviour
+    public class GarageNavigation : MonoBehaviour
     {
-        [SerializeField] private ShopWindow[] _windows;
+        [SerializeField] private GarageShop[] _windows;
 
         public void OpenWindow(int index)
         {

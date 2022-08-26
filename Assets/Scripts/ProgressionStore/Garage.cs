@@ -9,7 +9,6 @@ namespace ProgressionStore
     {
         public event Action<BikeModel> NewBikeSelected;
         public event Action<Skin> NewSkinSelected;
-        public Shop Shop { get; private set; }
         private BikeModel[] _bikes;
         private Saves _saves;
 
