@@ -4,15 +4,15 @@ namespace ProgressionStore
 {
     public class GarageNavigation : MonoBehaviour
     {
-        [SerializeField] private GarageShop[] _windows;
+        [SerializeField] private GarageShop[] _shops;
 
         public void OpenWindow(int index)
         {
-            for (int  i = 0;  i < _windows.Length;  i++)
+            for (int  i = 0;  i < _shops.Length;  i++)
             {
-                if(i != index) _windows[i].Close();
+                if(i != index) _shops[i].Close();
             }
-            _windows[index].Open();
+            _shops[index].Open();
         }
     }
 }

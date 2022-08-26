@@ -4,11 +4,14 @@ namespace ProgressionStore
 {
     public class GarageUI : MonoBehaviour
     {
-        [SerializeField] private GameObject _bikeSelectionButton;
-         
-        public void SetBikeSelectionEnabled(bool state)
+        [SerializeField] private GameObject[] _generalUI;
+
+        public void SetGeneralUIActive(bool state)
         {
-            _bikeSelectionButton.SetActive(state);
+            foreach (GameObject uiElement in _generalUI)
+            {
+                uiElement.SetActive(state);
+            }
         }
     }
 }
