@@ -26,5 +26,6 @@ namespace ProgressionStore
         {
             NewSkinSelected?.Invoke(skin);
         }
+        
     }
 }

@@ -1,14 +1,22 @@
 ﻿using System;
+using IGUIDResources;
 using UnityEngine;
 
-namespace ProgressionStore
+namespace ProgressionStore.PaintShop
 {
     public class PaintGarageShop : GarageShop
     {
-        [SerializeField] private Animator _animator;
-
         public override event Action Opened;
         public override event Action Closed;
+        
+        [SerializeField] private Animator _animator;
+        [SerializeField] private PaintContainerArray _paintContainers;
+
+        protected override void Awake()
+        {
+            base.Awake();
+            Garage.NewBikeSelected += OnNewBikeSelected;
+        }
 
         public override void Open()
         {
@@ -24,6 +32,11 @@ namespace ProgressionStore
             _animator.Play("ClosePaintWindow");
             GarageUI.SetGeneralUIActive(true);
             Closed?.Invoke();
+        }
+
+        private void OnNewBikeSelected(BikeModel bikeModel)
+        {
+            _paintContainers.RebuildForSkins(bikeModel.AllSkins);            
         }
     }
 }
