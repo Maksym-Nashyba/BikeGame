@@ -11,11 +11,14 @@ namespace ProgressionStore.PaintShop
         
         [SerializeField] private Animator _animator;
         [SerializeField] private PaintContainerArray _paintContainers;
-
+        [SerializeField] private PaintShopUI _paintShopUI;
+        
         protected override void Awake()
         {
             base.Awake();
             Garage.NewBikeSelected += OnNewBikeSelected;
+            _paintShopUI.SelectionButtonPressed += OnSelectionButton;
+            _paintContainers.ContainerSelected += OnPaintContainerSelected;
         }
 
         public override void Open()
@@ -37,6 +40,23 @@ namespace ProgressionStore.PaintShop
         private void OnNewBikeSelected(BikeModel bikeModel)
         {
             _paintContainers.RebuildForSkins(bikeModel.AllSkins);            
+        }
+
+        private void OnSelectionButton(int index)
+        {
+            _paintContainers.Select(index);
+        }
+
+        private void OnPaintContainerSelected(PaintContainer container)
+        {
+            Garage.SelectSkin(container.CurrentSkin);
+        }
+
+        private void OnDisable()
+        {
+            Garage.NewBikeSelected -= OnNewBikeSelected;
+            _paintShopUI.SelectionButtonPressed -= OnSelectionButton;
+            _paintContainers.ContainerSelected -= OnPaintContainerSelected;
         }
     }
 }
