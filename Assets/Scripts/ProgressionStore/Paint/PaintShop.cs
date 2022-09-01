@@ -1,10 +1,11 @@
 ﻿using System;
 using IGUIDResources;
+using ProgressionStore.PaintShop;
 using UnityEngine;
 
-namespace ProgressionStore.PaintShop
+namespace ProgressionStore.Paint
 {
-    public class PaintGarageShop : GarageShop
+    public class PaintShop : GarageShop
     {
         public override event Action Opened;
         public override event Action Closed;
@@ -12,12 +13,13 @@ namespace ProgressionStore.PaintShop
         [SerializeField] private Animator _animator;
         [SerializeField] private PaintContainerArray _paintContainers;
         [SerializeField] private PaintShopUI _paintShopUI;
+        [SerializeField] private PaintShopRotatingButton _rotatingButton;
         
         protected override void Awake()
         {
             base.Awake();
             Garage.NewBikeSelected += OnNewBikeSelected;
-            _paintShopUI.SelectionButtonPressed += OnSelectionButton;
+            _paintShopUI.SelectionButtonPressed += OnContainerSelectionButton;
             _paintContainers.ContainerSelected += OnPaintContainerSelected;
         }
 
@@ -42,7 +44,7 @@ namespace ProgressionStore.PaintShop
             _paintContainers.RebuildForSkins(bikeModel.AllSkins);            
         }
 
-        private void OnSelectionButton(int index)
+        private void OnContainerSelectionButton(int index)
         {
             _paintContainers.Select(index);
         }
@@ -55,7 +57,7 @@ namespace ProgressionStore.PaintShop
         private void OnDisable()
         {
             Garage.NewBikeSelected -= OnNewBikeSelected;
-            _paintShopUI.SelectionButtonPressed -= OnSelectionButton;
+            _paintShopUI.SelectionButtonPressed -= OnContainerSelectionButton;
             _paintContainers.ContainerSelected -= OnPaintContainerSelected;
         }
     }
