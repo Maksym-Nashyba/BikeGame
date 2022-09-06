@@ -1,4 +1,5 @@
 ﻿using IGUIDResources;
+using ProgressionStore.Paint;
 using ProgressionStore.PaintShop;
 using UnityEngine;
 
@@ -11,16 +12,16 @@ namespace ProgressionStore
         [SerializeField] private GameObject _bikeParentGameObject;
         private GameObject _currentBike;
         private Garage _garage;
-        private PaintGarageShop _paintGarageShop;
+        private Paint.PaintShop _paintShop;
         private GUIDResourceLocator _resourceLocator;
 
         private void Awake()
         { 
             _garage = FindObjectOfType<Garage>();
-            _paintGarageShop = FindObjectOfType<PaintGarageShop>();
+            _paintShop = FindObjectOfType<Paint.PaintShop>();
             _garage.NewBikeSelected += Show;
             _garage.NewSkinSelected += ChangeSkin;
-            _paintGarageShop.Opened += MoveBikeToVendingMachine;
+            _paintShop.Opened += MoveBikeToVendingMachine;
         }
 
         private void Show(BikeModel bikeModel)
@@ -54,7 +55,7 @@ namespace ProgressionStore
         {
             _garage.NewBikeSelected -= Show;
             _garage.NewSkinSelected -= ChangeSkin;
-            _paintGarageShop.Opened -= MoveBikeToVendingMachine;
+            _paintShop.Opened -= MoveBikeToVendingMachine;
         }
     }
 }
