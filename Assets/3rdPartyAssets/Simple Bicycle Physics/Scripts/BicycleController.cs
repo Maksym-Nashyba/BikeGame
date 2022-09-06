@@ -65,7 +65,7 @@ namespace SBPScripts
 
     #endregion
     
-    public class BicycleController : MonoBehaviour, IPausable
+    public class BicycleController : MonoBehaviour, IPausable, IBicycle
     {
         #region FUCKTON of fields
 
@@ -172,7 +172,6 @@ namespace SBPScripts
         private IBikeInputProvider _inputProvider;
         private Transform _transform;
         private bool _isPaused;
-        
         #endregion
 
         private void Awake()
@@ -240,13 +239,15 @@ namespace SBPScripts
                 AlignToMovementDirection();
             }
         }
-        
+
         private void FixedUpdate()
         {
             if (_isPaused) return;
 
             float currentSpeed = Rigidbody.velocity.magnitude;
-            
+
+
+
             RotateForwardPhysicsWheel(velocityToSteerAngleCurve.Evaluate(currentSpeed));
             fPhysicsWheelConfigJoint.axis = new Vector3(1, 0, 0);
 
@@ -618,5 +619,11 @@ namespace SBPScripts
             Rigidbody.isKinematic = false;
             _isPaused = false;
         }
+
+        public float GetCurrentSpeed()
+        {
+            return Rigidbody.velocity.magnitude; 
+        }
+        
     }
 }
