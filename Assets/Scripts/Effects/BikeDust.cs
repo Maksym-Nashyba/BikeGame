@@ -4,7 +4,6 @@ public class BikeDust : MonoBehaviour
 {
     [SerializeField] private ParticleSystem DustRear;
     [SerializeField] private ParticleSystem DustFront;
-    private bool _checker;
     private IBicycle _bicycle;
     private int _fixUpdateNumber;
     private float _currentSpeed;
@@ -20,22 +19,19 @@ public class BikeDust : MonoBehaviour
 
         GetTextureColor();
         CreateDust(_currentSpeed);
-        
     }
 
     private void GetTextureColor()
     {
+        Vector3 rayTransform = transform.position + Vector3.up * 1.2f;
         
-        if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit))
+        if (Physics.Raycast(rayTransform, Vector3.down, out RaycastHit hit))
         {
-            Debug.DrawLine(transform.position, hit.point, Color.red);
             Debug.Log("Aboba");
             Renderer renderer = hit.transform.GetComponent<Renderer>();
             MeshCollider meshCollider = hit.collider as MeshCollider;
-            if (meshCollider is null || renderer is null) return;
+            if (meshCollider is null) return;
             
-            _checker = true;
-
             Texture2D texture = renderer.material.mainTexture as Texture2D;
             Vector2 pixelOnTexture = hit.textureCoord;
             pixelOnTexture.x *= texture.width;
@@ -54,7 +50,8 @@ public class BikeDust : MonoBehaviour
 
         if (_fixUpdateNumber == _emitDelay)
         {
-            EmitParticle();
+            DustRear.Emit(1);
+            DustFront.Emit(1);
         }
         if (_fixUpdateNumber > _emitDelay)
         {
@@ -70,12 +67,4 @@ public class BikeDust : MonoBehaviour
         rendererRear.material.color = color;
         rendererFront.material.color = color;
     }
-
-    private void EmitParticle()
-    {
-        if (_checker != true) return;
-        DustRear.Emit(1);
-        DustFront.Emit(1);
-    }
-
 }
