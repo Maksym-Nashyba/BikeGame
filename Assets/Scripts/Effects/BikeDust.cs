@@ -28,8 +28,8 @@ public class BikeDust : MonoBehaviour
         
         if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit))
         {
-            Debug.DrawLine(transform.position, hit.point, Color.red);
-            Debug.Log("Aboba");
+            //Debug.DrawLine(transform.position, hit.point, Color.red);
+            //Debug.Log("Aboba");
             Renderer renderer = hit.transform.GetComponent<Renderer>();
             MeshCollider meshCollider = hit.collider as MeshCollider;
             if (meshCollider is null || renderer is null) return;
