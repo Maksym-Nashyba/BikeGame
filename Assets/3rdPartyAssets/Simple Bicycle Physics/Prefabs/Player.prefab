@@ -2896,7 +2896,6 @@ GameObject:
   - component: {fileID: 2440735540701079702}
   - component: {fileID: 2440735540701079711}
   - component: {fileID: 2440735540701079710}
-  - component: {fileID: -3548741654885631212}
   m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
@@ -2911,7 +2910,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2440735540701079700}
-  m_LocalRotation: {x: -0, y: -0.58879673, z: -0, w: 0.8082812}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 136.55676, y: 79.515, z: -60.034077}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2942,7 +2941,7 @@ Transform:
   - {fileID: 2879284132366426723}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -72.143, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2440735540701079709
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -3265,20 +3264,6 @@ MonoBehaviour:
   ragdollPrefab: {fileID: 8103233035378345893, guid: 6ec93b7af69b1384dafad18b36e13240, type: 3}
   instantiatedRagdoll: {fileID: 0}
   inactiveColliders: {fileID: 2440735539573491688}
---- !u!114 &-3548741654885631212
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2440735540701079700}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 697d8cba3efe6b949af82932fe438ac1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DustRear: {fileID: 7383355182796730599}
-  DustFront: {fileID: 6757533640108289538}
 --- !u!1 &2440735540751568482
 GameObject:
   m_ObjectHideFlags: 0
@@ -5852,7 +5837,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2878248184189660043, guid: 37ab77fe8f02b9440a287ffbc5b0f001, type: 3}
       propertyPath: m_Name
-      value: RideParticlesRear
+      value: RearWheelParticles
       objectReference: {fileID: 0}
     - target: {fileID: 3278725664667473239, guid: 37ab77fe8f02b9440a287ffbc5b0f001, type: 3}
       propertyPath: m_Mesh
@@ -5945,11 +5930,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 398617219434926971, guid: 37ab77fe8f02b9440a287ffbc5b0f001, type: 3}
   m_PrefabInstance: {fileID: 1858877202122158077}
   m_PrefabAsset: {fileID: 0}
---- !u!198 &7383355182796730599 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 9203946539602632474, guid: 37ab77fe8f02b9440a287ffbc5b0f001, type: 3}
-  m_PrefabInstance: {fileID: 1858877202122158077}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2485258662492991768
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6019,7 +5999,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2878248184189660043, guid: 37ab77fe8f02b9440a287ffbc5b0f001, type: 3}
       propertyPath: m_Name
-      value: RideParticlesFront
+      value: FrontWheelParticles
       objectReference: {fileID: 0}
     - target: {fileID: 3278725664667473239, guid: 37ab77fe8f02b9440a287ffbc5b0f001, type: 3}
       propertyPath: m_Mesh
@@ -6110,10 +6090,5 @@ PrefabInstance:
 --- !u!4 &2879284132366426723 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 398617219434926971, guid: 37ab77fe8f02b9440a287ffbc5b0f001, type: 3}
-  m_PrefabInstance: {fileID: 2485258662492991768}
-  m_PrefabAsset: {fileID: 0}
---- !u!198 &6757533640108289538 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 9203946539602632474, guid: 37ab77fe8f02b9440a287ffbc5b0f001, type: 3}
   m_PrefabInstance: {fileID: 2485258662492991768}
   m_PrefabAsset: {fileID: 0}
