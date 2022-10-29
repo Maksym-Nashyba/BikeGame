@@ -8,11 +8,13 @@ namespace GameCycle
     public class PlayerSpawner : MonoBehaviour
     {
         public event Action<GameObject> Respawned;
-        
+
+        public bool PlayerAlive => _playerAlive;
         [SerializeField] private GameObject _playerPrefab;
         [SerializeField] private Transform _spawnPoint;
         
         private Checkpoint _lastReachedCheckpoint;
+        private bool _playerAlive;
 
         private void Awake()
         {
@@ -25,18 +27,18 @@ namespace GameCycle
             _lastReachedCheckpoint = checkpoint;
         }
 
+        private void SpawnPlayerOnStart()
+        {
+            GameObject player = Instantiate(_playerPrefab, _spawnPoint.position, _spawnPoint.rotation);
+            Respawned?.Invoke(player);
+        }
+        
         private void SpawnPlayer()
         {
             if (_lastReachedCheckpoint is null) return;
             GameObject player = Instantiate(_playerPrefab);
             Transformation checkpointTransformation = _lastReachedCheckpoint.GetRespawnTransformation();
-            player.transform.Apply(checkpointTransformation);
-            Respawned?.Invoke(player);
-        }
-        
-        private void SpawnPlayerOnStart()
-        {
-            GameObject player = Instantiate(_playerPrefab, _spawnPoint.position, _spawnPoint.rotation);
+            player.GetComponent<Transform>().Apply(checkpointTransformation);
             Respawned?.Invoke(player);
         }
 

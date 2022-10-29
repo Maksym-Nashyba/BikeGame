@@ -36,6 +36,8 @@ namespace SBPScripts
             {
                 StartCoroutine(BikeStand(0));
             }
+
+            ServiceLocator.GameLoop.Died += Dislodge;
         }
         
         void OnCollisionEnter(Collision collision)
@@ -46,6 +48,8 @@ namespace SBPScripts
                 dislodged = true;
             }
         }
+
+
         
         void Update()
         {
@@ -53,24 +57,11 @@ namespace SBPScripts
             {
                 if(dislodged)
                 { 
-                    _bicycleController.fPhysicsWheel.GetComponent<SphereCollider>().enabled = false;
-                    _bicycleController.rPhysicsWheel.GetComponent<SphereCollider>().enabled = false;
-                    _bicycleController.Rigidbody.centerOfMass = _bicycleController.GetComponent<BoxCollider>().center;
-                    _bicycleController.enabled = false;
-                    inactiveColliders.SetActive(true);
-                    instantiatedRagdoll = Instantiate(ragdollPrefab);
                     ServiceLocator.GameLoop.InvokeDied();
-                    
-                    //TODO Kill ragdoll and bike
                 }
                 else
                 {
-                    _bicycleController.fPhysicsWheel.GetComponent<SphereCollider>().enabled = true;
-                    _bicycleController.rPhysicsWheel.GetComponent<SphereCollider>().enabled = true;
-                    _bicycleController.enabled = true;
-                    _bicycleController.Rigidbody.centerOfMass = _bicycleController.centerOfMassOffset;
-                    inactiveColliders.SetActive(false);
-                    Destroy(instantiatedRagdoll);
+                    Lodge();
                 }
             }
             
@@ -90,6 +81,26 @@ namespace SBPScripts
             _prevOnBike = onBike;
         }
 
+        private void Dislodge()
+        {
+            _bicycleController.fPhysicsWheel.GetComponent<SphereCollider>().enabled = false;
+            _bicycleController.rPhysicsWheel.GetComponent<SphereCollider>().enabled = false;
+            _bicycleController.Rigidbody.centerOfMass = _bicycleController.GetComponent<BoxCollider>().center;
+            _bicycleController.enabled = false;
+            inactiveColliders.SetActive(true);
+            instantiatedRagdoll = Instantiate(ragdollPrefab);
+        }
+
+        private void Lodge()
+        {
+            _bicycleController.fPhysicsWheel.GetComponent<SphereCollider>().enabled = true;
+            _bicycleController.rPhysicsWheel.GetComponent<SphereCollider>().enabled = true;
+            _bicycleController.enabled = true;
+            _bicycleController.Rigidbody.centerOfMass = _bicycleController.centerOfMassOffset;
+            inactiveColliders.SetActive(false);
+            Destroy(instantiatedRagdoll);
+        }
+        
         private void DestroyOldBikeEntities(GameObject newPlayer)
         {
             Destroy(instantiatedRagdoll);
@@ -143,6 +154,7 @@ namespace SBPScripts
         private void OnDestroy()
         {
             ServiceLocator.PlayerSpawner.Respawned -= DestroyOldBikeEntities;
+            ServiceLocator.GameLoop.Died -= Dislodge;
         }
     }
 }

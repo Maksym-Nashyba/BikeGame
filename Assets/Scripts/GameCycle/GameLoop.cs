@@ -57,6 +57,9 @@ namespace GameCycle
             objective.Begin(_levelAchievements);
         }
 
-        public void InvokeDied() => Died?.Invoke();
+        public void InvokeDied()
+        {
+            Died?.Invoke();   
+        }
     }
 }
