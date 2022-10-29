@@ -128,75 +128,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
   m_PrefabInstance: {fileID: 819093954}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &5024636
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1365455749}
-    m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: 00f512573a8ec664b93071e9c82ad282, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 00f512573a8ec664b93071e9c82ad282, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.69947
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 00f512573a8ec664b93071e9c82ad282, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.69947004
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 00f512573a8ec664b93071e9c82ad282, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.6994701
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 00f512573a8ec664b93071e9c82ad282, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.073928714
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 00f512573a8ec664b93071e9c82ad282, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.8208542
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 00f512573a8ec664b93071e9c82ad282, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.11247391
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 00f512573a8ec664b93071e9c82ad282, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.6464551
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 00f512573a8ec664b93071e9c82ad282, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.16527572
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 00f512573a8ec664b93071e9c82ad282, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0.7448343
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 00f512573a8ec664b93071e9c82ad282, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0.0012635514
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 00f512573a8ec664b93071e9c82ad282, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: -12.449
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 00f512573a8ec664b93071e9c82ad282, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: -4.45
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 00f512573a8ec664b93071e9c82ad282, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 14.505
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 00f512573a8ec664b93071e9c82ad282, type: 3}
-      propertyPath: m_Name
-      value: Sombrero
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 00f512573a8ec664b93071e9c82ad282, type: 3}
 --- !u!1001 &15859008
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -251,6 +182,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
       propertyPath: m_Name
       value: AloeBush
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
@@ -318,6 +253,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
       propertyPath: m_Name
       value: AloeBush (21)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
@@ -391,6 +330,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MicroRock1
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 680aec4d7d402db4ba7746f028c7dff4, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 680aec4d7d402db4ba7746f028c7dff4, type: 3}
 --- !u!4 &35008195 stripped
@@ -458,6 +401,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AloeBush (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
 --- !u!1001 &37957694
@@ -514,6 +461,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 680aec4d7d402db4ba7746f028c7dff4, type: 3}
       propertyPath: m_Name
       value: MicroRock1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 680aec4d7d402db4ba7746f028c7dff4, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 680aec4d7d402db4ba7746f028c7dff4, type: 3}
@@ -582,6 +533,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AloeBush (15)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
 --- !u!1001 &47912230
@@ -638,6 +593,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: d6738718fec89c44bb1fab5282344704, type: 3}
       propertyPath: m_Name
       value: CactusViolet
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d6738718fec89c44bb1fab5282344704, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d6738718fec89c44bb1fab5282344704, type: 3}
@@ -700,6 +659,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
       propertyPath: m_Name
       value: AloeBush (22)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
@@ -768,6 +731,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GrassBig (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 66ecbf34a5c1017498018d04118d5c5c, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66ecbf34a5c1017498018d04118d5c5c, type: 3}
 --- !u!1001 &70427747
@@ -824,6 +791,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
       propertyPath: m_Name
       value: AloeBush (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
@@ -882,6 +853,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AloeBush (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
 --- !u!1001 &78319083
@@ -938,6 +913,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 3340487e4c4257244a7463a088d6f388, type: 3}
       propertyPath: m_Name
       value: FlowersRose
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3340487e4c4257244a7463a088d6f388, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3340487e4c4257244a7463a088d6f388, type: 3}
@@ -1022,6 +1001,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CanyonRock4
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d76e8d7606e65eb4c9d7c0749ffa307f, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d76e8d7606e65eb4c9d7c0749ffa307f, type: 3}
 --- !u!4 &115080435 stripped
@@ -1088,6 +1071,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
       propertyPath: m_Name
       value: AloeBush (17)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
@@ -1172,6 +1159,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CliffBroad
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0e8752cbb5c49ac4bb908e2898997e5f, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e8752cbb5c49ac4bb908e2898997e5f, type: 3}
 --- !u!1001 &126255105
@@ -1244,6 +1235,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: f0a4afb9f58501c4ba77cb6e6a2adea5, type: 3}
       propertyPath: m_Name
       value: Rock3
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f0a4afb9f58501c4ba77cb6e6a2adea5, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f0a4afb9f58501c4ba77cb6e6a2adea5, type: 3}
@@ -1322,6 +1317,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AloeBush
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
 --- !u!4 &146787693 stripped
@@ -1399,6 +1398,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AloeBush (17)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
 --- !u!1001 &165629642
@@ -1472,6 +1475,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CanyonRock3
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 44b6b56887a7faa47bbd98dec359c62d, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44b6b56887a7faa47bbd98dec359c62d, type: 3}
 --- !u!4 &165629643 stripped
@@ -1497,67 +1504,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 269.13327, y: 627.5377, z: 275.96985}
   m_Center: {x: 4.9985747, y: -5.949538, z: -5.2204237}
---- !u!1001 &167990548
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 810420837}
-    m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: 8a615a59127c23042afb8f22d28a0752, type: 3}
-      propertyPath: m_RootOrder
-      value: 354
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 8a615a59127c23042afb8f22d28a0752, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -160.67
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 8a615a59127c23042afb8f22d28a0752, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -19.283134
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 8a615a59127c23042afb8f22d28a0752, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -23.19
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 8a615a59127c23042afb8f22d28a0752, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.8394757
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 8a615a59127c23042afb8f22d28a0752, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 8a615a59127c23042afb8f22d28a0752, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.54339725
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 8a615a59127c23042afb8f22d28a0752, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 8a615a59127c23042afb8f22d28a0752, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 8a615a59127c23042afb8f22d28a0752, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 65.83
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 8a615a59127c23042afb8f22d28a0752, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 8a615a59127c23042afb8f22d28a0752, type: 3}
-      propertyPath: m_Name
-      value: CactusThicc (2)
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 8a615a59127c23042afb8f22d28a0752, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 8a615a59127c23042afb8f22d28a0752, type: 3}
 --- !u!1 &181009940
 GameObject:
   m_ObjectHideFlags: 0
@@ -1669,6 +1615,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CliffPlate
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 870014f9cdb050147806e550fb2822ff, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 870014f9cdb050147806e550fb2822ff, type: 3}
 --- !u!4 &185959539 stripped
@@ -1730,6 +1680,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
       propertyPath: m_Name
       value: AloeBush (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
@@ -1797,6 +1751,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 8a615a59127c23042afb8f22d28a0752, type: 3}
       propertyPath: m_Name
       value: CactusThicc (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8a615a59127c23042afb8f22d28a0752, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a615a59127c23042afb8f22d28a0752, type: 3}
@@ -1871,6 +1829,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CanyonRock6
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ddd671d56f437774297240ae25a1cabb, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ddd671d56f437774297240ae25a1cabb, type: 3}
 --- !u!1001 &215843631
@@ -1928,6 +1890,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AloeBush (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
 --- !u!1001 &217512307
@@ -1984,6 +1950,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
       propertyPath: m_Name
       value: AloeBush (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
@@ -2152,6 +2122,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CliffSlim
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b0056d73a274f2643b5374d4967f14b0, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b0056d73a274f2643b5374d4967f14b0, type: 3}
 --- !u!1001 &222183616
@@ -2208,6 +2182,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 1fa723cfc77e0e9438885b3c1b8d6ec3, type: 3}
       propertyPath: m_Name
       value: MicroRock2
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1fa723cfc77e0e9438885b3c1b8d6ec3, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1fa723cfc77e0e9438885b3c1b8d6ec3, type: 3}
@@ -2296,6 +2274,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AloeBush
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
 --- !u!1001 &245456631
@@ -2369,6 +2351,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CanyonRock2
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ddb37658263e3634b859b7ceb1c461a9, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ddb37658263e3634b859b7ceb1c461a9, type: 3}
 --- !u!4 &246909732 stripped
@@ -2441,6 +2427,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AloeBush (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
 --- !u!1001 &250754434
@@ -2497,6 +2487,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 680aec4d7d402db4ba7746f028c7dff4, type: 3}
       propertyPath: m_Name
       value: MicroRock1 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 680aec4d7d402db4ba7746f028c7dff4, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 680aec4d7d402db4ba7746f028c7dff4, type: 3}
@@ -2559,6 +2553,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
       propertyPath: m_Name
       value: AloeBush (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
@@ -2652,6 +2650,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AloeBush (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
 --- !u!4 &263266225 stripped
@@ -2743,6 +2745,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AloeBush (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
 --- !u!4 &269156346 stripped
@@ -2826,6 +2832,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CanyonRock6
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ddd671d56f437774297240ae25a1cabb, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ddd671d56f437774297240ae25a1cabb, type: 3}
 --- !u!4 &271502236 stripped
@@ -2892,6 +2902,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
       propertyPath: m_Name
       value: AloeBush (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
@@ -2961,6 +2975,10 @@ PrefabInstance:
       value: CactusThicc (1)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 8a615a59127c23042afb8f22d28a0752, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8a615a59127c23042afb8f22d28a0752, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -3020,6 +3038,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
       propertyPath: m_Name
       value: AloeBush
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
@@ -3108,6 +3130,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AloeBush (19)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
 --- !u!1 &301231088 stripped
@@ -3179,6 +3205,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: e44f56138645e5d4eb70ce300a901627, type: 3}
       propertyPath: m_Name
       value: Pointer
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e44f56138645e5d4eb70ce300a901627, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e44f56138645e5d4eb70ce300a901627, type: 3}
@@ -3253,6 +3283,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DeadTreeCrooked
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1889a077eb7c8154eb83871cab3301c8, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1889a077eb7c8154eb83871cab3301c8, type: 3}
 --- !u!4 &312498526 stripped
@@ -3314,6 +3348,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 8a615a59127c23042afb8f22d28a0752, type: 3}
       propertyPath: m_Name
       value: CactusThicc
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8a615a59127c23042afb8f22d28a0752, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a615a59127c23042afb8f22d28a0752, type: 3}
@@ -3449,6 +3487,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AloeBush (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
 --- !u!1001 &322861974
@@ -3505,6 +3547,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 1fa723cfc77e0e9438885b3c1b8d6ec3, type: 3}
       propertyPath: m_Name
       value: MicroRock2 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1fa723cfc77e0e9438885b3c1b8d6ec3, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1fa723cfc77e0e9438885b3c1b8d6ec3, type: 3}
@@ -3577,6 +3623,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 8a615a59127c23042afb8f22d28a0752, type: 3}
       propertyPath: m_Name
       value: CactusThicc
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8a615a59127c23042afb8f22d28a0752, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a615a59127c23042afb8f22d28a0752, type: 3}
@@ -3663,6 +3713,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AloeBush (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
 --- !u!1001 &336391562
@@ -3720,6 +3774,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MicroRock1
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 680aec4d7d402db4ba7746f028c7dff4, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 680aec4d7d402db4ba7746f028c7dff4, type: 3}
 --- !u!1001 &338048427
@@ -3776,6 +3834,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 1fa723cfc77e0e9438885b3c1b8d6ec3, type: 3}
       propertyPath: m_Name
       value: MicroRock2
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1fa723cfc77e0e9438885b3c1b8d6ec3, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1fa723cfc77e0e9438885b3c1b8d6ec3, type: 3}
@@ -3838,6 +3900,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
       propertyPath: m_Name
       value: AloeBush (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
@@ -3915,6 +3981,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
       propertyPath: m_Name
       value: AloeBush (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
@@ -4023,6 +4093,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
       propertyPath: m_Name
       value: AloeBush (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
@@ -4173,6 +4247,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CanyonRock4 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d76e8d7606e65eb4c9d7c0749ffa307f, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d76e8d7606e65eb4c9d7c0749ffa307f, type: 3}
 --- !u!1001 &381487410
@@ -4229,6 +4307,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
       propertyPath: m_Name
       value: AloeBush (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
@@ -4302,6 +4384,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 0e8752cbb5c49ac4bb908e2898997e5f, type: 3}
       propertyPath: m_Name
       value: CliffBroad
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0e8752cbb5c49ac4bb908e2898997e5f, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e8752cbb5c49ac4bb908e2898997e5f, type: 3}
@@ -4395,6 +4481,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DeadTreeCrooked
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1889a077eb7c8154eb83871cab3301c8, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1889a077eb7c8154eb83871cab3301c8, type: 3}
 --- !u!1 &392369610 stripped
@@ -4476,6 +4566,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AloeBush
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
 --- !u!4 &408273143 stripped
@@ -4538,6 +4632,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AloeBush (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
 --- !u!1001 &417153963
@@ -4598,6 +4696,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 08be5b050d3d99b4f99ae7eac2aeb4f6, type: 3}
       propertyPath: m_Name
       value: Level3
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 08be5b050d3d99b4f99ae7eac2aeb4f6, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 08be5b050d3d99b4f99ae7eac2aeb4f6, type: 3}
@@ -4668,6 +4770,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MicroRock1
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 680aec4d7d402db4ba7746f028c7dff4, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 680aec4d7d402db4ba7746f028c7dff4, type: 3}
 --- !u!4 &433864859 stripped
@@ -4729,6 +4835,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 1889a077eb7c8154eb83871cab3301c8, type: 3}
       propertyPath: m_Name
       value: DeadTreeCrooked (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1889a077eb7c8154eb83871cab3301c8, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1889a077eb7c8154eb83871cab3301c8, type: 3}
@@ -4800,6 +4910,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AloeBush (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
 --- !u!1001 &435820883
@@ -4856,6 +4970,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
       propertyPath: m_Name
       value: AloeBush (14)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
@@ -4934,6 +5052,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AloeBush (19)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
 --- !u!1001 &451749813
@@ -4990,6 +5112,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
       propertyPath: m_Name
       value: AloeBush (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
@@ -5053,6 +5179,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CactusViolet
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d6738718fec89c44bb1fab5282344704, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d6738718fec89c44bb1fab5282344704, type: 3}
 --- !u!1001 &460246881
@@ -5110,6 +5240,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AloeBush (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
 --- !u!1001 &468598017
@@ -5166,6 +5300,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: d6738718fec89c44bb1fab5282344704, type: 3}
       propertyPath: m_Name
       value: CactusViolet
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d6738718fec89c44bb1fab5282344704, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d6738718fec89c44bb1fab5282344704, type: 3}
@@ -5275,6 +5413,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GrassSmall (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: af9808b7079617445b9389ba69396438, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af9808b7079617445b9389ba69396438, type: 3}
 --- !u!1001 &487978826
@@ -5331,6 +5473,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
       propertyPath: m_Name
       value: AloeBush (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
@@ -5399,6 +5545,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AloeBush (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
 --- !u!1 &504079313 stripped
@@ -5466,6 +5616,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TreeCrooked
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7e29d850316363145ad5d6daafbc081d, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7e29d850316363145ad5d6daafbc081d, type: 3}
 --- !u!1001 &512662160
@@ -5531,6 +5685,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AloeBush (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
 --- !u!1001 &520583320
@@ -5587,6 +5745,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 1889a077eb7c8154eb83871cab3301c8, type: 3}
       propertyPath: m_Name
       value: DeadTreeCrooked
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1889a077eb7c8154eb83871cab3301c8, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1889a077eb7c8154eb83871cab3301c8, type: 3}
@@ -5660,6 +5822,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 7763d5d8cbe82dc43b5633a53ec21bb0, type: 3}
       propertyPath: m_Name
       value: CanyonRock5
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7763d5d8cbe82dc43b5633a53ec21bb0, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7763d5d8cbe82dc43b5633a53ec21bb0, type: 3}
@@ -5744,6 +5910,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CliffPlate
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 870014f9cdb050147806e550fb2822ff, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 870014f9cdb050147806e550fb2822ff, type: 3}
 --- !u!1 &528111105 stripped
@@ -5824,6 +5994,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AloeBush (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
 --- !u!4 &542278421 stripped
@@ -5885,6 +6059,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
       propertyPath: m_Name
       value: AloeBush (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
@@ -5969,6 +6147,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CanyonRock3 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 44b6b56887a7faa47bbd98dec359c62d, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44b6b56887a7faa47bbd98dec359c62d, type: 3}
 --- !u!1001 &555017230
@@ -6026,6 +6208,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MicroRock2
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1fa723cfc77e0e9438885b3c1b8d6ec3, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1fa723cfc77e0e9438885b3c1b8d6ec3, type: 3}
 --- !u!1001 &556634284
@@ -6082,6 +6268,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 66ecbf34a5c1017498018d04118d5c5c, type: 3}
       propertyPath: m_Name
       value: GrassBig (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 66ecbf34a5c1017498018d04118d5c5c, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66ecbf34a5c1017498018d04118d5c5c, type: 3}
@@ -6150,6 +6340,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AloeBush (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
 --- !u!4 &569449957 stripped
@@ -6211,6 +6405,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 680aec4d7d402db4ba7746f028c7dff4, type: 3}
       propertyPath: m_Name
       value: MicroRock1 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 680aec4d7d402db4ba7746f028c7dff4, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 680aec4d7d402db4ba7746f028c7dff4, type: 3}
@@ -6290,6 +6488,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rock1
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 291fd958534fd874399865e961465489, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 291fd958534fd874399865e961465489, type: 3}
 --- !u!1001 &575334073
@@ -6346,6 +6548,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
       propertyPath: m_Name
       value: AloeBush (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
@@ -6424,6 +6630,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FlowersRose (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3340487e4c4257244a7463a088d6f388, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3340487e4c4257244a7463a088d6f388, type: 3}
 --- !u!1001 &590491159
@@ -6480,6 +6690,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
       propertyPath: m_Name
       value: AloeBush (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
@@ -6538,6 +6752,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AloeBush (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
 --- !u!1001 &596487256
@@ -6595,6 +6813,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AloeBush (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
 --- !u!1 &597306802
@@ -6606,7 +6828,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 597306803}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SombreroCacus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6690,6 +6912,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CactusViolet
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d6738718fec89c44bb1fab5282344704, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d6738718fec89c44bb1fab5282344704, type: 3}
 --- !u!1 &602886486 stripped
@@ -6756,6 +6982,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
       propertyPath: m_Name
       value: AloeBush (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
@@ -6840,6 +7070,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CanyonRock4 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d76e8d7606e65eb4c9d7c0749ffa307f, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d76e8d7606e65eb4c9d7c0749ffa307f, type: 3}
 --- !u!4 &627738871 stripped
@@ -6918,6 +7152,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CanyonRock3 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 44b6b56887a7faa47bbd98dec359c62d, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44b6b56887a7faa47bbd98dec359c62d, type: 3}
 --- !u!1001 &634358916
@@ -6974,6 +7212,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
       propertyPath: m_Name
       value: AloeBush (14)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
@@ -7126,6 +7368,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CactusViolet
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d6738718fec89c44bb1fab5282344704, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d6738718fec89c44bb1fab5282344704, type: 3}
 --- !u!4 &640762415 stripped
@@ -7206,6 +7452,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CactusTall
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 232a420ac44b28c4eaba833be97eae4e, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 232a420ac44b28c4eaba833be97eae4e, type: 3}
 --- !u!1 &645279223 stripped
@@ -7279,6 +7529,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 00f512573a8ec664b93071e9c82ad282, type: 3}
       propertyPath: m_Name
       value: Sombrero
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 00f512573a8ec664b93071e9c82ad282, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 00f512573a8ec664b93071e9c82ad282, type: 3}
@@ -7358,6 +7612,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rock6
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b65699d794f11b64ba3a2e831fc4c9bd, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b65699d794f11b64ba3a2e831fc4c9bd, type: 3}
 --- !u!1001 &673112633
@@ -7430,6 +7688,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: d9592d55a4ad5c34aad28de949cd20e7, type: 3}
       propertyPath: m_Name
       value: DeadTreeStraight
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d9592d55a4ad5c34aad28de949cd20e7, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d9592d55a4ad5c34aad28de949cd20e7, type: 3}
@@ -7532,6 +7794,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sombrero (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 00f512573a8ec664b93071e9c82ad282, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 00f512573a8ec664b93071e9c82ad282, type: 3}
 --- !u!1001 &679788881
@@ -7604,6 +7870,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 00f512573a8ec664b93071e9c82ad282, type: 3}
       propertyPath: m_Name
       value: Sombrero
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 00f512573a8ec664b93071e9c82ad282, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 00f512573a8ec664b93071e9c82ad282, type: 3}
@@ -7680,6 +7950,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AloeBush (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
 --- !u!4 &687826740 stripped
@@ -7741,6 +8015,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
       propertyPath: m_Name
       value: AloeBush
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
@@ -7816,6 +8094,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MicroRock1 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 680aec4d7d402db4ba7746f028c7dff4, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 680aec4d7d402db4ba7746f028c7dff4, type: 3}
 --- !u!1001 &689711635
@@ -7889,6 +8171,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CanyonRock6 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ddd671d56f437774297240ae25a1cabb, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ddd671d56f437774297240ae25a1cabb, type: 3}
 --- !u!4 &691400145 stripped
@@ -7950,6 +8236,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
       propertyPath: m_Name
       value: AloeBush (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
@@ -8024,6 +8314,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 870014f9cdb050147806e550fb2822ff, type: 3}
       propertyPath: m_Name
       value: CliffPlate (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 870014f9cdb050147806e550fb2822ff, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 870014f9cdb050147806e550fb2822ff, type: 3}
@@ -8139,6 +8433,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AloeBush (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
 --- !u!1 &709622725 stripped
@@ -8217,6 +8515,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CliffPlate (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 870014f9cdb050147806e550fb2822ff, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 870014f9cdb050147806e550fb2822ff, type: 3}
 --- !u!1 &717867021 stripped
@@ -8251,7 +8553,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 726242093}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SombreroCacus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8335,6 +8637,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AloeBush (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
 --- !u!1001 &739534764
@@ -8391,6 +8697,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
       propertyPath: m_Name
       value: AloeBush (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
@@ -8469,6 +8779,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 870014f9cdb050147806e550fb2822ff, type: 3}
       propertyPath: m_Name
       value: CliffPlate
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 870014f9cdb050147806e550fb2822ff, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 870014f9cdb050147806e550fb2822ff, type: 3}
@@ -8566,6 +8880,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CanyonRock6
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ddd671d56f437774297240ae25a1cabb, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ddd671d56f437774297240ae25a1cabb, type: 3}
 --- !u!4 &744574719 stripped
@@ -8641,6 +8959,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GrassBig (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 66ecbf34a5c1017498018d04118d5c5c, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66ecbf34a5c1017498018d04118d5c5c, type: 3}
 --- !u!1001 &755284911
@@ -8698,6 +9020,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AloeBush (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
 --- !u!1001 &757195711
@@ -8754,6 +9080,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
       propertyPath: m_Name
       value: AloeBush (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
@@ -8856,6 +9186,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 00f512573a8ec664b93071e9c82ad282, type: 3}
       propertyPath: m_Name
       value: Sombrero (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 00f512573a8ec664b93071e9c82ad282, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 00f512573a8ec664b93071e9c82ad282, type: 3}
@@ -8986,6 +9320,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CanyonRock4 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d76e8d7606e65eb4c9d7c0749ffa307f, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d76e8d7606e65eb4c9d7c0749ffa307f, type: 3}
 --- !u!1001 &789622349
@@ -9042,6 +9380,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
       propertyPath: m_Name
       value: AloeBush (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
@@ -9115,6 +9457,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 44b6b56887a7faa47bbd98dec359c62d, type: 3}
       propertyPath: m_Name
       value: CanyonRock3 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 44b6b56887a7faa47bbd98dec359c62d, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44b6b56887a7faa47bbd98dec359c62d, type: 3}
@@ -9207,6 +9553,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CliffPlate (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 870014f9cdb050147806e550fb2822ff, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 870014f9cdb050147806e550fb2822ff, type: 3}
 --- !u!4 &798524959 stripped
@@ -9281,6 +9631,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
       propertyPath: m_Name
       value: AloeBush
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
@@ -9671,7 +10025,6 @@ Transform:
   - {fileID: 1714895477}
   - {fileID: 693267199}
   - {fileID: 1397835651}
-  - {fileID: 1365455749}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9729,6 +10082,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
       propertyPath: m_Name
       value: AloeBush (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
@@ -9794,6 +10151,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: d6738718fec89c44bb1fab5282344704, type: 3}
       propertyPath: m_Name
       value: CactusViolet
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d6738718fec89c44bb1fab5282344704, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d6738718fec89c44bb1fab5282344704, type: 3}
@@ -9866,6 +10227,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: d6738718fec89c44bb1fab5282344704, type: 3}
       propertyPath: m_Name
       value: CactusViolet (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d6738718fec89c44bb1fab5282344704, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d6738718fec89c44bb1fab5282344704, type: 3}
@@ -9940,6 +10305,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CliffSlim
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b0056d73a274f2643b5374d4967f14b0, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b0056d73a274f2643b5374d4967f14b0, type: 3}
 --- !u!1001 &839965504
@@ -10013,6 +10382,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CanyonRock1
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 062f2b4af2fa84c4ba7e5a8a044f750c, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 062f2b4af2fa84c4ba7e5a8a044f750c, type: 3}
 --- !u!1001 &842077045
@@ -10069,6 +10442,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 8a615a59127c23042afb8f22d28a0752, type: 3}
       propertyPath: m_Name
       value: CactusThicc (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8a615a59127c23042afb8f22d28a0752, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a615a59127c23042afb8f22d28a0752, type: 3}
@@ -10145,6 +10522,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CactusTall
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 232a420ac44b28c4eaba833be97eae4e, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 232a420ac44b28c4eaba833be97eae4e, type: 3}
 --- !u!4 &843963029 stripped
@@ -10207,6 +10588,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AloeBush (23)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
 --- !u!4 &846191926 stripped
@@ -10268,6 +10653,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
       propertyPath: m_Name
       value: AloeBush
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
@@ -10343,6 +10732,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MicroRock2
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1fa723cfc77e0e9438885b3c1b8d6ec3, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1fa723cfc77e0e9438885b3c1b8d6ec3, type: 3}
 --- !u!4 &865163191 stripped
@@ -10410,6 +10803,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AloeBush (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
 --- !u!1001 &876418347
@@ -10466,6 +10863,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 680aec4d7d402db4ba7746f028c7dff4, type: 3}
       propertyPath: m_Name
       value: MicroRock1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 680aec4d7d402db4ba7746f028c7dff4, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 680aec4d7d402db4ba7746f028c7dff4, type: 3}
@@ -10540,6 +10941,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CanyonRock6
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ddd671d56f437774297240ae25a1cabb, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ddd671d56f437774297240ae25a1cabb, type: 3}
 --- !u!4 &881990878 stripped
@@ -10602,6 +11007,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CactusViolet
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d6738718fec89c44bb1fab5282344704, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d6738718fec89c44bb1fab5282344704, type: 3}
 --- !u!4 &890863458 stripped
@@ -10663,6 +11072,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
       propertyPath: m_Name
       value: AloeBush (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
@@ -10744,6 +11157,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DeadTreeStraight
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d9592d55a4ad5c34aad28de949cd20e7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d9592d55a4ad5c34aad28de949cd20e7, type: 3}
 --- !u!1 &895464266 stripped
@@ -10819,6 +11236,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AloeBush (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
 --- !u!1001 &900188066
@@ -10876,6 +11297,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AloeBush (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
 --- !u!1001 &900275441
@@ -10932,6 +11357,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 232a420ac44b28c4eaba833be97eae4e, type: 3}
       propertyPath: m_Name
       value: CactusTall
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 232a420ac44b28c4eaba833be97eae4e, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 232a420ac44b28c4eaba833be97eae4e, type: 3}
@@ -11034,6 +11463,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CliffSlim
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b0056d73a274f2643b5374d4967f14b0, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b0056d73a274f2643b5374d4967f14b0, type: 3}
 --- !u!1001 &918927556
@@ -11107,6 +11540,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rock4
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 779c00be8a79e57418ba733f02830e4c, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 779c00be8a79e57418ba733f02830e4c, type: 3}
 --- !u!1001 &921048890
@@ -11164,6 +11601,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stamp (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1f252fec38c0f944dafea4b3ae31f4d9, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1f252fec38c0f944dafea4b3ae31f4d9, type: 3}
 --- !u!1001 &921495191
@@ -11220,6 +11661,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
       propertyPath: m_Name
       value: AloeBush (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
@@ -11282,6 +11727,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 8a615a59127c23042afb8f22d28a0752, type: 3}
       propertyPath: m_Name
       value: CactusThicc
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8a615a59127c23042afb8f22d28a0752, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a615a59127c23042afb8f22d28a0752, type: 3}
@@ -11366,6 +11815,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CanyonRock6 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ddd671d56f437774297240ae25a1cabb, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ddd671d56f437774297240ae25a1cabb, type: 3}
 --- !u!1001 &935016531
@@ -11439,6 +11892,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CanyonRock6
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ddd671d56f437774297240ae25a1cabb, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ddd671d56f437774297240ae25a1cabb, type: 3}
 --- !u!1001 &937429575
@@ -11495,6 +11952,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 8a615a59127c23042afb8f22d28a0752, type: 3}
       propertyPath: m_Name
       value: CactusThicc (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8a615a59127c23042afb8f22d28a0752, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a615a59127c23042afb8f22d28a0752, type: 3}
@@ -11581,6 +12042,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CactusViolet (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d6738718fec89c44bb1fab5282344704, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d6738718fec89c44bb1fab5282344704, type: 3}
 --- !u!4 &943037128 stripped
@@ -11661,6 +12126,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 1fa723cfc77e0e9438885b3c1b8d6ec3, type: 3}
       propertyPath: m_Name
       value: MicroRock2
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1fa723cfc77e0e9438885b3c1b8d6ec3, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1fa723cfc77e0e9438885b3c1b8d6ec3, type: 3}
@@ -11769,6 +12238,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 232a420ac44b28c4eaba833be97eae4e, type: 3}
       propertyPath: m_Name
       value: CactusTall
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 232a420ac44b28c4eaba833be97eae4e, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 232a420ac44b28c4eaba833be97eae4e, type: 3}
@@ -11879,6 +12352,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CactusTall
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 232a420ac44b28c4eaba833be97eae4e, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 232a420ac44b28c4eaba833be97eae4e, type: 3}
 --- !u!4 &958392556 stripped
@@ -11971,6 +12448,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AloeBush (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
 --- !u!1001 &960517747
@@ -12044,6 +12525,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CanyonRock2
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ddb37658263e3634b859b7ceb1c461a9, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ddb37658263e3634b859b7ceb1c461a9, type: 3}
 --- !u!1001 &961370771
@@ -12100,6 +12585,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: d6738718fec89c44bb1fab5282344704, type: 3}
       propertyPath: m_Name
       value: CactusViolet (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d6738718fec89c44bb1fab5282344704, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d6738718fec89c44bb1fab5282344704, type: 3}
@@ -12170,6 +12659,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CliffPlate
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 870014f9cdb050147806e550fb2822ff, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 870014f9cdb050147806e550fb2822ff, type: 3}
 --- !u!1001 &973605404
@@ -12235,6 +12728,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MicroRock1 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 680aec4d7d402db4ba7746f028c7dff4, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 680aec4d7d402db4ba7746f028c7dff4, type: 3}
 --- !u!1001 &975231882
@@ -12291,6 +12788,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
       propertyPath: m_Name
       value: AloeBush (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
@@ -12377,6 +12878,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DeadTreeStraight
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d9592d55a4ad5c34aad28de949cd20e7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d9592d55a4ad5c34aad28de949cd20e7, type: 3}
 --- !u!1 &988763561
@@ -12388,7 +12893,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 988763562}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SuperSombreroCacus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12469,6 +12974,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CactusViolet (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d6738718fec89c44bb1fab5282344704, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d6738718fec89c44bb1fab5282344704, type: 3}
 --- !u!1001 &992171867
@@ -12525,6 +13034,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 1fa723cfc77e0e9438885b3c1b8d6ec3, type: 3}
       propertyPath: m_Name
       value: MicroRock2
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1fa723cfc77e0e9438885b3c1b8d6ec3, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1fa723cfc77e0e9438885b3c1b8d6ec3, type: 3}
@@ -12604,6 +13117,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CliffSlim
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b0056d73a274f2643b5374d4967f14b0, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b0056d73a274f2643b5374d4967f14b0, type: 3}
 --- !u!1 &998663948 stripped
@@ -12671,6 +13188,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GrassBig (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 66ecbf34a5c1017498018d04118d5c5c, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66ecbf34a5c1017498018d04118d5c5c, type: 3}
 --- !u!1001 &1006276866
@@ -12727,6 +13248,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: d9592d55a4ad5c34aad28de949cd20e7, type: 3}
       propertyPath: m_Name
       value: DeadTreeStraight
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d9592d55a4ad5c34aad28de949cd20e7, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d9592d55a4ad5c34aad28de949cd20e7, type: 3}
@@ -12801,6 +13326,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sombrero
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 00f512573a8ec664b93071e9c82ad282, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 00f512573a8ec664b93071e9c82ad282, type: 3}
 --- !u!1001 &1007021107
@@ -12857,6 +13386,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
       propertyPath: m_Name
       value: AloeBush (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
@@ -12930,6 +13463,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ddb37658263e3634b859b7ceb1c461a9, type: 3}
       propertyPath: m_Name
       value: CanyonRock2
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ddb37658263e3634b859b7ceb1c461a9, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ddb37658263e3634b859b7ceb1c461a9, type: 3}
@@ -13064,6 +13601,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FlowersBlue (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f4b8d2da93e1c364d99187671ce73799, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f4b8d2da93e1c364d99187671ce73799, type: 3}
 --- !u!1001 &1021621249
@@ -13120,6 +13661,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
       propertyPath: m_Name
       value: AloeBush (13)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
@@ -13183,6 +13728,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AloeBush (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
 --- !u!4 &1025058845 stripped
@@ -13244,6 +13793,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 680aec4d7d402db4ba7746f028c7dff4, type: 3}
       propertyPath: m_Name
       value: MicroRock1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 680aec4d7d402db4ba7746f028c7dff4, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 680aec4d7d402db4ba7746f028c7dff4, type: 3}
@@ -13317,6 +13870,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AloeBush
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
 --- !u!1001 &1044273428
@@ -13373,6 +13930,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
       propertyPath: m_Name
       value: AloeBush (14)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
@@ -13447,6 +14008,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CanyonRock3
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 44b6b56887a7faa47bbd98dec359c62d, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44b6b56887a7faa47bbd98dec359c62d, type: 3}
 --- !u!1001 &1052892677
@@ -13503,6 +14068,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 1fa723cfc77e0e9438885b3c1b8d6ec3, type: 3}
       propertyPath: m_Name
       value: MicroRock2
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1fa723cfc77e0e9438885b3c1b8d6ec3, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1fa723cfc77e0e9438885b3c1b8d6ec3, type: 3}
@@ -13597,6 +14166,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DeadTreeCrooked (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1889a077eb7c8154eb83871cab3301c8, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1889a077eb7c8154eb83871cab3301c8, type: 3}
 --- !u!4 &1069585543 stripped
@@ -13658,6 +14231,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
       propertyPath: m_Name
       value: AloeBush (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
@@ -13736,6 +14313,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AloeBush
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
 --- !u!4 &1091416747 stripped
@@ -13803,6 +14384,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MicroRock1
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 680aec4d7d402db4ba7746f028c7dff4, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 680aec4d7d402db4ba7746f028c7dff4, type: 3}
 --- !u!4 &1092037297 stripped
@@ -13865,6 +14450,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AloeBush (26)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
 --- !u!4 &1092642312 stripped
@@ -13926,6 +14515,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
       propertyPath: m_Name
       value: AloeBush (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
@@ -13999,6 +14592,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MicroRock2 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1fa723cfc77e0e9438885b3c1b8d6ec3, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1fa723cfc77e0e9438885b3c1b8d6ec3, type: 3}
 --- !u!4 &1104178254 stripped
@@ -14061,6 +14658,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MicroRock2 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1fa723cfc77e0e9438885b3c1b8d6ec3, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1fa723cfc77e0e9438885b3c1b8d6ec3, type: 3}
 --- !u!1001 &1108728413
@@ -14117,6 +14718,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
       propertyPath: m_Name
       value: AloeBush (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
@@ -14190,6 +14795,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: d76e8d7606e65eb4c9d7c0749ffa307f, type: 3}
       propertyPath: m_Name
       value: CanyonRock4
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d76e8d7606e65eb4c9d7c0749ffa307f, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d76e8d7606e65eb4c9d7c0749ffa307f, type: 3}
@@ -14276,6 +14885,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CactusViolet
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d6738718fec89c44bb1fab5282344704, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d6738718fec89c44bb1fab5282344704, type: 3}
 --- !u!1001 &1119653829
@@ -14332,6 +14945,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
       propertyPath: m_Name
       value: AloeBush (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
@@ -14410,6 +15027,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DeadTreeStraight
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d9592d55a4ad5c34aad28de949cd20e7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d9592d55a4ad5c34aad28de949cd20e7, type: 3}
 --- !u!4 &1141929868 stripped
@@ -14485,6 +15106,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AloeBush (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
 --- !u!1001 &1148670879
@@ -14542,6 +15167,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AloeBush (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
 --- !u!1001 &1150337703
@@ -14598,6 +15227,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
       propertyPath: m_Name
       value: AloeBush (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
@@ -14660,6 +15293,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 66ecbf34a5c1017498018d04118d5c5c, type: 3}
       propertyPath: m_Name
       value: GrassBig (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 66ecbf34a5c1017498018d04118d5c5c, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66ecbf34a5c1017498018d04118d5c5c, type: 3}
@@ -14733,6 +15370,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AloeBush (18)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
 --- !u!1001 &1165535445
@@ -14789,6 +15430,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
       propertyPath: m_Name
       value: AloeBush (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
@@ -14868,6 +15513,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CanyonRock6
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ddd671d56f437774297240ae25a1cabb, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ddd671d56f437774297240ae25a1cabb, type: 3}
 --- !u!4 &1175561039 stripped
@@ -14875,63 +15524,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
   m_PrefabInstance: {fileID: 1449974131}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &1186221358
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1365455749}
-    m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: 865a85513d8ea7f4089b6ddc68840af3, type: 3}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 865a85513d8ea7f4089b6ddc68840af3, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -1.4984564
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 865a85513d8ea7f4089b6ddc68840af3, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.99536896
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 865a85513d8ea7f4089b6ddc68840af3, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.014381051
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 865a85513d8ea7f4089b6ddc68840af3, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.023619026
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 865a85513d8ea7f4089b6ddc68840af3, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.28404698
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 865a85513d8ea7f4089b6ddc68840af3, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0.95794857
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 865a85513d8ea7f4089b6ddc68840af3, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0.033075213
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 865a85513d8ea7f4089b6ddc68840af3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 4.404
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 865a85513d8ea7f4089b6ddc68840af3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: -83.25
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 865a85513d8ea7f4089b6ddc68840af3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: -32.973
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 865a85513d8ea7f4089b6ddc68840af3, type: 3}
-      propertyPath: m_Name
-      value: PointerNoHandle (1)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 865a85513d8ea7f4089b6ddc68840af3, type: 3}
 --- !u!4 &1186399839 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
@@ -14996,6 +15588,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 1889a077eb7c8154eb83871cab3301c8, type: 3}
       propertyPath: m_Name
       value: DeadTreeCrooked
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1889a077eb7c8154eb83871cab3301c8, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1889a077eb7c8154eb83871cab3301c8, type: 3}
@@ -15085,6 +15681,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CanyonRock2 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ddb37658263e3634b859b7ceb1c461a9, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ddb37658263e3634b859b7ceb1c461a9, type: 3}
 --- !u!4 &1205321857 stripped
@@ -15151,6 +15751,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
       propertyPath: m_Name
       value: AloeBush (16)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
@@ -15229,6 +15833,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ddd671d56f437774297240ae25a1cabb, type: 3}
       propertyPath: m_Name
       value: CanyonRock6 (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ddd671d56f437774297240ae25a1cabb, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ddd671d56f437774297240ae25a1cabb, type: 3}
@@ -15422,6 +16030,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AloeBush (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
 --- !u!4 &1228862361 stripped
@@ -15484,6 +16096,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AloeBush (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
 --- !u!1001 &1229511953
@@ -15541,6 +16157,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AloeBush
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
 --- !u!1001 &1233163599
@@ -15597,6 +16217,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
       propertyPath: m_Name
       value: AloeBush (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
@@ -15669,6 +16293,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 680aec4d7d402db4ba7746f028c7dff4, type: 3}
       propertyPath: m_Name
       value: MicroRock1 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 680aec4d7d402db4ba7746f028c7dff4, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 680aec4d7d402db4ba7746f028c7dff4, type: 3}
@@ -15753,6 +16381,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CanyonRock6
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ddd671d56f437774297240ae25a1cabb, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ddd671d56f437774297240ae25a1cabb, type: 3}
 --- !u!1001 &1256219732
@@ -15810,6 +16442,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AloeBush (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
 --- !u!1001 &1258352356
@@ -15866,6 +16502,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 2dd88db6e74c4bc4783c58b3f25876e4, type: 3}
       propertyPath: m_Name
       value: FlowersYellow (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2dd88db6e74c4bc4783c58b3f25876e4, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2dd88db6e74c4bc4783c58b3f25876e4, type: 3}
@@ -15965,6 +16605,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CactusViolet
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d6738718fec89c44bb1fab5282344704, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d6738718fec89c44bb1fab5282344704, type: 3}
 --- !u!4 &1265859361 stripped
@@ -16043,6 +16687,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CanyonRock6 (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ddd671d56f437774297240ae25a1cabb, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ddd671d56f437774297240ae25a1cabb, type: 3}
 --- !u!1001 &1266316484
@@ -16115,6 +16763,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ddd671d56f437774297240ae25a1cabb, type: 3}
       propertyPath: m_Name
       value: CanyonRock6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ddd671d56f437774297240ae25a1cabb, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ddd671d56f437774297240ae25a1cabb, type: 3}
@@ -16189,6 +16841,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CliffBroad (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0e8752cbb5c49ac4bb908e2898997e5f, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e8752cbb5c49ac4bb908e2898997e5f, type: 3}
 --- !u!4 &1273043978 stripped
@@ -16205,7 +16861,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1277105876}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SombreroCacus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16300,6 +16956,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CanyonRock4
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d76e8d7606e65eb4c9d7c0749ffa307f, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d76e8d7606e65eb4c9d7c0749ffa307f, type: 3}
 --- !u!4 &1281964989 stripped
@@ -16383,6 +17043,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CliffBroad (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0e8752cbb5c49ac4bb908e2898997e5f, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e8752cbb5c49ac4bb908e2898997e5f, type: 3}
 --- !u!1001 &1292779657
@@ -16440,6 +17104,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AloeBush (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
 --- !u!1001 &1293876291
@@ -16496,6 +17164,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: d6738718fec89c44bb1fab5282344704, type: 3}
       propertyPath: m_Name
       value: CactusViolet
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d6738718fec89c44bb1fab5282344704, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d6738718fec89c44bb1fab5282344704, type: 3}
@@ -16577,6 +17249,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MicroRock2
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1fa723cfc77e0e9438885b3c1b8d6ec3, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1fa723cfc77e0e9438885b3c1b8d6ec3, type: 3}
 --- !u!4 &1295392490 stripped
@@ -16638,6 +17314,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: af9808b7079617445b9389ba69396438, type: 3}
       propertyPath: m_Name
       value: GrassSmall (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: af9808b7079617445b9389ba69396438, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af9808b7079617445b9389ba69396438, type: 3}
@@ -16830,6 +17510,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AloeBush (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
 --- !u!4 &1304547446 stripped
@@ -16896,6 +17580,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 00f512573a8ec664b93071e9c82ad282, type: 3}
       propertyPath: m_Name
       value: Sombrero
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 00f512573a8ec664b93071e9c82ad282, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 00f512573a8ec664b93071e9c82ad282, type: 3}
@@ -16974,6 +17662,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 7763d5d8cbe82dc43b5633a53ec21bb0, type: 3}
       propertyPath: m_Name
       value: CanyonRock5
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7763d5d8cbe82dc43b5633a53ec21bb0, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7763d5d8cbe82dc43b5633a53ec21bb0, type: 3}
@@ -17058,6 +17750,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sombrero
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 00f512573a8ec664b93071e9c82ad282, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 00f512573a8ec664b93071e9c82ad282, type: 3}
 --- !u!4 &1315389316 stripped
@@ -17120,6 +17816,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MicroRock1 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 680aec4d7d402db4ba7746f028c7dff4, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 680aec4d7d402db4ba7746f028c7dff4, type: 3}
 --- !u!4 &1315806528 stripped
@@ -17181,6 +17881,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
       propertyPath: m_Name
       value: AloeBush
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
@@ -17249,6 +17953,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AloeBush (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
 --- !u!1001 &1327914310
@@ -17305,6 +18013,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
       propertyPath: m_Name
       value: AloeBush (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
@@ -17379,6 +18091,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sombrero
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 00f512573a8ec664b93071e9c82ad282, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 00f512573a8ec664b93071e9c82ad282, type: 3}
 --- !u!1001 &1335929067
@@ -17435,6 +18151,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
       propertyPath: m_Name
       value: AloeBush (27)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
@@ -17508,6 +18228,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AloeBush (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
 --- !u!4 &1348304438 stripped
@@ -17570,6 +18294,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GrassBig (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 66ecbf34a5c1017498018d04118d5c5c, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66ecbf34a5c1017498018d04118d5c5c, type: 3}
 --- !u!1001 &1360147174
@@ -17626,6 +18354,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
       propertyPath: m_Name
       value: AloeBush (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
@@ -17684,13 +18416,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: AloeBush (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
---- !u!4 &1365455749 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 8a615a59127c23042afb8f22d28a0752, type: 3}
-  m_PrefabInstance: {fileID: 167990548}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1367477749 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 1889a077eb7c8154eb83871cab3301c8, type: 3}
@@ -17783,6 +18514,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AloeBush (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
 --- !u!4 &1383786579 stripped
@@ -17844,6 +18579,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
       propertyPath: m_Name
       value: AloeBush (20)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
@@ -17920,6 +18659,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MicroRock1
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 680aec4d7d402db4ba7746f028c7dff4, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 680aec4d7d402db4ba7746f028c7dff4, type: 3}
 --- !u!4 &1386062255 stripped
@@ -17981,6 +18724,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 680aec4d7d402db4ba7746f028c7dff4, type: 3}
       propertyPath: m_Name
       value: MicroRock1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 680aec4d7d402db4ba7746f028c7dff4, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 680aec4d7d402db4ba7746f028c7dff4, type: 3}
@@ -18077,6 +18824,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AloeBush (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
 --- !u!1001 &1402717918
@@ -18133,6 +18884,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
       propertyPath: m_Name
       value: AloeBush (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
@@ -18191,6 +18946,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AloeBush (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
 --- !u!1001 &1406776187
@@ -18247,6 +19006,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
       propertyPath: m_Name
       value: AloeBush (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
@@ -18310,6 +19073,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AloeBush (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
 --- !u!4 &1410566921 stripped
@@ -18372,6 +19139,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CactusViolet
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d6738718fec89c44bb1fab5282344704, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d6738718fec89c44bb1fab5282344704, type: 3}
 --- !u!1001 &1415571370
@@ -18428,6 +19199,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: d6738718fec89c44bb1fab5282344704, type: 3}
       propertyPath: m_Name
       value: CactusViolet (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d6738718fec89c44bb1fab5282344704, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d6738718fec89c44bb1fab5282344704, type: 3}
@@ -18502,6 +19277,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CanyonRock4
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d76e8d7606e65eb4c9d7c0749ffa307f, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d76e8d7606e65eb4c9d7c0749ffa307f, type: 3}
 --- !u!4 &1420100933 stripped
@@ -18568,6 +19347,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 680aec4d7d402db4ba7746f028c7dff4, type: 3}
       propertyPath: m_Name
       value: MicroRock1 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 680aec4d7d402db4ba7746f028c7dff4, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 680aec4d7d402db4ba7746f028c7dff4, type: 3}
@@ -18644,6 +19427,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AloeBush (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
 --- !u!1001 &1431826949
@@ -18700,6 +19487,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: af9808b7079617445b9389ba69396438, type: 3}
       propertyPath: m_Name
       value: GrassSmall (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: af9808b7079617445b9389ba69396438, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af9808b7079617445b9389ba69396438, type: 3}
@@ -18774,6 +19565,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sombrero (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 00f512573a8ec664b93071e9c82ad282, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 00f512573a8ec664b93071e9c82ad282, type: 3}
 --- !u!1001 &1432784492
@@ -18847,6 +19642,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CanyonRock1 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 062f2b4af2fa84c4ba7e5a8a044f750c, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 062f2b4af2fa84c4ba7e5a8a044f750c, type: 3}
 --- !u!4 &1432784493 stripped
@@ -18908,6 +19707,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
       propertyPath: m_Name
       value: AloeBush (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
@@ -18971,6 +19774,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MicroRock2 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1fa723cfc77e0e9438885b3c1b8d6ec3, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1fa723cfc77e0e9438885b3c1b8d6ec3, type: 3}
 --- !u!1001 &1449974131
@@ -19028,6 +19835,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AloeBush (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
 --- !u!1001 &1452599097
@@ -19084,6 +19895,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: d6738718fec89c44bb1fab5282344704, type: 3}
       propertyPath: m_Name
       value: CactusViolet (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d6738718fec89c44bb1fab5282344704, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d6738718fec89c44bb1fab5282344704, type: 3}
@@ -19151,6 +19966,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: d6738718fec89c44bb1fab5282344704, type: 3}
       propertyPath: m_Name
       value: CactusViolet
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d6738718fec89c44bb1fab5282344704, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d6738718fec89c44bb1fab5282344704, type: 3}
@@ -19276,6 +20095,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CanyonRock3 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 44b6b56887a7faa47bbd98dec359c62d, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44b6b56887a7faa47bbd98dec359c62d, type: 3}
 --- !u!1001 &1476561381
@@ -19332,6 +20155,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
       propertyPath: m_Name
       value: AloeBush (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
@@ -19408,6 +20235,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AloeBush (16)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
 --- !u!4 &1488873449 stripped
@@ -19478,6 +20309,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CactusViolet (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d6738718fec89c44bb1fab5282344704, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d6738718fec89c44bb1fab5282344704, type: 3}
 --- !u!1001 &1495622667
@@ -19535,6 +20370,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AloeBush (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
 --- !u!1001 &1496057976
@@ -19591,6 +20430,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
       propertyPath: m_Name
       value: AloeBush (24)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
@@ -19659,6 +20502,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AloeBush (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
 --- !u!4 &1499188743 stripped
@@ -19726,6 +20573,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DeadTreeCrooked
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1889a077eb7c8154eb83871cab3301c8, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1889a077eb7c8154eb83871cab3301c8, type: 3}
 --- !u!1001 &1508486659
@@ -19782,6 +20633,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
       propertyPath: m_Name
       value: AloeBush
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
@@ -19883,6 +20738,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DeadTreeCrooked
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1889a077eb7c8154eb83871cab3301c8, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1889a077eb7c8154eb83871cab3301c8, type: 3}
 --- !u!4 &1529616482 stripped
@@ -19944,6 +20803,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 680aec4d7d402db4ba7746f028c7dff4, type: 3}
       propertyPath: m_Name
       value: MicroRock1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 680aec4d7d402db4ba7746f028c7dff4, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 680aec4d7d402db4ba7746f028c7dff4, type: 3}
@@ -20012,6 +20875,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AloeBush (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
 --- !u!4 &1537620766 stripped
@@ -20074,6 +20941,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MicroRock1
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 680aec4d7d402db4ba7746f028c7dff4, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 680aec4d7d402db4ba7746f028c7dff4, type: 3}
 --- !u!4 &1545562970 stripped
@@ -20135,6 +21006,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 232a420ac44b28c4eaba833be97eae4e, type: 3}
       propertyPath: m_Name
       value: CactusTall
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 232a420ac44b28c4eaba833be97eae4e, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 232a420ac44b28c4eaba833be97eae4e, type: 3}
@@ -20223,6 +21098,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ddd671d56f437774297240ae25a1cabb, type: 3}
       propertyPath: m_Name
       value: CanyonRock6 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ddd671d56f437774297240ae25a1cabb, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ddd671d56f437774297240ae25a1cabb, type: 3}
@@ -20322,6 +21201,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AloeBush (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
 --- !u!1001 &1567437814
@@ -20378,6 +21261,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
       propertyPath: m_Name
       value: AloeBush (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
@@ -20484,6 +21371,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
       propertyPath: m_Name
       value: AloeBush (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
@@ -20601,6 +21492,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AloeBush
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
 --- !u!1001 &1597578119
@@ -20657,6 +21552,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
       propertyPath: m_Name
       value: AloeBush (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
@@ -20730,6 +21629,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ddb37658263e3634b859b7ceb1c461a9, type: 3}
       propertyPath: m_Name
       value: CanyonRock2
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ddb37658263e3634b859b7ceb1c461a9, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ddb37658263e3634b859b7ceb1c461a9, type: 3}
@@ -20811,6 +21714,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AloeBush (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
 --- !u!1001 &1600377144
@@ -20867,6 +21774,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: af9808b7079617445b9389ba69396438, type: 3}
       propertyPath: m_Name
       value: GrassSmall (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: af9808b7079617445b9389ba69396438, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af9808b7079617445b9389ba69396438, type: 3}
@@ -20929,6 +21840,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
       propertyPath: m_Name
       value: AloeBush (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
@@ -21051,6 +21966,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AloeBush (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
 --- !u!1001 &1628293736
@@ -21124,6 +22043,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CanyonRock2
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ddb37658263e3634b859b7ceb1c461a9, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ddb37658263e3634b859b7ceb1c461a9, type: 3}
 --- !u!4 &1628293737 stripped
@@ -21186,6 +22109,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MicroRock1 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 680aec4d7d402db4ba7746f028c7dff4, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 680aec4d7d402db4ba7746f028c7dff4, type: 3}
 --- !u!1001 &1633595143
@@ -21242,6 +22169,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 1fa723cfc77e0e9438885b3c1b8d6ec3, type: 3}
       propertyPath: m_Name
       value: MicroRock2 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1fa723cfc77e0e9438885b3c1b8d6ec3, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1fa723cfc77e0e9438885b3c1b8d6ec3, type: 3}
@@ -21406,6 +22337,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CanyonRock3
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 44b6b56887a7faa47bbd98dec359c62d, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44b6b56887a7faa47bbd98dec359c62d, type: 3}
 --- !u!1001 &1646940912
@@ -21462,6 +22397,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
       propertyPath: m_Name
       value: AloeBush (25)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
@@ -21597,6 +22536,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CanyonRock3
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 44b6b56887a7faa47bbd98dec359c62d, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44b6b56887a7faa47bbd98dec359c62d, type: 3}
 --- !u!4 &1669193580 stripped
@@ -21658,6 +22601,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
       propertyPath: m_Name
       value: AloeBush (15)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
@@ -21732,6 +22679,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CanyonRock2 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ddb37658263e3634b859b7ceb1c461a9, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ddb37658263e3634b859b7ceb1c461a9, type: 3}
 --- !u!4 &1692885963 stripped
@@ -21799,6 +22750,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AloeBush
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
 --- !u!4 &1702608023 stripped
@@ -21860,6 +22815,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: d6738718fec89c44bb1fab5282344704, type: 3}
       propertyPath: m_Name
       value: CactusViolet
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d6738718fec89c44bb1fab5282344704, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d6738718fec89c44bb1fab5282344704, type: 3}
@@ -21941,6 +22900,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CactusThicc
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8a615a59127c23042afb8f22d28a0752, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a615a59127c23042afb8f22d28a0752, type: 3}
 --- !u!4 &1711698307 stripped
@@ -22021,6 +22984,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FlowersBlue (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f4b8d2da93e1c364d99187671ce73799, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f4b8d2da93e1c364d99187671ce73799, type: 3}
 --- !u!1001 &1714895476
@@ -22077,6 +23044,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 0e8752cbb5c49ac4bb908e2898997e5f, type: 3}
       propertyPath: m_Name
       value: CliffBroad
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0e8752cbb5c49ac4bb908e2898997e5f, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e8752cbb5c49ac4bb908e2898997e5f, type: 3}
@@ -22154,6 +23125,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MicroRock2
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1fa723cfc77e0e9438885b3c1b8d6ec3, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1fa723cfc77e0e9438885b3c1b8d6ec3, type: 3}
 --- !u!4 &1718227969 stripped
@@ -22215,6 +23190,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
       propertyPath: m_Name
       value: AloeBush (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
@@ -22301,6 +23280,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AloeBush (21)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
 --- !u!1001 &1734410777
@@ -22365,6 +23348,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
       propertyPath: m_Name
       value: AloeBush (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
@@ -22451,6 +23438,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AloeBush (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
 --- !u!1001 &1749426363
@@ -22523,6 +23514,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ddb37658263e3634b859b7ceb1c461a9, type: 3}
       propertyPath: m_Name
       value: CanyonRock2
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ddb37658263e3634b859b7ceb1c461a9, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ddb37658263e3634b859b7ceb1c461a9, type: 3}
@@ -22597,6 +23592,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CanyonRock6 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ddd671d56f437774297240ae25a1cabb, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ddd671d56f437774297240ae25a1cabb, type: 3}
 --- !u!1001 &1761451961
@@ -22654,6 +23653,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AloeBush (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
 --- !u!1001 &1762078984
@@ -22710,6 +23713,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 1fa723cfc77e0e9438885b3c1b8d6ec3, type: 3}
       propertyPath: m_Name
       value: MicroRock2
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1fa723cfc77e0e9438885b3c1b8d6ec3, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1fa723cfc77e0e9438885b3c1b8d6ec3, type: 3}
@@ -22797,6 +23804,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AloeBush (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
 --- !u!4 &1765458771 stripped
@@ -22858,6 +23869,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
       propertyPath: m_Name
       value: AloeBush (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
@@ -22926,6 +23941,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AloeBush (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
 --- !u!4 &1771695025 stripped
@@ -22987,6 +24006,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
       propertyPath: m_Name
       value: AloeBush (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
@@ -23060,6 +24083,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DeadTreeCrooked
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1889a077eb7c8154eb83871cab3301c8, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1889a077eb7c8154eb83871cab3301c8, type: 3}
 --- !u!1001 &1793236834
@@ -23116,6 +24143,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 680aec4d7d402db4ba7746f028c7dff4, type: 3}
       propertyPath: m_Name
       value: MicroRock1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 680aec4d7d402db4ba7746f028c7dff4, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 680aec4d7d402db4ba7746f028c7dff4, type: 3}
@@ -23174,6 +24205,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GrassBig (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 66ecbf34a5c1017498018d04118d5c5c, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66ecbf34a5c1017498018d04118d5c5c, type: 3}
 --- !u!1001 &1806584182
@@ -23230,6 +24265,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 8a615a59127c23042afb8f22d28a0752, type: 3}
       propertyPath: m_Name
       value: CactusThicc
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8a615a59127c23042afb8f22d28a0752, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a615a59127c23042afb8f22d28a0752, type: 3}
@@ -23293,6 +24332,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AloeBush
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
 --- !u!4 &1818447992 stripped
@@ -23354,6 +24397,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
       propertyPath: m_Name
       value: AloeBush
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
@@ -23438,6 +24485,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CanyonRock2
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ddb37658263e3634b859b7ceb1c461a9, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ddb37658263e3634b859b7ceb1c461a9, type: 3}
 --- !u!4 &1827506072 stripped
@@ -23516,6 +24567,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CanyonRock1
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 062f2b4af2fa84c4ba7e5a8a044f750c, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 062f2b4af2fa84c4ba7e5a8a044f750c, type: 3}
 --- !u!4 &1828859316 stripped
@@ -23578,6 +24633,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MicroRock1 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 680aec4d7d402db4ba7746f028c7dff4, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 680aec4d7d402db4ba7746f028c7dff4, type: 3}
 --- !u!1001 &1835952588
@@ -23634,6 +24693,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 1fa723cfc77e0e9438885b3c1b8d6ec3, type: 3}
       propertyPath: m_Name
       value: MicroRock2
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1fa723cfc77e0e9438885b3c1b8d6ec3, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1fa723cfc77e0e9438885b3c1b8d6ec3, type: 3}
@@ -23696,6 +24759,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 8a615a59127c23042afb8f22d28a0752, type: 3}
       propertyPath: m_Name
       value: CactusThicc
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8a615a59127c23042afb8f22d28a0752, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a615a59127c23042afb8f22d28a0752, type: 3}
@@ -23770,6 +24837,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pointer (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e44f56138645e5d4eb70ce300a901627, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e44f56138645e5d4eb70ce300a901627, type: 3}
 --- !u!4 &1849500348 stripped
@@ -23839,6 +24910,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
       propertyPath: m_Name
       value: AloeBush
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
@@ -23958,6 +25033,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AloeBush
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
 --- !u!1001 &1885773471
@@ -24015,6 +25094,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AloeBush (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
 --- !u!1001 &1887037103
@@ -24071,6 +25154,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: d6738718fec89c44bb1fab5282344704, type: 3}
       propertyPath: m_Name
       value: CactusViolet
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d6738718fec89c44bb1fab5282344704, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d6738718fec89c44bb1fab5282344704, type: 3}
@@ -24157,6 +25244,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AloeBush (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
 --- !u!1001 &1892579198
@@ -24213,6 +25304,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
       propertyPath: m_Name
       value: AloeBush (14)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
@@ -24292,6 +25387,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CanyonRock6
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ddd671d56f437774297240ae25a1cabb, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ddd671d56f437774297240ae25a1cabb, type: 3}
 --- !u!4 &1897308776 stripped
@@ -24366,6 +25465,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 8a615a59127c23042afb8f22d28a0752, type: 3}
       propertyPath: m_Name
       value: CactusThicc
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8a615a59127c23042afb8f22d28a0752, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a615a59127c23042afb8f22d28a0752, type: 3}
@@ -24475,6 +25578,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MicroRock2
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1fa723cfc77e0e9438885b3c1b8d6ec3, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1fa723cfc77e0e9438885b3c1b8d6ec3, type: 3}
 --- !u!4 &1915847192 stripped
@@ -24537,6 +25644,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AloeBush (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
 --- !u!4 &1932224092 stripped
@@ -24598,6 +25709,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
       propertyPath: m_Name
       value: AloeBush (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
@@ -24671,6 +25786,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 062f2b4af2fa84c4ba7e5a8a044f750c, type: 3}
       propertyPath: m_Name
       value: CanyonRock1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 062f2b4af2fa84c4ba7e5a8a044f750c, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 062f2b4af2fa84c4ba7e5a8a044f750c, type: 3}
@@ -24762,6 +25881,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AloeBush (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
 --- !u!1001 &1942391259
@@ -24819,6 +25942,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FlowersYellow
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2dd88db6e74c4bc4783c58b3f25876e4, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2dd88db6e74c4bc4783c58b3f25876e4, type: 3}
 --- !u!1001 &1943633180
@@ -24875,6 +26002,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
       propertyPath: m_Name
       value: AloeBush (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
@@ -24937,6 +26068,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: d6738718fec89c44bb1fab5282344704, type: 3}
       propertyPath: m_Name
       value: CactusViolet (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d6738718fec89c44bb1fab5282344704, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d6738718fec89c44bb1fab5282344704, type: 3}
@@ -25016,6 +26151,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CliffPlate
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 870014f9cdb050147806e550fb2822ff, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 870014f9cdb050147806e550fb2822ff, type: 3}
 --- !u!1001 &1961227082
@@ -25089,6 +26228,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CanyonRock1
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 062f2b4af2fa84c4ba7e5a8a044f750c, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 062f2b4af2fa84c4ba7e5a8a044f750c, type: 3}
 --- !u!1001 &1964955527
@@ -25145,6 +26288,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
       propertyPath: m_Name
       value: AloeBush (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
@@ -25213,6 +26360,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AloeBush (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
 --- !u!1001 &1971527093
@@ -25270,6 +26421,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AloeBush (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
 --- !u!4 &1980219288 stripped
@@ -25286,7 +26441,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1982197335}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SombreroCacus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25375,6 +26530,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AloeBush (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
 --- !u!1 &1985745971 stripped
@@ -25451,6 +26610,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GrassSmall (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: af9808b7079617445b9389ba69396438, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af9808b7079617445b9389ba69396438, type: 3}
 --- !u!1001 &1989733811
@@ -25507,6 +26670,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: d6738718fec89c44bb1fab5282344704, type: 3}
       propertyPath: m_Name
       value: CactusViolet (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d6738718fec89c44bb1fab5282344704, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d6738718fec89c44bb1fab5282344704, type: 3}
@@ -25587,6 +26754,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
       propertyPath: m_Name
       value: AloeBush (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
@@ -25673,6 +26844,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AloeBush (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
 --- !u!1001 &2008400994
@@ -25742,6 +26917,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sombrero
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 00f512573a8ec664b93071e9c82ad282, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 00f512573a8ec664b93071e9c82ad282, type: 3}
 --- !u!1001 &2014619014
@@ -25798,6 +26977,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
       propertyPath: m_Name
       value: AloeBush (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
@@ -25895,6 +27078,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CanyonRock1
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 062f2b4af2fa84c4ba7e5a8a044f750c, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 062f2b4af2fa84c4ba7e5a8a044f750c, type: 3}
 --- !u!4 &2020727274 stripped
@@ -25987,6 +27174,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MicroRock1 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 680aec4d7d402db4ba7746f028c7dff4, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 680aec4d7d402db4ba7746f028c7dff4, type: 3}
 --- !u!1001 &2030137638
@@ -26043,6 +27234,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
       propertyPath: m_Name
       value: AloeBush (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
@@ -26117,6 +27312,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CanyonRock2
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ddb37658263e3634b859b7ceb1c461a9, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ddb37658263e3634b859b7ceb1c461a9, type: 3}
 --- !u!1001 &2052940078
@@ -26174,6 +27373,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FlowersWhite
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 82da30cc23647fc4bb3bb199d3303e34, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 82da30cc23647fc4bb3bb199d3303e34, type: 3}
 --- !u!1001 &2053313298
@@ -26230,6 +27433,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: af9808b7079617445b9389ba69396438, type: 3}
       propertyPath: m_Name
       value: GrassSmall
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: af9808b7079617445b9389ba69396438, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af9808b7079617445b9389ba69396438, type: 3}
@@ -26292,6 +27499,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 8a615a59127c23042afb8f22d28a0752, type: 3}
       propertyPath: m_Name
       value: CactusThicc
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8a615a59127c23042afb8f22d28a0752, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a615a59127c23042afb8f22d28a0752, type: 3}
@@ -26378,6 +27589,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AloeBush (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
 --- !u!4 &2071412418 stripped
@@ -26439,6 +27654,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 680aec4d7d402db4ba7746f028c7dff4, type: 3}
       propertyPath: m_Name
       value: MicroRock1 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 680aec4d7d402db4ba7746f028c7dff4, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 680aec4d7d402db4ba7746f028c7dff4, type: 3}
@@ -26502,6 +27721,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DeadTreeStraight (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d9592d55a4ad5c34aad28de949cd20e7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d9592d55a4ad5c34aad28de949cd20e7, type: 3}
 --- !u!4 &2087626251 stripped
@@ -26564,6 +27787,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AloeBush (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
 --- !u!1001 &2092602488
@@ -26621,6 +27848,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GrassBig (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 66ecbf34a5c1017498018d04118d5c5c, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66ecbf34a5c1017498018d04118d5c5c, type: 3}
 --- !u!1001 &2096139295
@@ -26677,6 +27908,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 1fa723cfc77e0e9438885b3c1b8d6ec3, type: 3}
       propertyPath: m_Name
       value: MicroRock2 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1fa723cfc77e0e9438885b3c1b8d6ec3, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1fa723cfc77e0e9438885b3c1b8d6ec3, type: 3}
@@ -26747,6 +27982,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
       propertyPath: m_Name
       value: AloeBush (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
@@ -26943,6 +28182,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AloeBush
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
 --- !u!1001 &2107960984
@@ -27000,6 +28243,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AloeBush (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
 --- !u!4 &2107960985 stripped
@@ -27017,63 +28264,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
   m_PrefabInstance: {fileID: 1301992522}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &2119195199
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1365455749}
-    m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: 865a85513d8ea7f4089b6ddc68840af3, type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 865a85513d8ea7f4089b6ddc68840af3, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1.51022
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 865a85513d8ea7f4089b6ddc68840af3, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.6018524
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 865a85513d8ea7f4089b6ddc68840af3, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.15977108
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 865a85513d8ea7f4089b6ddc68840af3, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.9997792
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 865a85513d8ea7f4089b6ddc68840af3, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 865a85513d8ea7f4089b6ddc68840af3, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.021011233
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 865a85513d8ea7f4089b6ddc68840af3, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 865a85513d8ea7f4089b6ddc68840af3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 865a85513d8ea7f4089b6ddc68840af3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 97.637
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 865a85513d8ea7f4089b6ddc68840af3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 865a85513d8ea7f4089b6ddc68840af3, type: 3}
-      propertyPath: m_Name
-      value: PointerNoHandle
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 865a85513d8ea7f4089b6ddc68840af3, type: 3}
 --- !u!4 &2121108638 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
@@ -27157,6 +28347,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AloeBush (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
 --- !u!1001 &2136097539
@@ -27225,6 +28419,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 870014f9cdb050147806e550fb2822ff, type: 3}
       propertyPath: m_Name
       value: CliffPlate
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 870014f9cdb050147806e550fb2822ff, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 870014f9cdb050147806e550fb2822ff, type: 3}
@@ -27298,6 +28496,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 062f2b4af2fa84c4ba7e5a8a044f750c, type: 3}
       propertyPath: m_Name
       value: CanyonRock1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 062f2b4af2fa84c4ba7e5a8a044f750c, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 062f2b4af2fa84c4ba7e5a8a044f750c, type: 3}
@@ -27410,6 +28612,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AloeBush (16)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
 --- !u!1001 &2145728442
@@ -27466,6 +28672,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
       propertyPath: m_Name
       value: AloeBush (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccc27a39f90888243926564c1c6e9727, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc27a39f90888243926564c1c6e9727, type: 3}

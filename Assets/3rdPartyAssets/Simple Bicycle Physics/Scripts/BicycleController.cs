@@ -171,6 +171,8 @@ namespace SBPScripts
         public AirTimeSettings AirTimeSettings;
         private IBikeInputProvider _inputProvider;
         private Transform _transform;
+        private float _lastSpeed;
+        private float _currentSpeed;
         private bool _isPaused;
         #endregion
 
@@ -243,24 +245,24 @@ namespace SBPScripts
         private void FixedUpdate()
         {
             if (_isPaused) return;
-
-            float currentSpeed = Rigidbody.velocity.magnitude;
-
-
-
-            RotateForwardPhysicsWheel(velocityToSteerAngleCurve.Evaluate(currentSpeed));
+            
+            _currentSpeed = Rigidbody.velocity.magnitude;
+            
+            RotateForwardPhysicsWheel(velocityToSteerAngleCurve.Evaluate(_currentSpeed));
             fPhysicsWheelConfigJoint.axis = new Vector3(1, 0, 0);
 
             currentTopSpeed = CalculateCurrentTopSpeed(_isSprinting);
-            ApplyAccelerationForces(currentSpeed, !isAirborne && !isBunnyHopping);
+            ApplyAccelerationForces(_currentSpeed, !isAirborne && !isBunnyHopping);
             PositionCenterOfForce(stuntMode);
             RotateGearStars();
-            UpdateVisuals(currentSpeed);
-            RotateForwardWheel(currentSpeed);
-            CalculateSideToSideWobbling(currentSpeed);
-            ApplyFriction(currentSpeed);
+            UpdateVisuals(_currentSpeed);
+            RotateForwardWheel(_currentSpeed);
+            CalculateSideToSideWobbling(_currentSpeed);
+            ApplyFriction(_currentSpeed);
             DetectLanding();
             ApplyAirControlForces();
+
+            _lastSpeed = _currentSpeed;
         }
 
         private void AlignToMovementDirection()
@@ -622,8 +624,12 @@ namespace SBPScripts
 
         public float GetCurrentSpeed()
         {
-            return Rigidbody.velocity.magnitude; 
+            return _currentSpeed;
         }
-        
+
+        public float GetAcceleration()
+        {
+            return _currentSpeed - _lastSpeed;
+        }
     }
 }
