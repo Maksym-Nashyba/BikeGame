@@ -7,6 +7,9 @@ namespace Effects
     {
         [SerializeField] private GameObject _bicycleGameObject;
         private ParticleSystem _particleSystem;
+        private Renderer _particleRenderer;
+        private Transform _currentLandscape;
+        private MeshRenderer _currentLandscapeRenderer;
         private Transform _transform;
         private IBicycle _bicycle;
         private RaycastHit[] _cachedHits;
@@ -19,6 +22,7 @@ namespace Effects
             _particleSystem = GetComponent<ParticleSystem>();
             _bicycle = _bicycleGameObject.GetComponent<IBicycle>();
             _cachedHits = new RaycastHit[1];
+            _particleRenderer = GetComponent<Renderer>();
         }
 
         private void FixedUpdate()
@@ -29,10 +33,15 @@ namespace Effects
                 return;
             }
 
-            Debug.DrawLine(_transform.position, hit.point, Color.green);
+            if (_currentLandscape != hit.transform)
+            {
+                _currentLandscape = hit.transform;
+                _currentLandscapeRenderer = _currentLandscape.GetComponent<MeshRenderer>();
+            }
+            
             Color landscapeColor = GetLandscapeColor(hit);
             SetParticlesColor(landscapeColor);
-            SetParticlesEmissionRate(30f * _bicycle.GetCurrentSpeed()/20f + Mathf.Clamp(_bicycle.GetAcceleration(), 0f, float.MaxValue) * 3f);
+            SetParticlesEmissionRate(75f * _bicycle.GetCurrentSpeed()/14f + Mathf.Abs(_bicycle.GetAcceleration()) * 100f);
         }
 
         private bool TouchesGround(out RaycastHit hit)
@@ -45,7 +54,12 @@ namespace Effects
 
         private Color GetLandscapeColor(RaycastHit hit)
         {
-            return Color.magenta;
+            Texture2D texture = _currentLandscapeRenderer.material.mainTexture as Texture2D;
+            Vector2 pixelOnTexture = hit.textureCoord;
+            pixelOnTexture.x *= texture.width;
+            pixelOnTexture.y *= texture.height;
+
+            return texture.GetPixel((int)pixelOnTexture.x, (int)pixelOnTexture.y);
         }
 
         private void SetParticlesEmissionRate(float rate)
@@ -56,8 +70,8 @@ namespace Effects
         
         private void SetParticlesColor(Color color)
         {
-            ParticleSystem.MainModule particleSystemMain = _particleSystem.main;
-            particleSystemMain.startColor = color;
+            color /= 1.2f;
+            _particleRenderer.material.color = color;
         }
     }
 }

@@ -246,6 +246,7 @@ namespace SBPScripts
         {
             if (_isPaused) return;
             
+            _lastSpeed = _currentSpeed;
             _currentSpeed = Rigidbody.velocity.magnitude;
             
             RotateForwardPhysicsWheel(velocityToSteerAngleCurve.Evaluate(_currentSpeed));
@@ -261,8 +262,6 @@ namespace SBPScripts
             ApplyFriction(_currentSpeed);
             DetectLanding();
             ApplyAirControlForces();
-
-            _lastSpeed = _currentSpeed;
         }
 
         private void AlignToMovementDirection()
@@ -629,7 +628,7 @@ namespace SBPScripts
 
         public float GetAcceleration()
         {
-            return _currentSpeed - _lastSpeed;
+            return (_currentSpeed - _lastSpeed)/0.02f;
         }
     }
 }
