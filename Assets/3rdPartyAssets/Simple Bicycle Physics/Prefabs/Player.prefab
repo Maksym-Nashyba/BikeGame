@@ -5848,6 +5848,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bicycleGameObject: {fileID: 2440735540701079700}
+  _speedEmissionMultiplier: 6
+  _accelerationEmissionMultiplier: 3.5
+  _torqueEmissionMultiplier: 40
 --- !u!1001 &2485258662492991768
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5939,6 +5942,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bicycleGameObject: {fileID: 2440735540701079700}
+  _speedEmissionMultiplier: 6
+  _accelerationEmissionMultiplier: 3.5
+  _torqueEmissionMultiplier: 40
 --- !u!4 &2879284132366426723 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 398617219434926971, guid: 37ab77fe8f02b9440a287ffbc5b0f001, type: 3}

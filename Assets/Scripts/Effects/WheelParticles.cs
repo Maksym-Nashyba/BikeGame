@@ -6,6 +6,9 @@ namespace Effects
     public class WheelParticles : MonoBehaviour
     {
         [SerializeField] private GameObject _bicycleGameObject;
+        [SerializeField] private float _speedEmissionMultiplier = 75f;
+        [SerializeField] private float _accelerationEmissionMultiplier = 100f;
+        [SerializeField] private float _torqueEmissionMultiplier = 10f;
         private ParticleSystem _particleSystem;
         private Renderer _particleRenderer;
         private Transform _currentLandscape;
@@ -13,8 +16,8 @@ namespace Effects
         private Transform _transform;
         private IBicycle _bicycle;
         private RaycastHit[] _cachedHits;
-        
-        private const float RaycastLength = 0.2f;
+
+        private const float RaycastLength = 0.3f;
 
         private void Awake()
         {
@@ -41,12 +44,24 @@ namespace Effects
             
             Color landscapeColor = GetLandscapeColor(hit);
             SetParticlesColor(landscapeColor);
-            SetParticlesEmissionRate(75f * _bicycle.GetCurrentSpeed()/14f + Mathf.Abs(_bicycle.GetAcceleration()) * 100f);
+            SetParticlesEmissionRate(CalculateEmissionRate());
         }
 
+        private float CalculateEmissionRate()
+        {
+            float speedPercent = _bicycle.GetCurrentSpeed() / 14f;
+            if (speedPercent < 0.3f) return 0;
+            
+            float fromSpeed = _speedEmissionMultiplier * speedPercent * speedPercent;
+            float fromAcceleration = _accelerationEmissionMultiplier * Mathf.Abs(_bicycle.GetAcceleration());
+            float fromTorque = _torqueEmissionMultiplier * Mathf.Abs(_bicycle.GetTorqueY());
+
+            return fromSpeed + fromAcceleration + fromTorque;
+        }
+        
         private bool TouchesGround(out RaycastHit hit)
         {
-            Ray ray = new Ray(_transform.position, Vector3.down * RaycastLength);
+            Ray ray = new Ray(_transform.position + Vector3.up * 0.06f, Vector3.down * RaycastLength);
             int hits = Physics.RaycastNonAlloc(ray, _cachedHits, RaycastLength, LayerMask.GetMask("Landscape"));
             hit = _cachedHits[0];
             return hits > 0;

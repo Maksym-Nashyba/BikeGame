@@ -630,5 +630,10 @@ namespace SBPScripts
         {
             return (_currentSpeed - _lastSpeed)/0.02f;
         }
+
+        public float GetTorqueY()
+        {
+            return Rigidbody.angularVelocity.y;
+        }
     }
 }
