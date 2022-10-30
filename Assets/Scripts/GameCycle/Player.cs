@@ -14,6 +14,7 @@ namespace GameCycle
 
         public void Die()
         {
+            if (!IsAlive) return;
             Died?.Invoke();
             IsAlive = false;
         }
