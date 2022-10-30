@@ -59,6 +59,7 @@ namespace GameCycle
 
         public void InvokeDied()
         {
+            if(!ServiceLocator.PlayerSpawner.PlayerAlive)return;
             Died?.Invoke();   
         }
     }

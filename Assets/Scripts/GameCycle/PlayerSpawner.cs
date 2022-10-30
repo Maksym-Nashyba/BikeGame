@@ -19,7 +19,9 @@ namespace GameCycle
         private void Awake()
         {
             ServiceLocator.GameLoop.Started += SpawnPlayerOnStart;
-            ServiceLocator.GameLoop.Died += SpawnPlayer;
+            ServiceLocator.GameLoop.Died += SpawnPlayer;//TODO add delay
+            ServiceLocator.GameLoop.Died += OnDied;
+            Respawned += OnSpawned;
         }
 
         public void UnlockCheckpoint(Checkpoint checkpoint)
@@ -42,10 +44,22 @@ namespace GameCycle
             Respawned?.Invoke(player);
         }
 
+        private void OnSpawned(GameObject player)
+        {
+            _playerAlive = true;
+        }
+
+        private void OnDied()
+        {
+            _playerAlive = false;
+        }
+        
         private void OnDestroy()
         {
             ServiceLocator.GameLoop.Started -= SpawnPlayerOnStart;
             ServiceLocator.GameLoop.Died -= SpawnPlayer;
+            ServiceLocator.GameLoop.Died -= OnDied;
+            Respawned -= OnSpawned;
         }
     }
 }
