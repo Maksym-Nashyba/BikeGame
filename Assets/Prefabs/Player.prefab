@@ -2896,6 +2896,7 @@ GameObject:
   - component: {fileID: 2440735540701079702}
   - component: {fileID: 2440735540701079711}
   - component: {fileID: 2440735540701079710}
+  - component: {fileID: 4237737119786730503}
   m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
@@ -3264,6 +3265,18 @@ MonoBehaviour:
   ragdollPrefab: {fileID: 8103233035378345893, guid: 6ec93b7af69b1384dafad18b36e13240, type: 3}
   instantiatedRagdoll: {fileID: 0}
   inactiveColliders: {fileID: 2440735539573491688}
+--- !u!114 &4237737119786730503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2440735540701079700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73b859e7c2f1488597368946e860cd97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2440735540751568482
 GameObject:
   m_ObjectHideFlags: 0

@@ -19,16 +19,16 @@ namespace GameCamera
 
         private void Awake()
         {
-            ServiceLocator.PlayerSpawner.Respawned += ResolveDependencies;
+            ServiceLocator.Player.Respawned += ResolveDependencies;
             _cameraTransform = GetComponent<Transform>();
             _direction = _direction.normalized;
             _lookaheadOffsetHistory = new Queue<Vector3>(10);
         }
 
-        private void ResolveDependencies(GameObject player)
+        private void ResolveDependencies()
         {
-            _playerTransform = player.GetComponent<Transform>();
-            _playerRigidbody = player.GetComponent<Rigidbody>();
+            _playerTransform = ServiceLocator.Player.ActivePlayerClone.GetComponent<Transform>();
+            _playerRigidbody = ServiceLocator.Player.ActivePlayerClone.GetComponent<Rigidbody>();
         }
 
         private void LateUpdate()
@@ -41,6 +41,7 @@ namespace GameCamera
         
         private Vector3 GetNextCameraPosition()
         {
+            if (_playerTransform is null) return Vector3.zero;
             Vector3 nextCameraPosition = _playerTransform.position + OffsetFromPlayerPosition();
             nextCameraPosition = ApplyLookahead(nextCameraPosition);
             nextCameraPosition = MoveToAvoidCollisions(nextCameraPosition);
@@ -120,7 +121,7 @@ namespace GameCamera
         
         private void OnDisable()
         {
-            ServiceLocator.PlayerSpawner.Respawned -= ResolveDependencies;
+            ServiceLocator.Player.Respawned -= ResolveDependencies;
         }
 
         public void Pause()

@@ -12,7 +12,7 @@ namespace LevelObjectives.LevelObjects
 
         private void OnActivated()
         {
-            ServiceLocator.GameLoop.KillPlayer();
+            ServiceLocator.Player.Die();
         }
 
         

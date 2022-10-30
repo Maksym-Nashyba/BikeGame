@@ -1,6 +1,7 @@
 ﻿using System;
 using GameCycle;
 using LevelObjectives.LevelObjects;
+using Misc;
 using UnityEngine;
 
 namespace LevelObjectives.Objectives
@@ -9,6 +10,11 @@ namespace LevelObjectives.Objectives
     public class CheckpointObjective : Objective
     {
         [SerializeField]private Checkpoint _checkpoint;
+
+        public override Transformation GetSpawnPosition()
+        {
+            return new Transformation(_checkpoint.transform);
+        }
 
         public override void Begin(LevelAchievements levelAchievements)
         {

@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Security.Cryptography;
 using Misc;
 using UnityEngine;
 
@@ -19,11 +20,6 @@ namespace SBPScripts
         private BicycleController _bicycleController;
         private Rigidbody _rigidbody;
 
-        private void Awake()
-        {
-            ServiceLocator.PlayerSpawner.Respawned += DestroyOldBikeEntities;
-        }
-
         void Start()
         {
             _bicycleController = GetComponent<BicycleController>();
@@ -37,7 +33,7 @@ namespace SBPScripts
                 StartCoroutine(BikeStand(0));
             }
 
-            ServiceLocator.GameLoop.Died += Dislodge;
+            ServiceLocator.Player.Died += Dislodge;
         }
         
         void OnCollisionEnter(Collision collision)
@@ -55,7 +51,7 @@ namespace SBPScripts
             {
                 if(dislodged)
                 { 
-                    ServiceLocator.GameLoop.KillPlayer();
+                    ServiceLocator.Player.Die();
                 }
                 else
                 {
@@ -87,6 +83,7 @@ namespace SBPScripts
             _bicycleController.enabled = false;
             inactiveColliders.SetActive(true);
             instantiatedRagdoll = Instantiate(ragdollPrefab);
+            Destroy(this);
         }
 
         private void Lodge()
@@ -97,17 +94,6 @@ namespace SBPScripts
             _bicycleController.Rigidbody.centerOfMass = _bicycleController.centerOfMassOffset;
             inactiveColliders.SetActive(false);
             Destroy(instantiatedRagdoll);
-        }
-        
-        private void DestroyOldBikeEntities(GameObject newPlayer)
-        {
-            Destroy(instantiatedRagdoll);
-            if (_bicycleController is not null)
-            {
-                Destroy(_bicycleController.gameObject);
-            }
-            _bicycleController = newPlayer.GetComponent<BicycleController>();
-            dislodged = false;
         }
 
         IEnumerator BikeStand(int instruction)
@@ -151,8 +137,7 @@ namespace SBPScripts
 
         private void OnDestroy()
         {
-            ServiceLocator.PlayerSpawner.Respawned -= DestroyOldBikeEntities;
-            ServiceLocator.GameLoop.Died -= Dislodge;
+            ServiceLocator.Player.Died -= Dislodge;
         }
     }
 }

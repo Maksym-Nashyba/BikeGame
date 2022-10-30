@@ -24,6 +24,9 @@ namespace Misc
         public static GameLoop GameLoop => _serviceLocator._gameLoop;
         [SerializeField] private GameLoop _gameLoop;
         
+        public static Player Player => _serviceLocator._player;
+        [SerializeField] private Player _player;
+        
         public static PlayerSpawner PlayerSpawner => _serviceLocator._playerSpawner;
         [SerializeField] private PlayerSpawner _playerSpawner;
         

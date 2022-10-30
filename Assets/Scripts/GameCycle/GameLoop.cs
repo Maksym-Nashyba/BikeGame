@@ -10,8 +10,7 @@ namespace GameCycle
     {
         public event Action Started;
         public event Action<LevelAchievements> Ended;
-        public event Action Died;
-        
+        public Objective PreviousObjective { get; private set; }
         private Queue<Objective> _objectives;
         private LevelAchievements _levelAchievements;
 
@@ -19,10 +18,14 @@ namespace GameCycle
         {
             _objectives = ServiceLocator.LevelStructure.ObjectiveQueue;
             _levelAchievements = ServiceLocator.LevelStructure.InstantiateAchievements();
+            PreviousObjective = _objectives.Peek();
+
+            ServiceLocator.Player.Died += () => { ServiceLocator.Player.Respawn(2000); };
         }
 
         private void Start()
         {
+            ServiceLocator.Player.Respawn(0);
             StartFirstObjective();
         }
         
@@ -49,18 +52,13 @@ namespace GameCycle
         {
             Objective dequeuedObjective = _objectives.Dequeue();
             dequeuedObjective.Completed -= OnObjectiveComplete;
+            PreviousObjective = dequeuedObjective;
         }
         
         private void StartNextObjective(Objective objective)
         {
             objective.Completed += OnObjectiveComplete;
             objective.Begin(_levelAchievements);
-        }
-
-        public void KillPlayer()
-        {
-            if(!ServiceLocator.PlayerSpawner.PlayerAlive) return;
-            Died?.Invoke();   
         }
     }
 }

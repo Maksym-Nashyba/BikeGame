@@ -1,5 +1,6 @@
 ﻿using System;
 using GameCycle;
+using Misc;
 using UnityEngine;
 
 namespace LevelObjectives.Objectives
@@ -8,24 +9,20 @@ namespace LevelObjectives.Objectives
     {
         public event Action<Objective> Completed;
         private LevelAchievements _levelAchievements;
+
+        public abstract Transformation GetSpawnPosition();
+        
+        public virtual void Begin(LevelAchievements levelAchievements)
+        {
+            _levelAchievements = levelAchievements;
+        }
+        
         protected void End()
         {
             OnLevelEnd();
             Completed?.Invoke(this);
-            Destroy(this);
         }
 
         protected virtual void OnLevelEnd() { }
-
-        public virtual void Begin(LevelAchievements levelAchievements)
-        {
-            _levelAchievements = levelAchievements;
-            AddScore();
-        }
-        
-        private void AddScore()
-        {
-            _levelAchievements.TotalScore += 50;
-        }
     }
 }
