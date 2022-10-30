@@ -15,7 +15,8 @@ namespace GameCamera
         private Transform _cameraTransform;
         private bool _isPaused;
         private float _lastCameraElevation;
-        private Queue<Vector3> _lookaheadOffsetHistory; 
+        private Queue<Vector3> _lookaheadOffsetHistory;
+        private int _checksLayerMask;
 
         private void Awake()
         {
@@ -23,6 +24,7 @@ namespace GameCamera
             _cameraTransform = GetComponent<Transform>();
             _direction = _direction.normalized;
             _lookaheadOffsetHistory = new Queue<Vector3>(10);
+            _checksLayerMask = LayerMask.GetMask("Landscape", "Props", "Player", "Default");
         }
 
         private void ResolveDependencies()
@@ -55,7 +57,7 @@ namespace GameCamera
             Vector3 originToTarget = raycastTarget - raycastOrigin;
             
             Ray ray = new Ray(raycastOrigin, originToTarget);
-            bool directlyObstructed = Physics.Raycast(ray, out RaycastHit hit, originToTarget.magnitude - 1f);
+            bool directlyObstructed = Physics.Raycast(ray, out RaycastHit hit, originToTarget.magnitude - 1f, _checksLayerMask);
             _lastCameraElevation += directlyObstructed ? Time.deltaTime * 4f : -Time.deltaTime;
 
             if (directlyObstructed && hit.transform.TryGetComponent(out CameraObstruction transparencyToggle))
@@ -71,7 +73,7 @@ namespace GameCamera
                 originToTarget = raycastTarget - raycastOrigin;
                 
                 Ray predictionRay = new Ray(raycastOrigin, originToTarget);
-                bool forwardObstructed = Physics.Raycast(predictionRay, out RaycastHit predictionHit, originToTarget.magnitude - 1f);
+                bool forwardObstructed = Physics.Raycast(predictionRay,originToTarget.magnitude - 1f, _checksLayerMask);
                 _lastCameraElevation += forwardObstructed ? Time.deltaTime * 4f : -Time.deltaTime;
             }
             
