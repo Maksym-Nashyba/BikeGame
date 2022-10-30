@@ -57,9 +57,9 @@ namespace GameCycle
             objective.Begin(_levelAchievements);
         }
 
-        public void InvokeDied()
+        public void KillPlayer()
         {
-            if(!ServiceLocator.PlayerSpawner.PlayerAlive)return;
+            if(!ServiceLocator.PlayerSpawner.PlayerAlive) return;
             Died?.Invoke();   
         }
     }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using LevelObjectives.LevelObjects;
 using Misc;
 using UnityEngine;
@@ -19,7 +20,7 @@ namespace GameCycle
         private void Awake()
         {
             ServiceLocator.GameLoop.Started += SpawnPlayerOnStart;
-            ServiceLocator.GameLoop.Died += SpawnPlayer;//TODO add delay
+            ServiceLocator.GameLoop.Died += () => { RespawnWithDelay(); };
             ServiceLocator.GameLoop.Died += OnDied;
             Respawned += OnSpawned;
         }
@@ -44,6 +45,12 @@ namespace GameCycle
             Respawned?.Invoke(player);
         }
 
+        private async Task RespawnWithDelay()
+        {
+            await Task.Delay(1000);
+            SpawnPlayer();
+        }
+
         private void OnSpawned(GameObject player)
         {
             _playerAlive = true;
@@ -57,7 +64,6 @@ namespace GameCycle
         private void OnDestroy()
         {
             ServiceLocator.GameLoop.Started -= SpawnPlayerOnStart;
-            ServiceLocator.GameLoop.Died -= SpawnPlayer;
             ServiceLocator.GameLoop.Died -= OnDied;
             Respawned -= OnSpawned;
         }

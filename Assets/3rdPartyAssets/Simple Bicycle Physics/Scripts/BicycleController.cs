@@ -181,10 +181,7 @@ namespace SBPScripts
             _transform = transform;
             _inputProvider = ServiceLocator.InputProvider;
             _transform.rotation = Quaternion.Euler(0, _transform.rotation.eulerAngles.y, 0);
-        }
-
-        private void Start()
-        {
+            
             Rigidbody = GetComponent<Rigidbody>();
             Rigidbody.maxAngularVelocity = Mathf.Infinity;
 
@@ -193,7 +190,10 @@ namespace SBPScripts
 
             rWheelRb = rPhysicsWheel.GetComponent<Rigidbody>();
             rWheelRb.maxAngularVelocity = Mathf.Infinity;
+        }
 
+        private void Start()
+        {
             currentTopSpeed = topSpeed;
 
             initialHandlesRotation = bicycleParts.handles.transform.localRotation;

@@ -49,15 +49,13 @@ namespace SBPScripts
             }
         }
 
-
-        
         void Update()
         {
             if(dislodged != _prevDislodged)
             {
                 if(dislodged)
                 { 
-                    ServiceLocator.GameLoop.InvokeDied();
+                    ServiceLocator.GameLoop.KillPlayer();
                 }
                 else
                 {
