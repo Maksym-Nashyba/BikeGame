@@ -35,7 +35,7 @@ namespace SBPScripts{
         {
             foreach (Transform trans in transform.GetComponentsInChildren<Transform>())
             {
-                if (trans.GetComponent<ConfigurableJoint>() is not null || trans.name == "mixamorig:Hips")
+                if (trans.GetComponent<ConfigurableJoint>() != null || trans.name == "mixamorig:Hips")
                 {
                     foreach (Transform rider in CharacterCopyPosition.transform.GetComponentsInChildren<Transform>())
                     {
@@ -47,7 +47,7 @@ namespace SBPScripts{
             
             foreach (Transform trans in transform.GetComponentsInChildren<Transform>())
             {
-                if (trans.GetComponent<ConfigurableJoint>() is not null)
+                if (trans.GetComponent<ConfigurableJoint>() != null)
                 {
                     foreach (Transform animRider in CharacterCopyAnimations.transform.GetComponentsInChildren<Transform>())
                     {
@@ -68,7 +68,7 @@ namespace SBPScripts{
 
             foreach (Transform trans in animTransArr)
             {
-                if (trans.tag == limbTag)
+                if (trans.CompareTag(limbTag))
                 {
                     transList.Add(trans);
                 }
@@ -78,19 +78,17 @@ namespace SBPScripts{
             foreach (Transform trans in ragTransArr)
             {
                 ConfigurableJoint cj = trans.GetComponent<ConfigurableJoint>();
-                if (cj != null)
-                {
-                    //default contact to 0.1, max depenetration to 0.1 Fixed TimeScale to  0.01
-                    jointList.Add(cj);
-                    cj.projectionMode = JointProjectionMode.PositionAndRotation;
-                    cj.projectionDistance = 5f;
-                    cj.projectionAngle = 5f;
-                    cj.enablePreprocessing = false;
-                    trans.GetComponent<Rigidbody>().solverIterations = 4;
-                    trans.GetComponent<Rigidbody>().mass = bodyPartMass;
-                    trans.GetComponent<Rigidbody>().velocity = bicycleController.GetComponent<Rigidbody>().velocity * launchVelocityMultiplier;
-                    trans.GetComponent<Rigidbody>().maxAngularVelocity = Mathf.Infinity;
-                }
+                if (cj == null) continue; 
+                //default contact to 0.1, max depenetration to 0.1 Fixed TimeScale to  0.01
+                jointList.Add(cj);
+                cj.projectionMode = JointProjectionMode.PositionAndRotation;
+                cj.projectionDistance = 5f;
+                cj.projectionAngle = 5f;
+                cj.enablePreprocessing = false;
+                trans.GetComponent<Rigidbody>().solverIterations = 4;
+                trans.GetComponent<Rigidbody>().mass = bodyPartMass;
+                trans.GetComponent<Rigidbody>().velocity = bicycleController.GetComponent<Rigidbody>().velocity * launchVelocityMultiplier;
+                trans.GetComponent<Rigidbody>().maxAngularVelocity = Mathf.Infinity;
             }
             confJoints = jointList.ToArray();
         }

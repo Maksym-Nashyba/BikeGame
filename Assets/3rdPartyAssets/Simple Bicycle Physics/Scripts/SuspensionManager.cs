@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace SBPScripts
@@ -86,7 +84,7 @@ namespace SBPScripts
             if (frontSuspensionMesh != null)
                 frontSuspensionMesh.transform.rotation = bicycleController.bicycleParts.lowerFork.transform.rotation;
             if (spring != null && rSuspension != null)
-                if (rSuspension.transform.eulerAngles.x > 0 && rSuspension.transform.eulerAngles.x < 20)
+                if (rSuspension.transform.eulerAngles.x is > 0 and < 20)
                     spring.transform.localScale = new Vector3(initialSpringScale.x,
                         initialSpringScale.y - Mathf.Clamp01(rSuspension.transform.eulerAngles.x / 20),
                         initialSpringScale.z);

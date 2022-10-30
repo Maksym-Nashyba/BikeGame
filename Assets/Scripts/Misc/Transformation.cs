@@ -11,7 +11,7 @@ namespace Misc
         public Transformation(Transform transform)
         {
             Position = transform.position;
-            Scale = transform.localScale;
+            Scale = Vector3.one;
             Rotation = transform.rotation;
         }
     }

@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Security.Cryptography;
 using Misc;
 using UnityEngine;
 
@@ -14,24 +13,20 @@ namespace SBPScripts
         
         [HideInInspector]
         public GameObject instantiatedRagdoll;
+        public GameObject inactiveColliders;
+
+        [SerializeField] private GameObject _cyclist;
         private bool _prevOnBike;
         private bool _prevDislodged;
-        public GameObject inactiveColliders;
         private BicycleController _bicycleController;
         private Rigidbody _rigidbody;
 
-        void Start()
+        private void Start()
         {
             _bicycleController = GetComponent<BicycleController>();
             _rigidbody = GetComponent<Rigidbody>();
-            if (onBike)
-            {
-                 StartCoroutine(BikeStand(1));
-            }
-            else
-            {
-                StartCoroutine(BikeStand(0));
-            }
+            if (_cyclist != null) _cyclist.SetActive(onBike);
+            StartCoroutine(onBike ? BikeStand(1) : BikeStand(0));
 
             ServiceLocator.Player.Died += Dislodge;
         }
@@ -39,7 +34,7 @@ namespace SBPScripts
         void OnCollisionEnter(Collision collision)
         {
             //Detects if there is a ragdoll to instantiate in the first place along with collsion impact detection
-            if (collision.relativeVelocity.magnitude > impactThreshold && ragdollPrefab != null)
+            if (collision.relativeVelocity.magnitude > impactThreshold && ragdollPrefab is not null)
             {
                 dislodged = true;
             }
@@ -63,7 +58,7 @@ namespace SBPScripts
             
             if (onBike != _prevOnBike)
             {
-                if (onBike && dislodged == false)
+                if (onBike && !dislodged)
                 {
                     StartCoroutine(BikeStand(1));
                 }
@@ -77,23 +72,27 @@ namespace SBPScripts
 
         private void Dislodge()
         {
+            dislodged = true;
             _bicycleController.fPhysicsWheel.GetComponent<SphereCollider>().enabled = false;
             _bicycleController.rPhysicsWheel.GetComponent<SphereCollider>().enabled = false;
             _bicycleController.Rigidbody.centerOfMass = _bicycleController.GetComponent<BoxCollider>().center;
             _bicycleController.enabled = false;
             inactiveColliders.SetActive(true);
+            _cyclist.SetActive(false);
             instantiatedRagdoll = Instantiate(ragdollPrefab);
             Destroy(this);
         }
 
         private void Lodge()
         {
+            dislodged = false;
             _bicycleController.fPhysicsWheel.GetComponent<SphereCollider>().enabled = true;
             _bicycleController.rPhysicsWheel.GetComponent<SphereCollider>().enabled = true;
             _bicycleController.enabled = true;
             _bicycleController.Rigidbody.centerOfMass = _bicycleController.centerOfMassOffset;
             inactiveColliders.SetActive(false);
             Destroy(instantiatedRagdoll);
+            _cyclist.SetActive(true);
         }
 
         IEnumerator BikeStand(int instruction)

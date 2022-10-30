@@ -1,12 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using SBPScripts;
-using UnityEditor.SceneManagement;
 using UnityEditor;
-using System;
 
-[InitializeOnLoadAttribute]
 public class SaveBicycleReplay : MonoBehaviour
 {
     static string json, encodedString;

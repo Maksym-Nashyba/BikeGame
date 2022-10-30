@@ -1,14 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace SBPScripts
 {
     public class RagdollJointConfig : MonoBehaviour
     {
-
-        public bool invert;
-
         public float torqueForce;
         public float angularDamping;
         public float maxForce;
@@ -69,13 +64,9 @@ namespace SBPScripts
         void LateUpdate()
         {
             joint.targetRotation = target.localRotation * startingRotation;
-            if (!onAnimatorIK)
-            {
-                ragdollJointImitation.CopyInitialPositions();
-                onAnimatorIK = true;
-            }
+            if (onAnimatorIK) return;
+            ragdollJointImitation.CopyInitialPositions();
+            onAnimatorIK = true;
         }
-
-
     }
 }
