@@ -9,7 +9,7 @@ namespace LevelObjectives.LevelObjects
     {
         public event Action Activated;
         
-        private void Awake()
+        protected virtual void Awake()
         {
             gameObject.layer = LayerMask.NameToLayer("PlayerTrigger");
             GetComponent<Collider>().isTrigger = true;
