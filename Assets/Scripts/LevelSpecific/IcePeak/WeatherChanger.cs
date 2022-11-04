@@ -38,20 +38,25 @@ namespace LevelSpecific.IcePeak
 
         private void OnPlayerRespawned()
         {
-            Transform playerTransform = ServiceLocator.Player.ActivePlayerClone.transform;
-            if (Vector2.Distance(playerTransform.position, _coldSide.position) <
-                Vector2.Distance(playerTransform.position, _warmSide.position))
+            if (PlayerInColdZone())
             {
                 SetParticlesRate(_snowParticles, 1f);
                 SetParticlesRate(_rainParticles, 0f);
             }
             else
             {
-                SetParticlesRate(_rainParticles, 1f);
                 SetParticlesRate(_snowParticles, 0f);
+                SetParticlesRate(_rainParticles, 1f);
             }
         }
 
+        private bool PlayerInColdZone()
+        {
+            Transform playerTransform = ServiceLocator.Player.ActivePlayerClone.transform;
+            return Vector3.Distance(playerTransform.position, _coldSide.position) <
+                   Vector3.Distance(playerTransform.position, _warmSide.position);
+        }
+        
         private void OnDestroy()
         {
             ServiceLocator.Player.Respawned -= OnPlayerRespawned;

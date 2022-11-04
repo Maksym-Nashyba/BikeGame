@@ -43,6 +43,7 @@ namespace GameCamera
         
         private Vector3 GetNextCameraPosition()
         {
+            if (!ServiceLocator.Player.IsAlive) return _cameraTransform.position;
             if (_playerTransform is null) return Vector3.zero;
             Vector3 nextCameraPosition = _playerTransform.position + OffsetFromPlayerPosition();
             nextCameraPosition = ApplyLookahead(nextCameraPosition);

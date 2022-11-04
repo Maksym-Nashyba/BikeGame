@@ -20,7 +20,7 @@ namespace GameCycle
             _levelAchievements = ServiceLocator.LevelStructure.InstantiateAchievements();
             PreviousObjective = _objectives.Peek();
 
-            ServiceLocator.Player.Died += () => { ServiceLocator.Player.Respawn(2000); };
+            ServiceLocator.Player.Died += async () => { await ServiceLocator.Player.Respawn(1000); };
         }
 
         private void Start()
@@ -42,6 +42,7 @@ namespace GameCycle
             {
                 Ended?.Invoke(_levelAchievements);
                 ServiceLocator.Pause.PauseAll();
+                CompleteLevel();
                 Debug.Log("Ended");
                 return;
             }
@@ -59,6 +60,12 @@ namespace GameCycle
         {
             objective.Completed += OnObjectiveComplete;
             objective.Begin(_levelAchievements);
+        }
+
+        private void CompleteLevel()
+        {
+            String levelGUID = ServiceLocator.LevelStructure.Level.GetGUID();
+            ServiceLocator.Saves.Career.SetLevelCompleted(levelGUID);
         }
     }
 }
