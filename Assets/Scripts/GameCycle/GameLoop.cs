@@ -40,15 +40,12 @@ namespace GameCycle
             DeQueueObjective();
             if (_objectives.Count == 0)
             {
-                Ended?.Invoke(_levelAchievements);
-                ServiceLocator.Pause.PauseAll();
                 CompleteLevel();
-                Debug.Log("Ended");
                 return;
             }
             StartNextObjective(_objectives.Peek());
         }
-        
+
         private void DeQueueObjective()
         {
             Objective dequeuedObjective = _objectives.Dequeue();
@@ -64,8 +61,21 @@ namespace GameCycle
 
         private void CompleteLevel()
         {
-            String levelGUID = ServiceLocator.LevelStructure.Level.GetGUID();
-            ServiceLocator.Saves.Career.SetLevelCompleted(levelGUID);
+            ServiceLocator.Pause.PauseAll();
+
+            try
+            {
+                String levelGUID = ServiceLocator.LevelStructure.Level.GetGUID();
+                ServiceLocator.Saves.Career.SetLevelCompleted(levelGUID);
+            }
+            catch (Exception)
+            {
+                Debug.LogError("Failed to save level completion");
+            }
+         
+            Ended?.Invoke(_levelAchievements);
+            
+            Debug.Log("Ended");
         }
     }
 }

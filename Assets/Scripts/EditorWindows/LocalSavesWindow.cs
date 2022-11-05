@@ -71,7 +71,7 @@ namespace EditorWindows
         {
             GUILayout.Label("Levels: ", EditorStyles.boldLabel);
             PersistentLevel[] levels = _saves.Career.GetAllCompletedLevels();
-
+            if(levels is null) return;
             foreach (PersistentLevel level in levels)
             {
                 using (new GUILayout.VerticalScope(EditorStyles.helpBox))

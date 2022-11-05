@@ -1,104 +1,67 @@
-﻿using System.Threading.Tasks;
+﻿using System;
 using IGUIDResources;
+using LevelLoading;
 using SaveSystem.Front;
 using SaveSystem.Models;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace Menu
 {
     public class LevelSelection : MonoBehaviour
     {
+        public event Action<int, Level> SelectedLevel;
+        
         [SerializeField] private Button _nextButton;
         [SerializeField] private Button _previousButton;
-        
-        [SerializeField] private Transform _cameraTransform;
-        [SerializeField] private LineRenderer _lineRenderer;
-        [SerializeField] private GameObject[] _levelGameObjects;
 
-        private int _currentLevelNumber;
-        private Vector3 _currentPointPosition;
-        private Vector3 _currentLevelPosition;
-        
+        private int _currentLevelIndex;
         private Saves _saves;
         private Career _career;
-        private Level _currentLevel;
+        private PersistentLevel[] _completedLevels;
         private GUIDResourceLocator _resourceLocator;
-        private PersistentLevel[] _persistentLevels;
-        private TaskCompletionSource<Level> _taskCompletionSource;
 
         private void Awake()
         {
             _saves = FindObjectOfType<Saves>();
-            _persistentLevels = _saves.Career.GetAllCompletedLevels();
+            _completedLevels = _saves.Career.GetAllCompletedLevels();
             _resourceLocator = GUIDResourceLocator.Initialize();
             _career = _resourceLocator.Career;
+            SelectedLevel += UpdateNavigationButtonsEnabled;
         }
 
         private void Start()
         {
-            DisplayLevel();
+            SelectLevel(0);
         }
 
-        private void Update()
+        private void UpdateNavigationButtonsEnabled(int currentLevelIndex, Level currentLevel)
         {
-            UpdateButtonsStatus(_currentLevelNumber, _persistentLevels.Length);
+            _nextButton.interactable = currentLevelIndex < _completedLevels.Length - 1;
+            _previousButton.interactable = currentLevelIndex > 0;
         }
 
-        private void FixedUpdate()
+        public void SelectLevel(int index)
         {
-            _cameraTransform.position = Vector3.Lerp(_cameraTransform.position, _currentPointPosition, 0.03f);
-            _cameraTransform.LookAt(_currentLevelPosition);
+            _currentLevelIndex = index;
+            SelectedLevel?.Invoke(_currentLevelIndex, _career.Chapters[0][_currentLevelIndex]);
         }
         
-        private void UpdateButtonsStatus(int levelNumber, int levelsCount)
+        public void SelectLevel(bool nextOrPrevious) 
         {
-            _nextButton.interactable = levelNumber < levelsCount - 1;
-            _previousButton.interactable = levelNumber > 0;
-        }
-        
-        public void ChangeLevel(bool nextOrPrevious) 
-        {
-            _currentLevelNumber = nextOrPrevious ? ++_currentLevelNumber : --_currentLevelNumber;
-            DisplayLevel();
-        }
-        
-        private void DisplayLevel()
-        {
-            UpdatePointInfo(_currentLevelNumber);
-            UpdatePickedLevel(_persistentLevels[_currentLevelNumber]);
-        }
-        
-        private void UpdatePointInfo(int levelNumber)
-        {
-            _currentPointPosition = _lineRenderer.GetPosition(levelNumber);
-            _currentLevelPosition = _levelGameObjects[levelNumber].transform.position;
-        }
-        
-        private void UpdatePickedLevel(PersistentLevel persistentLevel)
-        {
-            _currentLevel = _career.GetLevelWithGUID(persistentLevel.GUID);
+            int nextLevelIndex = nextOrPrevious ? ++_currentLevelIndex : --_currentLevelIndex;
+            SelectLevel(nextLevelIndex);
         }
 
-        public void SelectLevel()
+        public async void LaunchLevel()
         {
-            _taskCompletionSource.SetResult(_currentLevel);
+            LevelLoader loader = new LevelLoader();
+            await loader.LoadLevelWithBikeSelection(_career.Chapters[0][_currentLevelIndex].GetGUID());
         }
-        
-        public static async Task<LevelSelection> DisplayLevelSelection()
+
+        private void OnDestroy()
         {
-            AsyncOperation loadingProcess = SceneManager.LoadSceneAsync("LevelSelection", LoadSceneMode.Additive);
-            while (!loadingProcess.isDone)
-            {
-                await Task.Yield();
-            }
-            return FindObjectOfType<LevelSelection>();
-        }
-        
-        public void RegisterTaskCompletionSource(TaskCompletionSource<Level> taskCompletionSource)
-        {
-            _taskCompletionSource = taskCompletionSource;
+            SelectedLevel -= UpdateNavigationButtonsEnabled;
         }
     }
 }
