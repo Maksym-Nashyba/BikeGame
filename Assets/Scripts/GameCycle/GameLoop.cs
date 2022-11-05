@@ -62,7 +62,7 @@ namespace GameCycle
         private void CompleteLevel()
         {
             ServiceLocator.Pause.PauseAll();
-
+            Ended?.Invoke(_levelAchievements);
             try
             {
                 String levelGUID = ServiceLocator.LevelStructure.Level.GetGUID();
@@ -72,9 +72,7 @@ namespace GameCycle
             {
                 Debug.LogError("Failed to save level completion");
             }
-         
-            Ended?.Invoke(_levelAchievements);
-            
+
             Debug.Log("Ended");
         }
     }
