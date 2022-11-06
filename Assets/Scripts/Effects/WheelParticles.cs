@@ -1,4 +1,6 @@
+using System;
 using Misc;
+using TMPro;
 using UnityEngine;
 
 namespace Effects
@@ -33,7 +35,7 @@ namespace Effects
         {
             if (!TouchesGround(out RaycastHit hit))
             {
-                SetParticlesEmissionRate(0f);    
+                SetParticlesEmissionRate(0f);
                 return;
             }
 
@@ -42,7 +44,7 @@ namespace Effects
                 _currentLandscape = hit.transform;
                 _currentLandscapeRenderer = _currentLandscape.GetComponent<MeshRenderer>();
             }
-            
+
             Color landscapeColor = GetLandscapeColor(hit);
             SetParticlesColor(landscapeColor);
             SetParticlesEmissionRate(CalculateEmissionRate());
@@ -52,14 +54,14 @@ namespace Effects
         {
             float speedPercent = _bicycle.GetCurrentSpeed() / 14f;
             if (speedPercent < 0.3f) return 0;
-            
+
             float fromSpeed = _speedEmissionMultiplier * speedPercent * speedPercent;
             float fromAcceleration = _accelerationEmissionMultiplier * Mathf.Abs(_bicycle.GetAcceleration());
             float fromTorque = _torqueEmissionMultiplier * Mathf.Abs(_bicycle.GetTorqueY());
 
             return fromSpeed + fromAcceleration + fromTorque;
         }
-        
+
         private bool TouchesGround(out RaycastHit hit)
         {
             Ray ray = new Ray(_transform.position + Vector3.up * 0.06f, Vector3.down * RaycastLength);
@@ -83,7 +85,7 @@ namespace Effects
             ParticleSystem.EmissionModule particleSystemEmission = _particleSystem.emission;
             particleSystemEmission.rateOverTime = rate;
         }
-        
+
         private void SetParticlesColor(Color color)
         {
             color /= 1.2f;
