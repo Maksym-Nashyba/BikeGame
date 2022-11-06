@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using LevelObjectives.Objectives;
 using Misc;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace GameCycle
 {
@@ -73,6 +74,7 @@ namespace GameCycle
                 Debug.LogError("Failed to save level completion");
             }
 
+            SceneManager.LoadScene("Scenes/LevelSelection");
             Debug.Log("Ended");
         }
     }
