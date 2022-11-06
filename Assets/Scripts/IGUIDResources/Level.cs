@@ -6,6 +6,7 @@ namespace IGUIDResources
     public class Level : ScriptableObject, IGUIDResource
     {
         public string SceneName;
+        public string DisplayName;
         
         public string GetGUID()
         {

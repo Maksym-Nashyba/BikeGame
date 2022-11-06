@@ -15,14 +15,13 @@ namespace Menu
 
         private Saves _saves;
         private Career _career;
-        private PersistentLevel[] _completedLevels;
         private GUIDResourceLocator _resourceLocator;
-        private int LastUnlockedLevelIndex => _completedLevels.Length - 1;
+        private int LastUnlockedLevelIndex => _saves.Career.GetAllCompletedLevels().Length - 1;
+        private String CurrentLevelGUID => _career.Chapters[0][CurrentLevelIndex].GetGUID();
 
         private void Awake()
         {
             _saves = FindObjectOfType<Saves>();
-            _completedLevels = _saves.Career.GetAllCompletedLevels();
             _resourceLocator = GUIDResourceLocator.Initialize();
             _career = _resourceLocator.Career;
         }
@@ -48,12 +47,13 @@ namespace Menu
         public async void LaunchLevel()
         {
             LevelLoader loader = new LevelLoader();
-            await loader.LoadLevelWithBikeSelection(_career.Chapters[0][CurrentLevelIndex].GetGUID());
+            await loader.LoadLevelWithBikeSelection(CurrentLevelGUID);
         }
 
         public bool CanSelectNext()
         {
-            return CurrentLevelIndex < LastUnlockedLevelIndex;
+            int currentLevelComplete = _saves.Career.IsCompleted(CurrentLevelGUID) ? 1 : 0;
+            return CurrentLevelIndex < LastUnlockedLevelIndex + currentLevelComplete;
         }
 
         public bool CanSelectPrevious()
