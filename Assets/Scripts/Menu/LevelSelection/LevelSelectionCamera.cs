@@ -1,11 +1,11 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using UnityEngine;
 
 namespace Menu
 {
     public class LevelSelectionCamera : MonoBehaviour
     {
+        public CameraCheckpoint GetCheckpointFor(int levelIndex) => _checkpoints[levelIndex];
         [SerializeField] private Transform _cameraTransform;
         [SerializeField] private CameraCheckpoint[] _checkpoints;
 
@@ -23,7 +23,8 @@ namespace Menu
 
         private Quaternion GetLookRotation(Vector3 from, Vector3 to)
         {
-            return Quaternion.identity;
+            Vector3 direction = to - from;
+            return Quaternion.LookRotation(direction);
         }
 
         #if UNITY_EDITOR

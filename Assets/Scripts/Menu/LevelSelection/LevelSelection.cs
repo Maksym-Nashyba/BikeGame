@@ -2,7 +2,6 @@
 using IGUIDResources;
 using LevelLoading;
 using SaveSystem.Front;
-using SaveSystem.Models;
 using UnityEngine;
 
 namespace Menu
@@ -10,13 +9,15 @@ namespace Menu
     public class LevelSelection : MonoBehaviour
     {
         public int CurrentLevelIndex { get; private set; }
+        public int LastCompletedLevelIndex => _saves.Career.GetAllCompletedLevels().Length - 1;
+        public int SafeLastCompletedLevelIndex => Mathf.Clamp(_saves.Career.GetAllCompletedLevels().Length - 1, 0, Int32.MaxValue);
+        public int NextSafeIndex(int levelIndex) => Mathf.Clamp(levelIndex + 1, 0, _career.Chapters[0].Count - 1);
         public event Action<int, Level> SelectedLevel;
         public event Action<int, Level> SetUp;
 
         private Saves _saves;
         private Career _career;
         private GUIDResourceLocator _resourceLocator;
-        private int LastUnlockedLevelIndex => _saves.Career.GetAllCompletedLevels().Length - 1;
         private String CurrentLevelGUID => _career.Chapters[0][CurrentLevelIndex].GetGUID();
 
         private void Awake()
@@ -28,32 +29,32 @@ namespace Menu
 
         private void Start()
         {
-            CurrentLevelIndex = Mathf.Clamp(LastUnlockedLevelIndex, 0, Int32.MaxValue);
+            CurrentLevelIndex = SafeLastCompletedLevelIndex;
             SetUp?.Invoke(CurrentLevelIndex, _career.Chapters[0][CurrentLevelIndex]);
         }
-
-        public void SelectLevel(int index)
-        {
-            CurrentLevelIndex = index;
-            SelectedLevel?.Invoke(CurrentLevelIndex, _career.Chapters[0][CurrentLevelIndex]);
-        }
         
-        public void SelectLevel(bool nextOrPrevious) 
-        {
-            int nextLevelIndex = nextOrPrevious ? ++CurrentLevelIndex : --CurrentLevelIndex;
-            SelectLevel(nextLevelIndex);
-        }
-
         public async void LaunchLevel()
         {
             LevelLoader loader = new LevelLoader();
             await loader.LoadLevelWithBikeSelection(CurrentLevelGUID);
         }
+        
+        public void SelectLevel(bool nextOrPrevious)
+        {
+            int nextLevelIndex = nextOrPrevious ? ++CurrentLevelIndex : --CurrentLevelIndex;
+            SelectLevel(nextLevelIndex);
+        }
+        
+        private void SelectLevel(int index)
+        {
+            CurrentLevelIndex = index;
+            SelectedLevel?.Invoke(CurrentLevelIndex, _career.Chapters[0][CurrentLevelIndex]);
+        }
 
         public bool CanSelectNext()
         {
             int currentLevelComplete = _saves.Career.IsCompleted(CurrentLevelGUID) ? 1 : 0;
-            return CurrentLevelIndex < LastUnlockedLevelIndex + currentLevelComplete;
+            return CurrentLevelIndex < LastCompletedLevelIndex + currentLevelComplete;
         }
 
         public bool CanSelectPrevious()
