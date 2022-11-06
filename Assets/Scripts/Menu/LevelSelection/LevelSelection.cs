@@ -4,7 +4,6 @@ using LevelLoading;
 using SaveSystem.Front;
 using SaveSystem.Models;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Menu
 {
@@ -12,14 +11,13 @@ namespace Menu
     {
         public int CurrentLevelIndex { get; private set; }
         public event Action<int, Level> SelectedLevel;
-        
-        [SerializeField] private Button _nextButton;
-        [SerializeField] private Button _previousButton;
+        public event Action<int, Level> SetUp;
 
         private Saves _saves;
         private Career _career;
         private PersistentLevel[] _completedLevels;
         private GUIDResourceLocator _resourceLocator;
+        private int LastUnlockedLevelIndex => _completedLevels.Length - 1;
 
         private void Awake()
         {
@@ -27,12 +25,12 @@ namespace Menu
             _completedLevels = _saves.Career.GetAllCompletedLevels();
             _resourceLocator = GUIDResourceLocator.Initialize();
             _career = _resourceLocator.Career;
-            SelectedLevel += UpdateNavigationButtonsEnabled;
         }
 
         private void Start()
         {
-            SelectLevel(0);
+            CurrentLevelIndex = Mathf.Clamp(LastUnlockedLevelIndex, 0, Int32.MaxValue);
+            SetUp?.Invoke(CurrentLevelIndex, _career.Chapters[0][CurrentLevelIndex]);
         }
 
         public void SelectLevel(int index)
@@ -52,16 +50,15 @@ namespace Menu
             LevelLoader loader = new LevelLoader();
             await loader.LoadLevelWithBikeSelection(_career.Chapters[0][CurrentLevelIndex].GetGUID());
         }
-        
-        private void UpdateNavigationButtonsEnabled(int currentLevelIndex, Level currentLevel)
+
+        public bool CanSelectNext()
         {
-            _nextButton.interactable = currentLevelIndex < _completedLevels.Length - 1;
-            _previousButton.interactable = currentLevelIndex > 0;
+            return CurrentLevelIndex < LastUnlockedLevelIndex;
         }
 
-        private void OnDestroy()
+        public bool CanSelectPrevious()
         {
-            SelectedLevel -= UpdateNavigationButtonsEnabled;
+            return CurrentLevelIndex > 0;
         }
     }
 }

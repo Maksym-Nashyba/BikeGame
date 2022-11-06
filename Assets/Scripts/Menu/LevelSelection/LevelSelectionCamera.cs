@@ -7,11 +7,39 @@ namespace Menu
     public class LevelSelectionCamera : MonoBehaviour
     {
         [SerializeField] private Transform _cameraTransform;
-        [SerializeField] private LineRenderer _path;
+        [SerializeField] private CameraCheckpoint[] _checkpoints;
+
+        public void TeleportToLevel(int levelIndex)
+        {
+            Vector3 checkpointPosition = _checkpoints[levelIndex].Position;
+            _cameraTransform.SetPositionAndRotation(checkpointPosition, GetLookRotation(checkpointPosition, _checkpoints[levelIndex].Target));
+        }
         
         public Task MoveToLevel(int targetLevelIndex)
         {
-            throw new NotImplementedException();
+            TeleportToLevel(targetLevelIndex);
+            return Task.CompletedTask;
         }
+
+        private Quaternion GetLookRotation(Vector3 from, Vector3 to)
+        {
+            return Quaternion.identity;
+        }
+
+        #if UNITY_EDITOR
+        private void OnDrawGizmos()
+        {
+            for (int i = 0; i < _checkpoints.Length; i++)
+            {
+                Gizmos.color = Color.cyan;
+                Gizmos.DrawLine(_checkpoints[i].Position, _checkpoints[i].Target);
+                Gizmos.color = Color.magenta;
+                CameraCheckpoint checkpoint = _checkpoints[i];
+                Gizmos.DrawSphere(checkpoint.Position, 0.1f);
+                if(i == _checkpoints.Length-1)continue;
+                Gizmos.DrawLine(_checkpoints[i].Position, _checkpoints[i+1].Position);
+            }
+        }
+        #endif
     }
 }
