@@ -158,6 +158,56 @@ namespace Inputs
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""General"",
+            ""id"": ""621e6d48-745d-4361-843e-2b17cda496fa"",
+            ""actions"": [
+                {
+                    ""name"": ""Click"",
+                    ""type"": ""Button"",
+                    ""id"": ""84ac0d9d-67a7-4ad8-a1e9-ae71aec02f77"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""12e03609-8884-4f0f-bdb3-d7f7a54d843b"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Joystick/Gamepad;Keyboard"",
+                    ""action"": ""Click"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""853ef403-5748-4aaf-a338-107ce78e9e5d"",
+                    ""path"": ""<VirtualMouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Joystick/Gamepad;Keyboard"",
+                    ""action"": ""Click"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""79d7956c-8573-4e99-8697-8f2528fb2ca4"",
+                    ""path"": ""<Touchscreen>/Press"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Joystick/Gamepad;Keyboard"",
+                    ""action"": ""Click"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -195,6 +245,9 @@ namespace Inputs
             m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
             m_Player_Brake = m_Player.FindAction("Brake", throwIfNotFound: true);
             m_Player_Sprint = m_Player.FindAction("Sprint", throwIfNotFound: true);
+            // General
+            m_General = asset.FindActionMap("General", throwIfNotFound: true);
+            m_General_Click = m_General.FindAction("Click", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -299,6 +352,39 @@ namespace Inputs
             }
         }
         public PlayerActions @Player => new PlayerActions(this);
+
+        // General
+        private readonly InputActionMap m_General;
+        private IGeneralActions m_GeneralActionsCallbackInterface;
+        private readonly InputAction m_General_Click;
+        public struct GeneralActions
+        {
+            private @PlayerNewInput m_Wrapper;
+            public GeneralActions(@PlayerNewInput wrapper) { m_Wrapper = wrapper; }
+            public InputAction @Click => m_Wrapper.m_General_Click;
+            public InputActionMap Get() { return m_Wrapper.m_General; }
+            public void Enable() { Get().Enable(); }
+            public void Disable() { Get().Disable(); }
+            public bool enabled => Get().enabled;
+            public static implicit operator InputActionMap(GeneralActions set) { return set.Get(); }
+            public void SetCallbacks(IGeneralActions instance)
+            {
+                if (m_Wrapper.m_GeneralActionsCallbackInterface != null)
+                {
+                    @Click.started -= m_Wrapper.m_GeneralActionsCallbackInterface.OnClick;
+                    @Click.performed -= m_Wrapper.m_GeneralActionsCallbackInterface.OnClick;
+                    @Click.canceled -= m_Wrapper.m_GeneralActionsCallbackInterface.OnClick;
+                }
+                m_Wrapper.m_GeneralActionsCallbackInterface = instance;
+                if (instance != null)
+                {
+                    @Click.started += instance.OnClick;
+                    @Click.performed += instance.OnClick;
+                    @Click.canceled += instance.OnClick;
+                }
+            }
+        }
+        public GeneralActions @General => new GeneralActions(this);
         private int m_KeyboardSchemeIndex = -1;
         public InputControlScheme KeyboardScheme
         {
@@ -322,6 +408,10 @@ namespace Inputs
             void OnMove(InputAction.CallbackContext context);
             void OnBrake(InputAction.CallbackContext context);
             void OnSprint(InputAction.CallbackContext context);
+        }
+        public interface IGeneralActions
+        {
+            void OnClick(InputAction.CallbackContext context);
         }
     }
 }
