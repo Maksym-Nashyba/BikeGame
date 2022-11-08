@@ -80,7 +80,7 @@ namespace SBPScripts
 
         }
         
-        private void Update()
+        private void FixedUpdate()
         {
             //Weights
             chestRange.weight = Mathf.Clamp(bicycleController.pickUpSpeed, chestIKRange.x, chestIKRange.y);
