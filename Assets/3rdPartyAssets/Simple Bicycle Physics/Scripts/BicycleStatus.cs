@@ -103,7 +103,9 @@ namespace SBPScripts
                 while (t <= 1)
                 {
                     t += Time.deltaTime * 5;
-                    transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, 0),t);
+                    Quaternion rotation = transform.rotation;
+                    rotation = Quaternion.Lerp(rotation, Quaternion.Euler(rotation.eulerAngles.x, rotation.eulerAngles.y, 0),t);
+                    transform.rotation = rotation;
                     yield return null;
                 }
                 _bicycleController.enabled = true;
@@ -123,13 +125,16 @@ namespace SBPScripts
                 yield return new WaitForSeconds(1);
                 
                 float l = 0f;
+                Quaternion rotation = transform.rotation;
                 while (l <= 1)
                 {
                     l += Time.deltaTime * 5;
-                    transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, l*5);
+                    rotation = Quaternion.Euler(rotation.eulerAngles.x, rotation.eulerAngles.y, l*5);
+                    transform.rotation = rotation;
                     yield return null;
                 }
-                transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, 5);
+                rotation = Quaternion.Euler(rotation.eulerAngles.x, rotation.eulerAngles.y, 5);
+                transform.rotation = rotation;
                 _rigidbody.constraints = RigidbodyConstraints.FreezeAll;
             }
         }

@@ -60,7 +60,7 @@ namespace SBPScripts
         Vector3 impactDirection;
         Vector3 velocity = Vector3.zero;
 
-        void Start()
+        private void Start()
         {
             bicycleController = transform.root.GetComponent<BicycleController>();
             cyclistAnimController = transform.GetComponent<CyclistAnimController>();
@@ -80,7 +80,7 @@ namespace SBPScripts
 
         }
         
-        void Update()
+        private void Update()
         {
             //Weights
             chestRange.weight = Mathf.Clamp(bicycleController.pickUpSpeed, chestIKRange.x, chestIKRange.y);
@@ -96,10 +96,10 @@ namespace SBPScripts
                 {
                     randomTime = Random.Range(1/noiseProperties.speedScale,1.1f);
                     returnToOrg++;
-                    if(returnToOrg%2==0) 
+                    if(returnToOrg % 2 == 0) 
                         perlinNoise = noiseProperties.noiseRange * Mathf.PerlinNoise(Time.time * 10, 0) - (0.5f * noiseProperties.noiseRange);
                     else 
-                        perlinNoise=0;
+                        perlinNoise = 0;
                     snapTime = 0;
                 }
             }
@@ -127,13 +127,13 @@ namespace SBPScripts
 
             //Calculate Stationary point for Hips and Chest
             turnAngleZ = bicycleController.transform.rotation.eulerAngles.z;
-            if(turnAngleZ>180)
+            if(turnAngleZ > 180)
                 turnAngleZ = bicycleController.transform.eulerAngles.z - 360;
             
-            distanceToAlignmentZ = 1.2f*Mathf.Tan(Mathf.Deg2Rad*(turnAngleZ));
+            distanceToAlignmentZ = 1.2f * Mathf.Tan(Mathf.Deg2Rad*(turnAngleZ));
 
             turnAngleX = bicycleController.transform.rotation.eulerAngles.x;
-            if(turnAngleX>180)
+            if(turnAngleX > 180)
                 turnAngleX = bicycleController.transform.eulerAngles.x - 360;
             
             distanceToAlignmentX = Mathf.Clamp(0.1f * Mathf.Tan(Mathf.Deg2Rad*(turnAngleX)), -1,1f);
@@ -158,7 +158,7 @@ namespace SBPScripts
             if (bicycleController.isAirborne && bicycleController.AirTimeSettings.freestyle)
                 stuntModeHead = transform.InverseTransformDirection(bicycleController.Rigidbody.velocity);
             else
-                stuntModeHead = Vector3.Lerp(stuntModeHead,Vector3.zero,Time.deltaTime*10);
+                stuntModeHead = Vector3.Lerp(stuntModeHead, Vector3.zero, Time.deltaTime * 10);
             headIKTarget.transform.localPosition = new Vector3(bicycleController.LeanInput * 1.5f + animatedNoise*bicycleController.pickUpSpeed + stuntModeHead.x, 1-(bicycleController.pickUpSpeed*1.5f)+animatedNoise - bicycleController.BunnyHopAmount*0.5f + bunnyHopCounterWeight * 1.5f,animatedNoise*3 + stuntModeHead.z) + headOffset + impactDirection*bodyDampingProperties.impactIntensity;
 
             //Additional Features
@@ -175,12 +175,11 @@ namespace SBPScripts
                 delayBunnyHopCounterWeight -= Time.deltaTime * 7;
             delayBunnyHopCounterWeight = Mathf.Clamp01(delayBunnyHopCounterWeight);
             
-            if(delayBunnyHopCounterWeight>0)
+            if(delayBunnyHopCounterWeight > 0)
                 bunnyHopCounterWeight += Time.deltaTime * 7;
             else
                 bunnyHopCounterWeight -= Time.deltaTime * 1.2f;
             bunnyHopCounterWeight = Mathf.Clamp01(bunnyHopCounterWeight);
-
         }
     }
 }

@@ -15,33 +15,31 @@ namespace SBPScripts
         public float speed;
         
         [HideInInspector]
-        public bool isAirborne;
         public GameObject hipIK, chestIK, leftFootIK, leftFootIdleIK, headIK;
-        
-        [Header("Character Switching")]
-        [Space]
-        private float _waitTime, _prevLocalPosX;
-        
+        private TwoBoneIKConstraint _leftFootIK;
+        private TwoBoneIKConstraint _leftFootIdleIK;
+
         private void Start()
         {
             _bicycleController = FindObjectOfType<BicycleController>();
             _bicycleStatus = FindObjectOfType<BicycleStatus>();
             _animator = GetComponent<Animator>();
-            leftFootIK.GetComponent<TwoBoneIKConstraint>().weight = 0;
+
+            _leftFootIK = leftFootIK.GetComponent<TwoBoneIKConstraint>();
+            _leftFootIK.weight = 0;
+            _leftFootIdleIK = leftFootIdleIK.GetComponent<TwoBoneIKConstraint>();
+            _leftFootIdleIK.weight = 0;
+            
             chestIK.GetComponent<TwoBoneIKConstraint>().weight = 0;
             hipIK.GetComponent<MultiParentConstraint>().weight = 0;
             headIK.GetComponent<MultiAimConstraint>().weight = 0;
         }
 
-        private void Update()
+        private void FixedUpdate()
         {
-            _waitTime -= Time.deltaTime;
-            _waitTime = Mathf.Clamp(_waitTime, 0, 1.5f);
-
             speed = _bicycleController.transform.InverseTransformDirection(_bicycleController.Rigidbody.velocity).z;
-            isAirborne = _bicycleController.isAirborne;
             _animator.SetFloat("Speed", speed);
-            _animator.SetBool("isAirborne", isAirborne);
+            _animator.SetBool("isAirborne", _bicycleController.isAirborne);
             
             if (_bicycleStatus != null)
             {
@@ -80,8 +78,8 @@ namespace SBPScripts
             while (t1 <= 1f)
             {
                 t1 += Time.fixedDeltaTime;
-                leftFootIK.GetComponent<TwoBoneIKConstraint>().weight = Mathf.Lerp(-0.05f, 1.05f, Mathf.Abs(offset - t1));
-                leftFootIdleIK.GetComponent<TwoBoneIKConstraint>().weight = 1 - leftFootIK.GetComponent<TwoBoneIKConstraint>().weight;
+                _leftFootIK.weight = Mathf.Lerp(-0.05f, 1.05f, Mathf.Abs(offset - t1));
+                _leftFootIdleIK.weight = 1 - _leftFootIK.weight;
                 yield return null;
             }
         }
@@ -92,7 +90,7 @@ namespace SBPScripts
             while (t1 <= 1f)
             {
                 t1 += Time.fixedDeltaTime;
-                leftFootIdleIK.GetComponent<TwoBoneIKConstraint>().weight = Mathf.Lerp(-0.05f, 1.05f, Mathf.Abs(offset - t1));
+                _leftFootIdleIK.weight = Mathf.Lerp(-0.05f, 1.05f, Mathf.Abs(offset - t1));
                 yield return null;
             }
         }
