@@ -4,11 +4,11 @@ namespace Inputs
 {
     public class KeyboardBikeInputProvider : MonoBehaviour, IBikeInputProvider
     {
-        private PlayerNewInput _playerNewInput;
+        private InputMappings _playerNewInput;
 
         private void Awake()
         {
-            _playerNewInput = new PlayerNewInput();
+            _playerNewInput = new InputMappings();
         }
 
         private void OnEnable()

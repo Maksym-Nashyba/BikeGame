@@ -10,14 +10,14 @@ namespace Inputs
         private GameObject _joystickObject;
         private IJoystick _joystick;
 
-        private PlayerNewInput _playerNewInput;
+        private InputMappings _playerNewInput;
 
         private void Awake()
         {
             _cameraTransform = ServiceLocator.Camera.transform;
             _joystickObject = ServiceLocator.InGameUI.JoystickObject;
             _joystick = _joystickObject.GetComponent<IJoystick>();
-            _playerNewInput = new PlayerNewInput();
+            _playerNewInput = new InputMappings();
         }
         
         private void OnEnable()

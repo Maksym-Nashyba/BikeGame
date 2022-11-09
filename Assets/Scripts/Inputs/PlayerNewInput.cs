@@ -17,10 +17,10 @@ using UnityEngine.InputSystem.Utilities;
 
 namespace Inputs
 {
-    public partial class @PlayerNewInput : IInputActionCollection2, IDisposable
+    public partial class @InputMappings : IInputActionCollection2, IDisposable
     {
         public InputActionAsset asset { get; }
-        public @PlayerNewInput()
+        public @InputMappings()
         {
             asset = InputActionAsset.FromJson(@"{
     ""name"": ""PlayerNewInput"",
@@ -165,12 +165,12 @@ namespace Inputs
             ""actions"": [
                 {
                     ""name"": ""Click"",
-                    ""type"": ""Button"",
+                    ""type"": ""Value"",
                     ""id"": ""84ac0d9d-67a7-4ad8-a1e9-ae71aec02f77"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": ""Double"",
                     ""processors"": """",
                     ""interactions"": """",
-                    ""initialStateCheck"": false
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -312,8 +312,8 @@ namespace Inputs
         private readonly InputAction m_Player_Sprint;
         public struct PlayerActions
         {
-            private @PlayerNewInput m_Wrapper;
-            public PlayerActions(@PlayerNewInput wrapper) { m_Wrapper = wrapper; }
+            private @InputMappings m_Wrapper;
+            public PlayerActions(@InputMappings wrapper) { m_Wrapper = wrapper; }
             public InputAction @Move => m_Wrapper.m_Player_Move;
             public InputAction @Brake => m_Wrapper.m_Player_Brake;
             public InputAction @Sprint => m_Wrapper.m_Player_Sprint;
@@ -359,8 +359,8 @@ namespace Inputs
         private readonly InputAction m_General_Click;
         public struct GeneralActions
         {
-            private @PlayerNewInput m_Wrapper;
-            public GeneralActions(@PlayerNewInput wrapper) { m_Wrapper = wrapper; }
+            private @InputMappings m_Wrapper;
+            public GeneralActions(@InputMappings wrapper) { m_Wrapper = wrapper; }
             public InputAction @Click => m_Wrapper.m_General_Click;
             public InputActionMap Get() { return m_Wrapper.m_General; }
             public void Enable() { Get().Enable(); }
