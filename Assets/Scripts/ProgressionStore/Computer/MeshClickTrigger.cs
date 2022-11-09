@@ -1,6 +1,6 @@
-﻿using System;
-using Inputs;
+﻿using Inputs;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace ProgressionStore.Computer
 {
@@ -12,12 +12,12 @@ namespace ProgressionStore.Computer
         private void Awake()
         {
             _inputs = new InputMappings();
-            _inputs.General.Click.performed += _ => OnClick();
+            _inputs.General.Click.performed += OnClicked;
         }
 
-        private void OnClick()
+        private void OnClicked(InputAction.CallbackContext obj)
         {
-            Debug.Log("ABOBA");
+            Debug.Log(Pointer.current.position.ReadValue());
         }
 
         private void OnEnable()
@@ -32,7 +32,7 @@ namespace ProgressionStore.Computer
 
         private void OnDestroy()
         {
-            //_inputs.General.Click.performed -= OnClick;
+            _inputs.General.Click.performed -= OnClicked;
         }
     }
 }
