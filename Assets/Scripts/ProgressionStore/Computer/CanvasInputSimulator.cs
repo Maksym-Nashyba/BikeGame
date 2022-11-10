@@ -33,7 +33,8 @@ namespace ProgressionStore.Computer
 
             if (parent.TryGetComponent(out Raycastable raycastable))
             {
-                if (raycastable.RectTransform.ContainsPoint(canvasPosition)) return parent;
+                if (raycastable.RectTransform.ContainsPoint(canvasPosition)
+                    && raycastable.gameObject.activeInHierarchy) return parent;
             }
 
             return null;
