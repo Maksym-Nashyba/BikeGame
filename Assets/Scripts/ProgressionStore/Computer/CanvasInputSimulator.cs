@@ -1,8 +1,6 @@
-using System;
 using Misc;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
 namespace ProgressionStore.Computer
 {
@@ -15,23 +13,21 @@ namespace ProgressionStore.Computer
         {
             _canvas = GetComponent<Canvas>();
         }
-        
 
         public void ClickAtUV(Vector2 uv)
         {
-            Rect canvasRect = _canvas.pixelRect;
-            Vector2 canvasPosition = canvasRect.size * uv - canvasRect.size / 2f;
-            Transform hitUIElement = Raycast(canvasPosition, transform);
+            Vector2 canvasPosition = GetCanvasPosition(uv);
+            Transform hitUIElement = GetGameObject(canvasPosition, transform);
             if(hitUIElement == null) return;
-            
-            Debug.Log($"Hit{hitUIElement.name}");
+
+            SendClickEvent(hitUIElement.gameObject);
         }
 
-        private Transform Raycast(Vector2 canvasPosition, Transform parent)
+        private Transform GetGameObject(Vector2 canvasPosition, Transform parent)
         {
             for (int i = parent.childCount-1; i >= 0; i--)
             {
-                Transform found = Raycast(canvasPosition, parent.GetChild(i));
+                Transform found = GetGameObject(canvasPosition, parent.GetChild(i));
                 if (found != null) return found;
             }
 
@@ -41,6 +37,22 @@ namespace ProgressionStore.Computer
             }
 
             return null;
+        }
+
+        private Vector2 GetCanvasPosition(Vector2 uv)
+        {
+            Rect canvasRect = _canvas.pixelRect;
+            return canvasRect.size * uv - canvasRect.size / 2f;
+        }
+
+        private void SendClickEvent(GameObject gameObject)
+        {
+            PointerEventData pointerEventData = new PointerEventData(EventSystem.current)
+            {
+                clickCount = 1,
+                button = PointerEventData.InputButton.Left
+            };
+            ExecuteEvents.Execute(gameObject, pointerEventData, ExecuteEvents.pointerClickHandler);
         }
     }
 }
