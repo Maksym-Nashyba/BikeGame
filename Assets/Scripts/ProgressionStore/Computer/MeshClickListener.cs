@@ -1,13 +1,16 @@
-﻿using Inputs;
+﻿using System;
+using Inputs;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace ProgressionStore.Computer
 {
     [RequireComponent(typeof(MeshRenderer))]
-    public class MeshClickTrigger : MonoBehaviour
+    public class MeshClickListener : MonoBehaviour
     {
-        private InputMappings _inputs { get; set; }
+        public event Action<Vector2> ClickedUV; 
+        [SerializeField] private Camera _camera;
+        private InputMappings _inputs;
 
         private void Awake()
         {
@@ -17,7 +20,12 @@ namespace ProgressionStore.Computer
 
         private void OnClicked(InputAction.CallbackContext obj)
         {
-            Debug.Log(Pointer.current.position.ReadValue());
+            Ray ray = _camera.ScreenPointToRay(Pointer.current.position.ReadValue());
+            if (Physics.Raycast(ray, out RaycastHit hit))
+            {
+                if(hit.transform != transform)return;
+                ClickedUV?.Invoke(hit.textureCoord);
+            }
         }
 
         private void OnEnable()

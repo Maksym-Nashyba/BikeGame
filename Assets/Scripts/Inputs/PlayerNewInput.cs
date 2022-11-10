@@ -165,12 +165,12 @@ namespace Inputs
             ""actions"": [
                 {
                     ""name"": ""Click"",
-                    ""type"": ""Button"",
+                    ""type"": ""Value"",
                     ""id"": ""d1d3505a-ad55-45f1-b34e-e7420f0ffa84"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": ""Double"",
                     ""processors"": """",
                     ""interactions"": """",
-                    ""initialStateCheck"": false
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -186,7 +186,7 @@ namespace Inputs
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""modifier"",
+                    ""name"": ""Modifier"",
                     ""id"": ""3d5c915c-c17c-48dd-980e-ba8dada6240e"",
                     ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
@@ -197,7 +197,7 @@ namespace Inputs
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""binding"",
+                    ""name"": ""Binding"",
                     ""id"": ""25f3e892-1dda-474d-90f5-20083c0d6c22"",
                     ""path"": ""<Mouse>/position"",
                     ""interactions"": """",
