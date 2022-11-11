@@ -1,44 +1,64 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections.Generic;
+using UnityEngine;
 
 namespace ProgressionStore.Computer
 {
     public class ComputerUI : MonoBehaviour
     {
-        [SerializeField] private Window[] _windows;
-        [SerializeField] private WindowBorder _border;
+        public event Action<Program> ProgramLaunched;
+        public event Action<Program> ProgramTerminated;
+        
+        [SerializeField] private Program[] _programs;
         [SerializeField] private TaskBar _taskBar;
         [Space]
         [SerializeField] private CanvasInputSimulator _inputSimulator;
         [SerializeField] private MeshClickListener _screenClickListener;
 
-        private Window _currentWindow;
-        
+        private List<Program> _runningProcesses;
+        private Stack<Window> _openWindows;
+
         private void Awake()
         {
-            OpenWindow(_windows[0]);
+            _runningProcesses = new List<Program>();
+            _openWindows = new Stack<Window>();
+            Launch(_programs[0]);
             _screenClickListener.ClickedUV += _inputSimulator.ClickAtUV;
-            _border.CloseButtonClicked += CloseCurrentWindow;
         }
 
-        private void OpenWindow(Window window)
+        private void Launch(Program program)
         {
-            if (_currentWindow == null) _border.Show();
-            window.Open();
-            _taskBar.StartProcess(window);
-            _currentWindow = window;
+            throw new NotImplementedException();
         }
 
-        private void CloseCurrentWindow()
+        private void Terminate(Program program)
         {
-            _currentWindow.Close();
-            _border.Hide();
-            _currentWindow = null;
+            throw new NotImplementedException();
+        }
+        
+        private void OpenWindow(Program program)
+        {
+            throw new NotImplementedException();
+        }
+
+        private Window CreateWindow(Program program)
+        {
+            Transform windowTransform = Instantiate(program.WindowPrefab).transform;
+            windowTransform.SetParent(transform);
+            windowTransform.SetSiblingIndex(_taskBar.transform.GetSiblingIndex()+1);
+            Window window = windowTransform.GetComponent<Window>();
+            window.Close();
+            return window;
+        }
+        
+        private void CloseWindow(Window window)
+        {
+            throw new NotImplementedException();
         }
         
         private void OnDestroy()
         {
             _screenClickListener.ClickedUV -= _inputSimulator.ClickAtUV;
-            _border.CloseButtonClicked -= CloseCurrentWindow;
         }
     }
 }
