@@ -32,7 +32,7 @@ namespace ProgressionStore.Computer
             Launch(_programs[0]);
         }
 
-        private void Launch(Program program)
+        public void Launch(Program program)
         {
             if(_runningProcesses.Contains(program))return;
             
@@ -42,10 +42,13 @@ namespace ProgressionStore.Computer
             ProgramLaunched?.Invoke(program);
         }
 
-        private void Terminate(Program program)
+        public void Terminate(Program program)
         {
+            if (!_runningProcesses.Contains(program)) throw new InvalidOperationException($"Process [{program.PresentableName}] isn't launched and can't be terminated");
+            
             CloseWindow(FindWindow(program));
             ProgramTerminated?.Invoke(program);
+            _runningProcesses.Remove(program);
             OpenTopWindow();
         }
 
