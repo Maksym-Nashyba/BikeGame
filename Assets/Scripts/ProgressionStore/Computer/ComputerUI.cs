@@ -22,7 +22,8 @@ namespace ProgressionStore.Computer
         {
             _runningProcesses = new List<Program>();
             _openWindows = new Stack<Window>();
-            Launch(_programs[0]);
+            
+            //Launch(_programs[0]);
             _screenClickListener.ClickedUV += _inputSimulator.ClickAtUV;
         }
 

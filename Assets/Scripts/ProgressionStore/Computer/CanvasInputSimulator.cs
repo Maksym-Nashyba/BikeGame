@@ -7,6 +7,7 @@ namespace ProgressionStore.Computer
     [RequireComponent(typeof(Canvas))]
     public class CanvasInputSimulator : MonoBehaviour
     {
+        [SerializeField] private Camera _canvasCamera;
         private Canvas _canvas;
 
         private void Awake()
@@ -17,23 +18,23 @@ namespace ProgressionStore.Computer
         public void ClickAtUV(Vector2 uv)
         {
             Vector2 canvasPosition = GetCanvasPosition(uv);
-            Transform hitUIElement = GetGameObject(canvasPosition, transform);
+            Transform hitUIElement = GetGameObject(canvasPosition, transform, Vector2.zero);
             if(hitUIElement == null) return;
 
             SendClickEvent(hitUIElement.gameObject);
         }
 
-        private Transform GetGameObject(Vector2 canvasPosition, Transform parent)
+        private Transform GetGameObject(Vector2 canvasPosition, Transform parent, Vector2 offset)
         {
             for (int i = parent.childCount-1; i >= 0; i--)
             {
-                Transform found = GetGameObject(canvasPosition, parent.GetChild(i));
+                Transform found = GetGameObject(canvasPosition, parent.GetChild(i), offset + (Vector2)parent.GetChild(i).localPosition);
                 if (found != null) return found;
             }
 
             if (parent.TryGetComponent(out Raycastable raycastable))
             {
-                if (raycastable.RectTransform.ContainsPoint(canvasPosition)
+                if (raycastable.RectTransform.ContainsPoint(offset, canvasPosition)
                     && raycastable.gameObject.activeInHierarchy) return parent;
             }
 
