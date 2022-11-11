@@ -52,22 +52,35 @@ namespace ProgressionStore.Computer
             OpenTopWindow();
         }
 
+        public void OpenWindow(Program program)
+        {
+            OpenWindow(FindWindow(program));
+        }
+        
         private void OpenWindow(Window window)
         {
             _openWindows.Remove(window);
             _openWindows.AddFirst(window);
-            window.transform.SetSiblingIndex(_taskBar.transform.GetSiblingIndex());
             window.Open();
         }
 
         private void CloseWindow(Window window)
         {
             _openWindows.Remove(window);
-            window.HideButtonPressed -= CloseWindow;
+            
+            window.HideButtonPressed -= HideWindow;
             window.CloseButtonPressed -= Terminate;
             window.Close();
         }
 
+        private void HideWindow(Window window)
+        {
+            window.Hide();
+            _openWindows.Remove(window);
+            _openWindows.AddLast(window);
+            if(_openWindows.Count > 1)OpenTopWindow();
+        }
+        
         private void OpenTopWindow()
         {
             if (_openWindows.First != null)
@@ -86,9 +99,9 @@ namespace ProgressionStore.Computer
         {
             Transform windowTransform = Instantiate(program.WindowPrefab, Vector3.zero, Quaternion.identity, transform).transform;
             windowTransform.localPosition = Vector3.zero;
-            windowTransform.SetSiblingIndex(_taskBar.transform.GetSiblingIndex()+1);
+            windowTransform.SetSiblingIndex(_taskBar.transform.GetSiblingIndex());
             Window window = windowTransform.GetComponent<Window>();
-            window.HideButtonPressed += CloseWindow;
+            window.HideButtonPressed += HideWindow;
             window.CloseButtonPressed += Terminate;
             window.Hide();
             _openWindows.AddLast(window);
