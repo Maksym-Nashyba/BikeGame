@@ -63,6 +63,8 @@ namespace ProgressionStore.Computer
         private void CloseWindow(Window window)
         {
             _openWindows.Remove(window);
+            window.HideButtonPressed -= CloseWindow;
+            window.CloseButtonPressed -= Terminate;
             window.Close();
         }
 
@@ -86,6 +88,8 @@ namespace ProgressionStore.Computer
             windowTransform.localPosition = Vector3.zero;
             windowTransform.SetSiblingIndex(_taskBar.transform.GetSiblingIndex()+1);
             Window window = windowTransform.GetComponent<Window>();
+            window.HideButtonPressed += CloseWindow;
+            window.CloseButtonPressed += Terminate;
             window.Hide();
             _openWindows.AddLast(window);
         }
