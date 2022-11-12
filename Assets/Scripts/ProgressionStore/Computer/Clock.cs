@@ -15,7 +15,7 @@ namespace ProgressionStore.Computer
 
         private void UpdateTime()
         {
-            _text.SetText(DateTime.Now.ToString("hh:mm"));    
+            _text.SetText(DateTime.Now.ToString("h:mm"));    
         }
     }
 }

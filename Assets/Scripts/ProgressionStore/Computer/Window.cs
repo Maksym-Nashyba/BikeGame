@@ -18,12 +18,16 @@ namespace ProgressionStore.Computer
             Program = program;
             _windowNameText.SetText(program.PresentableName);
         }
+
+        protected abstract void OnOpened();
+        protected abstract void OnClosed();
         
         public void Open()
         {
             if(IsOpen) return;
             IsOpen = true;
             gameObject.SetActive(true);
+            OnOpened();
         }
 
         public void Hide()
@@ -37,6 +41,7 @@ namespace ProgressionStore.Computer
         {
             IsOpen = false;
             Destroy(gameObject);
+            OnClosed();
         }
 
         public void OnCloseButton()
