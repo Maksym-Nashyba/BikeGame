@@ -7,7 +7,6 @@ namespace ProgressionStore.Computer
     [RequireComponent(typeof(Canvas))]
     public class CanvasInputSimulator : MonoBehaviour
     {
-        [SerializeField] private Camera _canvasCamera;
         private Canvas _canvas;
 
         private void Awake()
