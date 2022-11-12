@@ -9,7 +9,8 @@ namespace ProgressionStore.Computer
     {
         public event Action<Program> ProgramLaunched;
         public event Action<Program> ProgramTerminated;
-        
+
+        public Program[] ProgramsCopy => (Program[])_programs.Clone();
         [SerializeField] private Program[] _programs;
         [SerializeField] private TaskBar _taskBar;
         [Space]
@@ -26,15 +27,14 @@ namespace ProgressionStore.Computer
             
             _screenClickListener.ClickedUV += _inputSimulator.ClickAtUV;
         }
-        
-        private void Start()
-        {
-            Launch(_programs[0]);
-        }
 
         public void Launch(Program program)
         {
-            if(_runningProcesses.Contains(program))return;
+            if(_runningProcesses.Contains(program))
+            {
+                OpenWindow(program);
+                return;
+            }
             
             _runningProcesses.Add(program);
             CreateWindow(program);
