@@ -569,7 +569,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6931f4f9d7802e45940ae9994a21e24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _canvasCamera: {fileID: 0}
 --- !u!114 &789204721
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -584,6 +583,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _programs:
   - {fileID: 11400000, guid: 9690497f4e176424c901fd5e9b2da176, type: 2}
+  - {fileID: 11400000, guid: 0e8f4e7c7f74e4646b3a665c2ca90300, type: 2}
   _taskBar: {fileID: 1673707245}
   _inputSimulator: {fileID: 789204720}
   _screenClickListener: {fileID: 3469287838576363613}
@@ -661,7 +661,7 @@ MonoBehaviour:
   m_StartCorner: 0
   m_StartAxis: 1
   m_CellSize: {x: 50, y: 40}
-  m_Spacing: {x: 10, y: 10}
+  m_Spacing: {x: 10, y: 35}
   m_Constraint: 0
   m_ConstraintCount: 2
 --- !u!1 &859622689

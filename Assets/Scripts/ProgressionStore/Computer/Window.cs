@@ -1,4 +1,5 @@
 ﻿using System;
+using TMPro;
 using UnityEngine;
 
 namespace ProgressionStore.Computer
@@ -7,10 +8,16 @@ namespace ProgressionStore.Computer
     {
         public event Action<Window> HideButtonPressed;
         public event Action<Program> CloseButtonPressed;
-        public Program Program => _program;
-        [SerializeField] private Program _program;
-
+        public Program Program { get; private set; }
         public bool IsOpen { get; private set; }
+
+        [SerializeField] private TextMeshProUGUI _windowNameText;
+        
+        public void SetUp(Program program)
+        {
+            Program = program;
+            _windowNameText.SetText(program.PresentableName);
+        }
         
         public void Open()
         {
@@ -34,7 +41,7 @@ namespace ProgressionStore.Computer
 
         public void OnCloseButton()
         {
-            CloseButtonPressed?.Invoke(_program);
+            CloseButtonPressed?.Invoke(Program);
         }
 
         public void OnHideButton()

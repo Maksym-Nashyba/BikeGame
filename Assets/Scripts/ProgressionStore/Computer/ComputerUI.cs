@@ -49,7 +49,6 @@ namespace ProgressionStore.Computer
             CloseWindow(FindWindow(program));
             ProgramTerminated?.Invoke(program);
             _runningProcesses.Remove(program);
-            OpenTopWindow();
         }
 
         public void OpenWindow(Program program)
@@ -78,17 +77,8 @@ namespace ProgressionStore.Computer
             window.Hide();
             _openWindows.Remove(window);
             _openWindows.AddLast(window);
-            if(_openWindows.Count > 1)OpenTopWindow();
         }
-        
-        private void OpenTopWindow()
-        {
-            if (_openWindows.First != null)
-            {
-                OpenWindow(_openWindows.First.Value);
-            }
-        }
-        
+
         private Window FindWindow(Program program)
         {
             if (!_runningProcesses.Contains(program)) throw new InvalidOperationException($"Process [{program.PresentableName}] isn't launched, can't open window for it");
@@ -101,6 +91,7 @@ namespace ProgressionStore.Computer
             windowTransform.localPosition = Vector3.zero;
             windowTransform.SetSiblingIndex(_taskBar.transform.GetSiblingIndex());
             Window window = windowTransform.GetComponent<Window>();
+            window.SetUp(program);
             window.HideButtonPressed += HideWindow;
             window.CloseButtonPressed += Terminate;
             window.Hide();
