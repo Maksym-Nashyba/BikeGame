@@ -39,9 +39,16 @@ namespace EditorWindows
                 DeleteSaveFile();
             }
 
+            if (GUILayout.Button("Add Currencies"))
+            {
+                if(_saves == null) _saves = GetSaves();
+                _saves.Currencies.AddDollans(5000);
+                _saves.Currencies.AddPedals(10);
+            }
+            
             if (GUILayout.Button("Display current SaveData"))
             {
-                _saves = GetSaves();
+                if(_saves == null) _saves = GetSaves();
             }
 
             if (_saves is null) return;
