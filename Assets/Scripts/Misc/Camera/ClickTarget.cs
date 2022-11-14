@@ -11,9 +11,11 @@ namespace Misc
         public abstract event Action<T> Clicked;
         [SerializeField] private Camera _camera;
         private InputMappings _inputMappings;
+        private Collider _collider;
 
-        private void Awake()
+        protected virtual void Awake()
         {
+            _collider = GetComponent<Collider>();
             _inputMappings = new InputMappings();
             _inputMappings.General.Click.performed += OnClickAction;
         }
@@ -22,11 +24,18 @@ namespace Misc
         {
             _inputMappings ??= new InputMappings();
             _inputMappings.Enable();
+            _collider.enabled = true;
         }
 
         private void OnDisable()
         {
             _inputMappings.Disable();
+            _collider.enabled = false;
+        }
+
+        protected virtual void OnDestroy()
+        {
+            _inputMappings.General.Click.performed -= OnClickAction;
         }
 
         protected abstract void OnClicked();

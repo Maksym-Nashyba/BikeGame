@@ -43,7 +43,7 @@ namespace Menu
                 _cameraTransform.SetPositionAndRotation(nextPosition, nextQuaternion);
                 
                 await Task.Yield();
-                timePassedFraction += Time.deltaTime;
+                timePassedFraction += Time.deltaTime / _transitionDurationSeconds;
             }
         }
 

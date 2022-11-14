@@ -20,8 +20,9 @@ namespace ProgressionStore.Computer
 
         private void OnClickAction(InputAction.CallbackContext obj)
         {
+            int mask = LayerMask.GetMask("UI");
             Ray ray = _camera.ScreenPointToRay(Pointer.current.position.ReadValue());
-            if (Physics.Raycast(ray, out RaycastHit hit))
+            if (Physics.Raycast(ray, out RaycastHit hit, mask))
             {
                 if(hit.transform != transform)return;
                 ClickedUV?.Invoke(hit.textureCoord);

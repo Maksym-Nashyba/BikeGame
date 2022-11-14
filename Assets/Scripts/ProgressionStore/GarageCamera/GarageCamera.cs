@@ -1,5 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Misc;
 using UnityEngine;
 
@@ -31,19 +30,28 @@ namespace ProgressionStore
 
         private async void OnTargetClicked(CameraCheckpoint target)
         {
-            Debug.Log($"Clicked {target.name}");
             if(!CanMoveFromRest || _currentCheckpoint == target) return;
 
             IsMoving = true;
+            _currentCheckpoint.SendCameraDeparted();
+            
             await MoveToCheckpoint(target, 2f);
+            
+            target.SendCameraArrived();
+            _currentCheckpoint = target;
             IsMoving = false;
         }
 
-        private Task MoveToCheckpoint(CameraCheckpoint targetCheckpoint, float duration)
+        private async Task MoveToCheckpoint(CameraCheckpoint targetCheckpoint, float duration)
         {
-            
-            
-            return Task.CompletedTask;
+            float timePassed = 0f;
+            while (timePassed < duration)
+            {
+                Transformation transformation = _currentCheckpoint.Lerp(targetCheckpoint, timePassed/duration);
+                _cameraTransform.SetPositionAndRotation(transformation.Position, transformation.Rotation);
+                await Task.Yield();
+                timePassed += Time.deltaTime;
+            }
         }
         
         private void OnDestroy()
