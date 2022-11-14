@@ -15,10 +15,10 @@ namespace ProgressionStore.Computer
         private void Awake()
         {
             _inputs = new InputMappings();
-            _inputs.General.Click.performed += OnClicked;
+            _inputs.General.Click.performed += OnClickAction;
         }
 
-        private void OnClicked(InputAction.CallbackContext obj)
+        private void OnClickAction(InputAction.CallbackContext obj)
         {
             Ray ray = _camera.ScreenPointToRay(Pointer.current.position.ReadValue());
             if (Physics.Raycast(ray, out RaycastHit hit))
@@ -40,7 +40,7 @@ namespace ProgressionStore.Computer
 
         private void OnDestroy()
         {
-            _inputs.General.Click.performed -= OnClicked;
+            _inputs.General.Click.performed -= OnClickAction;
         }
     }
 }
