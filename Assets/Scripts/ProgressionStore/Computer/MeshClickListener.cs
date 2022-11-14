@@ -20,7 +20,7 @@ namespace ProgressionStore.Computer
 
         private void OnClickAction(InputAction.CallbackContext obj)
         {
-            int mask = LayerMask.GetMask("UI");
+            int mask = LayerMask.GetMask("ComputerUI");
             Ray ray = _camera.ScreenPointToRay(Pointer.current.position.ReadValue());
             if (Physics.Raycast(ray, out RaycastHit hit, mask))
             {
