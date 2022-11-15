@@ -28,6 +28,11 @@ namespace ProgressionStore.Computer
             RemoveTaskIcon(program);
         }
 
+        public void OnStartButton()
+        {
+            _computerUI.HideAllWindows();
+        }
+        
         private void CreateTaskIcon(Program program)
         {
             TaskIcon taskIcon = Instantiate(_taskIconPrefab, _taskHolder).GetComponent<TaskIcon>();

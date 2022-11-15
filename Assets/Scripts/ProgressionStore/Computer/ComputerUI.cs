@@ -79,6 +79,15 @@ namespace ProgressionStore.Computer
             _openWindows.AddLast(window);
         }
 
+        public void HideAllWindows()
+        {
+            Window[] windows = _openWindows.ToArray();
+            foreach (Window window in windows)
+            {
+                HideWindow(window);
+            }
+        }
+        
         private Window FindWindow(Program program)
         {
             if (!_runningProcesses.Contains(program)) throw new InvalidOperationException($"Process [{program.PresentableName}] isn't launched, can't open window for it");
