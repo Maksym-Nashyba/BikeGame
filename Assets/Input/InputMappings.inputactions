@@ -147,6 +147,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "UIClick",
+                    "type": "PassThrough",
+                    "id": "c65212fc-39b8-49fb-9246-c380a1702986",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -182,6 +191,17 @@
                     "action": "Click",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "1c509d1c-253c-4db2-bd4e-a86ac640e904",
+                    "path": "<Pointer>/press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Joystick/Gamepad;Keyboard",
+                    "action": "UIClick",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }

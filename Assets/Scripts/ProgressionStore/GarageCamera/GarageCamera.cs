@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using Misc;
 using UnityEngine;
 
@@ -6,17 +7,21 @@ namespace ProgressionStore
 {
     public class GarageCamera : MonoBehaviour
     {
+        public event Action ArrivedAtCheckpoint;
+        public event Action DepartedFromCheckpoint;
         public bool IsMoving { get; private set; }
+        public bool IsAtRestPoint => _currentCheckpoint == _restCheckpoint;
         [SerializeField] private Transform _cameraTransform;
         [SerializeField] private CameraCheckpoint _restCheckpoint;
         [SerializeField] private CameraCheckpoint[] _checkpoints;
         [SerializeField] private CameraCheckpointClickTarget[] _clickTargets;
+        [SerializeField] private GarageUI _garageUI;
         private CameraCheckpoint _currentCheckpoint;
-        private bool IsAtRestPoint => _currentCheckpoint == _restCheckpoint;
         private bool CanMoveFromRest => IsAtRestPoint && !IsMoving;
 
         private void Awake()
         {
+            _garageUI.BackButtonClicked += OnBackButton;
             foreach (CameraCheckpointClickTarget target in _clickTargets)
             {
                 target.Clicked += OnTargetClicked;
@@ -28,21 +33,44 @@ namespace ProgressionStore
             _currentCheckpoint = _restCheckpoint;
         }
 
+        private void OnDestroy()
+        {
+            _garageUI.BackButtonClicked += OnBackButton;
+            foreach (CameraCheckpointClickTarget target in _clickTargets)
+            {
+                target.Clicked -= OnTargetClicked;
+            }
+        }
+        
         private async void OnTargetClicked(CameraCheckpoint target)
         {
             if(!CanMoveFromRest || _currentCheckpoint == target) return;
 
-            IsMoving = true;
-            _currentCheckpoint.SendCameraDeparted();
-            
             await MoveToCheckpoint(target, 2f);
-            
-            target.SendCameraArrived();
-            _currentCheckpoint = target;
-            IsMoving = false;
         }
 
+        private async void OnBackButton()
+        {
+            if(IsAtRestPoint || IsMoving) return;
+
+            await MoveToCheckpoint(_restCheckpoint, 2f);
+        } 
+
         private async Task MoveToCheckpoint(CameraCheckpoint targetCheckpoint, float duration)
+        {
+            IsMoving = true;
+            _currentCheckpoint.SendCameraDeparted();
+            DepartedFromCheckpoint?.Invoke();
+            
+            await LerpCameraToCheckpoint(targetCheckpoint, 2f);
+            
+            targetCheckpoint.SendCameraArrived();
+            _currentCheckpoint = targetCheckpoint;
+            ArrivedAtCheckpoint?.Invoke();
+            IsMoving = false;
+        }
+        
+        private async Task LerpCameraToCheckpoint(CameraCheckpoint targetCheckpoint, float duration)
         {
             float timePassed = 0f;
             while (timePassed < duration)
@@ -51,14 +79,6 @@ namespace ProgressionStore
                 _cameraTransform.SetPositionAndRotation(transformation.Position, transformation.Rotation);
                 await Task.Yield();
                 timePassed += Time.deltaTime;
-            }
-        }
-        
-        private void OnDestroy()
-        {
-            foreach (CameraCheckpointClickTarget target in _clickTargets)
-            {
-                target.Clicked -= OnTargetClicked;
             }
         }
 

@@ -171,6 +171,15 @@ namespace Inputs
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""UIClick"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""c65212fc-39b8-49fb-9246-c380a1702986"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -206,6 +215,17 @@ namespace Inputs
                     ""action"": ""Click"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1c509d1c-253c-4db2-bd4e-a86ac640e904"",
+                    ""path"": ""<Pointer>/press"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Joystick/Gamepad;Keyboard"",
+                    ""action"": ""UIClick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -248,6 +268,7 @@ namespace Inputs
             // General
             m_General = asset.FindActionMap("General", throwIfNotFound: true);
             m_General_Click = m_General.FindAction("Click", throwIfNotFound: true);
+            m_General_UIClick = m_General.FindAction("UIClick", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -357,11 +378,13 @@ namespace Inputs
         private readonly InputActionMap m_General;
         private IGeneralActions m_GeneralActionsCallbackInterface;
         private readonly InputAction m_General_Click;
+        private readonly InputAction m_General_UIClick;
         public struct GeneralActions
         {
             private @InputMappings m_Wrapper;
             public GeneralActions(@InputMappings wrapper) { m_Wrapper = wrapper; }
             public InputAction @Click => m_Wrapper.m_General_Click;
+            public InputAction @UIClick => m_Wrapper.m_General_UIClick;
             public InputActionMap Get() { return m_Wrapper.m_General; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -374,6 +397,9 @@ namespace Inputs
                     @Click.started -= m_Wrapper.m_GeneralActionsCallbackInterface.OnClick;
                     @Click.performed -= m_Wrapper.m_GeneralActionsCallbackInterface.OnClick;
                     @Click.canceled -= m_Wrapper.m_GeneralActionsCallbackInterface.OnClick;
+                    @UIClick.started -= m_Wrapper.m_GeneralActionsCallbackInterface.OnUIClick;
+                    @UIClick.performed -= m_Wrapper.m_GeneralActionsCallbackInterface.OnUIClick;
+                    @UIClick.canceled -= m_Wrapper.m_GeneralActionsCallbackInterface.OnUIClick;
                 }
                 m_Wrapper.m_GeneralActionsCallbackInterface = instance;
                 if (instance != null)
@@ -381,6 +407,9 @@ namespace Inputs
                     @Click.started += instance.OnClick;
                     @Click.performed += instance.OnClick;
                     @Click.canceled += instance.OnClick;
+                    @UIClick.started += instance.OnUIClick;
+                    @UIClick.performed += instance.OnUIClick;
+                    @UIClick.canceled += instance.OnUIClick;
                 }
             }
         }
@@ -412,6 +441,7 @@ namespace Inputs
         public interface IGeneralActions
         {
             void OnClick(InputAction.CallbackContext context);
+            void OnUIClick(InputAction.CallbackContext context);
         }
     }
 }
