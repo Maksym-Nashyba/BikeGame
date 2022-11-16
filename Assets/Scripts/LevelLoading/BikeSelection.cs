@@ -62,7 +62,7 @@ namespace LevelLoading
             }
             
             _currentBike = _bikeModels.Get(bike.GUID);
-            _spawnedBike = Instantiate(_currentBike.Prefab);
+            _spawnedBike = Instantiate(_currentBike.EmptyPrefab);
             BikeChanged?.Invoke(_currentBike);
         }
         
