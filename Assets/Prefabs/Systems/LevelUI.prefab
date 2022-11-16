@@ -1658,6 +1658,7 @@ GameObject:
   - component: {fileID: 3450610690074338069}
   - component: {fileID: 3450610690074338070}
   - component: {fileID: 3450610690074338071}
+  - component: {fileID: 6135195012992414139}
   - component: {fileID: 3450610690074338068}
   m_Layer: 5
   m_Name: BrakesButton
@@ -1725,6 +1726,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &6135195012992414139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3450610690074338074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d54531977ecb194c95e2d3aa7a5d72a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ControlPath: <Keyboard>/c
 --- !u!114 &3450610690074338068
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2004,6 +2018,7 @@ GameObject:
   - component: {fileID: 3643063561435867309}
   - component: {fileID: 7721603906063351938}
   - component: {fileID: 4178939053933649407}
+  - component: {fileID: 5965026704339105397}
   - component: {fileID: 1806172982253661106}
   m_Layer: 5
   m_Name: SprintInput
@@ -2071,6 +2086,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &5965026704339105397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6348481963195906778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d54531977ecb194c95e2d3aa7a5d72a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ControlPath: <Keyboard>/shift
 --- !u!114 &1806172982253661106
 MonoBehaviour:
   m_ObjectHideFlags: 0
