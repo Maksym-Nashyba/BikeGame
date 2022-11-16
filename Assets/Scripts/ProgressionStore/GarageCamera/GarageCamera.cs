@@ -11,6 +11,7 @@ namespace ProgressionStore
         public event Action DepartedFromCheckpoint;
         public bool IsMoving { get; private set; }
         public bool IsAtRestPoint => _currentCheckpoint == _restCheckpoint;
+        [SerializeField] private float _transitionDurationSeconds;
         [SerializeField] private Transform _cameraTransform;
         [SerializeField] private CameraCheckpoint _restCheckpoint;
         [SerializeField] private CameraCheckpoint[] _checkpoints;
@@ -46,14 +47,14 @@ namespace ProgressionStore
         {
             if(!CanMoveFromRest || _currentCheckpoint == target) return;
 
-            await MoveToCheckpoint(target, 2f);
+            await MoveToCheckpoint(target, _transitionDurationSeconds);
         }
 
         private async void OnBackButton()
         {
             if(IsAtRestPoint || IsMoving) return;
 
-            await MoveToCheckpoint(_restCheckpoint, 2f);
+            await MoveToCheckpoint(_restCheckpoint, _transitionDurationSeconds);
         } 
 
         private async Task MoveToCheckpoint(CameraCheckpoint targetCheckpoint, float duration)
@@ -62,7 +63,7 @@ namespace ProgressionStore
             _currentCheckpoint.SendCameraDeparted();
             DepartedFromCheckpoint?.Invoke();
             
-            await LerpCameraToCheckpoint(targetCheckpoint, 2f);
+            await LerpCameraToCheckpoint(targetCheckpoint, _transitionDurationSeconds);
             
             targetCheckpoint.SendCameraArrived();
             _currentCheckpoint = targetCheckpoint;
