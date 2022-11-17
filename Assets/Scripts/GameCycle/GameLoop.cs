@@ -68,14 +68,16 @@ namespace GameCycle
             {
                 String levelGUID = ServiceLocator.LevelStructure.Level.GetGUID();
                 ServiceLocator.Saves.Career.SetLevelCompleted(levelGUID);
+                if(((CareerLevelAchievements)_levelAchievements).IsPedalCollected)ServiceLocator.Saves.Career.SetPedalCollected(levelGUID);
+                ServiceLocator.Saves.Career.UpdateBestTime(levelGUID, _levelAchievements.PlayerPerformanceTime);
             }
             catch (Exception)
             {
                 Debug.LogError("Failed to save level completion");
             }
 
-            SceneManager.LoadScene("Scenes/LevelSelection");
             Debug.Log("Ended");
+            SceneManager.LoadScene("Scenes/LevelSelection");
         }
     }
 }
