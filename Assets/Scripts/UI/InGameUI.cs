@@ -3,6 +3,7 @@ using GameCycle;
 using Misc;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace UI
@@ -56,6 +57,17 @@ namespace UI
             HidePauseMenu();
         }
 
+        public void OnMenuButton()
+        {
+            SceneManager.LoadScene("MainMenu");
+        }
+
+        public void OnRespawnButton()
+        {
+            ServiceLocator.Player.Die();
+            OnUnpauseButton();
+        }
+        
         private void HidePauseMenu()
         {
             _pauseScreen.SetActive(false);

@@ -1,6 +1,7 @@
 ﻿using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace Menu
@@ -31,6 +32,11 @@ namespace Menu
         public void ChangeAmbientVolume()
         {
             UserSettings.SetAmbientVolume(_ambientVolumeSlider.value);
+        }
+
+        public void OnBackButton()
+        {
+            SceneManager.LoadScene("MainMenu");
         }
     }
 }
