@@ -1,11 +1,14 @@
 ﻿using System;
+using Misc;
+using ProgressionStore;
 using UnityEngine;
 
-namespace ProgressionStore
+namespace Garage
 {
     public class GarageUI : MonoBehaviour
     {
         public event Action BackButtonClicked;
+        public event Action<Direction1D> RightLeftButtonClicked; 
         [SerializeField] private GameObject _backButton;
         [SerializeField] private GarageCamera _garageCamera;
 
@@ -25,6 +28,11 @@ namespace ProgressionStore
         public void OnBackButton()
         {
             BackButtonClicked?.Invoke();
+        }
+
+        public void OnRightLeftButtons(Direction1D direction)
+        {
+            RightLeftButtonClicked?.Invoke(direction);
         }
         
         private void OnCameraArrivedAtCheckpoint()
