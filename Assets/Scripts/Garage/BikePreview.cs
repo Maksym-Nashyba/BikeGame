@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using IGUIDResources;
 using Misc;
 using SaveSystem.Front;
@@ -40,11 +39,13 @@ namespace Garage
         private void OnCameraArrived()
         {
             _garageUI.RightLeftButtonClicked += OnNavigationButton;
+            _garageUI.SetRightLeftButtonsActive(true);
         }
 
         private void OnCameraDeparted()
         {
             _garageUI.RightLeftButtonClicked -= OnNavigationButton;
+            _garageUI.SetRightLeftButtonsActive(false);
         }
 
         private void OnNavigationButton(Direction1D direction)

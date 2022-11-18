@@ -62,6 +62,7 @@ namespace ProgressionStore
         {
             IsMoving = true;
             _currentCheckpoint.SendCameraDeparted();
+            targetCheckpoint.SendCameraApproaching();
             DepartedFromCheckpoint?.Invoke();
             
             await LerpCameraToCheckpoint(targetCheckpoint, _transitionDurationSeconds);

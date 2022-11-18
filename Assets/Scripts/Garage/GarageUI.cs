@@ -10,6 +10,7 @@ namespace Garage
         public event Action BackButtonClicked;
         public event Action<Direction1D> RightLeftButtonClicked; 
         [SerializeField] private GameObject _backButton;
+        [SerializeField] private GameObject _rigtLeftButtons;
         [SerializeField] private GarageCamera _garageCamera;
 
         private void Awake()
@@ -30,8 +31,9 @@ namespace Garage
             BackButtonClicked?.Invoke();
         }
 
-        public void OnRightLeftButtons(Direction1D direction)
+        public void OnRightLeftButtons(bool right)
         {
+            Direction1D direction = right ? Direction1D.Right : Direction1D.Left;
             RightLeftButtonClicked?.Invoke(direction);
         }
         
@@ -43,6 +45,11 @@ namespace Garage
         private void OnCameraDepartedFromCheckpoint()
         {
             _backButton.SetActive(false);
+        }
+
+        public void SetRightLeftButtonsActive(bool nextActivationState)
+        {
+            _rigtLeftButtons.SetActive(nextActivationState);
         }
     }
 }

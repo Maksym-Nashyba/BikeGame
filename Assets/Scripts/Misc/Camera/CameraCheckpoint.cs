@@ -7,6 +7,7 @@ namespace Misc
     {
         public event Action CameraArrived;
         public event Action CameraDeparted;
+        public event Action CameraApproaching;
         public Vector3 Target => _targetTransform.position;
         public Vector3 Position => _positionTransform.position;
         
@@ -39,6 +40,11 @@ namespace Misc
         public void SendCameraDeparted()
         {
             CameraDeparted?.Invoke();
+        }
+
+        public void SendCameraApproaching()
+        {
+            CameraApproaching?.Invoke();
         }
     }
 }
