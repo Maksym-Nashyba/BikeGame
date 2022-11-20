@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-8821752509694139575
+--- !u!114 &-7691907247670962756
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20,8 +20,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: PurpleClouds
-  m_Shader: {fileID: -6465566751694194690, guid: d76abd790b06fb84aad4f15371e4eca5, type: 3}
+  m_Name: MagicWater
+  m_Shader: {fileID: -6465566751694194690, guid: 7f469253ec4879148a0e1ee10ff8cc47, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
@@ -41,6 +41,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _CausticTexture:
+        m_Texture: {fileID: 2800000, guid: 451d97a5eca97d74a97624e8e67413ef, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -55,6 +59,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
         m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _FoamTexture:
+        m_Texture: {fileID: 2800000, guid: f96564aa673ecd044beee0190dd3f367, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
@@ -92,48 +100,64 @@ Material:
     m_Ints: []
     m_Floats:
     - _AlphaClip: 0
-    - _BaseHeight: 0.01
-    - _BaseScale: 0.015
-    - _BaseSpeed: 0.001
+    - _BUILTIN_QueueControl: -1
+    - _BUILTIN_QueueOffset: 0
     - _Blend: 0
     - _BumpScale: 1
+    - _CausticCutout: 0.29
+    - _CausticDirection: 1
+    - _CausticSpeed: 0.007
+    - _CausticsTiling: 2.96
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
     - _Cull: 2
     - _Cutoff: 0.5
+    - _Depth: 14.03
+    - _DepthFalloff: 6
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
-    - _DetailsScale: 0.01
-    - _DetailsSpeed: 0.02
-    - _DetaisHeight: 0.002
     - _DstBlend: 0
     - _EnvironmentReflections: 1
-    - _Fog: 0
+    - _FoamAmount: 2.97
+    - _FoamCutout: 0.33
+    - _FoamDepth: 3.47
+    - _FoamFalloff: 8.75
+    - _FoamShoreWidth: 0.68
+    - _FoamTiling: 0.79
     - _GlossMapScale: 0
     - _Glossiness: 0
+    - _GlossinessSource: 0
     - _GlossyReflections: 0
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.005
-    - _PatternScale: 0.02
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
+    - _RippleDencity: 7
+    - _RippleSlimness: 3
+    - _RippleSpeed: 1
+    - _Shininess: 0
     - _Smoothness: 0.5
+    - _SmoothnessSource: 0
     - _SmoothnessTextureChannel: 0
+    - _SpecSource: 0
     - _SpecularHighlights: 1
-    - _Speed: 0.01
     - _SrcBlend: 1
     - _Surface: 0
-    - _Transparency: 38.03
-    - _WaveHeight: 0.43
+    - _WaveIntensity: 0.005
+    - _WaveSpeed: 0.27
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _BottomColor: {r: 1, g: 0.5990566, b: 0.90595144, a: 1}
+    - _CausticColor: {r: 1, g: 1, b: 1, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _MainColor: {r: 0.40247118, g: 0.18560877, b: 0.4056604, a: 0.87058824}
+    - _FoamColor: {r: 1, g: 1, b: 1, a: 1}
+    - _FoamSpeed: {r: 0.04, g: 0.03, b: 0, a: 0}
+    - _MainColor: {r: 0.2830189, g: 0.10012461, b: 0.24301076, a: 0}
+    - _RippleColor: {r: 0.1556604, g: 1, b: 0.9129592, a: 0}
+    - _ShoreColor: {r: 0.13362457, g: 0.10980392, b: 0.18039216, a: 0}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
   m_BuildTextureStacks: []
