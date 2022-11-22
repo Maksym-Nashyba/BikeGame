@@ -2298,14 +2298,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 220663414}
-  m_LocalRotation: {x: -0, y: -0.5538637, z: -0, w: 0.8326073}
-  m_LocalPosition: {x: -147.781, y: -71.46, z: -60.699}
+  m_LocalRotation: {x: -0, y: -0.5848702, z: -0, w: 0.8111269}
+  m_LocalPosition: {x: -239.33, y: -99.62, z: -94.71}
   m_LocalScale: {x: 7.931382, y: 2.4729, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1010993136}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: -67.265, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -71.588, z: 0}
 --- !u!65 &220663416
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2317,8 +2317,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.442541, y: 2.2077425, z: 0.7491249}
+  m_Center: {x: -0.17057958, y: 0.06661717, z: -0.000011152061}
 --- !u!114 &220663417
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2612,7 +2612,6 @@ GameObject:
   - component: {fileID: 237804013}
   - component: {fileID: 237804016}
   - component: {fileID: 237804015}
-  - component: {fileID: 237804014}
   m_Layer: 0
   m_Name: Plane
   m_TagString: Untagged
@@ -2635,20 +2634,6 @@ Transform:
   m_Father: {fileID: 1828612759}
   m_RootOrder: 358
   m_LocalEulerAnglesHint: {x: 0, y: 20.85, z: -15.903}
---- !u!64 &237804014
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 237804012}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &237804015
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -13597,14 +13582,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 636651736}
-  m_LocalRotation: {x: 0.013930203, y: -0.14643198, z: 0.002062264, w: 0.98912054}
-  m_LocalPosition: {x: -182.872, y: -165.98, z: 63.93}
+  m_LocalRotation: {x: 0.007694118, y: 0.64324474, z: 0.011794238, w: 0.7655312}
+  m_LocalPosition: {x: -181.351, y: -167.796, z: 64.034}
   m_LocalScale: {x: 1, y: 3.2437, z: 9.1583}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1010993136}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 1.614, y: -16.842, z: 0}
+  m_LocalEulerAnglesHint: {x: -0.194, y: 80.075, z: 1.602}
 --- !u!65 &636651738
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13616,8 +13601,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 10.0888605, y: 1.5609667, z: 0.0758229}
+  m_Center: {x: -0.0000000029151557, y: 0.28048205, z: -3.7029785e-11}
 --- !u!114 &636651739
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24995,7 +24980,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _minDistance: 13
-  _maxDistance: 32
+  _maxDistance: 28
   _direction: {x: 4.577361, y: 18.318619, z: 18.47982}
 --- !u!114 &1297864755
 MonoBehaviour:
