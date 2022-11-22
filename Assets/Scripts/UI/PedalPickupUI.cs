@@ -9,7 +9,9 @@ namespace UI
     {
         [SerializeField] private Animator _uiPedalAnimator;
         [SerializeField] private Transform _uiPedal;
+        [SerializeField] private Transform _uiPedalHolder;
         [SerializeField] private GameObject _pedalPrefab;
+        private readonly Vector2 ReferenceResolution = new Vector2(2560, 1440);
         
         private void Awake()
         {
@@ -20,6 +22,7 @@ namespace UI
         {
             _uiPedal.gameObject.SetActive(false);
             _uiPedalAnimator.Play("Awaiting");
+            AdjustResolution();
         }
 
         private void OnDestroy()
@@ -30,7 +33,7 @@ namespace UI
         private async void OnPedalPickedUp(Pedal.PedalPickedUpArgs args)
         {
             Transform worldPedal = CreateWorldPedal(args.GFXTransformation);
-            await MoveToPoint(worldPedal, _uiPedal, 0.6f);
+            await MoveToPoint(worldPedal, _uiPedal, 0.8f);
             Destroy(worldPedal.gameObject);
             _uiPedal.gameObject.SetActive(true);
             _uiPedalAnimator.Play("Collected");
@@ -61,6 +64,12 @@ namespace UI
                 timeElapsed += Time.deltaTime;
             }
         }
-        
+
+        private void AdjustResolution()
+        {
+            Vector2 ratio = new Vector2(Screen.width, Screen.height) / ReferenceResolution;
+            _uiPedalHolder.localScale *= ratio;
+            //_uiPedalHolder.localPosition *= ratio;
+        }
     }
 }
