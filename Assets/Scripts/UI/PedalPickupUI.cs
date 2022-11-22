@@ -30,7 +30,7 @@ namespace UI
         private async void OnPedalPickedUp(Pedal.PedalPickedUpArgs args)
         {
             Transform worldPedal = CreateWorldPedal(args.GFXTransformation);
-            await MoveToPoint(worldPedal, _uiPedal, 0.9f);
+            await MoveToPoint(worldPedal, _uiPedal, 0.6f);
             Destroy(worldPedal.gameObject);
             _uiPedal.gameObject.SetActive(true);
             _uiPedalAnimator.Play("Collected");
