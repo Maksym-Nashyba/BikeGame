@@ -7,7 +7,7 @@ namespace LevelObjectives.LevelObjects
 {
     public class Pedal : MonoBehaviour
     {
-        public event Action PedalPickedUp;
+        public event Action<PedalPickedUpArgs> PedalPickedUp;
         public bool IsHeld { get; private set; }
         [SerializeField] private GameObject _pedalTriggerObject;
 
@@ -32,7 +32,7 @@ namespace LevelObjectives.LevelObjects
 
         private void OnPedalTriggered()
         {
-            PedalPickedUp?.Invoke();
+            PedalPickedUp?.Invoke(new PedalPickedUpArgs(new Transformation(_pedalTriggerObject.transform)));
             _pedalTriggerObject.SetActive(false);
             IsHeld = true;
         }
@@ -41,6 +41,16 @@ namespace LevelObjectives.LevelObjects
         {
             if(achievements is not CareerLevelAchievements careerLevelAchievements)return;
             careerLevelAchievements.IsPedalCollected = IsHeld;
+        }
+
+        public class PedalPickedUpArgs
+        {
+            public readonly Transformation GFXTransformation;
+
+            public PedalPickedUpArgs(Transformation gfxTransformation)
+            {
+                GFXTransformation = gfxTransformation;
+            }
         }
     }
 }
