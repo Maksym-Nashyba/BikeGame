@@ -78,7 +78,6 @@ namespace GameCycle
             }
 
             Debug.Log("Ended");
-            SceneManager.LoadScene("Scenes/LevelSelection");
         }
     }
 }

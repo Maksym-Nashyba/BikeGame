@@ -16,7 +16,7 @@ namespace UI
         [SerializeField] private GameObject _controlls;
         [SerializeField] private TextMeshProUGUI _scoreValue;
         [SerializeField] private TextMeshProUGUI _timeValue;
-        [SerializeField] private Toggle _pedalCollectedToggle;
+        [SerializeField] private GameObject _pedalCollectedDisplay;
         private GameLoop _gameLoop;
 
         private void Awake()
@@ -34,13 +34,14 @@ namespace UI
         {
             SetAchievementsValues(levelAchievements);
             _endGameScreen.SetActive(true);
+            _controlls.SetActive(false);
         }
 
         private void SetAchievementsValues(LevelAchievements levelAchievements)
         {
             _scoreValue.text = levelAchievements.TotalScore.ToString(CultureInfo.InvariantCulture);
             _timeValue.text = levelAchievements.PlayerPerformanceTime.ToString(CultureInfo.InvariantCulture);
-            _pedalCollectedToggle.isOn = ((CareerLevelAchievements)levelAchievements).IsPedalCollected;
+            _pedalCollectedDisplay.SetActive(((CareerLevelAchievements)levelAchievements).IsPedalCollected);
         }
 
         public void OnPauseButton()
