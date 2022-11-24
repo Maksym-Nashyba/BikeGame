@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
+using IGUIDResources;
 using SaveSystem.Front;
 using SaveSystem.Models;
 using SaveSystem.PersistencyAndSerialization;
@@ -44,6 +45,16 @@ namespace EditorWindows
                 if(_saves == null) _saves = GetSaves();
                 _saves.Currencies.AddDollans(5000);
                 _saves.Currencies.AddPedals(10);
+            }
+            
+            if (GUILayout.Button("Complete All Levels"))
+            {
+                if(_saves == null) _saves = GetSaves();
+                GUIDResourceLocator resourceLocator = GUIDResourceLocator.InitializeCareer();
+                foreach (Level level in resourceLocator.Career)
+                {
+                    _saves.Career.SetLevelCompleted(level.GetGUID());
+                }
             }
             
             if (GUILayout.Button("Display current SaveData"))
