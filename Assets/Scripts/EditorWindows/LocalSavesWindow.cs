@@ -57,6 +57,13 @@ namespace EditorWindows
                 }
             }
             
+            if (GUILayout.Button("Complete First Level"))
+            {
+                if(_saves == null) _saves = GetSaves();
+                GUIDResourceLocator resourceLocator = GUIDResourceLocator.InitializeCareer();
+                _saves.Career.SetLevelCompleted(resourceLocator.Career.GetFirstLevel().GetGUID());
+            }
+            
             if (GUILayout.Button("Display current SaveData"))
             {
                 if(_saves == null) _saves = GetSaves();

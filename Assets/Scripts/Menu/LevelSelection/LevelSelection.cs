@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using IGUIDResources;
 using LevelLoading;
 using SaveSystem.Front;
@@ -53,8 +54,9 @@ namespace Menu
 
         public bool CanSelectNext()
         {
-            int currentLevelComplete = _saves.Career.IsCompleted(CurrentLevelGUID) ? 1 : 0;
-            return CurrentLevelIndex < LastCompletedLevelIndex + currentLevelComplete;
+            int accessModifier = _saves.Career.IsCompleted(CurrentLevelGUID) ? 1 : 0;
+            accessModifier = _resourceLocator.Career.Cast<Level>().Last().GetGUID() == CurrentLevelGUID ? 0 : accessModifier;
+            return CurrentLevelIndex < LastCompletedLevelIndex + accessModifier;
         }
 
         public bool CanSelectPrevious()

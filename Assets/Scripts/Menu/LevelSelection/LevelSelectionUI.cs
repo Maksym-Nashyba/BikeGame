@@ -59,7 +59,7 @@ namespace Menu
 
         private void PositionFogAfterLevel(int levelIndex)
         {
-            float fogY = _selectionCamera.GetCheckpointFor(levelIndex).Target.y - 2f;
+            float fogY = _selectionCamera.GetCheckpointFor(levelIndex).FogHeiht;
             _fogTransform.position = new Vector3(0f, fogY, 0f);
         }
         
