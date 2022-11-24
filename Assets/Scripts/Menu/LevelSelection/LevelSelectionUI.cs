@@ -8,7 +8,6 @@ namespace Menu
     public class LevelSelectionUI : MonoBehaviour
     {
         [SerializeField] private Transform _fogTransform;
-        [SerializeField] private TextMeshProUGUI _levelNameText;
         [SerializeField] private Button _nextButton;
         [SerializeField] private Button _previousButton;
         [Space]
@@ -41,14 +40,11 @@ namespace Menu
         {
             _nextButton.interactable = false;
             _previousButton.interactable = false;
-            _levelNameText.enabled = false;
         }
 
         private void EnableUI(Level level)
         {
             UpdateNavigationButtonsInteractable();
-            _levelNameText.enabled = true;
-            _levelNameText.SetText(level.DisplayName);
         }
 
         private void UpdateNavigationButtonsInteractable()
