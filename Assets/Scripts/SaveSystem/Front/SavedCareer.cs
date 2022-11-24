@@ -46,24 +46,24 @@ namespace SaveSystem.Front
             Changed?.Invoke();
         }
 
-        public float GetBestTime(Level level)
+        public int GetBestTime(Level level)
         {
             return GetBestTime(level.GetGUID());
         }
 
-        public float GetBestTime(string levelGUID)
+        public int GetBestTime(string levelGUID)
         {
             AssertLevelCompleted(levelGUID);
             PersistentLevel levelSave = GetLevelWithGUID(levelGUID);
             return levelSave.BestTime;
         }
 
-        public void UpdateBestTime(Level level, float newBestTime)
+        public void UpdateBestTime(Level level, int newBestTime)
         {
             UpdateBestTime(level.GetGUID(), newBestTime);
         }
         
-        public void UpdateBestTime(string levelGUID, float newBestTime)
+        public void UpdateBestTime(string levelGUID, int newBestTime)
         {
             AssertLevelCompleted(levelGUID);
             PersistentLevel levelSave = GetLevelWithGUID(levelGUID);

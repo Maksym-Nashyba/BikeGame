@@ -28,7 +28,7 @@ namespace Tests.EditMode
 
         public static PersistentLevel GenerateRandomPersistentLevel()
         {
-            float bestTime = Random.Range(3f, 6f);
+            int bestTime = Random.Range(45, 200);
             bool pedalCollected = Random.Range(0, 1) > 0.5f;
             string guid = GUIDResourceLocator.Initialize().Career.Chapters[0][Random.Range(1, 3)].GetGUID();
             PersistentLevel level = PersistentLevel.GetNewLevelWithGUID(guid);

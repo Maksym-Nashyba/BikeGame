@@ -7,10 +7,10 @@ namespace Menu
 {
     public class LevelSelectionCamera : MonoBehaviour
     {
-        public LevelSelectionCameraCheckpoint GetCheckpointFor(int levelIndex) => _checkpoints[levelIndex];
+        public LevelSelectionCheckpoint GetCheckpointFor(int levelIndex) => _checkpoints[levelIndex];
         [Range(0f, 3f)][SerializeField] private float _transitionDurationSeconds;
         [SerializeField] private Transform _cameraTransform;
-        [SerializeField] private LevelSelectionCameraCheckpoint[] _checkpoints;
+        [SerializeField] private LevelSelectionCheckpoint[] _checkpoints;
         private int _currentCheckpoint;
 
         public void TeleportToLevel(int levelIndex)

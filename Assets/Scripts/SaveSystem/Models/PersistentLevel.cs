@@ -5,11 +5,11 @@ namespace SaveSystem.Models
     [Serializable]
     public class PersistentLevel
     {
-        public float BestTime;
+        public int BestTime;
         public bool PedalCollected;
         public string GUID;
 
-        private PersistentLevel(float bestTime, bool pedalCollected, string guid)
+        private PersistentLevel(int bestTime, bool pedalCollected, string guid)
         {
             BestTime = bestTime;
             PedalCollected = pedalCollected;
