@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 
 namespace GameCycle
 {
+    [RequireComponent(typeof(LevelTimer))]
     public class GameLoop : MonoBehaviour
     {
         public event Action Started;

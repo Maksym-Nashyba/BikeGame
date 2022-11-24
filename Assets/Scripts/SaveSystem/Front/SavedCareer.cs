@@ -67,7 +67,7 @@ namespace SaveSystem.Front
         {
             AssertLevelCompleted(levelGUID);
             PersistentLevel levelSave = GetLevelWithGUID(levelGUID);
-            if (newBestTime >= levelSave.BestTime) return;
+            if (newBestTime >= levelSave.BestTime && levelSave.BestTime > 0) return;
             levelSave.BestTime = newBestTime;
             Changed?.Invoke();
         }

@@ -2,7 +2,7 @@
 {
     public class LevelAchievements
     {
-        public int PlayerPerformanceTime;
+        public int PlayerPerformanceTime = -1;
         public float TotalScore;
     }
 }
