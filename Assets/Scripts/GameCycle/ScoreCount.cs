@@ -3,7 +3,7 @@
     public struct ScoreCount
     {
         public const int FallCost = 40;
-        public const int OnePercentTimeCost = 1;
+        public const int SecondsTimeCost = 5;
         public const int BaseScore = 300;
 
         public readonly int ExpectedTimeSeconds;
@@ -23,8 +23,8 @@
         {
             int score = BaseScore;
 
-            float timeDifference = (expectedTimeSeconds - levelAchievements.TimeSeconds) / (float)expectedTimeSeconds;
-            score += (int)(timeDifference * 100f * OnePercentTimeCost);
+            float timeDifference = expectedTimeSeconds - levelAchievements.TimeSeconds;
+            score += (int)(timeDifference * SecondsTimeCost);
             
             score -= FallCost * levelAchievements.FallCount;
 

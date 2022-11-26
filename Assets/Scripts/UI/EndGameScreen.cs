@@ -44,11 +44,14 @@ namespace UI
 
         private void DisplayTimeCount(float t, int playerTimeSeconds, int expectedTimeSeconds)
         {
-            //TODO math is fucking broken
             float secondsPassed = playerTimeSeconds * t;
-            float value = ScoreCount.BaseScore + (expectedTimeSeconds - secondsPassed) / expectedTimeSeconds * 100f * ScoreCount.OnePercentTimeCost;
+            float minValue = ScoreCount.BaseScore - Mathf.Abs(0 - expectedTimeSeconds) * ScoreCount.SecondsTimeCost;
+            float maxValue = ScoreCount.BaseScore - Mathf.Abs(playerTimeSeconds - expectedTimeSeconds) * ScoreCount.SecondsTimeCost;
+            float value = ScoreCount.BaseScore - Mathf.Abs(secondsPassed - expectedTimeSeconds) * ScoreCount.SecondsTimeCost;
+            value = value.Remap(minValue, maxValue, 0f, maxValue);
             _scoreValueText.SetText($"{value}");
             _timeValueText.SetText(Format.FormatSeconds((int)secondsPassed));
+            _timeValueText.color = expectedTimeSeconds > secondsPassed ? Color.green : Color.red;
         }
 
         private async Task ExecuteOverTime(float seconds, Action<float> action)
