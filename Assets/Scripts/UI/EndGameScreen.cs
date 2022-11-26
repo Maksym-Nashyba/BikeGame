@@ -14,6 +14,7 @@ namespace UI
         [SerializeField] private TextMeshProUGUI _timeValueText;
         [SerializeField] private TextMeshProUGUI _scoreValueText;
         [SerializeField] private TextMeshProUGUI _fallCountValueText;
+        [SerializeField] private TextMeshProUGUI _expectedTimeValueText;
         [SerializeField] private Button _continueButton;
 
         private void Start()
@@ -28,6 +29,8 @@ namespace UI
         
         public async Task Show(ScoreCount scoreCount)
         {
+            _timeValueText.transform.parent.gameObject.SetActive(false);
+            _fallCountValueText.transform.parent.gameObject.SetActive(false);
             await ShowScoreCount(scoreCount);
             _scoreValueText.SetText($"{scoreCount.Score}");
             _timeValueText.SetText(Format.FormatSeconds(scoreCount.TimeSeconds));
@@ -36,6 +39,8 @@ namespace UI
 
         private async Task ShowScoreCount(ScoreCount scoreCount)
         {
+            _timeValueText.transform.parent.gameObject.SetActive(true);
+            _expectedTimeValueText.SetText(Format.FormatSeconds(scoreCount.ExpectedTimeSeconds));
             await ExecuteOverTime(10f, t =>
             {
                 DisplayTimeCount(t, scoreCount.TimeSeconds, scoreCount.ExpectedTimeSeconds);
@@ -49,7 +54,7 @@ namespace UI
             float maxValue = ScoreCount.BaseScore - Mathf.Abs(playerTimeSeconds - expectedTimeSeconds) * ScoreCount.SecondsTimeCost;
             float value = ScoreCount.BaseScore - Mathf.Abs(secondsPassed - expectedTimeSeconds) * ScoreCount.SecondsTimeCost;
             value = value.Remap(minValue, maxValue, 0f, maxValue);
-            _scoreValueText.SetText($"{value}");
+            _scoreValueText.SetText($"{(int)value}");
             _timeValueText.SetText(Format.FormatSeconds((int)secondsPassed));
             _timeValueText.color = expectedTimeSeconds > secondsPassed ? Color.green : Color.red;
         }
