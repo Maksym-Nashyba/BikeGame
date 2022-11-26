@@ -1,12 +1,13 @@
-﻿using TMPro;
+﻿using System;
+using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace Menu
 {
     public class SettingsMenu : MonoBehaviour
     {
+        public event Action BackButtonClicked;
         [SerializeField] private TMP_Dropdown _graphicsTierDropdown;
         [SerializeField] private Slider _effectsVolumeSlider;
         [SerializeField] private Slider _ambientVolumeSlider;
@@ -35,7 +36,7 @@ namespace Menu
 
         public void OnBackButton()
         {
-            SceneManager.LoadScene("MainMenu");
+            BackButtonClicked?.Invoke();
         }
     }
 }
