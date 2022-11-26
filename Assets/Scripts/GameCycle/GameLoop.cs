@@ -12,6 +12,7 @@ namespace GameCycle
     {
         public event Action Started;
         public event Action<LevelAchievements> Ended;
+        public event Action<ScoreCount> ScoreCounted;
         public Objective PreviousObjective { get; private set; }
         private Queue<Objective> _objectives;
         private LevelAchievements _levelAchievements;
@@ -65,12 +66,11 @@ namespace GameCycle
         {
             ServiceLocator.Pause.PauseAll();
             Ended?.Invoke(_levelAchievements);
+            ScoreCount score = ScoreCount.Calculate((CareerLevelAchievements)_levelAchievements, ServiceLocator.LevelStructure.Level.ExpectedTimeSeconds);
+            ScoreCounted?.Invoke(score);
             try
             {
-                String levelGUID = ServiceLocator.LevelStructure.Level.GetGUID();
-                ServiceLocator.Saves.Career.SetLevelCompleted(levelGUID);
-                if(((CareerLevelAchievements)_levelAchievements).IsPedalCollected)ServiceLocator.Saves.Career.SetPedalCollected(levelGUID);
-                ServiceLocator.Saves.Career.UpdateBestTime(levelGUID, _levelAchievements.PlayerPerformanceTime);
+                SaveProgress();
             }
             catch (Exception)
             {
@@ -78,6 +78,14 @@ namespace GameCycle
             }
 
             Debug.Log("Ended");
+        }
+
+        private void SaveProgress()
+        {
+            String levelGUID = ServiceLocator.LevelStructure.Level.GetGUID();
+            ServiceLocator.Saves.Career.SetLevelCompleted(levelGUID);
+            if(((CareerLevelAchievements)_levelAchievements).IsPedalCollected)ServiceLocator.Saves.Career.SetPedalCollected(levelGUID);
+            ServiceLocator.Saves.Career.UpdateBestTime(levelGUID, _levelAchievements.TimeSeconds);
         }
     }
 }

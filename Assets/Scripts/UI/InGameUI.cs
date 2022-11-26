@@ -1,22 +1,16 @@
-﻿using System.Globalization;
-using GameCycle;
+﻿using GameCycle;
 using Misc;
-using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 namespace UI
 {
-    public class InGameUI: MonoBehaviour
+    public class InGameUI : MonoBehaviour
     {
         public GameObject JoystickObject;
         [SerializeField] private GameObject _endGameScreen;
         [SerializeField] private GameObject _pauseScreen;
         [SerializeField] private GameObject _controlls;
-        [SerializeField] private TextMeshProUGUI _scoreValue;
-        [SerializeField] private TextMeshProUGUI _timeValue;
-        [SerializeField] private GameObject _pedalCollectedDisplay;
+        [SerializeField] private EndGameScreen endGameScreen;
         private GameLoop _gameLoop;
 
         private void Awake()
@@ -30,18 +24,11 @@ namespace UI
             _endGameScreen.SetActive(false);
         }
 
-        private void ShowEndGameScreen(LevelAchievements levelAchievements)
+        private async void ShowEndGameScreen(LevelAchievements levelAchievements)
         {
-            SetAchievementsValues(levelAchievements);
             _endGameScreen.SetActive(true);
             _controlls.SetActive(false);
-        }
-
-        private void SetAchievementsValues(LevelAchievements levelAchievements)
-        {
-            _scoreValue.text = levelAchievements.TotalScore.ToString(CultureInfo.InvariantCulture);
-            _timeValue.text = levelAchievements.PlayerPerformanceTime.ToString(CultureInfo.InvariantCulture);
-            _pedalCollectedDisplay.SetActive(((CareerLevelAchievements)levelAchievements).IsPedalCollected);
+            await endGameScreen.Show((CareerLevelAchievements)levelAchievements);
         }
 
         public void OnPauseButton()
@@ -56,11 +43,6 @@ namespace UI
             ServiceLocator.Pause.ContinueAll();
             _controlls.SetActive(true);
             HidePauseMenu();
-        }
-
-        public void OnMenuButton()
-        {
-            SceneManager.LoadScene("MainMenu");
         }
 
         public void OnRespawnButton()

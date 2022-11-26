@@ -37,7 +37,7 @@ namespace GameCycle
         
         private void OnLevelEnded(LevelAchievements levelAchievements)
         {
-            levelAchievements.PlayerPerformanceTime = (int)TimePassed;
+            levelAchievements.TimeSeconds = (int)TimePassed;
         }
     }
 }

@@ -2,7 +2,8 @@
 {
     public class LevelAchievements
     {
-        public int PlayerPerformanceTime = -1;
-        public float TotalScore;
+        public int TimeSeconds = -1;
+        public float ScoreBonus;
+        public int FallCount;
     }
 }

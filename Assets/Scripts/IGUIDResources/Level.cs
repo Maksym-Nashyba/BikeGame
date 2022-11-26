@@ -7,7 +7,8 @@ namespace IGUIDResources
     {
         public string SceneName;
         public string DisplayName;
-        
+        public int ExpectedTimeSeconds;
+
         public string GetGUID()
         {
             return name;

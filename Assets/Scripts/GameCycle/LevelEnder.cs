@@ -12,7 +12,7 @@ namespace GameCycle
 
         protected virtual void OnLevelComplete(LevelAchievements achievements)
         {
-            ServiceLocator.Saves.Currencies.AddDollans((long)achievements.TotalScore);
+            ServiceLocator.Saves.Currencies.AddDollans((long)achievements.ScoreBonus);
         }
 
         private void OnDisable()
