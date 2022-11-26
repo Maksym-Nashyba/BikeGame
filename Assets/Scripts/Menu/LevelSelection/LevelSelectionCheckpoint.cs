@@ -26,25 +26,12 @@ namespace Menu
             if (_saves.Career.IsCompleted(_level))
             {
                 _pedalDisplay.SetActive(_saves.Career.IsPedalCollected(_level));
-                _bestTimeText.SetText(FormatSeconds(_saves.Career.GetBestTime(_level)));
+                _bestTimeText.SetText(Format.FormatSeconds(_saves.Career.GetBestTime(_level)));
             }
             else
             {
                 _pedalDisplay.SetActive(false);
             }
-        }
-
-        private String FormatSeconds(int seconds)
-        {
-            int minutes = seconds / 60;
-            int restSeconds = seconds - minutes * 60;
-            return DoubleDigit(minutes) + ":" + DoubleDigit(restSeconds);
-        }
-
-        private String DoubleDigit(int numeric)
-        {
-            if (numeric < 10) return "0" + numeric;
-            return numeric.ToString();
         }
     }
 }

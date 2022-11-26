@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using GameCycle;
+using Misc;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -25,23 +26,29 @@ namespace UI
             SceneManager.LoadScene("MainMenu");
         }
         
-        public async Task Show(CareerLevelAchievements levelAchievements)
+        public async Task Show(ScoreCount scoreCount)
         {
-            await ShowScoreCount(levelAchievements);
-            _continueButton.interactable = transform;
+            await ShowScoreCount(scoreCount);
+            _scoreValueText.SetText($"{scoreCount.Score}");
+            _timeValueText.SetText(Format.FormatSeconds(scoreCount.TimeSeconds));
+            _continueButton.interactable = true;
         }
 
-        private async Task ShowScoreCount(CareerLevelAchievements levelAchievements)
+        private async Task ShowScoreCount(ScoreCount scoreCount)
         {
-            await ExecuteOverTime(1f, async t =>
+            await ExecuteOverTime(10f, t =>
             {
-                DisplayTimeCount(t);
+                DisplayTimeCount(t, scoreCount.TimeSeconds, scoreCount.ExpectedTimeSeconds);
             });
         }
 
-        private void DisplayTimeCount(float t)
+        private void DisplayTimeCount(float t, int playerTimeSeconds, int expectedTimeSeconds)
         {
-            throw new NotImplementedException();
+            //TODO math is fucking broken
+            float secondsPassed = playerTimeSeconds * t;
+            float value = ScoreCount.BaseScore + (expectedTimeSeconds - secondsPassed) / expectedTimeSeconds * 100f * ScoreCount.OnePercentTimeCost;
+            _scoreValueText.SetText($"{value}");
+            _timeValueText.SetText(Format.FormatSeconds((int)secondsPassed));
         }
 
         private async Task ExecuteOverTime(float seconds, Action<float> action)

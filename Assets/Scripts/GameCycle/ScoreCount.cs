@@ -5,16 +5,18 @@
         public const int FallCost = 40;
         public const int OnePercentTimeCost = 1;
         public const int BaseScore = 300;
-        
-        public readonly int Time;
+
+        public readonly int ExpectedTimeSeconds;
+        public readonly int TimeSeconds;
         public readonly int Falls;
         public readonly int Score;
 
-        public ScoreCount(int time, int falls, int score)
+        public ScoreCount(int timeSeconds, int falls, int score, int expectedTimeSeconds)
         {
-            Time = time;
+            TimeSeconds = timeSeconds;
             Falls = falls;
             Score = score;
+            ExpectedTimeSeconds = expectedTimeSeconds;
         }
 
         public static ScoreCount Calculate(CareerLevelAchievements levelAchievements, int expectedTimeSeconds)
@@ -29,7 +31,8 @@
             return new ScoreCount(
                 levelAchievements.TimeSeconds, 
                 levelAchievements.FallCount,
-                score);
+                score,
+                expectedTimeSeconds);
         }
     }
 }

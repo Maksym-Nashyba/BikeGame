@@ -20,15 +20,20 @@ namespace UI
 
         private void Start()
         {
-            _gameLoop.Ended += ShowEndGameScreen;
+            _gameLoop.ScoreCounted += ShowEndGameScreen;
             _endGameScreen.SetActive(false);
         }
+        
+        private void OnDisable()
+        {
+            _gameLoop.ScoreCounted -= ShowEndGameScreen;
+        }
 
-        private async void ShowEndGameScreen(LevelAchievements levelAchievements)
+        private async void ShowEndGameScreen(ScoreCount scoreCount)
         {
             _endGameScreen.SetActive(true);
             _controlls.SetActive(false);
-            await endGameScreen.Show((CareerLevelAchievements)levelAchievements);
+            await endGameScreen.Show(scoreCount);
         }
 
         public void OnPauseButton()
@@ -59,11 +64,6 @@ namespace UI
         private void DisplayPauseMenu()
         {
             _pauseScreen.SetActive(true);
-        }
-        
-        private void OnDisable()
-        {
-            _gameLoop.Ended -= ShowEndGameScreen;
         }
     }
 }
