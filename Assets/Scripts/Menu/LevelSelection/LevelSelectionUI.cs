@@ -1,6 +1,7 @@
 ﻿using IGUIDResources;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace Menu
@@ -20,6 +21,16 @@ namespace Menu
             _levelSelection.SelectedLevel += OnSelectedLevel;
         }
 
+        private void OnDestroy()
+        {
+            _levelSelection.SelectedLevel -= OnSelectedLevel;
+        }
+
+        public void OnBackButton()
+        {
+            SceneManager.LoadScene("MainMenu");
+        }
+        
         private void OnSelectionSetUp(int levelIndex, Level level)
         {
             _levelSelection.SetUp -= OnSelectionSetUp;
@@ -57,11 +68,6 @@ namespace Menu
         {
             float fogY = _selectionCamera.GetCheckpointFor(levelIndex).FogHeight;
             _fogTransform.position = new Vector3(0f, fogY, 0f);
-        }
-        
-        private void OnDestroy()
-        {
-            _levelSelection.SelectedLevel -= OnSelectedLevel;
         }
     }
 }
