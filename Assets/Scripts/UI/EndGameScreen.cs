@@ -16,12 +16,23 @@ namespace UI
         [SerializeField] private TextMeshProUGUI _fallCountValueText;
         [SerializeField] private TextMeshProUGUI _expectedTimeValueText;
         [SerializeField] private Button _continueButton;
+        private AsyncExecutor _executor;
         private int _displayedScore;
         private int _displayedFallCount;
-        
+
+        private void Awake()
+        {
+            _executor = new AsyncExecutor();
+        }
+
         private void Start()
         {
             _continueButton.interactable = false;
+        }
+
+        private void OnDestroy()
+        {
+            _executor.Dispose();
         }
 
         public void OnContinueButton()
@@ -46,7 +57,7 @@ namespace UI
         {
             _timeValueText.transform.parent.gameObject.SetActive(true);
             _expectedTimeValueText.SetText(Format.FormatSeconds(scoreCount.ExpectedTimeSeconds));
-            await ExecuteEachFrame(5f, t =>
+            await _executor.EachFrame(5f, t =>
             {
                 UpdateTimeCount(t, scoreCount.TimeSeconds, scoreCount.ExpectedTimeSeconds);
             });
@@ -84,17 +95,6 @@ namespace UI
         {
             _displayedFallCount++;
             _fallCountValueText.SetText($"{_displayedFallCount}");
-        }
-        
-        private async Task ExecuteEachFrame(float durationSeconds, Action<float> action)
-        {
-            float timeElapsed = 0f;
-            while (timeElapsed < durationSeconds)
-            {
-                await Task.Yield();
-                action.Invoke(timeElapsed/durationSeconds);
-                timeElapsed += Time.deltaTime;
-            }
         }
     }
 }
