@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using LevelObjectives.Objectives;
 using Misc;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace GameCycle
 {
     [RequireComponent(typeof(LevelTimer))]
+    [RequireComponent(typeof(FallCounter))]
     public class GameLoop : MonoBehaviour
     {
         public event Action Started;

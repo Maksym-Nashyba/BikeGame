@@ -21,7 +21,7 @@ namespace GameCycle
 
         public async Task Respawn(int delay)
         {
-            await Task.Delay(delay);
+            if(delay > 0) await Task.Delay(delay);
             ActivePlayerClone = ServiceLocator.PlayerSpawner.SpawnPlayerClone();
             Respawned?.Invoke();
             IsAlive = true;
