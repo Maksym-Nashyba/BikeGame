@@ -48,12 +48,13 @@ namespace UI
         public async Task Shake()
         {
             State shakenState = GetCurrentState();
-            shakenState.Position += Vector2.one.RotatedBy(Random.Range(0f, 359f)) * 0.01f;
-            shakenState.Rotation.z += Random.Range(-10f, 10f);
-            shakenState.Scale += Vector2.one * 0.5f;
+           // shakenState.Position += Vector2.one.RotatedBy(Random.Range(0f, 359f)) * 0.01f;
+           _transform.position = _transform.position;
+            shakenState.Rotation.z += Random.Range(-0.1f, 0.1f);
+            shakenState.Scale += Vector2.one * 2f;
             
             await Task.WhenAll(
-                LerpPosition(shakenState.Position, 0.3f),
+                //LerpPosition(shakenState.Position, 0.3f),
                 LerpRotation(shakenState.Rotation, 0.3f),
                 LerpScale(shakenState.Scale, 0.3f));
             await ReturnToDefault();
@@ -86,9 +87,9 @@ namespace UI
         private Task LerpPosition(Vector2 target, float durationSeconds)
         {
             ResetCTS(ref _positionCTS);
-            Vector2 startPosition = _transform.position;
+            Vector2 startPosition = _transform.localPosition;
             return _executor.LerpEachFrame(durationSeconds, 
-                value => _transform.position = value, 
+                value => _transform.localPosition = value, 
                 startPosition, target, 
                 _positionCTS.Token);
         }
@@ -118,7 +119,7 @@ namespace UI
             return new State(
                 Text.color,
                 _transform.localScale,
-                _transform.position,
+                _transform.localPosition,
                 _transform.rotation);
         }
 
