@@ -49,7 +49,6 @@ namespace UI
             await Task.Delay(1000);
             await ShowFallCount(scoreCount);
 
-            ApplyScoreValue(scoreCount.Score);
             _continueButton.interactable = true;
         }
 
@@ -82,18 +81,24 @@ namespace UI
             for (int i = 0; i < scoreCount.Falls; i++)
             {
                 ApplyFallCountIncrement();
-                ApplyScoreValue(_displayedScore - ScoreCount.FallCost);
+                ApplyScoreValue(_displayedScore - ScoreCount.FallCost, true);
                 await _fallCountValueText.Shake(Color.red);
                 _fallCountValueText.ReturnToDefault();
                 await Task.Delay(500);
             }
         }
 
-        private void ApplyScoreValue(int nextValue)
+        private async Task ApplyScoreValue(int nextValue, bool withShake = false)
         {
-            _scoreValueText.Text.color = _displayedScore > nextValue ? Color.red : Color.green;
+            Color color;
+            if (nextValue == _displayedScore) color = _scoreValueText.Text.color;
+            else color = nextValue >= _displayedScore ? Color.green : Color.red;
+            
+            _scoreValueText.Text.color = color;
             _displayedScore = nextValue;
             _scoreValueText.Text.SetText($"{_displayedScore}");
+            if (withShake) await _scoreValueText.Shake(color);
+            _scoreValueText.ReturnToDefault();
         }
 
         private void ApplyFallCountIncrement()
