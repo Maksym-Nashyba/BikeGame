@@ -45,13 +45,13 @@ namespace UI
             _defaultState = GetCurrentState();
         }
 
-        public async Task Shake(Color color)
+        public async Task Kick(Color color)
         {
             State shakenState = GetCurrentState();
-            shakenState.Position += Vector2.one.RotatedBy(Random.Range(0f, 359f)) * Random.Range(1f, 5f);
-           _transform.position = _transform.position;
-            shakenState.Rotation.z += Random.Range(-0.1f, 0.1f);
-            shakenState.Scale += Vector2.one * 0.5f;
+            shakenState.Position += Vector2.one.RotatedBy(Random.Range(0f, 359f)) * Random.Range(3f, 7f);
+            _transform.position = _transform.position;
+            shakenState.Rotation.z += Random.Range(-0.09f, 0.09f);
+            shakenState.Scale += Vector2.one * 0.4f;
             
             await Task.WhenAll(
                 LerpPosition(shakenState.Position, 0.1f),

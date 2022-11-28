@@ -82,7 +82,7 @@ namespace UI
             {
                 ApplyFallCountIncrement();
                 ApplyScoreValue(_displayedScore - ScoreCount.FallCost, true);
-                await _fallCountValueText.Shake(Color.red);
+                await _fallCountValueText.Kick(Color.red);
                 _fallCountValueText.ReturnToDefault();
                 await Task.Delay(500);
             }
@@ -97,7 +97,7 @@ namespace UI
             _scoreValueText.Text.color = color;
             _displayedScore = nextValue;
             _scoreValueText.Text.SetText($"{_displayedScore}");
-            if (withShake) await _scoreValueText.Shake(color);
+            if (withShake) await _scoreValueText.Kick(color);
             _scoreValueText.ReturnToDefault();
         }
 
