@@ -1,6 +1,7 @@
 ﻿using GameCycle;
 using Misc;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace UI
 {
@@ -54,6 +55,11 @@ namespace UI
         {
             ServiceLocator.Player.Die();
             OnUnpauseButton();
+        }
+
+        public void OnMenuButton()
+        {
+            SceneManager.LoadScene("MainMenu");
         }
         
         private void HidePauseMenu()
