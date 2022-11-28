@@ -83,8 +83,7 @@ namespace UI
             {
                 ApplyFallCountIncrement();
                 ApplyScoreValue(_displayedScore - ScoreCount.FallCost);
-                await _fallCountValueText.Shake();
-                _fallCountValueText.LerpColor(Color.red, 0.1f);
+                await _fallCountValueText.Shake(Color.red);
                 _fallCountValueText.ReturnToDefault();
                 await Task.Delay(500);
             }

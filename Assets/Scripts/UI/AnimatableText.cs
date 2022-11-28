@@ -45,19 +45,19 @@ namespace UI
             _defaultState = GetCurrentState();
         }
 
-        public async Task Shake()
+        public async Task Shake(Color color)
         {
             State shakenState = GetCurrentState();
-           // shakenState.Position += Vector2.one.RotatedBy(Random.Range(0f, 359f)) * 0.01f;
+            shakenState.Position += Vector2.one.RotatedBy(Random.Range(0f, 359f)) * Random.Range(1f, 5f);
            _transform.position = _transform.position;
             shakenState.Rotation.z += Random.Range(-0.1f, 0.1f);
-            shakenState.Scale += Vector2.one * 2f;
+            shakenState.Scale += Vector2.one * 0.5f;
             
             await Task.WhenAll(
-                //LerpPosition(shakenState.Position, 0.3f),
-                LerpRotation(shakenState.Rotation, 0.3f),
-                LerpScale(shakenState.Scale, 0.3f));
-            await ReturnToDefault();
+                LerpPosition(shakenState.Position, 0.1f),
+                LerpRotation(shakenState.Rotation, 0.1f),
+                LerpScale(shakenState.Scale, 0.1f),
+                LerpColor(color, 0.1f));
         }
         
         public Task ReturnToDefault()
