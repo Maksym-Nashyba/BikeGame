@@ -1,12 +1,13 @@
 ﻿using IGUIDResources;
+using Misc;
 using UnityEngine;
 
 namespace Garage
 {
     public class BikeModelDisplay : MonoBehaviour
     {
-        public BikeModelHolder Holder => _holder;
-        [SerializeField] private BikeModelHolder _holder;
+        public GarageBikeModelHolder Holder => _holder;
+        [SerializeField] private GarageBikeModelHolder _holder;
         private GameObject _currentDisplayModel;
 
         public void Display(BikeModel bike, Skin skin)

@@ -15,7 +15,8 @@ namespace LevelLoading
         
         [SerializeField] private Button _nextButton;
         [SerializeField] private Button _previousButton;
-
+        [SerializeField] private Transform _bikeHolder;
+        
         private Saves _saves;
         private GUIDResourceLocator _resourceLocator;
         private PersistentBike[] _persistentBikes;
@@ -62,7 +63,7 @@ namespace LevelLoading
             }
             
             _currentBike = _bikeModels.Get(bike.GUID);
-            _spawnedBike = Instantiate(_currentBike.EmptyPrefab);
+            _spawnedBike = Instantiate(_currentBike.EmptyPrefab, _bikeHolder);
             BikeChanged?.Invoke(_currentBike);
         }
         

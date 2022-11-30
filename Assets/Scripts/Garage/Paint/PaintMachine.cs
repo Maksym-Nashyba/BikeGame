@@ -22,12 +22,12 @@ namespace Garage.Paint
 
         private void OnCameraApproaching()
         {
-            _modelDisplay.Holder.MoveToPosition(BikeModelHolder.BikePositions.Paint);
+            _modelDisplay.Holder.MoveToPosition(GarageBikeModelHolder.BikePositions.Paint);
         }
         
         private void OnCameraDeparted()
         {
-            _modelDisplay.Holder.MoveToPosition(BikeModelHolder.BikePositions.Preview);
+            _modelDisplay.Holder.MoveToPosition(GarageBikeModelHolder.BikePositions.Preview);
         }
     }
 }

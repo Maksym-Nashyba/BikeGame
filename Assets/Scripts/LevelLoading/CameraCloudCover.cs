@@ -76,6 +76,7 @@ namespace LevelLoading
         
         public enum State
         {
+            None,
             Covered,
             Clean
         }
