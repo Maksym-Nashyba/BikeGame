@@ -10552,6 +10552,8 @@ GameObject:
   m_Component:
   - component: {fileID: 665426797}
   - component: {fileID: 665426798}
+  - component: {fileID: 665426800}
+  - component: {fileID: 665426799}
   m_Layer: 0
   m_Name: GameLoop
   m_TagString: Untagged
@@ -10584,6 +10586,30 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2879d80705694a19bc2066ecd0a8c577, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &665426799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 665426796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 498adfaefb0346fc8a9fe70fb3a175f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &665426800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 665426796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb70ce5b684140f29df11db263bfa994, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &683616633
@@ -25093,7 +25119,7 @@ MonoBehaviour:
   _gameLoop: {fileID: 665426798}
   _player: {fileID: 1853105610}
   _playerSpawner: {fileID: 1999499151}
-  _camera: {fileID: 0}
+  _camera: {fileID: 1974160916}
   _inGameUI: {fileID: 2080788985}
   _pause: {fileID: 1619718184}
   _pedal: {fileID: 2138467672}
@@ -35697,6 +35723,11 @@ Transform:
 --- !u!20 &1974160915 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 7534192909896277785, guid: e6525c09a37fc9b4583a08b7abf95a43, type: 3}
+  m_PrefabInstance: {fileID: 1974160913}
+  m_PrefabAsset: {fileID: 0}
+--- !u!20 &1974160916 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 7534192910509750510, guid: e6525c09a37fc9b4583a08b7abf95a43, type: 3}
   m_PrefabInstance: {fileID: 1974160913}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1993313757 stripped
