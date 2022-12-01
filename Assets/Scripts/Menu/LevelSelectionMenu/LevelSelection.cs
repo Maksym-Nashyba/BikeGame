@@ -16,6 +16,7 @@ namespace Menu
         public event Action<int, Level> SelectedLevel;
         public event Action<int, Level> SetUp;
 
+        private SceneTransitionCover _sceneTransitionCover;
         private Saves _saves;
         private Career _career;
         private GUIDResourceLocator _resourceLocator;
@@ -26,6 +27,7 @@ namespace Menu
             _saves = FindObjectOfType<Saves>();
             _resourceLocator = GUIDResourceLocator.Initialize();
             _career = _resourceLocator.Career;
+            _sceneTransitionCover = FindObjectOfType<SceneTransitionCover>();
         }
 
         private void Start()
@@ -37,7 +39,8 @@ namespace Menu
         public async void LaunchLevel()
         {
             LevelLoader loader = new LevelLoader();
-            await loader.LoadLevelWithBikeSelection(CurrentLevelGUID);
+            await _sceneTransitionCover.TransitionToState(SceneTransitionCover.State.Covered);
+            loader.LoadLevelWithBikeSelection(CurrentLevelGUID);
         }
         
         public void SelectLevel(bool nextOrPrevious)

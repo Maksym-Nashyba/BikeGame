@@ -20,7 +20,7 @@ namespace LevelLoading
 
         protected override void PlayTransitionImmediate(State targetState)
         {
-            float t = targetState == State.Clean ? 0f : 1f;
+            float t = targetState == State.Clean ? 1f : 0f;
             SetOverlayTransparency(t);
         }
 
