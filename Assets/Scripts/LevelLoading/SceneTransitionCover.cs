@@ -11,7 +11,7 @@ namespace LevelLoading
         public event Action<State> ReachedState;
         
         [SerializeField] protected State StartState;
-        [SerializeField] protected bool FireOnStart;
+        [SerializeField] protected bool TransitionOnStart;
         [SerializeField] protected float TransitionDurationSeconds;
         
         protected AsyncExecutor AsyncExecutor { get; private set; }
@@ -25,7 +25,7 @@ namespace LevelLoading
 
         private void Start()
         {
-            if (FireOnStart)
+            if (TransitionOnStart)
             {
                 State opposite = StartState == State.Clean ? State.Covered : State.Clean;
                 TransitionToState(opposite);
