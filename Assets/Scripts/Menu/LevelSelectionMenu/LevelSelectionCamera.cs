@@ -12,6 +12,17 @@ namespace Menu
         [SerializeField] private Transform _cameraTransform;
         [SerializeField] private LevelSelectionCheckpoint[] _checkpoints;
         private int _currentCheckpoint;
+        private AsyncExecutor _asyncExecutor;
+
+        private void Awake()
+        {
+            _asyncExecutor = new AsyncExecutor();
+        }
+
+        private void OnDestroy()
+        {
+            _asyncExecutor.Dispose();
+        }
 
         public void TeleportToLevel(int levelIndex)
         {
@@ -30,21 +41,18 @@ namespace Menu
             }
         }
 
-        private async Task MoveByOneCheckpoint(int direction)
+        private Task MoveByOneCheckpoint(int direction)
         {
             CameraCheckpoint startCheckpoint = _checkpoints[_currentCheckpoint];
             CameraCheckpoint targetCheckpoint = _checkpoints[_currentCheckpoint+direction];
-            float timePassedFraction = 0f;
-            while (timePassedFraction < 1f)
+
+            return _asyncExecutor.EachFrame(_transitionDurationSeconds, t =>
             {
-                Vector3 nextPosition = Vector3.Lerp(startCheckpoint.Position, targetCheckpoint.Position, timePassedFraction);
-                Vector3 nextCameraTarget = Vector3.Lerp(startCheckpoint.Target, targetCheckpoint.Target, timePassedFraction);
+                Vector3 nextPosition = Vector3.LerpUnclamped(startCheckpoint.Position, targetCheckpoint.Position, t);
+                Vector3 nextCameraTarget = Vector3.LerpUnclamped(startCheckpoint.Target, targetCheckpoint.Target, t);
                 Quaternion nextQuaternion = GetLookRotation(_cameraTransform.position, nextCameraTarget);
                 _cameraTransform.SetPositionAndRotation(nextPosition, nextQuaternion);
-                
-                await Task.Yield();
-                timePassedFraction += Time.deltaTime / _transitionDurationSeconds;
-            }
+            }, EaseFunctions.InOutQuad);
         }
 
         private Quaternion GetLookRotation(Vector3 from, Vector3 to)

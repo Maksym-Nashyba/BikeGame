@@ -12,9 +12,11 @@ namespace UI
         [SerializeField] private Transform _uiPedalHolder;
         [SerializeField] private GameObject _pedalPrefab;
         private readonly Vector2 ReferenceResolution = new Vector2(2560, 1440);
+        private AsyncExecutor _asyncExecutor;
         
         private void Awake()
         {
+            _asyncExecutor = new AsyncExecutor();
             ServiceLocator.Pedal.PedalPickedUp += OnPedalPickedUp;
         }
 
@@ -28,6 +30,7 @@ namespace UI
         private void OnDestroy()
         {
             ServiceLocator.Pedal.PedalPickedUp -= OnPedalPickedUp;
+            _asyncExecutor.Dispose();
         }
         
         private async void OnPedalPickedUp(Pedal.PedalPickedUpArgs args)
@@ -47,29 +50,26 @@ namespace UI
             return worldPedal;
         }
 
-        private async Task MoveToPoint(Transform body, Transform targetTransform, float duration)
+        private Task MoveToPoint(Transform body, Transform targetTransform, float duration)
         {
             body.SetParent(targetTransform.parent);
             Vector3 startPosition = body.position;
             Quaternion startRotation = body.rotation;
             Vector3 startScale = body.localScale;
-            float timeElapsed = 0f;
-            while (timeElapsed < duration)
+
+            return _asyncExecutor.EachFrame(duration, t =>
             {
-                Vector3 nextPosition = Vector3.Lerp(startPosition, targetTransform.position, timeElapsed/duration);
-                Quaternion nextRotation = Quaternion.Lerp(startRotation, targetTransform.rotation, timeElapsed/duration);
-                body.localScale = Vector3.Lerp(startScale, targetTransform.localScale, timeElapsed/duration);
+                Vector3 nextPosition = Vector3.Lerp(startPosition, targetTransform.position, t);
+                Quaternion nextRotation = Quaternion.Lerp(startRotation, targetTransform.rotation, t);
+                body.localScale = Vector3.Lerp(startScale, targetTransform.localScale, t);
                 body.SetPositionAndRotation(nextPosition, nextRotation);
-                await Task.Yield();
-                timeElapsed += Time.deltaTime;
-            }
+            }, EaseFunctions.Lerp);
         }
 
         private void AdjustResolution()
         {
             Vector2 ratio = new Vector2(Screen.width, Screen.height) / ReferenceResolution;
             _uiPedalHolder.localScale *= ratio;
-            //_uiPedalHolder.localPosition *= ratio;
         }
     }
 }
