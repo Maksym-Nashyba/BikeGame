@@ -14,6 +14,7 @@ namespace Misc
             _globalCancellationTokenSource = new CancellationTokenSource();
         }
 
+        #region LERPs
         public Task LerpEachFrame(float durationSeconds, Action<float> valueSetter, float from, float to, CancellationToken cancellationToken)
         {
             return EachFrame(durationSeconds, t => valueSetter(Mathf.Lerp(from, to, t)), cancellationToken);
@@ -33,13 +34,26 @@ namespace Misc
         {
             return EachFrame(durationSeconds, t => valueSetter(Quaternion.Lerp(from, to, t)), cancellationToken);
         }
-        
+        #endregion
+
+        #region EachFrameFacades
         public Task EachFrame(float durationSeconds, Action<float> action)
         {
-            return EachFrame(durationSeconds, action, CancellationToken.None);
+            return EachFrame(durationSeconds, action, EaseFunctions.Lerp, CancellationToken.None);
         }
         
-        public async Task EachFrame(float durationSeconds, Action<float> action, CancellationToken specialCancellationToken)
+        public Task EachFrame(float durationSeconds, Action<float> action, EaseFunctions.Delegate easeFunction)
+        {
+            return EachFrame(durationSeconds, action, easeFunction, CancellationToken.None);
+        }
+        
+        public Task EachFrame(float durationSeconds, Action<float> action, CancellationToken specialCancellationToken)
+        {
+            return EachFrame(durationSeconds, action, EaseFunctions.Lerp, specialCancellationToken);
+        }
+        #endregion
+        
+        public async Task EachFrame(float durationSeconds, Action<float> action, EaseFunctions.Delegate easeFunction, CancellationToken specialCancellationToken)
         {
             float timeElapsed = 0f;
             while (timeElapsed < durationSeconds)
@@ -47,7 +61,7 @@ namespace Misc
                 if (_globalCancellationTokenSource.Token.IsCancellationRequested
                     || specialCancellationToken.IsCancellationRequested) return;
                 await Task.Yield();
-                action.Invoke(timeElapsed/durationSeconds);
+                action.Invoke(easeFunction.Invoke(timeElapsed/durationSeconds));
                 timeElapsed += Time.deltaTime;
             }
         }
@@ -59,6 +73,7 @@ namespace Misc
 
         public void Dispose()
         {
+            CancelAll();
             _globalCancellationTokenSource?.Dispose();
         }
     }

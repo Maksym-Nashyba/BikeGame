@@ -25,7 +25,7 @@ namespace Misc
             return _asyncExecutor.EachFrame(duration, t =>
             {
                 _holderTransform.position = Vector3.Lerp(startPosition, targetPosition, t);
-            });
+            }, EaseFunctions.InOutQuad);
         }
     }
 }
