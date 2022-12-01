@@ -5,15 +5,8 @@ using UnityEngine;
 
 namespace LevelLoading
 {
-    public class CameraCloudCover : MonoBehaviour
+    public class CameraCloudCover : SceneTransitionCover
     {
-        public State CurrentState { get; private set; }
-        public event Action<State> ReachedState;
-        
-        [SerializeField] private State _startState;
-        [SerializeField] private bool _fireOnStart;
-        [SerializeField] private float _transitionDurationSeconds;
-        [Space]
         [SerializeField] private Material _cloudOverlayMaterial;
         
         private readonly int _transparencyShaderProperty = Shader.PropertyToID("_Transparency");
@@ -21,15 +14,15 @@ namespace LevelLoading
 
         private void Awake()
         {
-            TranstionToStateInstantly(_startState);
+            TranstionToStateInstantly(StartState);
             _asyncExecutor = new AsyncExecutor();
         }
 
         private void Start()
         {
-            if (_fireOnStart)
+            if (FireOnStart)
             {
-                State opposite = _startState == State.Clean ? State.Covered : State.Clean;
+                State opposite = StartState == State.Clean ? State.Covered : State.Clean;
                 TransitionToState(opposite);
             }
         }
@@ -53,7 +46,7 @@ namespace LevelLoading
         {
             if (CurrentState == targetState) throw new InvalidOperationException($"State is already {targetState}");
             
-            await _asyncExecutor.EachFrame(_transitionDurationSeconds, t =>
+            await _asyncExecutor.EachFrame(TransitionDurationSeconds, t =>
             {
                 t = targetState == State.Clean ? t : 1f - t;
                 SetOverlayTransparency(t);
@@ -61,24 +54,11 @@ namespace LevelLoading
             SetState(targetState);
         }
 
-        private void SetState(State targetState)
-        {
-            CurrentState = targetState;
-            ReachedState?.Invoke(targetState);
-        }
-
         private void SetOverlayTransparency(float transparency)
         {
             transparency = Mathf.Clamp01(transparency);
             
             _cloudOverlayMaterial.SetFloat(_transparencyShaderProperty, transparency);
-        }
-        
-        public enum State
-        {
-            None,
-            Covered,
-            Clean
         }
     }
 }

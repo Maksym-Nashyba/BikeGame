@@ -10,6 +10,7 @@ namespace Garage
         [SerializeField] private BikePositions _currentPosition;
         [SerializeField] private Transform _previewPosition;
         [SerializeField] private Transform _paintPosition;
+        [SerializeField] private float _transitionDuration;
         
         private async void Start()
         {

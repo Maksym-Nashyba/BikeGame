@@ -6,19 +6,26 @@ namespace Misc
     public abstract class BikeModelHolder : MonoBehaviour
     {
         public Transform HolderTransform => _holderTransform;
-        [SerializeField] protected float _transitionDuration;
         [SerializeField] protected Transform _holderTransform;
+        private AsyncExecutor _asyncExecutor;
 
-        protected async Task MoveToPosition(Vector3 targetPosition, float duration)
+        private void Awake()
+        {
+            _asyncExecutor = new AsyncExecutor();
+        }
+
+        private void OnDestroy()
+        {
+            _asyncExecutor.Dispose();
+        }
+
+        protected Task MoveToPosition(Vector3 targetPosition, float duration)
         {
             Vector3 startPosition = _holderTransform.position;
-            float timePassed = 0;
-            while (timePassed < duration)
+            return _asyncExecutor.EachFrame(duration, t =>
             {
-                _holderTransform.position = Vector3.Lerp(startPosition, targetPosition,timePassed/duration);
-                await Task.Yield();
-                timePassed += Time.deltaTime;
-            }
+                _holderTransform.position = Vector3.Lerp(startPosition, targetPosition, t);
+            });
         }
     }
 }

@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-namespace LevelLoading
+namespace Menu.BikeSelectionMenu
 {
     public class BikeSelection : MonoBehaviour
     {
