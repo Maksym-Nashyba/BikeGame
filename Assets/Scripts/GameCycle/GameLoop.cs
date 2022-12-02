@@ -12,15 +12,15 @@ namespace GameCycle
     {
         public event Action Started;
         public event Action<LevelAchievements> Ended;
-        public event Action<ScoreCount> ScoreCounted;
-        public Objective PreviousObjective { get; private set; }
+        
+        public LevelAchievements LevelAchievements { get; private set; }
+        public Objective PreviousObjective { get; private set; } //TODO refactor this shit
         private Queue<Objective> _objectives;
-        private LevelAchievements _levelAchievements;
 
         private void Awake()
         {
             _objectives = ServiceLocator.LevelStructure.ObjectiveQueue;
-            _levelAchievements = ServiceLocator.LevelStructure.InstantiateAchievements();
+            LevelAchievements = ServiceLocator.LevelStructure.InstantiateAchievements();
             PreviousObjective = _objectives.Peek();
 
             ServiceLocator.Player.Died += async () => { await ServiceLocator.Player.Respawn(1000); };
@@ -40,16 +40,12 @@ namespace GameCycle
 
         private void OnObjectiveComplete(Objective objective)
         {
-            DeQueueObjective();
-            if (_objectives.Count == 0)
-            {
-                CompleteLevel();
-                return;
-            }
-            StartNextObjective(_objectives.Peek());
+            RemoveCurrentObjective();
+            if (_objectives.Count == 0) CompleteLevel();
+            else StartNextObjective(_objectives.Peek());
         }
 
-        private void DeQueueObjective()
+        private void RemoveCurrentObjective()
         {
             Objective dequeuedObjective = _objectives.Dequeue();
             dequeuedObjective.Completed -= OnObjectiveComplete;
@@ -59,33 +55,25 @@ namespace GameCycle
         private void StartNextObjective(Objective objective)
         {
             objective.Completed += OnObjectiveComplete;
-            objective.Begin(_levelAchievements);
+            objective.Begin(LevelAchievements);
         }
 
         private void CompleteLevel()
         {
             ServiceLocator.Pause.PauseAll();
-            Ended?.Invoke(_levelAchievements);
-            ScoreCount score = ScoreCount.Calculate((CareerLevelAchievements)_levelAchievements, ServiceLocator.LevelStructure.Level.ExpectedTimeSeconds);
-            ScoreCounted?.Invoke(score);
-            try
-            {
-                SaveProgress();
-            }
-            catch (Exception)
-            {
-                Debug.LogError("Failed to save level completion");
-            }
-
-            Debug.Log("Ended");
+            
+            LevelAchievements.CountFinalScore();
+            Ended?.Invoke(LevelAchievements);
+            SaveProgress();
         }
 
         private void SaveProgress()
         {
             String levelGUID = ServiceLocator.LevelStructure.Level.GetGUID();
             ServiceLocator.Saves.Career.SetLevelCompleted(levelGUID);
-            if(((CareerLevelAchievements)_levelAchievements).IsPedalCollected)ServiceLocator.Saves.Career.SetPedalCollected(levelGUID);
-            ServiceLocator.Saves.Career.UpdateBestTime(levelGUID, _levelAchievements.TimeSeconds);
+            if(((CareerLevelAchievements)LevelAchievements).IsPedalCollected)ServiceLocator.Saves.Career.SetPedalCollected(levelGUID);
+            ServiceLocator.Saves.Career.UpdateBestTime(levelGUID, LevelAchievements.TimeSeconds);
+            ServiceLocator.Saves.Currencies.AddDollans(LevelAchievements.FinalScore);
         }
     }
 }

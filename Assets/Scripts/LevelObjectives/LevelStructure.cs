@@ -22,7 +22,7 @@ namespace LevelObjectives
 
         internal virtual LevelAchievements InstantiateAchievements()
         {
-            return new CareerLevelAchievements();
+            return new CareerLevelAchievements(_level.ExpectedTimeSeconds);
         }
     }
 }

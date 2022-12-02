@@ -21,20 +21,20 @@ namespace UI
 
         private void Start()
         {
-            _gameLoop.ScoreCounted += ShowEndGameScreen;
+            _gameLoop.Ended += ShowEndGameScreen;
             _endGameScreen.SetActive(false);
         }
         
         private void OnDisable()
         {
-            _gameLoop.ScoreCounted -= ShowEndGameScreen;
+            _gameLoop.Ended -= ShowEndGameScreen;
         }
 
-        private async void ShowEndGameScreen(ScoreCount scoreCount)
+        private async void ShowEndGameScreen(LevelAchievements achievements)
         {
             _endGameScreen.SetActive(true);
             _controlls.SetActive(false);
-            await endGameScreen.Show(scoreCount);
+            await endGameScreen.Show(achievements);
         }
 
         public void OnPauseButton()

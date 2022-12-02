@@ -6,7 +6,7 @@ namespace LevelObjectives
     {
         internal override LevelAchievements InstantiateAchievements()
         {
-            return new CareerLevelAchievements();
+            return new CareerLevelAchievements(Level.ExpectedTimeSeconds);
         }
     }
 }

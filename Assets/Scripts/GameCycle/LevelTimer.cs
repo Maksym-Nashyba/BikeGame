@@ -11,12 +11,12 @@ namespace GameCycle
         
         private void Awake()
         {
-            ServiceLocator.GameLoop.Ended += OnLevelEnded;
+            ServiceLocator.GameLoop.LevelAchievements.CountingScore += OnCountingScore;
         }
         
         private void OnDestroy()
         {
-            ServiceLocator.GameLoop.Ended -= OnLevelEnded;
+            ServiceLocator.GameLoop.LevelAchievements.CountingScore -= OnCountingScore;
         }
 
         private void Update()
@@ -35,7 +35,7 @@ namespace GameCycle
             _isPaused = false;
         }
         
-        private void OnLevelEnded(LevelAchievements levelAchievements)
+        private void OnCountingScore(LevelAchievements levelAchievements)
         {
             levelAchievements.TimeSeconds = (int)TimePassed;
         }

@@ -10,12 +10,13 @@ namespace GameCycle
         private void Awake()
         {
             ServiceLocator.Player.Died += OnPlayerDied;
-            ServiceLocator.GameLoop.Ended += OnGameEnded;
+            ServiceLocator.GameLoop.LevelAchievements.CountingScore += OnCountingScore;
         }
 
         private void OnDestroy()
         {
             ServiceLocator.Player.Died -= OnPlayerDied;
+            ServiceLocator.GameLoop.LevelAchievements.CountingScore -= OnCountingScore;
         }
 
         private void OnPlayerDied()
@@ -23,7 +24,7 @@ namespace GameCycle
             _fallCount++;
         }
         
-        private void OnGameEnded(LevelAchievements achievements)
+        private void OnCountingScore(LevelAchievements achievements)
         {
             achievements.FallCount = _fallCount;
         }

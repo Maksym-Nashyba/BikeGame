@@ -39,48 +39,69 @@ namespace UI
             SceneManager.LoadScene("MainMenu");
         }
         
-        public async Task Show(ScoreCount scoreCount)
+        public async Task Show(LevelAchievements achievements)
         {
             _timeValueText.transform.parent.gameObject.SetActive(false);
             _fallCountValueText.transform.parent.gameObject.SetActive(false);
             
-            await ShowScoreCount(scoreCount);
+            await ShowScoreCount(achievements);
             await Task.Delay(1000);
-            await ShowFallCount(scoreCount);
+            await ShowFallCount(achievements);
 
+            ApplyScoreValue(achievements.FinalScore);
             _continueButton.interactable = true;
         }
 
-        private async Task ShowScoreCount(ScoreCount scoreCount)
+        private async Task ShowScoreCount(LevelAchievements achievements)
         {
             _timeValueText.transform.parent.gameObject.SetActive(true);
-            _expectedTimeValueText.SetText(Format.FormatSeconds(scoreCount.ExpectedTimeSeconds));
+            _expectedTimeValueText.SetText(Format.FormatSeconds(achievements.ExpectedTimeSeconds));
             await _executor.EachFrame(5f, t =>
             {
-                UpdateTimeCount(t, scoreCount.TimeSeconds, scoreCount.ExpectedTimeSeconds);
+                UpdateTimeCount(t, achievements.TimeSeconds, achievements.ExpectedTimeSeconds);
             });
         }
         
         private void UpdateTimeCount(float t, int playerTimeSeconds, int expectedTimeSeconds)
         {
             float secondsPassed = playerTimeSeconds * t;
-            float minValue = ScoreCount.BaseScore - Mathf.Abs(0 - expectedTimeSeconds) * ScoreCount.SecondsTimeCost;
-            float maxValue = ScoreCount.BaseScore - Mathf.Abs(playerTimeSeconds - expectedTimeSeconds) * ScoreCount.SecondsTimeCost;
-            float value = ScoreCount.BaseScore - Mathf.Abs(secondsPassed - expectedTimeSeconds) * ScoreCount.SecondsTimeCost;
-            
-            ApplyScoreValue((int)value.Remap(minValue, maxValue, 0f, maxValue));
+            ApplyScoreValue(CalculateScore(t, playerTimeSeconds, expectedTimeSeconds));
             _timeValueText.SetText(Format.FormatSeconds((int)secondsPassed));
             _timeValueText.color = expectedTimeSeconds > secondsPassed ? Color.green : Color.red;
         }
 
-        private async Task ShowFallCount(ScoreCount scoreCount)
+        private int CalculateScore(float t, int playerTimeSeconds, int expectedTimeSeconds)
+        {
+            float breakTime = Mathf.Clamp01(expectedTimeSeconds / (float)playerTimeSeconds);
+            float realScore = ScoreForTime(playerTimeSeconds, expectedTimeSeconds);
+
+            if (playerTimeSeconds < expectedTimeSeconds)
+            {
+                return (int)Mathf.Lerp(0, ScoreForTime(playerTimeSeconds, expectedTimeSeconds), t);
+            }
+            if (t < breakTime)
+            {
+                return (int)Mathf.Lerp(0, LevelAchievements.BaseScore, t / breakTime);
+            }
+            else
+            {
+                return (int)Mathf.Lerp(LevelAchievements.BaseScore, realScore, (t - breakTime) /(1f-breakTime));
+            }
+
+            float ScoreForTime(float real, float expected)
+            {
+                return LevelAchievements.BaseScore + (expected - real) * LevelAchievements.SecondTimeCost;
+            }
+        }
+
+        private async Task ShowFallCount(LevelAchievements achievements)
         {
             _fallCountValueText.Text.SetText("0");
             _fallCountValueText.transform.parent.gameObject.SetActive(true);
-            for (int i = 0; i < scoreCount.Falls; i++)
+            for (int i = 0; i < achievements.FallCount; i++)
             {
                 ApplyFallCountIncrement();
-                ApplyScoreValue(_displayedScore - ScoreCount.FallCost, true);
+                ApplyScoreValue(_displayedScore - LevelAchievements.FallCost, true);
                 await _fallCountValueText.Kick(Color.red);
                 _fallCountValueText.ReturnToDefault();
                 await Task.Delay(500);

@@ -12749,8 +12749,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 464331136}
     - target: {fileID: 1716409658140634952, guid: a626cde50a5e3634eb3b922b1242d58d, type: 3}
+      propertyPath: StartState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1716409658140634952, guid: a626cde50a5e3634eb3b922b1242d58d, type: 3}
       propertyPath: TransitionOnStart
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1716409658140634954, guid: a626cde50a5e3634eb3b922b1242d58d, type: 3}
       propertyPath: m_Name
