@@ -1,27 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
+using GameCycle;
+using Gameplay.Counters;
 using LevelObjectives.Objectives;
 using Misc;
 using UnityEngine;
 
-namespace GameCycle
+namespace Gameplay
 {
     [RequireComponent(typeof(LevelTimer))]
     [RequireComponent(typeof(FallCounter))]
     public class GameLoop : MonoBehaviour
     {
         public event Action Started;
+        public event Action<Objective> StartedObjective;
+        public event Action<Objective> EndedObjective;
         public event Action<LevelAchievements> Ended;
         
         public LevelAchievements LevelAchievements { get; private set; }
-        public Objective PreviousObjective { get; private set; } //TODO refactor this shit
         private Queue<Objective> _objectives;
 
         private void Awake()
         {
             _objectives = ServiceLocator.LevelStructure.ObjectiveQueue;
             LevelAchievements = ServiceLocator.LevelStructure.InstantiateAchievements();
-            PreviousObjective = _objectives.Peek();
 
             ServiceLocator.Player.Died += async () => { await ServiceLocator.Player.Respawn(1000); };
         }
@@ -42,7 +44,6 @@ namespace GameCycle
         private void CompleteLevel()
         {
             ServiceLocator.Pause.PauseAll();
-            
             LevelAchievements.CountFinalScore();
             Ended?.Invoke(LevelAchievements);
             SaveProgress();
@@ -58,13 +59,14 @@ namespace GameCycle
         {
             objective.Completed += OnObjectiveComplete;
             objective.Begin(LevelAchievements);
+            StartedObjective?.Invoke(objective);
         }
 
         private void RemoveCurrentObjective()
         {
             Objective dequeuedObjective = _objectives.Dequeue();
             dequeuedObjective.Completed -= OnObjectiveComplete;
-            PreviousObjective = dequeuedObjective;
+            EndedObjective?.Invoke(dequeuedObjective);
         }
 
         private void SaveProgress()

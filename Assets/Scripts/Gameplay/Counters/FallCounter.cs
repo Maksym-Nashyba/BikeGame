@@ -1,7 +1,8 @@
-﻿using Misc;
+﻿using GameCycle;
+using Misc;
 using UnityEngine;
 
-namespace GameCycle
+namespace Gameplay.Counters
 {
     public class FallCounter : MonoBehaviour
     {

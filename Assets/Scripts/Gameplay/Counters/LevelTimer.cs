@@ -1,8 +1,9 @@
-﻿using Misc;
+﻿using GameCycle;
+using Misc;
 using Pausing;
 using UnityEngine;
 
-namespace GameCycle
+namespace Gameplay.Counters
 {
     public class LevelTimer : MonoBehaviour, IPausable
     {
