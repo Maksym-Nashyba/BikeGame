@@ -1,11 +1,11 @@
 ﻿using IGUIDResources;
-using Misc;
 using UnityEngine;
 
 namespace Garage
 {
     public class BikeModelDisplay : MonoBehaviour
     {
+        public BikeModel CurrentBike { get; private set; }
         public GarageBikeModelHolder Holder => _holder;
         [SerializeField] private GarageBikeModelHolder _holder;
         private GameObject _currentDisplayModel;
@@ -13,6 +13,7 @@ namespace Garage
         public void Display(BikeModel bike, Skin skin)
         {
             CleanHolder();
+            CurrentBike = bike;
             _currentDisplayModel = Instantiate(bike.EmptyPrefab, _holder.HolderTransform);
             ApplySkin(skin);
         }
