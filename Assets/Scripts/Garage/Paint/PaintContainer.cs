@@ -8,7 +8,6 @@ namespace Garage.Paint
     public class PaintContainer : ClickTarget<GameObject>
     {
         public override event Action<GameObject> Clicked;
-        [SerializeField] private GameObject _gFX;
         [SerializeField] private Skin _skin;
 
         public Skin GetSkin()
