@@ -12748,6 +12748,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 464331136}
+    - target: {fileID: 1625276765, guid: a626cde50a5e3634eb3b922b1242d58d, type: 3}
+      propertyPath: m_PlaneDistance
+      value: 0.6
+      objectReference: {fileID: 0}
     - target: {fileID: 1716409658140634952, guid: a626cde50a5e3634eb3b922b1242d58d, type: 3}
       propertyPath: StartState
       value: 2
@@ -12755,6 +12759,10 @@ PrefabInstance:
     - target: {fileID: 1716409658140634952, guid: a626cde50a5e3634eb3b922b1242d58d, type: 3}
       propertyPath: TransitionOnStart
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1716409658140634952, guid: a626cde50a5e3634eb3b922b1242d58d, type: 3}
+      propertyPath: TransitionDurationSeconds
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1716409658140634954, guid: a626cde50a5e3634eb3b922b1242d58d, type: 3}
       propertyPath: m_Name
@@ -18520,12 +18528,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transitionDurationSeconds: 1.02
+  _launchZoomInDurationSeconds: 3
   _cameraTransform: {fileID: 464331137}
   _checkpoints:
   - {fileID: 1939960999}
   - {fileID: 1304902123}
   - {fileID: 1698195476}
   - {fileID: 239437840}
+  _levelSelection: {fileID: 2055785306}
 --- !u!114 &2055785306
 MonoBehaviour:
   m_ObjectHideFlags: 0

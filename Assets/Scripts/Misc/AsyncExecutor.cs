@@ -60,8 +60,8 @@ namespace Misc
             {
                 if (_globalCancellationTokenSource.Token.IsCancellationRequested
                     || specialCancellationToken.IsCancellationRequested) return;
-                await Task.Yield();
                 action.Invoke(easeFunction.Invoke(timeElapsed/durationSeconds));
+                await Task.Yield();
                 timeElapsed += Time.deltaTime;
             }
         }

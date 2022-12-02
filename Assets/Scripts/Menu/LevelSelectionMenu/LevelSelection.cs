@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Threading.Tasks;
 using IGUIDResources;
 using LevelLoading;
 using SaveSystem.Front;
@@ -10,13 +11,11 @@ namespace Menu
     public class LevelSelection : MonoBehaviour
     {
         public int CurrentLevelIndex { get; private set; }
-        public int LastCompletedLevelIndex => _saves.Career.GetAllCompletedLevels().Length - 1;
-        public int SafeLastCompletedLevelIndex => Mathf.Clamp(_saves.Career.GetAllCompletedLevels().Length - 1, 0, Int32.MaxValue);
-        public int NextSafeIndex(int levelIndex) => Mathf.Clamp(levelIndex + 1, 0, _career.Chapters[0].Count - 1);
         public event Action<int, Level> SelectedLevel;
         public event Action<int, Level> SetUp;
+        public event LaunchLayerEffectPlayer LaunchingLevel;
+        public delegate Task LaunchLayerEffectPlayer();
 
-        private SceneTransitionCover _sceneTransitionCover;
         private Saves _saves;
         private Career _career;
         private GUIDResourceLocator _resourceLocator;
@@ -27,7 +26,6 @@ namespace Menu
             _saves = FindObjectOfType<Saves>();
             _resourceLocator = GUIDResourceLocator.Initialize();
             _career = _resourceLocator.Career;
-            _sceneTransitionCover = FindObjectOfType<SceneTransitionCover>();
         }
 
         private void Start()
@@ -35,11 +33,15 @@ namespace Menu
             CurrentLevelIndex = SafeLastCompletedLevelIndex;
             SetUp?.Invoke(CurrentLevelIndex, _career.Chapters[0][CurrentLevelIndex]);
         }
+
+        public int LastCompletedLevelIndex => _saves.Career.GetAllCompletedLevels().Length - 1;
+        public int SafeLastCompletedLevelIndex => Mathf.Clamp(_saves.Career.GetAllCompletedLevels().Length - 1, 0, Int32.MaxValue);
+        public int NextSafeIndex(int levelIndex) => Mathf.Clamp(levelIndex + 1, 0, _career.Chapters[0].Count - 1);
         
         public async void LaunchLevel()
         {
             LevelLoader loader = new LevelLoader();
-            await _sceneTransitionCover.TransitionToState(SceneTransitionCover.State.Covered);
+            await LaunchingLevel.Invoke();
             loader.LoadLevelWithBikeSelection(CurrentLevelGUID);
         }
         

@@ -32,24 +32,26 @@ namespace GameCycle
             StartFirstObjective();
         }
         
-        private void StartFirstObjective()
-        {
-            StartNextObjective(_objectives.Peek());
-            Started?.Invoke();
-        }
-
         private void OnObjectiveComplete(Objective objective)
         {
             RemoveCurrentObjective();
             if (_objectives.Count == 0) CompleteLevel();
             else StartNextObjective(_objectives.Peek());
         }
-
-        private void RemoveCurrentObjective()
+        
+        private void CompleteLevel()
         {
-            Objective dequeuedObjective = _objectives.Dequeue();
-            dequeuedObjective.Completed -= OnObjectiveComplete;
-            PreviousObjective = dequeuedObjective;
+            ServiceLocator.Pause.PauseAll();
+            
+            LevelAchievements.CountFinalScore();
+            Ended?.Invoke(LevelAchievements);
+            SaveProgress();
+        }
+        
+        private void StartFirstObjective()
+        {
+            StartNextObjective(_objectives.Peek());
+            Started?.Invoke();
         }
         
         private void StartNextObjective(Objective objective)
@@ -58,13 +60,11 @@ namespace GameCycle
             objective.Begin(LevelAchievements);
         }
 
-        private void CompleteLevel()
+        private void RemoveCurrentObjective()
         {
-            ServiceLocator.Pause.PauseAll();
-            
-            LevelAchievements.CountFinalScore();
-            Ended?.Invoke(LevelAchievements);
-            SaveProgress();
+            Objective dequeuedObjective = _objectives.Dequeue();
+            dequeuedObjective.Completed -= OnObjectiveComplete;
+            PreviousObjective = dequeuedObjective;
         }
 
         private void SaveProgress()
