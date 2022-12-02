@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace GameCamera
+namespace Gameplay.GameCamera
 {
     [RequireComponent(typeof(MeshRenderer))]
     public class CameraObstruction : MonoBehaviour

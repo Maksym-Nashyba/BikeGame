@@ -3,9 +3,9 @@ using Misc;
 using Pausing;
 using UnityEngine;
 
-namespace GameCamera
+namespace Gameplay.GameCamera
 {
-    public class TargetFollowingCamera : MonoBehaviour,IPausable
+    public class PlayerFollowingCamera : MonoBehaviour,IPausable
     {
         [SerializeField] private float _minDistance;
         [SerializeField] private float _maxDistance;
