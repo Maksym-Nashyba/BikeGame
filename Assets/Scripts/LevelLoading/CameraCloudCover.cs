@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using Misc;
 using UnityEngine;
 
 namespace LevelLoading
@@ -15,7 +16,7 @@ namespace LevelLoading
             {
                 t = targetState == State.Clean ? t : 1f - t;
                 SetOverlayTransparency(t);
-            });
+            }, EaseFunctions.InOutQuad);
         }
 
         protected override void PlayTransitionImmediate(State targetState)
