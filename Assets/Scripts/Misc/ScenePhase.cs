@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
+using UnityEngine;
 
 namespace Misc
 {
@@ -38,6 +39,7 @@ namespace Misc
             {
                 await Task.WhenAll(awaitedTasks);
                 Stage = CompletionStage.Completed;
+                Debug.Log("I came");
             };
             return combinedTask().GetAwaiter();
         }

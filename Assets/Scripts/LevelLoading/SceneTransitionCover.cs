@@ -16,7 +16,7 @@ namespace LevelLoading
         
         protected AsyncExecutor AsyncExecutor { get; private set; }
 
-        private void Awake()
+        protected virtual void Awake()
         {
             CurrentState = State.None;
             TransitionStateInstantly(StartState);

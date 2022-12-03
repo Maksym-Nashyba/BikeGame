@@ -19,10 +19,11 @@ namespace Gameplay.GameCamera
         private bool _isPaused;
         private float _lastCameraElevation;
         private Queue<Vector3> _lookaheadOffsetHistory;
-        private int _checksLayerMask = LayerMask.GetMask("Landscape", "Props", "Player", "Default");
+        private int _checksLayerMask;
 
         private void Awake()
         {
+            _checksLayerMask = LayerMask.GetMask("Landscape", "Props", "Player", "Default");
             ServiceLocator.Player.Respawned += UpdatePlayerDependencies;
             _cameraTransform = GetComponent<Transform>();
             ServiceLocator.GameLoop.IntroPhase.SubscribeAwaited(async () => await PlayIntroAnimation());

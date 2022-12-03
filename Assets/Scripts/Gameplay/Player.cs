@@ -16,6 +16,7 @@ namespace Gameplay
         private void Awake()
         {
             ServiceLocator.GameLoop.Started += OnGameStarted;
+            ServiceLocator.GameLoop.IntroPhase.SubscribeFireAndForget(() => Respawn(0));
         }
 
         public void Die()
@@ -36,7 +37,6 @@ namespace Gameplay
         private void OnGameStarted()
         {
             ServiceLocator.GameLoop.Started -= OnGameStarted;
-            Respawn(0);
             Died += async () =>
             {
                 await Respawn(1000);

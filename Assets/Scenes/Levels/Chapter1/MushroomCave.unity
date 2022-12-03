@@ -1132,13 +1132,35 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1716409658140634952, guid: a626cde50a5e3634eb3b922b1242d58d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a626cde50a5e3634eb3b922b1242d58d, type: 3}
 --- !u!4 &104982823 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1716409658140634955, guid: a626cde50a5e3634eb3b922b1242d58d, type: 3}
   m_PrefabInstance: {fileID: 104982822}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &104982824 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1716409658140634954, guid: a626cde50a5e3634eb3b922b1242d58d, type: 3}
+  m_PrefabInstance: {fileID: 104982822}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &104982825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 104982824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38e745e37032438da3997cf9673772dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StartState: 1
+  TransitionOnStart: 0
+  TransitionDurationSeconds: 2
+  _cloudOverlayMaterial: {fileID: 2100000, guid: 078da0dcba637b146955f9ee1a1079b7, type: 2}
 --- !u!4 &106354612 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 52bcd6ce42459db4bb8bcab0e8ef11cf, type: 3}
@@ -25198,6 +25220,7 @@ MonoBehaviour:
   _inGameUI: {fileID: 2080788985}
   _pause: {fileID: 1619718184}
   _pedal: {fileID: 2138467672}
+  _sceneTransitionCover: {fileID: 0}
   _inputProviderObject: {fileID: 1674789765}
 --- !u!1001 &1344334123
 PrefabInstance:

@@ -41,7 +41,7 @@ namespace Menu
         public async void LaunchLevel()
         {
             LevelLoader loader = new LevelLoader();
-            await LaunchingLevel.Invoke();
+            if(LaunchingLevel is not null) await LaunchingLevel.Invoke();
             loader.LoadLevelWithBikeSelection(CurrentLevelGUID);
         }
         
