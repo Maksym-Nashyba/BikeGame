@@ -1,12 +1,11 @@
 ﻿using IGUIDResources;
-using LevelLoading;
 using Menu.BikeSelectionMenu;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace UI
 {
-    public class StatsDisplayer: MonoBehaviour
+    public class StatsDisplay: MonoBehaviour
     {
         [SerializeField] private Slider _stat1Slider;
         [SerializeField] private Slider _stat2Slider;

@@ -7,7 +7,7 @@ namespace Misc
     {
         public Transform HolderTransform => _holderTransform;
         [SerializeField] protected Transform _holderTransform;
-        private AsyncExecutor _asyncExecutor;
+        protected AsyncExecutor _asyncExecutor { get; private set; }
 
         private void Awake()
         {

@@ -15,13 +15,32 @@ namespace Menu.BikeSelectionMenu
         private async void Start()
         {
             HolderTransform.position = _backPosition.position;
-            await MoveToFront(_duration);
+            await MoveToFront();
             Arrived?.Invoke();
         }
 
-        private Task MoveToFront(float duration)
+        public Task MoveToFront()
         {
-            return MoveToPosition(_frontPosition.position, duration);
+            return MoveToPosition(_frontPosition.position, _duration);
+        }
+
+        public Task MoveToBack()
+        {
+            return MoveToPosition(_backPosition.position, _duration);
+        }
+
+        public async Task Rotate(Direction1D direction, Action midRotationCallback)
+        {
+            Quaternion startRotation = HolderTransform.localRotation;
+            int directionMultiplier = direction == Direction1D.Right ? 1 : -1;
+            
+            Task rotation = _asyncExecutor.EachFrame(0.6f, t =>
+            {
+                HolderTransform.localRotation = Quaternion.Euler(startRotation.eulerAngles.x, startRotation.eulerAngles.y + 360f * t * directionMultiplier, startRotation.eulerAngles.z);
+            }, EaseFunctions.InOutBack);
+            await Task.Delay(300);
+            midRotationCallback.Invoke();
+            await rotation;
         }
     }
 }
