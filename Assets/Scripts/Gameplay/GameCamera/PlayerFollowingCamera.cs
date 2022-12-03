@@ -34,7 +34,7 @@ namespace Gameplay.GameCamera
 
         private void LateUpdate()
         {
-            if (_isPaused) return;
+            if (_isPaused || ServiceLocator.GameLoop.IntroPhase.Stage < ScenePhase.CompletionStage.Completed) return;
             Vector3 nextCameraPosition = GetNextCameraPosition();
             MoveCameraToPosition(nextCameraPosition);
         }
@@ -54,9 +54,17 @@ namespace Gameplay.GameCamera
             return nextCameraPosition;
         }
 
-        private Task PlayIntroAnimation()
+        private async Task PlayIntroAnimation()
         {
-            return Task.Delay(1000);
+            Vector3 endPosition = _playerTransform.position + OffsetFromPlayerPosition();
+            Vector3 startPosition = endPosition + OffsetFromPlayerPosition() * 0.75f;
+
+            AsyncExecutor asyncExecutor = new AsyncExecutor();
+            await asyncExecutor.EachFrame(2.5f, t =>
+            {
+                _cameraTransform.position = Vector3.Lerp(startPosition, endPosition, t);
+            }, EaseFunctions.EaseOutQuart);
+            asyncExecutor.Dispose();
         }
 
         private Vector3 MoveToAvoidCollisions(Vector3 rawCameraPosition)

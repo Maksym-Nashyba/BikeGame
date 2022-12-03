@@ -24,6 +24,11 @@ namespace Misc
             return t < 0.5 ? 8 * t * t * t * t : 1 - Mathf.Pow(-2 * t + 2, 4) / 2;
         }
 
+        public static float EaseOutQuart(float t)
+        {
+            return 1f - Mathf.Pow(1f - t, 4f);
+        }
+        
         public static float EaseOutElastic(float t)
         {
             float a = 2f * Mathf.PI / 3f;
