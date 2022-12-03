@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Threading.Tasks;
+using GameCycle;
 using Misc;
 using UnityEngine;
 
-namespace GameCycle
+namespace Gameplay
 {
     public class Player : MonoBehaviour
     {
@@ -11,6 +12,11 @@ namespace GameCycle
         public event Action Respawned; 
         public bool IsAlive { get; private set; }
         public PlayerClone ActivePlayerClone { get; private set; }
+
+        private void Awake()
+        {
+            ServiceLocator.GameLoop.Started += OnGameStarted;
+        }
 
         public void Die()
         {
@@ -25,6 +31,16 @@ namespace GameCycle
             ActivePlayerClone = ServiceLocator.PlayerSpawner.SpawnPlayerClone();
             Respawned?.Invoke();
             IsAlive = true;
+        }
+
+        private void OnGameStarted()
+        {
+            ServiceLocator.GameLoop.Started -= OnGameStarted;
+            Respawn(0);
+            Died += async () =>
+            {
+                await Respawn(1000);
+            };
         }
     }
 }

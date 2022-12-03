@@ -1,6 +1,6 @@
-﻿using GameCycle;
-using Gameplay;
+﻿using Gameplay;
 using Inputs;
+using LevelLoading;
 using LevelObjectives;
 using LevelObjectives.LevelObjects;
 using Pausing;
@@ -45,6 +45,9 @@ namespace Misc
 
         public static Pedal Pedal => _serviceLocator._pedal;
         [SerializeField] private Pedal _pedal;
+        
+        public static SceneTransitionCover SceneTransitionCover => _serviceLocator._sceneTransitionCover;
+        [SerializeField] private SceneTransitionCover _sceneTransitionCover;
         
         public static IBikeInputProvider InputProvider => _serviceLocator._inputProvider;
         [SerializeField] private GameObject _inputProviderObject;

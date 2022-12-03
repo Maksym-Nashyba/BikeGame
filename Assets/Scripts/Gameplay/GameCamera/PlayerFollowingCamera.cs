@@ -1,10 +1,13 @@
+using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Misc;
 using Pausing;
 using UnityEngine;
 
 namespace Gameplay.GameCamera
 {
+    [RequireComponent(typeof(Camera))]
     public class PlayerFollowingCamera : MonoBehaviour,IPausable
     {
         [SerializeField] private float _minDistance;
@@ -16,21 +19,16 @@ namespace Gameplay.GameCamera
         private bool _isPaused;
         private float _lastCameraElevation;
         private Queue<Vector3> _lookaheadOffsetHistory;
-        private int _checksLayerMask;
+        private int _checksLayerMask = LayerMask.GetMask("Landscape", "Props", "Player", "Default");
 
         private void Awake()
         {
             ServiceLocator.Player.Respawned += UpdatePlayerDependencies;
             _cameraTransform = GetComponent<Transform>();
+            ServiceLocator.GameLoop.IntroPhase.SubscribeAwaited(async () => await PlayIntroAnimation());
+            
             _direction = _direction.normalized;
             _lookaheadOffsetHistory = new Queue<Vector3>(10);
-            _checksLayerMask = LayerMask.GetMask("Landscape", "Props", "Player", "Default");
-        }
-
-        private void UpdatePlayerDependencies()
-        {
-            _playerTransform = ServiceLocator.Player.ActivePlayerClone.GetComponent<Transform>();
-            _playerRigidbody = ServiceLocator.Player.ActivePlayerClone.GetComponent<Rigidbody>();
         }
 
         private void LateUpdate()
@@ -44,7 +42,7 @@ namespace Gameplay.GameCamera
         {
             ServiceLocator.Player.Respawned -= UpdatePlayerDependencies;
         }
-        
+
         private Vector3 GetNextCameraPosition()
         {
             if (!ServiceLocator.Player.IsAlive) return _cameraTransform.position;
@@ -53,6 +51,11 @@ namespace Gameplay.GameCamera
             nextCameraPosition = ApplyLookahead(nextCameraPosition);
             nextCameraPosition = MoveToAvoidCollisions(nextCameraPosition);
             return nextCameraPosition;
+        }
+
+        private Task PlayIntroAnimation()
+        {
+            return Task.Delay(1000);
         }
 
         private Vector3 MoveToAvoidCollisions(Vector3 rawCameraPosition)
@@ -113,6 +116,12 @@ namespace Gameplay.GameCamera
         private void MoveCameraToPosition(Vector3 nextCameraPosition)
         {
             _cameraTransform.position = Vector3.Lerp(_cameraTransform.position, nextCameraPosition, 500f * Time.deltaTime);
+        }
+        
+        private void UpdatePlayerDependencies()
+        {
+            _playerTransform = ServiceLocator.Player.ActivePlayerClone.GetComponent<Transform>();
+            _playerRigidbody = ServiceLocator.Player.ActivePlayerClone.GetComponent<Rigidbody>();
         }
 
         private Vector3 GetAverage(Queue<Vector3> queue)

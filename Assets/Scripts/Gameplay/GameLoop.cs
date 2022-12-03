@@ -12,6 +12,7 @@ namespace Gameplay
     [RequireComponent(typeof(FallCounter))]
     public class GameLoop : MonoBehaviour
     {
+        public readonly ScenePhase IntroPhase = new ScenePhase();
         public event Action Started;
         public event Action<Objective> StartedObjective;
         public event Action<Objective> EndedObjective;
@@ -24,21 +25,20 @@ namespace Gameplay
         {
             _objectives = ServiceLocator.LevelStructure.ObjectiveQueue;
             LevelAchievements = ServiceLocator.LevelStructure.InstantiateAchievements();
-
-            ServiceLocator.Player.Died += async () => { await ServiceLocator.Player.Respawn(1000); };
         }
 
-        private void Start()
+        private async void Start()
         {
-            ServiceLocator.Player.Respawn(0);
-            StartFirstObjective();
+            await IntroPhase;
+            StartObjective(_objectives.Peek());
+            Started?.Invoke();
         }
         
         private void OnObjectiveComplete(Objective objective)
         {
             RemoveCurrentObjective();
             if (_objectives.Count == 0) CompleteLevel();
-            else StartNextObjective(_objectives.Peek());
+            else StartObjective(_objectives.Peek());
         }
         
         private void CompleteLevel()
@@ -48,14 +48,8 @@ namespace Gameplay
             Ended?.Invoke(LevelAchievements);
             SaveProgress();
         }
-        
-        private void StartFirstObjective()
-        {
-            StartNextObjective(_objectives.Peek());
-            Started?.Invoke();
-        }
-        
-        private void StartNextObjective(Objective objective)
+
+        private void StartObjective(Objective objective)
         {
             objective.Completed += OnObjectiveComplete;
             objective.Begin(LevelAchievements);
