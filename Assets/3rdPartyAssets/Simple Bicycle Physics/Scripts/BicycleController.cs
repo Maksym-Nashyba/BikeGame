@@ -635,5 +635,11 @@ namespace SBPScripts
         {
             return Rigidbody.angularVelocity.y;
         }
+
+        public void SetInteractable(bool enabled)
+        {
+            if(enabled) Continue();
+            else Pause();
+        }
     }
 }

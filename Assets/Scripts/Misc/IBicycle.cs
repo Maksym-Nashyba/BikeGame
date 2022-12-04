@@ -7,5 +7,7 @@ namespace Misc
         public float GetAcceleration();
 
         public float GetTorqueY();
+
+        public void SetInteractable(bool enabled);
     }
 }

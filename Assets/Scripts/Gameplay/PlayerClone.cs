@@ -1,12 +1,20 @@
-﻿using UnityEngine;
+﻿using Misc;
+using UnityEngine;
 
-namespace GameCycle
+namespace Gameplay
 {
     public class PlayerClone : MonoBehaviour
     {
-        public void Die()
+        private IBicycle _bicycle;
+
+        private void Awake()
         {
-            
+            _bicycle = GetComponent<IBicycle>();
+        }
+
+        public void SetInteractable(bool enabled)
+        {
+            _bicycle.SetInteractable(enabled);
         }
     }
 }

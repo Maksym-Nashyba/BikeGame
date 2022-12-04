@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Threading.Tasks;
-using GameCycle;
 using Misc;
 using UnityEngine;
 
@@ -16,7 +15,12 @@ namespace Gameplay
         private void Awake()
         {
             ServiceLocator.GameLoop.Started += OnGameStarted;
-            ServiceLocator.GameLoop.IntroPhase.SubscribeFireAndForget(() => Respawn(0));
+            ServiceLocator.GameLoop.IntroPhase.SubscribeFireAndForget(async () =>
+            {
+                Respawn(0);
+                await Task.Delay(300);
+                ActivePlayerClone.SetInteractable(false);
+            });
         }
 
         public void Die()
@@ -36,6 +40,7 @@ namespace Gameplay
 
         private void OnGameStarted()
         {
+            ActivePlayerClone.SetInteractable(true);
             ServiceLocator.GameLoop.Started -= OnGameStarted;
             Died += async () =>
             {
