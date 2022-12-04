@@ -55,6 +55,7 @@ namespace Garage.Paint
         private void OnCameraApproaching()
         {
             _modelDisplay.Holder.MoveToPosition(GarageBikeModelHolder.BikePositions.Paint);
+            _containersHolder.ApplyPaintsToContainers(_modelDisplay.CurrentBike.AllSkins);
         }
         
         private void OnCameraDeparted()
