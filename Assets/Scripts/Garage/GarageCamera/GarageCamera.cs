@@ -18,11 +18,13 @@ namespace ProgressionStore
         [SerializeField] private CameraCheckpoint[] _checkpoints;
         [SerializeField] private CameraCheckpointClickTarget[] _clickTargets;
         [SerializeField] private GarageUI _garageUI;
+        private AsyncExecutor _asyncExecutor;
         private CameraCheckpoint _currentCheckpoint;
         private bool CanMoveFromRest => IsAtRestPoint && !IsMoving;
 
         private void Awake()
         {
+            _asyncExecutor = new AsyncExecutor();
             _garageUI.BackButtonClicked += OnBackButton;
             foreach (CameraCheckpointClickTarget target in _clickTargets)
             {
@@ -37,6 +39,7 @@ namespace ProgressionStore
 
         private void OnDestroy()
         {
+            _asyncExecutor.Dispose();
             _garageUI.BackButtonClicked += OnBackButton;
             foreach (CameraCheckpointClickTarget target in _clickTargets)
             {
@@ -73,16 +76,13 @@ namespace ProgressionStore
             IsMoving = false;
         }
         
-        private async Task LerpCameraToCheckpoint(CameraCheckpoint targetCheckpoint, float duration)
+        private Task LerpCameraToCheckpoint(CameraCheckpoint targetCheckpoint, float duration)
         {
-            float timePassed = 0f;
-            while (timePassed < duration)
+            return _asyncExecutor.EachFrame(duration, t =>
             {
-                Transformation transformation = _currentCheckpoint.Lerp(targetCheckpoint, timePassed/duration);
+                Transformation transformation = _currentCheckpoint.Lerp(targetCheckpoint, t);
                 _cameraTransform.SetPositionAndRotation(transformation.Position, transformation.Rotation);
-                await Task.Yield();
-                timePassed += Time.deltaTime;
-            }
+            }, EaseFunctions.InOutQuad);
         }
 
 #if UNITY_EDITOR
