@@ -56,6 +56,7 @@ namespace Garage.Paint
         
         private void CleanContainers() 
         {
+            if (_paintContainers == null) return;
             foreach (PaintContainer container in _paintContainers) 
             {
                 container.Clicked -= OnContainerSelected;
