@@ -20,7 +20,7 @@ namespace UnityEditor.Animations.Rigging
                 AnimationRiggingEditorUtils.RigSetup(Selection.activeGameObject.transform);
 
                 GameObject TemplatePrefab = (GameObject) AssetDatabase.LoadAssetAtPath(
-                    "Assets/Simple Bicycle Physics/Editor/TemplatePrefab.prefab", typeof(GameObject));
+                    "Assets/3rdPartyAssets/Simple Bicycle Physics/Editor/TemplatePrefab.prefab", typeof(GameObject));
                 GameObject originalCyclist = null;
                 foreach (Transform child in TemplatePrefab.transform)
                 {
