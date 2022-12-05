@@ -138,6 +138,7 @@ namespace SBPScripts
         public float turnLeanAmount;
         RaycastHit hit;
         //[HideInInspector]
+        [SerializeField] private float _brakeMultiplier;
         [FormerlySerializedAs("SteerMultiplier")] public float SteerInput;
         [FormerlySerializedAs("LeanAxis")] public float LeanInput;
         public float AccelerationInput, rawAccelerationInput;
@@ -530,7 +531,7 @@ namespace SBPScripts
 
                 if (inputs.BrakesHit && isMovingBackwards == false && !isAirborne)
                 {
-                    Rigidbody.AddForce(-transform.forward * (accelerationCurve.Evaluate(AccelerationInput) * 0.39f)); 
+                    Rigidbody.AddForce(-transform.forward * (accelerationCurve.Evaluate(AccelerationInput) * _brakeMultiplier * Time.deltaTime)); 
                 }
                 
                 if (WayPointSystem.recordingState == WayPointSystem.RecordingState.Record)
