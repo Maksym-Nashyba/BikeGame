@@ -1,6 +1,7 @@
 using System.Threading.Tasks;
 using IGUIDResources;
 using Menu.BikeSelectionMenu;
+using Misc;
 using UnityEngine.SceneManagement;
 
 namespace LevelLoading
@@ -32,6 +33,7 @@ namespace LevelLoading
         public void LoadLevel(LevelLoadContext context)
         {
             SceneManager.LoadScene(context.SceneName);
+            ServiceLocator.LevelStructure
         }
     }
 }

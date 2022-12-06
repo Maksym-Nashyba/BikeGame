@@ -2630,7 +2630,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 2
+  m_CollisionDetection: 0
 --- !u!153 &2440735540657858595
 ConfigurableJoint:
   m_ObjectHideFlags: 0
@@ -2955,7 +2955,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 2
+  m_CollisionDetection: 0
 --- !u!65 &2440735540701079704
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3131,6 +3131,7 @@ MonoBehaviour:
     rPedalOffset: {x: 0.22, y: 0.45, z: -0.01}
     pedalingSpeed: 3
   turnLeanAmount: 0
+  _brakeMultiplier: 65
   SteerInput: 0
   LeanInput: 0
   AccelerationInput: 0
@@ -3448,7 +3449,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
 --- !u!153 &2440735540999392063
 ConfigurableJoint:
   m_ObjectHideFlags: 0
