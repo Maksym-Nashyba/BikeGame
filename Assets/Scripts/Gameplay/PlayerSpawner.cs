@@ -1,5 +1,4 @@
-﻿using GameCycle;
-using LevelObjectives.Objectives;
+﻿using LevelObjectives.Objectives;
 using Misc;
 using UnityEngine;
 
@@ -8,7 +7,6 @@ namespace Gameplay
     public class PlayerSpawner : MonoBehaviour
     {
         public Transformation CurrentSpawnPoint { get; private set; }
-        [SerializeField] private GameObject _playerPrefab;
 
         private void Awake()
         {
@@ -23,7 +21,7 @@ namespace Gameplay
 
         public PlayerClone SpawnPlayerClone()
         {
-            GameObject playerClone = Instantiate(_playerPrefab);
+            GameObject playerClone = Instantiate(ServiceLocator.LevelStructure.PlayerPrefab);
             playerClone.GetComponent<Transform>().Apply(CurrentSpawnPoint);
             return playerClone.GetComponent<PlayerClone>();
         }

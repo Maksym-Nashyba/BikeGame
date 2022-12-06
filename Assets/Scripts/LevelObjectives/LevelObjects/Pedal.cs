@@ -22,10 +22,7 @@ namespace LevelObjectives.LevelObjects
             ServiceLocator.GameLoop.Ended += OnLevelEnded;
         }
 
-        private bool IsAlreadyCollected()
-        {
-            return ServiceLocator.Saves.Career.IsPedalCollected(ServiceLocator.LevelStructure.Level);
-        }
+        private bool IsAlreadyCollected() => ServiceLocator.LevelStructure.PedalCollected;
 
         private void OnPedalTriggered()
         {

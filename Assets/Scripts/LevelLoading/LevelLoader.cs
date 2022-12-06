@@ -1,6 +1,8 @@
 using System.Threading.Tasks;
 using IGUIDResources;
 using Menu.BikeSelectionMenu;
+using SaveSystem.Front;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace LevelLoading
@@ -16,16 +18,20 @@ namespace LevelLoading
 
         public void LoadLevel(LevelLoadContext context)
         {
-            SceneManager.LoadScene(context.SceneName);
+            LevelContextContainer.Create(context);
+            SceneManager.LoadSceneAsync(context.SceneName);
         }
         
         public async Task LoadLevelWithBikeSelection(string levelGUID)
         {
             BikeModel selectedBike = await RequestBikeSelection();
+            Level level = _resourceLocator.Career.GetLevelWithGUID(levelGUID);
             
-            string sceneName = _resourceLocator.Career.GetLevelWithGUID(levelGUID).SceneName;
-            
-            LevelLoadContext context = new LevelLoadContext(sceneName, selectedBike.Prefab, selectedBike.AllSkins[0].Material, _resourceLocator.Career.GetLevelWithGUID(levelGUID));
+            LevelLoadContext context = new CareerLevelLoadContext(level.SceneName,
+                selectedBike.Prefab, 
+                selectedBike.AllSkins[0].Material, 
+                level,
+                Object.FindObjectOfType<Saves>().Career.IsPedalCollected(levelGUID));
             LoadLevel(context);
         }
 
