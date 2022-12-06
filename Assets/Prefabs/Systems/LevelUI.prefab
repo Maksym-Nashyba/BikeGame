@@ -1600,6 +1600,7 @@ GameObject:
   - component: {fileID: 3450610688477626343}
   - component: {fileID: 3450610688477626340}
   - component: {fileID: 3450610688477626341}
+  - component: {fileID: 6131100432400118102}
   m_Layer: 5
   m_Name: ControllsCanvas
   m_TagString: Untagged
@@ -1692,6 +1693,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!225 &6131100432400118102
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3450610688477626347}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &3450610689074035434
 GameObject:
   m_ObjectHideFlags: 0
@@ -1953,7 +1966,7 @@ MonoBehaviour:
   JoystickObject: {fileID: 524039667472215684}
   _endGameScreen: {fileID: 3450610688413362246}
   _pauseScreen: {fileID: 1388599955}
-  _controlls: {fileID: 3450610688477626347}
+  _controlls: {fileID: 6131100432400118102}
   endGameScreen: {fileID: 4154764578534858756}
 --- !u!1 &3450610689998863087
 GameObject:
