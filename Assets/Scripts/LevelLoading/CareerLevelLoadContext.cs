@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using IGUIDResources;
+using UnityEngine;
 
 namespace LevelLoading
 {
@@ -6,7 +7,7 @@ namespace LevelLoading
     {
         public readonly bool PedalCollected;
         
-        public CareerLevelLoadContext(string sceneName, GameObject prefab, Material skin, bool pedalCollected) : base(sceneName, prefab, skin)
+        public CareerLevelLoadContext(string sceneName, GameObject prefab, Material skin,  Level level, bool pedalCollected) : base(sceneName, prefab, skin, level)
         {
             PedalCollected = pedalCollected;
         }

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using IGUIDResources;
+using UnityEngine;
 
 namespace LevelLoading
 {
@@ -7,12 +8,14 @@ namespace LevelLoading
         public readonly string SceneName;
         public readonly GameObject BikePrefab;
         public readonly Material Skin;
+        public readonly Level Level;
 
-        public LevelLoadContext(string sceneName, GameObject bikePrefab, Material skin)
+        public LevelLoadContext(string sceneName, GameObject bikePrefab, Material skin, Level level)
         {
             SceneName = sceneName;
             BikePrefab = bikePrefab;
             Skin = skin;
+            Level = level;
         }
     }
 }

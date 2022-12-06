@@ -13,13 +13,10 @@ namespace LevelObjectives.LevelObjects
 
         private void Start()
         {
-            ServiceLocator.Saves.ExecuteWhenReady(() =>
+            if (IsAlreadyCollected())
             {
-                if (IsAlreadyCollected())
-                {
-                    _pedalTriggerObject.SetActive(false);
-                }   
-            });
+                _pedalTriggerObject.SetActive(false);
+            }
 
             _pedalTriggerObject.GetComponent<PlayerTrigger>().Activated += OnPedalTriggered;
             ServiceLocator.GameLoop.Ended += OnLevelEnded;
@@ -39,7 +36,7 @@ namespace LevelObjectives.LevelObjects
 
         private void OnLevelEnded(LevelAchievements achievements)
         {
-            if(achievements is not CareerLevelAchievements careerLevelAchievements)return;
+            if (achievements is not CareerLevelAchievements careerLevelAchievements) return;
             careerLevelAchievements.IsPedalCollected = IsHeld;
         }
 
