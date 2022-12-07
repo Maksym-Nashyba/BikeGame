@@ -6,7 +6,7 @@ namespace ProgressionStore.Computer
 {
     public class Desktop : MonoBehaviour
     {
-        [SerializeField] private ComputerUI _computerUI;
+        [SerializeField] private Garage.Computer.Computer computer;
         [SerializeField] private GameObject _iconPrefab;
         [SerializeField] private Transform _iconsHolder;
 
@@ -19,7 +19,7 @@ namespace ProgressionStore.Computer
 
         private void Start()
         {
-            foreach (Program program in _computerUI.ProgramsCopy)
+            foreach (Program program in computer.ProgramsCopy)
             {
                 CreateIcon(program);
             }
@@ -31,14 +31,14 @@ namespace ProgressionStore.Computer
 
             DesktopIcon icon = Instantiate(_iconPrefab, _iconsHolder).GetComponent<DesktopIcon>();
             icon.SetUp(program);
-            icon.Clicked += _computerUI.Launch;
+            icon.Clicked += computer.Launch;
         }
 
         private void OnDestroy()
         {
             foreach (Program program in _icons.Keys)
             {
-                _icons[program].Clicked -= _computerUI.Launch;
+                _icons[program].Clicked -= computer.Launch;
             }
         }
     }

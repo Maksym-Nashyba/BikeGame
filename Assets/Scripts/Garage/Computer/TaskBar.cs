@@ -5,7 +5,7 @@ namespace ProgressionStore.Computer
 {
     public class TaskBar : MonoBehaviour
     {
-        [SerializeField] private ComputerUI _computerUI;
+        [SerializeField] private Garage.Computer.Computer computer;
         [SerializeField] private Transform _taskHolder;
         [SerializeField] private GameObject _taskIconPrefab;
 
@@ -14,8 +14,8 @@ namespace ProgressionStore.Computer
         private void Awake()
         {
             _tasks = new Dictionary<Program, TaskIcon>();
-            _computerUI.ProgramLaunched += OnProgramLaunched;
-            _computerUI.ProgramTerminated += OnProgramTerminated;
+            computer.ProgramLaunched += OnProgramLaunched;
+            computer.ProgramTerminated += OnProgramTerminated;
         }
 
         private void OnProgramLaunched(Program program)
@@ -30,20 +30,20 @@ namespace ProgressionStore.Computer
 
         public void OnStartButton()
         {
-            _computerUI.HideAllWindows();
+            computer.HideAllWindows();
         }
         
         private void CreateTaskIcon(Program program)
         {
             TaskIcon taskIcon = Instantiate(_taskIconPrefab, _taskHolder).GetComponent<TaskIcon>();
             taskIcon.SetUp(program);
-            taskIcon.Clicked += _computerUI.OpenWindow;
+            taskIcon.Clicked += computer.OpenWindow;
             _tasks.Add(program, taskIcon);
         }
 
         private void RemoveTaskIcon(Program program)
         {
-            _tasks[program].Clicked -= _computerUI.OpenWindow;
+            _tasks[program].Clicked -= computer.OpenWindow;
             _tasks[program].Close();
             _tasks.Remove(program);
         }

@@ -1,16 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using ProgressionStore.Computer;
 using UnityEngine;
 
-namespace ProgressionStore.Computer
+namespace Garage.Computer
 {
-    public class ComputerUI : MonoBehaviour
+    public class Computer : MonoBehaviour
     {
         public event Action<Program> ProgramLaunched;
         public event Action<Program> ProgramTerminated;
-
-        public Program[] ProgramsCopy => (Program[])_programs.Clone();
+        
         [SerializeField] private Program[] _programs;
         [SerializeField] private TaskBar _taskBar;
         [Space]
@@ -18,7 +18,7 @@ namespace ProgressionStore.Computer
         [SerializeField] private MeshClickListener _screenClickListener;
 
         private List<Program> _runningProcesses;
-        private LinkedList<Window> _openWindows; //First is top
+        private LinkedList<Window> _openWindows; //First is top (no, I couldn't have used a stack)
 
         private void Awake()
         {
@@ -28,6 +28,8 @@ namespace ProgressionStore.Computer
             _screenClickListener.ClickedUV += _inputSimulator.ClickAtUV;
         }
 
+        public Program[] ProgramsCopy => (Program[])_programs.Clone(); 
+        
         public void Launch(Program program)
         {
             if(_runningProcesses.Contains(program))
