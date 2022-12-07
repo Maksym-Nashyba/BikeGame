@@ -6,7 +6,7 @@ namespace ProgressionStore.Computer
 {
     public class Desktop : MonoBehaviour
     {
-        [SerializeField] private Garage.Computer.Computer computer;
+        [SerializeField] private Menu.Garage.Computer.Computer computer;
         [SerializeField] private GameObject _iconPrefab;
         [SerializeField] private Transform _iconsHolder;
 

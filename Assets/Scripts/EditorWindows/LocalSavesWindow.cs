@@ -38,6 +38,8 @@ namespace EditorWindows
             if (GUILayout.Button("Clear"))
             {
                 DeleteSaveFile();
+                PlayerPrefs.DeleteAll();
+                PlayerPrefs.Save();
             }
 
             if (GUILayout.Button("Add Currencies"))

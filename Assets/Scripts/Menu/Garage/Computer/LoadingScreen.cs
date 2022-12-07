@@ -1,10 +1,9 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Misc;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Garage.Computer
+namespace Menu.Garage.Computer
 {
     public class LoadingScreen : MonoBehaviour
     {

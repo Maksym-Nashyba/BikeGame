@@ -5,7 +5,7 @@ namespace ProgressionStore.Computer
 {
     public class TaskBar : MonoBehaviour
     {
-        [SerializeField] private Garage.Computer.Computer computer;
+        [SerializeField] private Menu.Garage.Computer.Computer computer;
         [SerializeField] private Transform _taskHolder;
         [SerializeField] private GameObject _taskIconPrefab;
 

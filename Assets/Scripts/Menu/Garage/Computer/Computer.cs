@@ -4,7 +4,7 @@ using System.Linq;
 using ProgressionStore.Computer;
 using UnityEngine;
 
-namespace Garage.Computer
+namespace Menu.Garage.Computer
 {
     public class Computer : MonoBehaviour
     {

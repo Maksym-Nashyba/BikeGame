@@ -1,11 +1,12 @@
-﻿using Garage.Paint.MachineButton;
+﻿using Garage;
+using Garage.Paint;
+using Garage.Paint.MachineButton;
 using IGUIDResources;
-using Menu.Garage;
 using Misc;
 using SaveSystem.Front;
 using UnityEngine;
 
-namespace Garage.Paint
+namespace Menu.Garage.Paint
 {
     public class PaintMachine : MonoBehaviour
     {
