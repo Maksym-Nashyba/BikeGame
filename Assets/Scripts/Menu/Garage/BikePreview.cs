@@ -1,5 +1,6 @@
 ﻿using System;
 using IGUIDResources;
+using Menu.Garage;
 using Misc;
 using SaveSystem.Front;
 using SaveSystem.Models;

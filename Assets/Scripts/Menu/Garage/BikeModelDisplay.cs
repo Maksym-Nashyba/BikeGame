@@ -1,7 +1,9 @@
-﻿using IGUIDResources;
+﻿using Effects;
+using Garage;
+using IGUIDResources;
 using UnityEngine;
 
-namespace Garage
+namespace Menu.Garage
 {
     public class BikeModelDisplay : MonoBehaviour
     {
@@ -20,13 +22,7 @@ namespace Garage
 
         public void ApplySkin(Skin skin)
         {
-            for (int i = _currentDisplayModel.transform.childCount -1; i >= 0; i--)
-            {
-                if (_currentDisplayModel.transform.GetChild(i).TryGetComponent(out MeshRenderer renderer))
-                {
-                    renderer.material = skin.Material;
-                }
-            }  
+            _currentDisplayModel.GetComponent<BikeSkinApplier>().ApplySkin(skin);
         }
 
         private void CleanHolder()
