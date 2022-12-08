@@ -39,5 +39,17 @@ namespace Misc
                     ? 1
                     : Mathf.Pow(2, -10 * t) * Mathf.Sin((t * 10f - 0.75f) * a) + 1f;
         }
+        
+        public static float ZeroOneZeroQuad(float t)
+        {
+            if (t < 0.218) return ThinParabola(t);
+            else if (t is >= 0.218f and < 0.782f) return -Mathf.Pow(3f * t - 1.5f, 2) + 1f;
+            else return ThinParabola(t - 1f);
+
+            float ThinParabola(float t)
+            {
+                return 6f * t * t;
+            }
+        }
     }
 }
