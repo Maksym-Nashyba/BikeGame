@@ -97,7 +97,10 @@ namespace Menu.Garage.Paint
 
         private void ConfirmSkinPurchase()
         {
+            if (_saves.Currencies.GetDollans() < 250) return; //TODO Play effects
             _saves.Bikes.UnlockSkin(_modelDisplay.CurrentBike.GetGUID(), _selectedSkin.GetGUID());
+            _saves.Currencies.SubtractDollans(250);
+            
             PaintBike();
             _buttonAnimator.ChangeButtonState(ButtonSides.Empty);
         }
@@ -105,6 +108,7 @@ namespace Menu.Garage.Paint
         private void PaintBike()
         {
             _modelDisplay.ApplySkin(_selectedSkin);
+            _saves.Bikes.SelectSkinFor(_modelDisplay.CurrentBike.GetGUID(), _selectedSkin.GetGUID());
             _buttonAnimator.ChangeButtonState(ButtonSides.Empty);
         }
     }
