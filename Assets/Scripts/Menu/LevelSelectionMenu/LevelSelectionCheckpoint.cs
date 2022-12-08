@@ -1,5 +1,4 @@
-﻿using System;
-using IGUIDResources;
+﻿using IGUIDResources;
 using Misc;
 using SaveSystem.Front;
 using TMPro;
@@ -10,10 +9,12 @@ namespace Menu
     public class LevelSelectionCheckpoint : CameraCheckpoint
     {
         public float FogHeight => _fogHeight;
+        public Color LightColor => _lightColor;
         [SerializeField] private float _fogHeight;
         [SerializeField] private TextMeshPro _bestTimeText;
         [SerializeField] private GameObject _pedalDisplay;
         [SerializeField] private Level _level;
+        [SerializeField] private Color _lightColor;
         private Saves _saves;
 
         private void Awake()
