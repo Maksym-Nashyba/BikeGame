@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using Effects.TransitionCover;
 using GameCycle;
 using Gameplay;
 using Misc;
@@ -14,6 +15,7 @@ namespace UI
         [SerializeField] private GameObject _pauseScreen;
         [SerializeField] private CanvasGroup _controlls;
         [SerializeField] private EndGameScreen endGameScreen;
+        [SerializeField] private SceneTransitionCover _blackoutTransitionCover;
         private GameLoop _gameLoop;
 
         private void Awake()
@@ -61,8 +63,10 @@ namespace UI
             OnUnpauseButton();
         }
 
-        public void OnMenuButton()
+        public async void OnMenuButton()
         {
+            HidePauseMenu();
+            await _blackoutTransitionCover.TransitionToState(SceneTransitionCover.State.Covered);
             SceneManager.LoadScene("MainMenu");
         }
         

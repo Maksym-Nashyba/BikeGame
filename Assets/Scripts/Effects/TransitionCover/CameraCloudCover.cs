@@ -2,7 +2,7 @@
 using Misc;
 using UnityEngine;
 
-namespace LevelLoading
+namespace Effects.TransitionCover
 {
     public class CameraCloudCover : SceneTransitionCover
     {

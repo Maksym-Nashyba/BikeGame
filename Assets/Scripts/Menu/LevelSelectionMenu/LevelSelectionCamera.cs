@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Effects.TransitionCover;
 using LevelLoading;
 using Misc;
 using UnityEngine;
@@ -14,7 +15,7 @@ namespace Menu
         [SerializeField] private Transform _cameraTransform;
         [SerializeField] private LevelSelectionCheckpoint[] _checkpoints;
         [SerializeField] private LevelSelection _levelSelection;
-        private SceneTransitionCover _sceneTransitionCover;
+        [SerializeField] private SceneTransitionCover _cloudSceneTransitionCover;
         private AsyncExecutor _asyncExecutor;
         private LevelSelectionCheckpoint CurrentCheckpoint => _checkpoints[_currentCheckpointIndex];
         private int _currentCheckpointIndex;
@@ -22,7 +23,6 @@ namespace Menu
         private void Awake()
         {
             _asyncExecutor = new AsyncExecutor();
-            _sceneTransitionCover = FindObjectOfType<SceneTransitionCover>();
             _levelSelection.LaunchingLevel += PlayLaunchEffects;
         }
 
@@ -52,7 +52,7 @@ namespace Menu
         {
             _levelSelection.LaunchingLevel -= PlayLaunchEffects;
             ZoomInOnCheckpoint(CurrentCheckpoint);
-            await _sceneTransitionCover.TransitionToState(SceneTransitionCover.State.Covered);
+            await _cloudSceneTransitionCover.TransitionToState(SceneTransitionCover.State.Covered);
         }
         
         private Task MoveByOneCheckpoint(int direction)

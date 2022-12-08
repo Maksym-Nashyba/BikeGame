@@ -1,4 +1,5 @@
 ﻿using System;
+using Effects.TransitionCover;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,6 +8,7 @@ namespace Menu
     public class MainMenu : MonoBehaviour
     {
         public event Action SettingsButtonPressed;
+        [SerializeField] private SceneTransitionCover _transitionCover;
         
         public void OpenLevelSelectingScene()
         {
@@ -18,8 +20,9 @@ namespace Menu
             SettingsButtonPressed?.Invoke();
         }
         
-        public void LoadScene(string sceneName)
+        public async void LoadScene(string sceneName)
         {
+            await _transitionCover.TransitionToState(SceneTransitionCover.State.Covered);
             SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
         }
 

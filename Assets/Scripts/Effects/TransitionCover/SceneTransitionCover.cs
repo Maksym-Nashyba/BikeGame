@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using Misc;
 using UnityEngine;
 
-namespace LevelLoading
+namespace Effects.TransitionCover
 {
     public abstract class SceneTransitionCover : MonoBehaviour
     {

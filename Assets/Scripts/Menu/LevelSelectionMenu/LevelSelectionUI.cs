@@ -1,4 +1,5 @@
-﻿using IGUIDResources;
+﻿using Effects.TransitionCover;
+using IGUIDResources;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -11,6 +12,7 @@ namespace Menu
         [SerializeField] private Transform _fogTransform;
         [SerializeField] private Button _nextButton;
         [SerializeField] private Button _previousButton;
+        [SerializeField] private SceneTransitionCover _blackoutTransitionCover;
         [Space]
         [SerializeField] private LevelSelection _levelSelection; 
         [SerializeField] private LevelSelectionCamera _selectionCamera;
@@ -26,8 +28,9 @@ namespace Menu
             _levelSelection.SelectedLevel -= OnSelectedLevel;
         }
 
-        public void OnBackButton()
+        public async void OnBackButton()
         {
+            await _blackoutTransitionCover.TransitionToState(SceneTransitionCover.State.Covered);
             SceneManager.LoadScene("MainMenu");
         }
         

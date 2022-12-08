@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using Effects.TransitionCover;
 using GameCycle;
 using Misc;
 using TMPro;
@@ -15,6 +16,7 @@ namespace UI
         [SerializeField] private AnimatableText _fallCountValueText;
         [SerializeField] private TextMeshProUGUI _expectedTimeValueText;
         [SerializeField] private Button _continueButton;
+        [SerializeField] private SceneTransitionCover _blackoutTransitionCover;
         private AsyncExecutor _executor;
         private int _displayedScore;
         private int _displayedFallCount;
@@ -34,8 +36,9 @@ namespace UI
             _executor.Dispose();
         }
 
-        public void OnContinueButton()
+        public async void OnContinueButton()
         {
+            await _blackoutTransitionCover.TransitionToState(SceneTransitionCover.State.Covered);
             SceneManager.LoadScene("MainMenu");
         }
         

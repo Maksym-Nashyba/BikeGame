@@ -1,4 +1,5 @@
-﻿using Gameplay;
+﻿using Effects.TransitionCover;
+using Gameplay;
 using Inputs;
 using LevelLoading;
 using LevelObjectives;

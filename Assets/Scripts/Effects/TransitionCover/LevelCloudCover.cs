@@ -1,6 +1,6 @@
 ﻿using Misc;
 
-namespace LevelLoading
+namespace Effects.TransitionCover
 {
     public class LevelCloudCover : CameraCloudCover
     {
