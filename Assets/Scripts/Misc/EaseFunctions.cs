@@ -43,12 +43,12 @@ namespace Misc
         public static float ZeroOneZeroQuad(float t)
         {
             if (t < 0.218) return ThinParabola(t);
-            else if (t is >= 0.218f and < 0.782f) return -Mathf.Pow(3f * t - 1.5f, 2) + 1f;
-            else return ThinParabola(t - 1f);
+            if (t is >= 0.218f and < 0.782f) return -Mathf.Pow(3f * t - 1.5f, 2) + 1f;
+            return ThinParabola(t - 1f);
 
-            float ThinParabola(float t)
+            float ThinParabola(float x)
             {
-                return 6f * t * t;
+                return 6f * x * x;
             }
         }
     }

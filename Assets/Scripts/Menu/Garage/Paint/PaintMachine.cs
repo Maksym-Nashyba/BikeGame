@@ -1,7 +1,6 @@
 ﻿using Garage;
-using Garage.Paint;
-using Garage.Paint.MachineButton;
 using IGUIDResources;
+using Menu.Garage.Paint.MachineButton;
 using Misc;
 using SaveSystem.Front;
 using UnityEngine;
@@ -63,6 +62,8 @@ namespace Menu.Garage.Paint
         private void OnCameraDeparted()
         {
             _modelDisplay.Holder.MoveToPosition(GarageBikeModelHolder.BikePositions.Preview);
+            _containersHolder.CleanContainers();
+            _buttonAnimator.ChangeButtonState(ButtonSides.Empty);
         }
 
         private void OnSkinChanged(Skin skin)
