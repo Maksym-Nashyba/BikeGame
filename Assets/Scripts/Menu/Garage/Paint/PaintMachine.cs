@@ -53,10 +53,10 @@ namespace Menu.Garage.Paint
             }
         }
 
-        private void OnCameraApproaching()
+        private async void OnCameraApproaching()
         {
-            _modelDisplay.Holder.MoveToPosition(GarageBikeModelHolder.BikePositions.Paint);
-            _containersHolder.ApplyPaintsToContainers(_modelDisplay.CurrentBike.AllSkins);
+            await _modelDisplay.Holder.MoveToPosition(GarageBikeModelHolder.BikePositions.Paint);
+            await _containersHolder.ApplyPaintsToContainers(_modelDisplay.CurrentBike.AllSkins);
         }
         
         private void OnCameraDeparted()

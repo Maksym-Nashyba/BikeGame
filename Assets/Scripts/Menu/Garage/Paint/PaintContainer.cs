@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading;
+using System.Threading.Tasks;
 using IGUIDResources;
 using Misc;
 using UnityEngine;
@@ -24,43 +25,44 @@ namespace Menu.Garage.Paint
             _cancellationToken = new CancellationToken();
         }
 
-        public void PlayFillAnimation()
+        public Task PlayFillAnimation()
         {
             PlayStrayAnimation();
             PlayPaintAnimation();
+            return Task.CompletedTask;
         }        
         
-        private async void PlayStrayAnimation()
+        private Task PlayStrayAnimation()
         {
             _sprayMeshRenderer.material = Skin.Material;
             _sprayMesh.SetActive(true);
-            await _asyncExecutor.EachFrame(2f, t =>
+            return _asyncExecutor.EachFrame(2f, t =>
             {
                 _sprayMesh.transform.localScale = Vector3.LerpUnclamped(Vector3.up * 0.1f, new Vector3(0.025f, 0.1f, 0.025f), t);
             }, EaseFunctions.ZeroOneZeroQuad, _cancellationToken);
         }
         
-        private void PlayPaintAnimation()
+        private Task PlayPaintAnimation()
         {
             _paintMeshRenderer.material = Skin.Material;
             Vector3 startPosition = new Vector3(-3.041449f, 2.9f, 0.7072f);
             Vector3 targetPosition = new Vector3(-3.041449f, 2.79f, 0.7072f);
             Vector3 startScale = new Vector3(1f, 0f, 1f);
-            PlayAnimation(startPosition, targetPosition, startScale, Vector3.one);
+            return PlayAnimation(startPosition, targetPosition, startScale, Vector3.one);
         }
         
-        public void PlayCleanAnimation()
+        public Task PlayCleanAnimation()
         {
             _sprayMesh.SetActive(false);
             Vector3 startPosition = new Vector3(-3.041449f, 2.79f, 0.7072f);
             Vector3 targetPosition = new Vector3(-3.041449f, 2.9f, 0.7072f);
             Vector3 startScale = new Vector3(1f, 1f, 1f);
-            PlayAnimation(startPosition, targetPosition, startScale, new Vector3(1f, 0f, 1f));
+            return PlayAnimation(startPosition, targetPosition, startScale, new Vector3(1f, 0f, 1f));
         }
 
-        private async void PlayAnimation(Vector3 startPosition, Vector3 targetPosition, Vector3 startScale, Vector3 targetScale)
+        private Task PlayAnimation(Vector3 startPosition, Vector3 targetPosition, Vector3 startScale, Vector3 targetScale)
         {
-            await _asyncExecutor.EachFrame(2f, t =>
+            return _asyncExecutor.EachFrame(2f, t =>
             {
                 _paintMesh.transform.localPosition = Vector3.LerpUnclamped(startPosition, targetPosition, t);
                 _paintMesh.transform.localScale = Vector3.LerpUnclamped(startScale, targetScale, t);

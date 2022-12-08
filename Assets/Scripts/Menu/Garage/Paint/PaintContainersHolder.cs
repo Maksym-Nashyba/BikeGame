@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using IGUIDResources;
 using UnityEngine;
 
@@ -43,7 +44,7 @@ namespace Menu.Garage.Paint
             container.transform.localPosition = _paintContainerPrefab.transform.localPosition + new Vector3(0, verticalOffset, horizontalOffset);
         }
 
-        public void ApplyPaintsToContainers(Skin[] skins)
+        public Task ApplyPaintsToContainers(Skin[] skins)
         {
             if(_paintContainers != null) ResetPaintContainers();
             _paintContainers = new List<PaintContainer>(skins.Length);
@@ -54,6 +55,7 @@ namespace Menu.Garage.Paint
                 ApplyPaintToContainer(paintContainer, skins[i]);
                 paintContainer.PlayFillAnimation();
             }
+            return Task.CompletedTask;
         }
         
         private void ApplyPaintToContainer(PaintContainer paintContainer, Skin skin) 
