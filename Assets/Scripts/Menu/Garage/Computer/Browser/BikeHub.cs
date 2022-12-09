@@ -1,18 +1,46 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
+using System.Threading.Tasks;
+using SaveSystem.Front;
 using UnityEngine;
 
-public class BikeHub : MonoBehaviour
+namespace Menu.Garage.Computer.Browser
 {
-    // Start is called before the first frame update
-    void Start()
+    public class BikeHub : MonoBehaviour
     {
-        
-    }
+        [SerializeField] private int _rewardDollans;
+        private Computer _computer;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        private void Awake()
+        {
+            _computer = FindObjectOfType<Computer>();
+        }
+
+        public async void OnPlayButton()
+        {
+            switch (await ShowAdd())
+            {
+                case AddShowResult.Shown:
+                    _computer.ShowDialog($"THANKS, IT HELPS A LOT\nREWARD_{_rewardDollans}");
+                    FindObjectOfType<Saves>().Currencies.AddDollans(_rewardDollans);
+                    break;
+                case AddShowResult.Failed:
+                    _computer.ShowDialog("FAILED\nPLEASE_TRY_AGAIN_LATER");
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+
+        private async Task<AddShowResult> ShowAdd()
+        {
+            await Task.Delay(1000);
+            return AddShowResult.Shown;
+        }
+
+        private enum AddShowResult
+        {
+            Shown,
+            Failed
+        }
     }
 }

@@ -241,37 +241,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!1 &676584450092662851
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 155485605489531641}
-  m_Layer: 9
-  m_Name: PreviewPoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &155485605489531641
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 676584450092662851}
-  m_LocalRotation: {x: -0, y: -0.90461695, z: -0, w: 0.4262255}
-  m_LocalPosition: {x: -133.03545, y: 29.380487, z: -76}
-  m_LocalScale: {x: 52.20771, y: 52.207718, z: 52.20771}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 3442313488174880682}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: -129.544, z: 0}
 --- !u!1 &731044439298790062
 GameObject:
   m_ObjectHideFlags: 0
@@ -384,7 +353,6 @@ RectTransform:
   - {fileID: 6114601589440596534}
   - {fileID: 68825389709144417}
   - {fileID: 523451799576110378}
-  - {fileID: 4200491672872354537}
   - {fileID: 1925237230656816378}
   m_Father: {fileID: 6616412102647239965}
   m_RootOrder: 1
@@ -407,7 +375,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bike: {fileID: 11400000, guid: 13929a004fee1b54dbcae450fd9c398e, type: 2}
-  _previewPoint: {fileID: 4200491672872354537}
   _priceText: {fileID: 5223653317447101011}
   _nameText: {fileID: 2624340445391817578}
   _buyButton: {fileID: 1275406732178484434}
@@ -1083,7 +1050,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1225019302620369398}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 10.27}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2093,7 +2060,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3442313488174880682}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 10.27}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2914,37 +2881,6 @@ RectTransform:
   m_AnchoredPosition: {x: 213.0857, y: -36.084}
   m_SizeDelta: {x: 188.153, y: 283.67}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &3561814805852862108
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4200491672872354537}
-  m_Layer: 9
-  m_Name: PreviewPoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4200491672872354537
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3561814805852862108}
-  m_LocalRotation: {x: -0, y: -0.90461695, z: -0, w: 0.4262255}
-  m_LocalPosition: {x: -133.03545, y: 29.380487, z: -76}
-  m_LocalScale: {x: 52.20771, y: 52.207718, z: 52.20771}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1225019302620369398}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: -129.544, z: 0}
 --- !u!1 &3594174451109021022
 GameObject:
   m_ObjectHideFlags: 0
@@ -3644,7 +3580,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2109365683800713954}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 10.27}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -5606,6 +5542,8 @@ GameObject:
   - component: {fileID: 832940269687386142}
   - component: {fileID: 4967288645930342595}
   - component: {fileID: 6298705857140777001}
+  - component: {fileID: 233509825316050782}
+  - component: {fileID: 7986963180967960272}
   m_Layer: 9
   m_Name: Image
   m_TagString: Untagged
@@ -5671,6 +5609,74 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &233509825316050782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7185311348480271980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 6298705857140777001}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3078272536214775052}
+        m_TargetAssemblyTypeName: Menu.Garage.Computer.Browser.BikeHub, Main
+        m_MethodName: OnPlayButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &7986963180967960272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7185311348480271980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11d4a20534db48878abadc26e3f2cbff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7212400449415044737
 GameObject:
   m_ObjectHideFlags: 0
@@ -5859,7 +5865,6 @@ RectTransform:
   - {fileID: 4437969851571961887}
   - {fileID: 5404889740584111574}
   - {fileID: 6207644302281428125}
-  - {fileID: 155485605489531641}
   - {fileID: 188867421592117728}
   m_Father: {fileID: 6616412102647239965}
   m_RootOrder: 0
@@ -5882,7 +5887,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bike: {fileID: 11400000, guid: c913db6756d017e46b93a28c7ab65a66, type: 2}
-  _previewPoint: {fileID: 155485605489531641}
   _priceText: {fileID: 5133947030901444947}
   _nameText: {fileID: 4670771184720866337}
   _buyButton: {fileID: 5964438604605644817}
@@ -6206,6 +6210,7 @@ GameObject:
   - component: {fileID: 5056492072263651458}
   - component: {fileID: 5620731289311217817}
   - component: {fileID: 4754711797807118093}
+  - component: {fileID: 3078272536214775052}
   m_Layer: 9
   m_Name: Window4
   m_TagString: Untagged
@@ -6274,6 +6279,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3078272536214775052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7871869238060511800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8772351cc7845574ba8db2a3511199bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rewardDollans: 200
 --- !u!1 &8002168095558819372
 GameObject:
   m_ObjectHideFlags: 0
@@ -6409,37 +6427,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!1 &8046576581382157048
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7977847826860192962}
-  m_Layer: 9
-  m_Name: PreviewPoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &7977847826860192962
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8046576581382157048}
-  m_LocalRotation: {x: -0, y: -0.90461695, z: -0, w: 0.4262255}
-  m_LocalPosition: {x: -133.03545, y: 29.380487, z: -76}
-  m_LocalScale: {x: 52.20771, y: 52.207718, z: 52.20771}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2109365683800713954}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: -129.544, z: 0}
 --- !u!1 &8135822682868167090
 GameObject:
   m_ObjectHideFlags: 0
@@ -6476,7 +6463,6 @@ RectTransform:
   - {fileID: 568572453060759611}
   - {fileID: 403337572253743240}
   - {fileID: 3939737092032160070}
-  - {fileID: 7977847826860192962}
   - {fileID: 5971985567978931713}
   m_Father: {fileID: 6616412102647239965}
   m_RootOrder: 2
@@ -6499,7 +6485,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bike: {fileID: 11400000, guid: 16748247bd02ad545b6f7e9663631de5, type: 2}
-  _previewPoint: {fileID: 7977847826860192962}
   _priceText: {fileID: 9126961280134322504}
   _nameText: {fileID: 7803152843262589140}
   _buyButton: {fileID: 7887310708814352152}

@@ -9,7 +9,6 @@ namespace Menu.Garage.Computer.Browser
     public class ScamazonTab : MonoBehaviour
     {
         [SerializeField] private BikeModel _bike;
-        [SerializeField] private Transform _previewPoint;
         [SerializeField] private TextMeshProUGUI _priceText;
         [SerializeField] private TextMeshProUGUI _nameText;
         [SerializeField] private Button _buyButton;
@@ -44,7 +43,6 @@ namespace Menu.Garage.Computer.Browser
         {
             _priceText.SetText($"{_bike.Cost}$");
             _nameText.SetText($"{_bike.Name}");
-            CreatePreviewModel();
             _buyButton.interactable = !bikeBought;
             _soldOutText.SetActive(bikeBought);
         }
@@ -57,16 +55,7 @@ namespace Menu.Garage.Computer.Browser
             _saves.Bikes.UnlockBike(_bike.GetGUID());
             return true;
         }
-        
-        private void CreatePreviewModel()
-        {
-            Transform previewModel = Instantiate(_bike.EmptyPrefab, _previewPoint).transform;
-            for (int i = 0; i < previewModel.childCount; i++)
-            {
-                previewModel.GetChild(i).gameObject.layer = LayerMask.NameToLayer("ComputerUI");
-            }
-        }
-        
+
         private bool BikeBought()
         {
             return _saves.Bikes.IsBikeUnlocked(_bike);
