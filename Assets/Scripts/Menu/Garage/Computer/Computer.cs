@@ -13,7 +13,8 @@ namespace Menu.Garage.Computer
         
         [SerializeField] private Program[] _programs;
         [SerializeField] private TaskBar _taskBar;
-        [Space]
+        [Space] 
+        [SerializeField] private GameObject _dialogWindowPrefab;
         [SerializeField] private CanvasInputSimulator _inputSimulator;
         [SerializeField] private MeshClickListener _screenClickListener;
 
@@ -56,6 +57,11 @@ namespace Menu.Garage.Computer
         public void OpenWindow(Program program)
         {
             OpenWindow(FindWindow(program));
+        }
+
+        public void ShowDialog(string message)
+        {
+            
         }
         
         private void OpenWindow(Window window)

@@ -7,6 +7,8 @@ namespace Menu.Garage.Computer
 {
     public class LoadingScreen : MonoBehaviour
     {
+        [SerializeField] private float _duration;
+        
         [SerializeField] private CanvasGroup _screen;
         [SerializeField] private CanvasGroup _background;
         [SerializeField] private CanvasGroup _elements;
@@ -30,7 +32,7 @@ namespace Menu.Garage.Computer
 
         private async void OnCameraArrived()
         {
-            await Play(4f);
+            await Play(_duration);
             Destroy(gameObject);
         }
         
