@@ -12,6 +12,7 @@ namespace Menu
         [SerializeField] private Transform _fogTransform;
         [SerializeField] private Button _nextButton;
         [SerializeField] private Button _previousButton;
+        [SerializeField] private Button _startButton;
         [SerializeField] private SceneTransitionCover _blackoutTransitionCover;
         [Space]
         [SerializeField] private LevelSelection _levelSelection; 
@@ -54,11 +55,13 @@ namespace Menu
         {
             _nextButton.interactable = false;
             _previousButton.interactable = false;
+            _startButton.interactable = false;
         }
 
         private void EnableUI(Level level)
         {
             UpdateNavigationButtonsInteractable();
+            _startButton.interactable = true;
         }
 
         private void UpdateNavigationButtonsInteractable()

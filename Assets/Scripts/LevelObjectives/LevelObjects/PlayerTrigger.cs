@@ -1,4 +1,5 @@
 ﻿using System;
+using Gameplay;
 using UnityEngine;
 
 namespace LevelObjectives.LevelObjects
@@ -17,6 +18,7 @@ namespace LevelObjectives.LevelObjects
 
         protected virtual void OnTriggerEnter(Collider other)
         {
+            if (!other.GetComponent<PlayerClone>()) return;
             Activated?.Invoke();
         }
     }
