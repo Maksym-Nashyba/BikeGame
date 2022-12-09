@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using IGUIDResources;
 using UnityEngine;
 
-namespace Garage.Paint
+namespace Menu.Garage.Paint
 {
     public class PaintContainersHolder : MonoBehaviour
     {
@@ -43,18 +44,37 @@ namespace Garage.Paint
             container.transform.localPosition = _paintContainerPrefab.transform.localPosition + new Vector3(0, verticalOffset, horizontalOffset);
         }
 
-        public void ApplyPaintsToContainers(Skin[] skins)
+        public Task ApplyPaintsToContainers(Skin[] skins)
         {
-            if(_paintContainers != null) CleanContainers();
+            if(_paintContainers != null) ResetPaintContainers();
             _paintContainers = new List<PaintContainer>(skins.Length);
 
             for (int i = 0; i < skins.Length; i++)
             {
-                ApplyPaintToContainer(_paintContainersGameObjects[i], skins[i]);
+                PaintContainer paintContainer = _paintContainersGameObjects[i].GetComponentInChildren<PaintContainer>();
+                ApplyPaintToContainer(paintContainer, skins[i]);
+                paintContainer.PlayFillAnimation();
+            }
+            return Task.CompletedTask;
+        }
+        
+        private void ApplyPaintToContainer(PaintContainer paintContainer, Skin skin) 
+        {
+            paintContainer.Skin = skin;
+            paintContainer.Clicked += OnContainerSelected;
+            _paintContainers.Add(paintContainer);
+        }
+
+        public void CleanContainers()
+        {
+            if (_paintContainers == null) return;
+            foreach (PaintContainer container in _paintContainers) 
+            {
+                container.PlayCleanAnimation();
             }
         }
         
-        private void CleanContainers() 
+        private void ResetPaintContainers() 
         {
             if (_paintContainers == null) return;
             foreach (PaintContainer container in _paintContainers) 
@@ -67,15 +87,7 @@ namespace Garage.Paint
 
         private void OnDestroy()
         {
-            CleanContainers();
-        }
-
-        private void ApplyPaintToContainer(GameObject container, Skin skin)
-        {
-            PaintContainer paintContainer = container.GetComponentInChildren<PaintContainer>();
-            paintContainer.Skin = skin;
-            paintContainer.Clicked += OnContainerSelected;
-            _paintContainers.Add(paintContainer);
+            ResetPaintContainers();
         }
 
         private void OnContainerSelected(GameObject paintContainer)

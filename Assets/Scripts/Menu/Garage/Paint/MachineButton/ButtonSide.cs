@@ -1,9 +1,8 @@
 ﻿using System;
 using Misc;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-namespace Garage.Paint.MachineButton
+namespace Menu.Garage.Paint.MachineButton
 {
     public class ButtonSide : ClickTarget<ButtonSides>
     {

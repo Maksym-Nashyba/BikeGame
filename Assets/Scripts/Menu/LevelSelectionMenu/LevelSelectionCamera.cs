@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Effects.TransitionCover;
-using LevelLoading;
 using Misc;
 using UnityEngine;
 
@@ -16,6 +15,7 @@ namespace Menu
         [SerializeField] private LevelSelectionCheckpoint[] _checkpoints;
         [SerializeField] private LevelSelection _levelSelection;
         [SerializeField] private SceneTransitionCover _cloudSceneTransitionCover;
+        [SerializeField] private Light _mainLight;
         private AsyncExecutor _asyncExecutor;
         private LevelSelectionCheckpoint CurrentCheckpoint => _checkpoints[_currentCheckpointIndex];
         private int _currentCheckpointIndex;
@@ -36,6 +36,7 @@ namespace Menu
             Vector3 checkpointPosition = _checkpoints[levelIndex].Position;
             _cameraTransform.SetPositionAndRotation(checkpointPosition, GetLookRotation(checkpointPosition, _checkpoints[levelIndex].Target));
             _currentCheckpointIndex = levelIndex;
+            _mainLight.color = CurrentCheckpoint.LightColor;
         }
         
         public async Task MoveToLevel(int targetLevelIndex)
@@ -43,7 +44,7 @@ namespace Menu
             while (targetLevelIndex != _currentCheckpointIndex)
             {
                 int stepDirection = Convert.ToInt32(_currentCheckpointIndex < targetLevelIndex) * 2 -1;
-                await MoveByOneCheckpoint(stepDirection);
+                await Task.WhenAll(MoveByOneCheckpoint(stepDirection), LerpLightColor(stepDirection));
                 _currentCheckpointIndex += stepDirection;
             }
         }
@@ -73,6 +74,17 @@ namespace Menu
         {
             Vector3 direction = to - from;
             return Quaternion.LookRotation(direction);
+        }
+
+        private Task LerpLightColor(int direction)
+        {
+            Color startColor = CurrentCheckpoint.LightColor;
+            Color targetColor = _checkpoints[_currentCheckpointIndex + direction].LightColor;
+
+            return _asyncExecutor.EachFrame(_transitionDurationSeconds, t =>
+            {
+                _mainLight.color = Color.LerpUnclamped(startColor, targetColor, t);
+            }, EaseFunctions.InOutQuad);
         }
 
         private Task ZoomInOnCheckpoint(LevelSelectionCheckpoint checkpoint)

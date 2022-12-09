@@ -1,7 +1,6 @@
 ﻿using Garage;
-using Garage.Paint;
-using Garage.Paint.MachineButton;
 using IGUIDResources;
+using Menu.Garage.Paint.MachineButton;
 using Misc;
 using SaveSystem.Front;
 using UnityEngine;
@@ -54,15 +53,17 @@ namespace Menu.Garage.Paint
             }
         }
 
-        private void OnCameraApproaching()
+        private async void OnCameraApproaching()
         {
-            _modelDisplay.Holder.MoveToPosition(GarageBikeModelHolder.BikePositions.Paint);
-            _containersHolder.ApplyPaintsToContainers(_modelDisplay.CurrentBike.AllSkins);
+            await _modelDisplay.Holder.MoveToPosition(GarageBikeModelHolder.BikePositions.Paint);
+            await _containersHolder.ApplyPaintsToContainers(_modelDisplay.CurrentBike.AllSkins);
         }
         
         private void OnCameraDeparted()
         {
             _modelDisplay.Holder.MoveToPosition(GarageBikeModelHolder.BikePositions.Preview);
+            _containersHolder.CleanContainers();
+            _buttonAnimator.ChangeButtonState(ButtonSides.Empty);
         }
 
         private void OnSkinChanged(Skin skin)
@@ -96,7 +97,10 @@ namespace Menu.Garage.Paint
 
         private void ConfirmSkinPurchase()
         {
+            if (_saves.Currencies.GetDollans() < 250) return; //TODO Play effects
             _saves.Bikes.UnlockSkin(_modelDisplay.CurrentBike.GetGUID(), _selectedSkin.GetGUID());
+            _saves.Currencies.SubtractDollans(250);
+            
             PaintBike();
             _buttonAnimator.ChangeButtonState(ButtonSides.Empty);
         }
@@ -104,6 +108,7 @@ namespace Menu.Garage.Paint
         private void PaintBike()
         {
             _modelDisplay.ApplySkin(_selectedSkin);
+            _saves.Bikes.SelectSkinFor(_modelDisplay.CurrentBike.GetGUID(), _selectedSkin.GetGUID());
             _buttonAnimator.ChangeButtonState(ButtonSides.Empty);
         }
     }

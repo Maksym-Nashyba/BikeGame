@@ -2,7 +2,7 @@
 using Misc;
 using UnityEngine;
 
-namespace Garage.Paint.MachineButton
+namespace Menu.Garage.Paint.MachineButton
 {
     public class MachineButtonAnimator: MonoBehaviour
     {

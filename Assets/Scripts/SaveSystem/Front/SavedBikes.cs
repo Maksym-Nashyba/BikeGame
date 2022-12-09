@@ -9,7 +9,7 @@ namespace SaveSystem.Front
     public class SavedBikes
     {
         public event Action Changed;
-        private GUIDResourceLocator _resources;
+        private readonly GUIDResourceLocator _resources;
         private SaveData _saveData;
         
         public SavedBikes(SaveData saveData, GUIDResourceLocator resourceLocator)
@@ -106,6 +106,13 @@ namespace SaveSystem.Front
             PersistentBike targetBike = WithGUID(bikeGUID);
             Array.Resize(ref targetBike.UnlockedSkins, targetBike.UnlockedSkins.Length + 1);
             targetBike.UnlockedSkins[^1] = skinGUID;
+            Changed?.Invoke();
+        }
+
+        public void SelectSkinFor(string bikeGUID, string skinGUID)
+        {
+            PersistentBike targetBike = WithGUID(bikeGUID);
+            targetBike.SelectedSkinGUID = skinGUID;
             Changed?.Invoke();
         }
     }
