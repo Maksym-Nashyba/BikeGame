@@ -20,6 +20,7 @@ namespace Menu.Garage.Computer
 
         private List<Program> _runningProcesses;
         private LinkedList<Window> _openWindows; //First is top (no, I couldn't have used a stack)
+        private DialogueWindow _currentDialogueWindow;
 
         private void Awake()
         {
@@ -61,7 +62,10 @@ namespace Menu.Garage.Computer
 
         public void ShowDialog(string message)
         {
-            
+            if(_currentDialogueWindow != null)_currentDialogueWindow.Close();
+            _currentDialogueWindow = Instantiate(_dialogWindowPrefab, Vector3.zero, Quaternion.identity, transform).GetComponent<DialogueWindow>();
+            _currentDialogueWindow.SetMessageText(message);
+            _currentDialogueWindow.transform.localPosition = Vector3.zero;
         }
         
         private void OpenWindow(Window window)

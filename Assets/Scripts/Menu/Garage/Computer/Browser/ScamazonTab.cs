@@ -1,11 +1,10 @@
-﻿using System;
-using IGUIDResources;
+﻿using IGUIDResources;
 using SaveSystem.Front;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace ProgressionStore.Computer.Browser
+namespace Menu.Garage.Computer.Browser
 {
     public class ScamazonTab : MonoBehaviour
     {
@@ -34,6 +33,10 @@ namespace ProgressionStore.Computer.Browser
             if (TryBuy())
             {
                 SetUpUI(true);
+            }
+            else
+            {
+                FindObjectOfType<Computer>().ShowDialog($"YOU_ARE_TOO_POOR\nBALANCE_{_saves.Currencies.GetDollans()}");
             }
         }
 
