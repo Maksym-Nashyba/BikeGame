@@ -1,6 +1,5 @@
 ﻿using Effects.TransitionCover;
 using IGUIDResources;
-using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
