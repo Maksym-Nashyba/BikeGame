@@ -19,6 +19,11 @@ namespace Menu.Garage.Paint
             GeneratePaintContainers();
         }
         
+        private void OnDestroy()
+        {
+            ResetPaintContainers();
+        }
+        
         private void GeneratePaintContainers()
         {
             _paintContainersGameObjects = new GameObject[6];
@@ -40,7 +45,7 @@ namespace Menu.Garage.Paint
         private void ApplyContainerPosition(GameObject container, int containerNumber)
         {
             float verticalOffset = containerNumber > 3 ? -1.4f : (containerNumber > 1 ? -0.7f : 0);
-            float horizontalOffset = containerNumber %2 != 0 ? 0.7f : 0;
+            float horizontalOffset = containerNumber % 2 != 0 ? 0.7f : 0;
             container.transform.localPosition = _paintContainerPrefab.transform.localPosition + new Vector3(0, verticalOffset, horizontalOffset);
         }
 
@@ -85,31 +90,14 @@ namespace Menu.Garage.Paint
             _paintContainers = null;
         }
 
-        private void OnDestroy()
-        {
-            ResetPaintContainers();
-        }
-
         private void OnContainerSelected(GameObject paintContainer)
         {
-            if(_currentPaintContainer != null) UnHollowSelectedContainer();
             _currentPaintContainer = paintContainer;
-            HollowSelectedContainer();
-            
+
             Skin skin = GetSkinFrom(_currentPaintContainer);
             SkinChanged?.Invoke(skin);
         }
 
-        private void HollowSelectedContainer()
-        {
-            
-        }
-        
-        private void UnHollowSelectedContainer()
-        {
-            
-        }
-        
         private Skin GetSkinFrom(GameObject paintContainer)
         {
             PaintContainer container = paintContainer.GetComponentInChildren<PaintContainer>();

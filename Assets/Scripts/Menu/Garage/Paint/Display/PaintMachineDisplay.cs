@@ -12,17 +12,18 @@ namespace Menu.Garage.Paint.Display
         private void Awake()
         {
             _painter = new TexturePainter(_resolution, _renderer);
+            _patterns.Bake();
         }
 
         private void Start()
         {
-            SelectContainer(new Vector2Int(0,1));
+            SelectContainer(new Vector2Int(0,0));
         }
 
         public void SelectContainer(Vector2Int index)
         {
-            _painter.PaintPattern(index, _patterns.SelectionFrame);
-            _painter.PaintPattern(index + Vector2Int.right, _patterns.ThreeHundrerBucks);
+            _painter.PaintPatternInCell(index, _patterns.SelectionFrame);
+            _painter.PaintPatternInCell(index+Vector2Int.right, _patterns.FromString("200$"));
             _painter.Apply();
         }
     }
