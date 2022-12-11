@@ -11,7 +11,7 @@ namespace Menu.Garage
         private void Start()
         {
             Saves saves = FindObjectOfType<Saves>();
-            if(!saves.Career.IsCompleted(_level)) Destroy(gameObject); 
+            if(saves == null || !saves.Career.IsCompleted(_level)) Destroy(gameObject); 
         }
     }
 }
