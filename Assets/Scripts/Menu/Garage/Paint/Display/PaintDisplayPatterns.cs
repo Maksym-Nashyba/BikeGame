@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Array2DEditor;
+using Misc;
 using UnityEngine;
 
 namespace Menu.Garage.Paint.Display
@@ -16,7 +17,9 @@ namespace Menu.Garage.Paint.Display
         [SerializeField] private Array2DBool _arrowRight;
         public Pattern ArrowLeft => GetBaked(_arrowLeft);
         [SerializeField] private Array2DBool _arrowLeft;
-        
+        public Pattern ArrowDown => GetBaked(_arrowDown);
+        [SerializeField] private Array2DBool _arrowDown;
+
         private Dictionary<char, Pattern> _characterPatterns = new Dictionary<char, Pattern>();
         [SerializeField] private Vector2Int _characterPatternSize;
         #region Characters
@@ -81,14 +84,13 @@ namespace Menu.Garage.Paint.Display
                 pattern.Insert(new Vector2Int(xOffset, 0), _characterPatterns[character]);
                 xOffset += _characterPatternSize.x + 1;
             }
-
             return pattern;
         }
         
-        public Pattern BuildPricePattern(uint price, bool left)
+        public Pattern BuildPricePattern(uint price, Direction1D direction)
         {
             Pattern result = new Pattern(_cellSize);
-            Pattern arrowPattern = left ? ArrowLeft : ArrowRight;
+            Pattern arrowPattern = direction == Direction1D.Left ? ArrowLeft : ArrowRight;
             Pattern priceText = FromString($"{price}$");
             Vector2Int priceTextLocation = new Vector2Int((_cellSize.x-priceText.Size.x)/2, _cellSize.y/2-priceText.Size.y);
             result.Insert(priceTextLocation, priceText);

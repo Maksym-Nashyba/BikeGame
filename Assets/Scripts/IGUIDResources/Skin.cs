@@ -6,6 +6,7 @@ namespace IGUIDResources
     public class Skin : ScriptableObject, IGUIDResource
     {
         public Material Material;
+        public uint Price;
         
         public string GetGUID()
         {

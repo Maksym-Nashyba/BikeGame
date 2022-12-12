@@ -53,6 +53,17 @@ MonoBehaviour:
     - row: 01010101010101010101
     - row: 00010100000000000000
     - row: 00000100000000000000
+  _arrowDown:
+    gridSize: {x: 7, y: 7}
+    cellSize: {x: 16, y: 16}
+    cells:
+    - row: 00000101010000
+    - row: 00000101010000
+    - row: 00000101010000
+    - row: 01010101010101
+    - row: 00010101010100
+    - row: 00000101010000
+    - row: 00000001000000
   _characterPatternSize: {x: 4, y: 7}
   _zero:
     gridSize: {x: 4, y: 7}

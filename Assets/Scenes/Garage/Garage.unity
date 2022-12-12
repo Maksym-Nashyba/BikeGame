@@ -3888,7 +3888,7 @@ GameObject:
   - component: {fileID: 1436655367}
   - component: {fileID: 1436655370}
   m_Layer: 0
-  m_Name: Plane
+  m_Name: PaintMachineDisplay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3971,9 +3971,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9786c9b7da4d413bbbfa8aae37d8e742, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _green: {r: 0, g: 1, b: 0.031219244, a: 1}
+  _yellow: {r: 1, g: 0.7526599, b: 0, a: 1}
+  _red: {r: 1, g: 0, b: 0.06774902, a: 1}
   _resolution: {x: 36, y: 54}
-  _renderer: {fileID: 1436655367}
   _patterns: {fileID: 11400000, guid: f06ed0a90d833634b8c91076497a867c, type: 2}
+  _renderer: {fileID: 1436655367}
+  _containerHolder: {fileID: 1989946587}
 --- !u!1 &1442668692
 GameObject:
   m_ObjectHideFlags: 0
@@ -6046,6 +6050,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _paintContainerPrefab: {fileID: 3116261732089756778}
+  _gridSize: {x: 0, y: 0}
 --- !u!1001 &2030418254
 PrefabInstance:
   m_ObjectHideFlags: 0

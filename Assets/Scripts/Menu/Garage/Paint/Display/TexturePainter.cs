@@ -29,28 +29,28 @@ namespace Menu.Garage.Paint.Display
             return texture;
         }
         
-        private Vector2Int CalculateCellSize(Vector2Int Resolution)
+        private Vector2Int CalculateCellSize(Vector2Int resolution)
         {
-            return new Vector2Int(Resolution.x / 2, Resolution.y / 3);
+            return new Vector2Int(resolution.x / 2, resolution.y / 3);
         }
         #endregion
 
-        public void PaintPatternInCell(Vector2Int cellIndex, Pattern pattern)
+        public void PaintPatternInCell(Vector2Int cell, Pattern pattern, Color color)
         {
-            Vector2Int topLeft = cellIndex * _cellSize;
-            PaintPattern(topLeft, pattern);
+            Vector2Int topLeft = cell * _cellSize;
+            PaintPattern(topLeft, pattern, color);
         }
         
-        public void PaintPattern(Vector2Int topLeft, Pattern pattern)
+        public void PaintPattern(Vector2Int topLeft, Pattern pattern, Color color)
         {
             for (int x = 0; x < pattern.Size.x; x++)
             {
-                if(topLeft.x+x < 0 || topLeft.x+x > _resolution.x-1)continue;
+                if(topLeft.x+x < 0 || topLeft.x+x > _resolution.x-1) continue;
                 for (int y = 0; y < pattern.Size.y; y++)
                 {
-                    if(topLeft.y+y < 0 || topLeft.y+y > _resolution.y-1)continue;
-                    Color color = pattern.Grid[x,y] ? Color.green : Color.clear;
-                    PaintPixel(topLeft + new Vector2Int(x, y), color);
+                    if(topLeft.y+y < 0 || topLeft.y+y > _resolution.y-1) continue;
+                    Color pixelColor = pattern.Grid[x,y] ? color : Color.clear;
+                    PaintPixel(topLeft + new Vector2Int(x, y), pixelColor);
                 }
             }
         }

@@ -8,8 +8,10 @@ namespace Menu.Garage.Paint
 {
     public class PaintContainersHolder : MonoBehaviour
     {
+        public event Action<Vector2Int, Skin> ContainerSelected; 
         public event Action<Skin> SkinChanged;
         [SerializeField] private GameObject _paintContainerPrefab;
+        [SerializeField] private Vector2Int _gridSize;
         private GameObject _currentPaintContainer;
         private GameObject[] _paintContainersGameObjects;
         private List<PaintContainer> _paintContainers;
@@ -96,6 +98,7 @@ namespace Menu.Garage.Paint
 
             Skin skin = GetSkinFrom(_currentPaintContainer);
             SkinChanged?.Invoke(skin);
+            ContainerSelected?.Invoke(new Vector2Int(1,0), skin);
         }
 
         private Skin GetSkinFrom(GameObject paintContainer)
