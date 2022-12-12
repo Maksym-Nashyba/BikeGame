@@ -5,12 +5,13 @@ using IGUIDResources;
 using Misc;
 using UnityEngine;
 
-namespace Menu.Garage.Paint
+namespace Menu.Garage.Paint.Containers
 {
-    public class PaintContainer : ClickTarget<GameObject>
+    public class PaintContainer : ClickTarget<PaintContainer>
     {
-        public override event Action<GameObject> Clicked;
+        public override event Action<PaintContainer> Clicked;
         public Skin Skin { get; set; }
+        public Vector2Int Cell { get; private set; }
         [SerializeField] private GameObject _paintMesh;
         [SerializeField] private GameObject _sprayMesh;
         [SerializeField] private MeshRenderer _paintMeshRenderer;
@@ -71,7 +72,12 @@ namespace Menu.Garage.Paint
 
         protected override void OnClicked()
         {
-            Clicked?.Invoke(gameObject.transform.parent.gameObject);
+            Clicked?.Invoke(this);
+        }
+
+        public Task Clean()
+        {
+            throw new NotImplementedException();
         }
     }
 }

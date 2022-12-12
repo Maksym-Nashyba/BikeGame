@@ -1,5 +1,4 @@
-﻿using System;
-using IGUIDResources;
+﻿using Menu.Garage.Paint.Containers;
 using Misc;
 using SaveSystem.Front;
 using UnityEngine;
@@ -32,13 +31,13 @@ namespace Menu.Garage.Paint.Display
             _containerHolder.ContainerSelected -= OnContainerSelected;
         }
 
-        private void OnContainerSelected(Vector2Int cell, Skin skin)
+        private void OnContainerSelected(PaintContainer container)
         {
-            if (_saves.Bikes.IsSkinUnlocked(skin)) PaintBoughtSelection(cell);
+            if (_saves.Bikes.IsSkinUnlocked(container.Skin)) PaintBoughtSelection(container.Cell);
             else
             {
-                bool canAfford = _saves.Currencies.GetDollans() >= skin.Price;
-                PaintNotBoughtSelection(cell, skin.Price, canAfford);
+                bool canAfford = _saves.Currencies.GetDollans() >= container.Skin.Price;
+                PaintNotBoughtSelection(container.Cell, container.Skin.Price, canAfford);
             }
             _painter.Apply();
         }

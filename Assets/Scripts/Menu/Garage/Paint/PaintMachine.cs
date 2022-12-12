@@ -1,5 +1,6 @@
 ﻿using Garage;
 using IGUIDResources;
+using Menu.Garage.Paint.Containers;
 using Menu.Garage.Paint.MachineButton;
 using Misc;
 using SaveSystem.Front;
@@ -34,7 +35,7 @@ namespace Menu.Garage.Paint
         {
             _cameraCheckpoint.CameraApproaching += OnCameraApproaching;
             _cameraCheckpoint.CameraDeparted += OnCameraDeparted;
-            _containersHolder.SkinChanged += OnSkinChanged;
+            _containersHolder.ContainerSelected += OnContainerSelected;
             foreach (ButtonSide buttonSide in _buttonSides)
             {
                 buttonSide.Clicked += OnButtonClicked;
@@ -45,7 +46,7 @@ namespace Menu.Garage.Paint
         {
             _cameraCheckpoint.CameraApproaching -= OnCameraApproaching;
             _cameraCheckpoint.CameraDeparted -= OnCameraDeparted;
-            _containersHolder.SkinChanged -= OnSkinChanged;
+            _containersHolder.ContainerSelected -= OnContainerSelected;
             
             foreach (ButtonSide buttonSide in _buttonSides)
             {
@@ -56,7 +57,7 @@ namespace Menu.Garage.Paint
         private async void OnCameraApproaching()
         {
             await _modelDisplay.Holder.MoveToPosition(GarageBikeModelHolder.BikePositions.Paint);
-            await _containersHolder.ApplyPaintsToContainers(_modelDisplay.CurrentBike.AllSkins);
+            await _containersHolder.FillContainers(_modelDisplay.CurrentBike.AllSkins);
         }
         
         private void OnCameraDeparted()
@@ -66,10 +67,9 @@ namespace Menu.Garage.Paint
             _buttonAnimator.ChangeButtonState(ButtonSides.Empty);
         }
 
-        private void OnSkinChanged(Skin skin)
+        private void OnContainerSelected(PaintContainer container)
         {
-            _selectedSkin = skin;
-            if (_saves.Bikes.IsSkinUnlocked(skin))
+            if (_saves.Bikes.IsSkinUnlocked(container.Skin))
             {
                 _buttonAnimator.ChangeButtonState(ButtonSides.Paint);
                 return;
