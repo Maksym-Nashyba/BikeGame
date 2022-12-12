@@ -92,6 +92,8 @@ namespace Menu.Garage.Paint.Display
             Pattern priceText = FromString($"{price}$");
             Vector2Int priceTextLocation = new Vector2Int((_cellSize.x-priceText.Size.x)/2, _cellSize.y/2-priceText.Size.y);
             result.Insert(priceTextLocation, priceText);
+            Vector2Int arrowPatternLocation = new Vector2Int((_cellSize.x-arrowPattern.Size.x)/2, (int)(_cellSize.y - (1.5f * arrowPattern.Size.y)));
+            result.Insert(arrowPatternLocation, arrowPattern);
             return result;
         }
     }

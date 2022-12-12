@@ -17,13 +17,17 @@ namespace Menu.Garage.Paint.Display
 
         private void Start()
         {
-            SelectContainer(new Vector2Int(0,0));
+            SelectContainer(new Vector2Int(1,0));
+            SelectContainer(new Vector2Int(0,1));
+            SelectContainer(new Vector2Int(1,2));
         }
 
         public void SelectContainer(Vector2Int index)
         {
+            bool leftColumn = index.x == 0;
+            Vector2Int pricePatternCell = leftColumn ? index + Vector2Int.right : index + Vector2Int.left;
             _painter.PaintPatternInCell(index, _patterns.SelectionFrame);
-            _painter.PaintPatternInCell(index+Vector2Int.right, _patterns.BuildPricePattern(37, true));
+            _painter.PaintPatternInCell(pricePatternCell, _patterns.BuildPricePattern(69, leftColumn));
             _painter.Apply();
         }
     }
