@@ -19,9 +19,12 @@ namespace Menu.Garage.Paint.Display
         #region Initialization
         private Texture2D InitializeTexture(Vector2Int size, MeshRenderer renderer)
         {
-            Texture2D texture = new Texture2D(size.x, size.y, GraphicsFormat.R8G8B8A8_SRGB, TextureCreationFlags.None);
-            texture.filterMode = FilterMode.Point;
-            texture.wrapMode = TextureWrapMode.Clamp;
+            Texture2D texture = new Texture2D(size.x, size.y, 
+                GraphicsFormat.R8G8B8A8_SRGB, TextureCreationFlags.None)
+                {
+                    filterMode = FilterMode.Point,
+                    wrapMode = TextureWrapMode.Clamp
+                };
             renderer.material.SetTexture("_Image", texture);
             return texture;
         }

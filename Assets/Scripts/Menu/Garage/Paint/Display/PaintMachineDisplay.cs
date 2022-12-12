@@ -23,7 +23,7 @@ namespace Menu.Garage.Paint.Display
         public void SelectContainer(Vector2Int index)
         {
             _painter.PaintPatternInCell(index, _patterns.SelectionFrame);
-            _painter.PaintPatternInCell(index+Vector2Int.right, _patterns.FromString("200$"));
+            _painter.PaintPatternInCell(index+Vector2Int.right, _patterns.BuildPricePattern(37, true));
             _painter.Apply();
         }
     }

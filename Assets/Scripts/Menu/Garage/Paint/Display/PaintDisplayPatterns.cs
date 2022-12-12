@@ -12,6 +12,10 @@ namespace Menu.Garage.Paint.Display
 
         public Pattern SelectionFrame => GetBaked(_selectionFrame);
         [SerializeField] private Array2DBool _selectionFrame;
+        public Pattern ArrowRight => GetBaked(_arrowRight);
+        [SerializeField] private Array2DBool _arrowRight;
+        public Pattern ArrowLeft => GetBaked(_arrowLeft);
+        [SerializeField] private Array2DBool _arrowLeft;
         
         private Dictionary<char, Pattern> _characterPatterns = new Dictionary<char, Pattern>();
         [SerializeField] private Vector2Int _characterPatternSize;
@@ -79,6 +83,16 @@ namespace Menu.Garage.Paint.Display
             }
 
             return pattern;
+        }
+        
+        public Pattern BuildPricePattern(uint price, bool left)
+        {
+            Pattern result = new Pattern(_cellSize);
+            Pattern arrowPattern = left ? ArrowLeft : ArrowRight;
+            Pattern priceText = FromString($"{price}$");
+            Vector2Int priceTextLocation = new Vector2Int((_cellSize.x-priceText.Size.x)/2, _cellSize.y/2-priceText.Size.y);
+            result.Insert(priceTextLocation, priceText);
+            return result;
         }
     }
 }
