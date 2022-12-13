@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Threading;
 using System.Threading.Tasks;
 using IGUIDResources;
 using Misc;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Menu.Garage.Paint.Containers
 {
@@ -59,12 +57,12 @@ namespace Menu.Garage.Paint.Containers
 
         private Task PlayFillAnimation()
         {
-            throw new NotImplementedException();
+            return Task.CompletedTask;
         }
 
         private Task PlayCleanAnimation()
         {
-            throw new NotImplementedException();
+            return Task.CompletedTask;
         }
     }
 }

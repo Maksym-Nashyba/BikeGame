@@ -54,6 +54,18 @@ namespace Menu.Garage.Paint.Display
                 }
             }
         }
+
+        public void Clear()
+        {
+            for (int x = 0; x < _resolution.x; x++)
+            {
+                for (int y = 0; y < _resolution.y; y++)
+                {
+                    _texture.SetPixel(x,y, Color.clear);
+                }
+            }
+            Apply();
+        }
         
         public void Apply()
         {

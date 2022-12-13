@@ -1,4 +1,5 @@
-﻿using Menu.Garage.Paint.Containers;
+﻿using System;
+using Menu.Garage.Paint.Containers;
 using Misc;
 using SaveSystem.Front;
 using UnityEngine;
@@ -26,6 +27,11 @@ namespace Menu.Garage.Paint.Display
             _containerHolder.ContainerSelected += OnContainerSelected;
         }
 
+        private void Start()
+        {
+            _painter.Clear();
+        }
+
         private void OnDestroy()
         {
             _containerHolder.ContainerSelected -= OnContainerSelected;
@@ -33,6 +39,7 @@ namespace Menu.Garage.Paint.Display
 
         private void OnContainerSelected(PaintContainer container)
         {
+            _painter.Clear();
             if (_saves.Bikes.IsSkinUnlocked(container.Skin)) PaintBoughtSelection(container.Cell);
             else
             {

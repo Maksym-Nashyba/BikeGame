@@ -19,6 +19,10 @@ namespace Menu.Garage.Paint.Containers
         {
             PaintContainerSpawner containerSpawner = new PaintContainerSpawner(_paintContainerPrefab);
             _paintContainers = containerSpawner.Spawn(_gridSize, _padding, transform);
+            foreach (PaintContainer container in _paintContainers) 
+            {
+                container.Clicked += OnContainerClicked;
+            }
         }
         
         private void OnDestroy()
@@ -31,9 +35,9 @@ namespace Menu.Garage.Paint.Containers
 
         private void OnContainerClicked(PaintContainer paintContainer)
         {
-            if (_selectedContainer != paintContainer) return;
+            if (_selectedContainer == paintContainer) return;
             _selectedContainer = paintContainer;
-            ContainerSelected?.Invoke(_selectedContainer);
+            if(paintContainer.Skin!= null)ContainerSelected?.Invoke(_selectedContainer);
         }
         
         public Task FillContainers(Skin[] skins)
