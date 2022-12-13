@@ -31,7 +31,7 @@ namespace Menu.Garage.Paint.Containers
         private PaintContainer InstantiateContainer(Vector2Int cell, Vector2 padding, Transform firstLocation)
         {
             Transform containerTransform = Object.Instantiate(_containerPrefab, firstLocation).transform;
-            containerTransform.localPosition = new Vector3(cell.x * padding.x, 0f, -cell.y * padding.y);
+            containerTransform.localPosition = new Vector3(0f, -cell.y * padding.y, cell.x * padding.x);
             containerTransform.localRotation = Quaternion.identity;
             containerTransform.gameObject.SetActive(true);
             return containerTransform.GetComponent<PaintContainer>();
