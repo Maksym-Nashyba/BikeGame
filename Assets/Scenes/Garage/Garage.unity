@@ -6029,7 +6029,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1989946585}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.056, y: 2.117, z: 0.96}
+  m_LocalPosition: {x: -3.056, y: 2.789, z: 0.663}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6050,7 +6050,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _paintContainerPrefab: {fileID: 3116261732089756778}
-  _gridSize: {x: 0, y: 0}
+  _gridSize: {x: 2, y: 3}
+  _padding: {x: 1, y: 1}
 --- !u!1001 &2030418254
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7070,15 +7071,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9177946128026739840, guid: cb64176baa51f034c95860aa13ba2647, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.18
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9177946128026739840, guid: cb64176baa51f034c95860aa13ba2647, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.75
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9177946128026739840, guid: cb64176baa51f034c95860aa13ba2647, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.35
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9177946128026739840, guid: cb64176baa51f034c95860aa13ba2647, type: 3}
       propertyPath: m_LocalRotation.w

@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using IGUIDResources;
-using Misc;
 using UnityEngine;
 
 namespace Menu.Garage.Paint.Containers
@@ -15,39 +13,49 @@ namespace Menu.Garage.Paint.Containers
         [SerializeField] private Vector2Int _gridSize;
         [SerializeField] private Vector2  _padding;
         private PaintContainer[] _paintContainers;
-
+        private PaintContainer _selectedContainer;
+        
         private void Start()
         {
             PaintContainerSpawner containerSpawner = new PaintContainerSpawner(_paintContainerPrefab);
-            _paintContainers = containerSpawner.Spawn(_gridSize, _padding, new Transformation(transform));
+            _paintContainers = containerSpawner.Spawn(_gridSize, _padding, transform);
         }
         
         private void OnDestroy()
         {
-            CleanContainers();
+            foreach (PaintContainer container in _paintContainers) 
+            {
+                container.Clicked -= OnContainerClicked;
+            }
         }
 
+        private void OnContainerClicked(PaintContainer paintContainer)
+        {
+            if (_selectedContainer != paintContainer) return;
+            _selectedContainer = paintContainer;
+            ContainerSelected?.Invoke(_selectedContainer);
+        }
+        
         public Task FillContainers(Skin[] skins)
         {
-            return Task.CompletedTask;
+            List<Task> fillingTasks = new List<Task>(_gridSize.x*_gridSize.y);
+            for (int i = 0; i < skins.Length; i++)
+            {
+                _paintContainers[i].Clicked += OnContainerClicked;
+                fillingTasks.Add(_paintContainers[i].Fill(skins[i]));
+            }
+            return Task.WhenAll(fillingTasks);
         }
 
         public async Task CleanContainers()
         {
-            if (_paintContainers == null) throw new NullReferenceException("Containers collection was null");
-            List<Task> animationTasks = new List<Task>(6);
+            List<Task> cleaningTasks = new List<Task>(_gridSize.x*_gridSize.y);
             foreach (PaintContainer container in _paintContainers) 
             {
                 container.Clicked -= OnContainerClicked;
-                animationTasks.Add(container.Clean());
+                cleaningTasks.Add(container.Clean());
             }
-            await Task.WhenAll(animationTasks);
-            Array.Clear(_paintContainers, 0, _paintContainers.Length);
-        }
-        
-        private void OnContainerClicked(PaintContainer paintContainer)
-        {
-            throw new NotImplementedException();
+            await Task.WhenAll(cleaningTasks);
         }
     }
 }

@@ -1,12 +1,12 @@
 ﻿using System;
+using Garage;
 using IGUIDResources;
-using Menu.Garage;
 using Misc;
 using SaveSystem.Front;
 using SaveSystem.Models;
 using UnityEngine;
 
-namespace Garage
+namespace Menu.Garage
 {
     public class BikePreview : MonoBehaviour
     {

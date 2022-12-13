@@ -47,7 +47,6 @@ namespace Menu.Garage.Paint
             _cameraCheckpoint.CameraApproaching -= OnCameraApproaching;
             _cameraCheckpoint.CameraDeparted -= OnCameraDeparted;
             _containersHolder.ContainerSelected -= OnContainerSelected;
-            
             foreach (ButtonSide buttonSide in _buttonSides)
             {
                 buttonSide.Clicked -= OnButtonClicked;

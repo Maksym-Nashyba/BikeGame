@@ -4,78 +4,65 @@ using System.Threading.Tasks;
 using IGUIDResources;
 using Misc;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Menu.Garage.Paint.Containers
 {
     public class PaintContainer : ClickTarget<PaintContainer>
     {
         public override event Action<PaintContainer> Clicked;
-        public Skin Skin { get; set; }
+        public Skin Skin { get; private set; }
         public Vector2Int Cell { get; private set; }
-        [SerializeField] private GameObject _paintMesh;
-        [SerializeField] private GameObject _sprayMesh;
-        [SerializeField] private MeshRenderer _paintMeshRenderer;
-        [SerializeField] private MeshRenderer _sprayMeshRenderer;
+        
+        [SerializeField] private Transform _paintTransform;
+        [SerializeField] private Transform _leakTransfrm;
+        [SerializeField] private MeshRenderer _paintRenderer;
+        [SerializeField] private MeshRenderer _leakRenderer;
+        
         private AsyncExecutor _asyncExecutor;
-        private CancellationToken _cancellationToken;
 
         protected override void Awake()
         {
             base.Awake();
             _asyncExecutor = new AsyncExecutor();
-            _cancellationToken = new CancellationToken();
         }
 
-        public Task PlayFillAnimation()
+        protected override void OnDestroy()
         {
-            PlayStrayAnimation();
-            PlayPaintAnimation();
-            return Task.CompletedTask;
-        }        
-        
-        private Task PlayStrayAnimation()
-        {
-            _sprayMeshRenderer.material = Skin.Material;
-            _sprayMesh.SetActive(true);
-            return _asyncExecutor.EachFrame(2f, t =>
-            {
-                _sprayMesh.transform.localScale = Vector3.LerpUnclamped(Vector3.up * 0.1f, new Vector3(0.025f, 0.1f, 0.025f), t);
-            }, EaseFunctions.ZeroOneZeroQuad, _cancellationToken);
-        }
-        
-        private Task PlayPaintAnimation()
-        {
-            _paintMeshRenderer.material = Skin.Material;
-            Vector3 startPosition = new Vector3(-3.041449f, 2.9f, 0.7072f);
-            Vector3 targetPosition = new Vector3(-3.041449f, 2.79f, 0.7072f);
-            Vector3 startScale = new Vector3(1f, 0f, 1f);
-            return PlayAnimation(startPosition, targetPosition, startScale, Vector3.one);
-        }
-        
-        public Task PlayCleanAnimation()
-        {
-            _sprayMesh.SetActive(false);
-            Vector3 startPosition = new Vector3(-3.041449f, 2.79f, 0.7072f);
-            Vector3 targetPosition = new Vector3(-3.041449f, 2.9f, 0.7072f);
-            Vector3 startScale = new Vector3(1f, 1f, 1f);
-            return PlayAnimation(startPosition, targetPosition, startScale, new Vector3(1f, 0f, 1f));
+            base.OnDestroy();
+            _asyncExecutor.Dispose();
         }
 
-        private Task PlayAnimation(Vector3 startPosition, Vector3 targetPosition, Vector3 startScale, Vector3 targetScale)
+        public void SetUp(Vector2Int cell)
         {
-            return _asyncExecutor.EachFrame(2f, t =>
-            {
-                _paintMesh.transform.localPosition = Vector3.LerpUnclamped(startPosition, targetPosition, t);
-                _paintMesh.transform.localScale = Vector3.LerpUnclamped(startScale, targetScale, t);
-            }, EaseFunctions.InOutQuad, _cancellationToken);
+            Cell = cell;
         }
-
+        
         protected override void OnClicked()
         {
             Clicked?.Invoke(this);
         }
+        
+        public Task Fill(Skin skin)
+        {
+            Skin = skin;
+            _paintRenderer.material = skin.Material;
+            _leakRenderer.material = skin.Material;
+            return PlayFillAnimation();
+        }
 
         public Task Clean()
+        {
+            Skin = null;
+            return PlayCleanAnimation();
+        }
+
+        private Task PlayFillAnimation()
+        {
+            throw new NotImplementedException();
+        }
+
+        private Task PlayCleanAnimation()
         {
             throw new NotImplementedException();
         }
