@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿using System.Threading.Tasks;
+using Misc;
+using Misc.Extensions;
+using UnityEngine;
 using UnityEngine.Experimental.Rendering;
 
 namespace Menu.Garage.Paint.Display
@@ -8,25 +11,32 @@ namespace Menu.Garage.Paint.Display
         private readonly Vector2Int _resolution;
         private readonly Vector2Int _cellSize;
         private readonly Texture2D _texture;
+        private readonly AsyncExecutor _asyncExecutor;
 
-        public TexturePainter(Vector2Int resolution, MeshRenderer renderer)
+        public TexturePainter(Vector2Int resolution, MeshRenderer renderer, AsyncExecutor asyncExecutor)
         {
             _resolution = resolution;
             _cellSize = CalculateCellSize(resolution);
             _texture = InitializeTexture(resolution, renderer);
+            _asyncExecutor = asyncExecutor;
         }
 
         #region Initialization
         private Texture2D InitializeTexture(Vector2Int size, MeshRenderer renderer)
         {
-            Texture2D texture = new Texture2D(size.x, size.y, 
-                GraphicsFormat.R8G8B8A8_SRGB, TextureCreationFlags.None)
-                {
-                    filterMode = FilterMode.Point,
-                    wrapMode = TextureWrapMode.Clamp
-                };
+            Texture2D texture = BuildTexture(size);
             renderer.material.SetTexture("_Image", texture);
             return texture;
+        }
+
+        private Texture2D BuildTexture(Vector2Int size)
+        {
+            return new Texture2D(size.x, size.y, 
+                GraphicsFormat.R8G8B8A8_SRGB, TextureCreationFlags.None)
+            {
+                filterMode = FilterMode.Point,
+                wrapMode = TextureWrapMode.Clamp
+            };
         }
         
         private Vector2Int CalculateCellSize(Vector2Int resolution)
@@ -57,7 +67,27 @@ namespace Menu.Garage.Paint.Display
 
         public void PaintFromTexture(Texture2D source)
         {
-            _texture.SetPixels(source.GetPixels());
+            Graphics.CopyTexture(source, _texture);
+        }
+
+        public Task CleanAnimated()
+        {
+            Texture2D copy = BuildTexture(_resolution);
+            Graphics.CopyTexture(_texture, copy);
+            Clear();
+            return _asyncExecutor.EachFrame(1.2f, t =>
+            {
+                Clear();
+                Color[] columnBuffer = new Color[_resolution.y];
+                for (int x = 0; x < _resolution.x; x++)
+                {
+                    float horizontalPosition = (float)x / _resolution.x;
+                    int yPatternPosition = (int)(_resolution.y*horizontalPosition*t + _resolution.y*t);
+                    copy.GetPixelsNonAlloc(x, yPatternPosition, 1, _resolution.y, columnBuffer);
+                    _texture.SetPixels(x,0,1,_resolution.y, columnBuffer);
+                }
+                Apply();
+            }, EaseFunctions.EaseInCirc);
         }
         
         public void Clear()

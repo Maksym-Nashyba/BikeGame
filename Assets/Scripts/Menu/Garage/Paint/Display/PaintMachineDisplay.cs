@@ -7,24 +7,28 @@ namespace Menu.Garage.Paint.Display
 {
     public class PaintMachineDisplay : MonoBehaviour
     {
+        [Header("Settings")]
         [SerializeField] private Color _green;
         [SerializeField] private Color _yellow;
         [SerializeField] private Color _red;
-        [SerializeField] private Texture2D _closedScreen;
-
         [SerializeField] private Vector2Int _resolution;
+        [Header("Patterns")]
+        [SerializeField] private Texture2D _closedScreen;
         [SerializeField] private PaintDisplayPatterns _patterns;
-        
+        [Header("References")]
         [SerializeField] private MeshRenderer _renderer;
         [SerializeField] private PaintContainersHolder _containerHolder;
         [SerializeField] private CameraCheckpoint _cameraCheckpoint;
+        
         private TexturePainter _painter;
         private Saves _saves;
+        private AsyncExecutor _asyncExecutor;
         
         private void Awake()
         {
+            _asyncExecutor = new AsyncExecutor();
             _saves = FindObjectOfType<Saves>();
-            _painter = new TexturePainter(_resolution, _renderer);
+            _painter = new TexturePainter(_resolution, _renderer, _asyncExecutor);
             _patterns.Bake();
             _cameraCheckpoint.CameraApproaching += OnCameraApproaching;
             _cameraCheckpoint.CameraDeparted += OnCameraDeparted;
@@ -39,6 +43,7 @@ namespace Menu.Garage.Paint.Display
 
         private void OnDestroy()
         {
+            _asyncExecutor.Dispose();
             _cameraCheckpoint.CameraApproaching -= OnCameraApproaching;
             _cameraCheckpoint.CameraDeparted -= OnCameraDeparted;
             _containerHolder.ContainerSelected -= OnContainerSelected;
@@ -46,11 +51,12 @@ namespace Menu.Garage.Paint.Display
 
         private void OnCameraApproaching()
         {
-            _painter.Clear();
+            _painter.CleanAnimated();
         }
         
-        private void OnCameraDeparted()
+        private async void OnCameraDeparted()
         {
+            await _painter.CleanAnimated();
             _painter.PaintFromTexture(_closedScreen);
             _painter.Apply();
         }
