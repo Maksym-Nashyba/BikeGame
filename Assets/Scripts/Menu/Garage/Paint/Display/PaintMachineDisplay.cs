@@ -1,5 +1,4 @@
-﻿using System;
-using Menu.Garage.Paint.Containers;
+﻿using Menu.Garage.Paint.Containers;
 using Misc;
 using SaveSystem.Front;
 using UnityEngine;
@@ -11,11 +10,14 @@ namespace Menu.Garage.Paint.Display
         [SerializeField] private Color _green;
         [SerializeField] private Color _yellow;
         [SerializeField] private Color _red;
+        [SerializeField] private Texture2D _closedScreen;
+
         [SerializeField] private Vector2Int _resolution;
         [SerializeField] private PaintDisplayPatterns _patterns;
         
         [SerializeField] private MeshRenderer _renderer;
         [SerializeField] private PaintContainersHolder _containerHolder;
+        [SerializeField] private CameraCheckpoint _cameraCheckpoint;
         private TexturePainter _painter;
         private Saves _saves;
         
@@ -24,19 +26,35 @@ namespace Menu.Garage.Paint.Display
             _saves = FindObjectOfType<Saves>();
             _painter = new TexturePainter(_resolution, _renderer);
             _patterns.Bake();
+            _cameraCheckpoint.CameraApproaching += OnCameraApproaching;
+            _cameraCheckpoint.CameraDeparted += OnCameraDeparted;
             _containerHolder.ContainerSelected += OnContainerSelected;
         }
 
         private void Start()
         {
-            _painter.Clear();
+            _painter.PaintFromTexture(_closedScreen);
+            _painter.Apply();   
         }
 
         private void OnDestroy()
         {
+            _cameraCheckpoint.CameraApproaching -= OnCameraApproaching;
+            _cameraCheckpoint.CameraDeparted -= OnCameraDeparted;
             _containerHolder.ContainerSelected -= OnContainerSelected;
         }
 
+        private void OnCameraApproaching()
+        {
+            _painter.Clear();
+        }
+        
+        private void OnCameraDeparted()
+        {
+            _painter.PaintFromTexture(_closedScreen);
+            _painter.Apply();
+        }
+        
         private void OnContainerSelected(PaintContainer container)
         {
             _painter.Clear();
@@ -49,6 +67,7 @@ namespace Menu.Garage.Paint.Display
             _painter.Apply();
         }
 
+        #region Selection
         private void PaintNotBoughtSelection(Vector2Int cell, uint price, bool canAfford)
         {
             _painter.PaintPatternInCell(cell, _patterns.SelectionFrame, _yellow);
@@ -77,5 +96,6 @@ namespace Menu.Garage.Paint.Display
             _painter.PaintPatternInCell(new Vector2Int(0,2), _patterns.ArrowDown, color);
             _painter.PaintPatternInCell(new Vector2Int(1,2), _patterns.ArrowDown, color);            
         }
+        #endregion
     }
 }

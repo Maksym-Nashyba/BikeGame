@@ -55,6 +55,11 @@ namespace Menu.Garage.Paint.Display
             }
         }
 
+        public void PaintFromTexture(Texture2D source)
+        {
+            _texture.SetPixels(source.GetPixels());
+        }
+        
         public void Clear()
         {
             for (int x = 0; x < _resolution.x; x++)
