@@ -99,8 +99,9 @@ namespace Menu.Garage.Paint.Display
         
         private void PaintBottomArrows(Color color)
         {
-            _painter.PaintPatternInCell(new Vector2Int(0,2), _patterns.ArrowDown, color);
-            _painter.PaintPatternInCell(new Vector2Int(1,2), _patterns.ArrowDown, color);            
+            int height = _resolution.y - 2*_patterns.ArrowDown.Size.y;
+            _painter.PaintPattern(new Vector2Int(_patterns.ArrowDown.Size.x,height), _patterns.ArrowDown, color);
+            _painter.PaintPattern(new Vector2Int(_resolution.x - (2*_patterns.ArrowDown.Size.x),height), _patterns.ArrowDown, color);            
         }
         #endregion
     }
