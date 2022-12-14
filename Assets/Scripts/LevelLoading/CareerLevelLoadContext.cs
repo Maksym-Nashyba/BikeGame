@@ -7,7 +7,7 @@ namespace LevelLoading
     {
         public readonly bool PedalCollected;
         
-        public CareerLevelLoadContext(string sceneName, GameObject prefab, Material skin,  Level level, bool pedalCollected) : base(sceneName, prefab, skin, level)
+        public CareerLevelLoadContext(string sceneName, GameObject prefab, Skin skin,  Level level, bool pedalCollected) : base(sceneName, prefab, skin, level)
         {
             PedalCollected = pedalCollected;
         }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Effects;
 using IGUIDResources;
 using Misc;
 using SaveSystem.Front;
@@ -106,6 +107,7 @@ namespace Menu.BikeSelectionMenu
             if (_spawnedBike is not null) Destroy(_spawnedBike);
             _currentBike = _bikeModels.Get(bike.GUID);
             _spawnedBike = Instantiate(_currentBike.EmptyPrefab, _bikeHolder.HolderTransform);
+            _spawnedBike.GetComponent<BikeSkinApplier>().ApplySkin(_saves.Bikes.GetSelectedSkinFor(_currentBike));
             BikeChanged?.Invoke(_currentBike);
         }
 

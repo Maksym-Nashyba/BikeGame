@@ -12,7 +12,7 @@ namespace LevelObjectives
         public Level Level { get; private set; }
         public bool PedalCollected { get; private set; }
         public GameObject PlayerPrefab { get; private set; }
-        public Material Skin { get; private set; }
+        public Skin Skin { get; private set; }
         
         public Queue<Objective> ObjectiveQueue
         {

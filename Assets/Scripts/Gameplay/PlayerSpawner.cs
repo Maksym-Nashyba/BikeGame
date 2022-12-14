@@ -1,4 +1,5 @@
-﻿using LevelObjectives.Objectives;
+﻿using Effects;
+using LevelObjectives.Objectives;
 using Misc;
 using UnityEngine;
 
@@ -23,6 +24,7 @@ namespace Gameplay
         {
             GameObject playerClone = Instantiate(ServiceLocator.LevelStructure.PlayerPrefab);
             playerClone.transform.Apply(_currentSpawnPoint);
+            playerClone.GetComponent<BikeSkinApplier>().ApplySkin(ServiceLocator.LevelStructure.Skin);
             return playerClone.GetComponent<PlayerClone>();
         }
 

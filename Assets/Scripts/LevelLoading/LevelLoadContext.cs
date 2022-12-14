@@ -7,10 +7,10 @@ namespace LevelLoading
     {
         public readonly string SceneName;
         public readonly GameObject BikePrefab;
-        public readonly Material Skin;
+        public readonly Skin Skin;
         public readonly Level Level;
 
-        public LevelLoadContext(string sceneName, GameObject bikePrefab, Material skin, Level level)
+        public LevelLoadContext(string sceneName, GameObject bikePrefab, Skin skin, Level level)
         {
             SceneName = sceneName;
             BikePrefab = bikePrefab;

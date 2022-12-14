@@ -29,7 +29,7 @@ namespace LevelLoading
             
             LevelLoadContext context = new CareerLevelLoadContext(level.SceneName,
                 selectedBike.Prefab, 
-                selectedBike.AllSkins[0].Material, 
+                selectedBike.AllSkins[0], 
                 level,
                 Object.FindObjectOfType<Saves>().Career.IsPedalCollected(levelGUID));
             LoadLevel(context);
