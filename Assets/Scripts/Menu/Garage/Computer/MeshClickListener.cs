@@ -1,6 +1,7 @@
 ﻿using System;
 using Inputs;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 namespace ProgressionStore.Computer
@@ -8,7 +9,8 @@ namespace ProgressionStore.Computer
     [RequireComponent(typeof(MeshRenderer))]
     public class MeshClickListener : MonoBehaviour
     {
-        public event Action<Vector2> ClickedUV; 
+        public event Action<Vector2> ClickedUV;
+        public UnityEvent Clicked;
         [SerializeField] private Camera _camera;
         private InputMappings _inputs;
 
@@ -26,6 +28,7 @@ namespace ProgressionStore.Computer
             {
                 if(hit.transform != transform)return;
                 ClickedUV?.Invoke(hit.textureCoord);
+                Clicked.Invoke();
             }
         }
 
