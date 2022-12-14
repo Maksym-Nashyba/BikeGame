@@ -12,7 +12,7 @@ namespace Menu.Garage.Paint.Containers
         public Skin Skin { get; private set; }
         public Vector2Int Cell { get; private set; }
         
-        [SerializeField] private PaintContainerAnimator _animator;
+        [SerializeField] private PaintContainerAnimator _paintContainerAnimator;
 
         protected override void OnClicked() 
         {
@@ -27,14 +27,15 @@ namespace Menu.Garage.Paint.Containers
         public Task Fill(Skin skin)
         {
             Skin = skin;
-            _animator.ApplySkin(skin);
-            return _animator.PlayFillAnimation();
+            _paintContainerAnimator.ApplySkin(skin);
+            return _paintContainerAnimator.PlayFillAnimation();
         }
 
         public Task Clean()
         {
+            if(Skin == null) return Task.CompletedTask;
             Skin = null;
-            return _animator.PlayCleanAnimation();
+            return _paintContainerAnimator.PlayCleanAnimation();
         }
     }
 }

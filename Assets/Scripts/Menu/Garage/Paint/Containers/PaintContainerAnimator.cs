@@ -1,27 +1,14 @@
 ﻿using System.Threading.Tasks;
 using IGUIDResources;
-using Misc;
 using UnityEngine;
 
 namespace Menu.Garage.Paint.Containers
 {
     public class PaintContainerAnimator : MonoBehaviour
     {
-        [SerializeField] private Transform _paintTransform;
-        [SerializeField] private Transform _leakTransform;
+        [SerializeField] private Animator _animator;
         [SerializeField] private MeshRenderer _paintRenderer;
         [SerializeField] private MeshRenderer _leakRenderer;
-        private AsyncExecutor _asyncExecutor;
-
-        protected void Awake()
-        {
-            _asyncExecutor = new AsyncExecutor();
-        }
-        
-        protected void OnDestroy()
-        {
-            _asyncExecutor.Dispose();
-        }
 
         public void ApplySkin(Skin skin)
         {
@@ -31,11 +18,13 @@ namespace Menu.Garage.Paint.Containers
 
         public Task PlayFillAnimation()
         {
+            _animator.Play("Fill");
             return Task.CompletedTask;
         }
 
         public Task PlayCleanAnimation()
         {
+            _animator.Play("Clean");
             return Task.CompletedTask;
         }
     }
