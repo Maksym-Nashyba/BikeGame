@@ -53,7 +53,7 @@ namespace Menu.Garage.Paint.Containers
 
         public async Task CleanContainers()
         {
-            List<Task> cleaningTasks = new List<Task>(_gridSize.x*_gridSize.y);
+            List<Task> cleaningTasks = new List<Task>(_gridSize.x * _gridSize.y);
             foreach (PaintContainer container in _paintContainers) 
             {
                 container.Clicked -= OnContainerClicked;

@@ -68,6 +68,7 @@ namespace Menu.Garage.Paint
 
         private void OnContainerSelected(PaintContainer container)
         {
+            _selectedSkin = container.Skin;
             if (_saves.Bikes.IsSkinUnlocked(container.Skin))
             {
                 _buttonAnimator.ChangeButtonState(ButtonSides.Paint);
@@ -96,9 +97,9 @@ namespace Menu.Garage.Paint
 
         private void ConfirmSkinPurchase()
         {
-            if (_saves.Currencies.GetDollans() < 250) return; //TODO Play effects
+            if (_saves.Currencies.GetDollans() < _selectedSkin.Price) return; //TODO Play effects
             _saves.Bikes.UnlockSkin(_modelDisplay.CurrentBike.GetGUID(), _selectedSkin.GetGUID());
-            _saves.Currencies.SubtractDollans(250);
+            _saves.Currencies.SubtractDollans(_selectedSkin.Price);
             
             PaintBike();
             _buttonAnimator.ChangeButtonState(ButtonSides.Empty);

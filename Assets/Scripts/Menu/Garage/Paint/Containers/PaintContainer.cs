@@ -12,57 +12,29 @@ namespace Menu.Garage.Paint.Containers
         public Skin Skin { get; private set; }
         public Vector2Int Cell { get; private set; }
         
-        [SerializeField] private Transform _paintTransform;
-        [SerializeField] private Transform _leakTransfrm;
-        [SerializeField] private MeshRenderer _paintRenderer;
-        [SerializeField] private MeshRenderer _leakRenderer;
+        [SerializeField] private PaintContainerAnimator _animator;
+
+        protected override void OnClicked() 
+        {
+            Clicked?.Invoke(this);
+        }
         
-        private AsyncExecutor _asyncExecutor;
-
-        protected override void Awake()
-        {
-            base.Awake();
-            _asyncExecutor = new AsyncExecutor();
-        }
-
-        protected override void OnDestroy()
-        {
-            base.OnDestroy();
-            _asyncExecutor.Dispose();
-        }
-
         public void SetUp(Vector2Int cell)
         {
             Cell = cell;
         }
         
-        protected override void OnClicked()
-        {
-            Clicked?.Invoke(this);
-        }
-        
         public Task Fill(Skin skin)
         {
             Skin = skin;
-            _paintRenderer.material = skin.Material;
-            _leakRenderer.material = skin.Material;
-            return PlayFillAnimation();
+            _animator.ApplySkin(skin);
+            return _animator.PlayFillAnimation();
         }
 
         public Task Clean()
         {
             Skin = null;
-            return PlayCleanAnimation();
-        }
-
-        private Task PlayFillAnimation()
-        {
-            return Task.CompletedTask;
-        }
-
-        private Task PlayCleanAnimation()
-        {
-            return Task.CompletedTask;
+            return _animator.PlayCleanAnimation();
         }
     }
 }
