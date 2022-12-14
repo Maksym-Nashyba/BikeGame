@@ -6,11 +6,11 @@ namespace Gameplay
 {
     public class PlayerSpawner : MonoBehaviour
     {
-        public Transformation CurrentSpawnPoint { get; private set; }
+        private Transformation _currentSpawnPoint;
 
         private void Awake()
         {
-            CurrentSpawnPoint = ServiceLocator.LevelStructure.ObjectiveQueue.Peek().GetSpawnPosition();
+            _currentSpawnPoint = ServiceLocator.LevelStructure.ObjectiveQueue.Peek().GetSpawnPosition();
             ServiceLocator.GameLoop.EndedObjective += OnNewObjectiveStarted;
         }
 
@@ -22,13 +22,13 @@ namespace Gameplay
         public PlayerClone SpawnPlayerClone()
         {
             GameObject playerClone = Instantiate(ServiceLocator.LevelStructure.PlayerPrefab);
-            playerClone.GetComponent<Transform>().Apply(CurrentSpawnPoint);
+            playerClone.transform.Apply(_currentSpawnPoint);
             return playerClone.GetComponent<PlayerClone>();
         }
 
         private void OnNewObjectiveStarted(Objective objective)
         {
-            CurrentSpawnPoint = objective.GetSpawnPosition();
+            _currentSpawnPoint = objective.GetSpawnPosition();
         }
     }
 }

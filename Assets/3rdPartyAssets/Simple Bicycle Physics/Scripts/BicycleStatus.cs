@@ -1,4 +1,5 @@
 using System.Collections;
+using Gameplay;
 using Misc;
 using UnityEngine;
 
@@ -73,6 +74,7 @@ namespace SBPScripts
         private void Dislodge()
         {
             dislodged = true;
+            Destroy(_bicycleController.gameObject.GetComponent<PlayerClone>());
             _bicycleController.fPhysicsWheel.GetComponent<SphereCollider>().enabled = false;
             _bicycleController.rPhysicsWheel.GetComponent<SphereCollider>().enabled = false;
             _bicycleController.Rigidbody.centerOfMass = _bicycleController.GetComponent<BoxCollider>().center;
