@@ -1,4 +1,5 @@
-﻿using Garage;
+﻿using System;
+using Garage;
 using IGUIDResources;
 using Menu.Garage.Paint.Containers;
 using Menu.Garage.Paint.MachineButton;
@@ -10,6 +11,8 @@ namespace Menu.Garage.Paint
 {
     public class PaintMachine : MonoBehaviour
     {
+        public event Action<Skin> BoughtSkin;
+        public PaintContainer SelectedContainer => _containersHolder.SelectedContainer;
         [SerializeField] private BikeModelDisplay _modelDisplay;
         [SerializeField] private CameraCheckpoint _cameraCheckpoint;
 
@@ -62,8 +65,8 @@ namespace Menu.Garage.Paint
         private void OnCameraDeparted()
         {
             _modelDisplay.Holder.MoveToPosition(GarageBikeModelHolder.BikePositions.Preview);
-            _containersHolder.CleanContainers();
             _buttonAnimator.ChangeButtonState(ButtonSides.Empty);
+            _containersHolder.CleanContainers();
         }
 
         private void OnContainerSelected(PaintContainer container)
@@ -84,7 +87,7 @@ namespace Menu.Garage.Paint
                 case ButtonSides.Empty:
                     break;
                 case ButtonSides.Paint:
-                    PaintBike();
+                    PaintBike(_selectedSkin);
                     break;
                 case ButtonSides.Purchase:
                     _buttonAnimator.ChangeButtonState(ButtonSides.Confirm);
@@ -97,18 +100,19 @@ namespace Menu.Garage.Paint
 
         private void ConfirmSkinPurchase()
         {
-            if (_saves.Currencies.GetDollans() < _selectedSkin.Price) return; //TODO Play effects
+            if (_saves.Currencies.GetDollans() < _selectedSkin.Price) return;
             _saves.Bikes.UnlockSkin(_modelDisplay.CurrentBike.GetGUID(), _selectedSkin.GetGUID());
             _saves.Currencies.SubtractDollans(_selectedSkin.Price);
             
-            PaintBike();
+            PaintBike(_selectedSkin);
             _buttonAnimator.ChangeButtonState(ButtonSides.Empty);
+            BoughtSkin?.Invoke(_selectedSkin);
         }
 
-        private void PaintBike()
+        private void PaintBike(Skin skin)
         {
-            _modelDisplay.ApplySkin(_selectedSkin);
-            _saves.Bikes.SelectSkinFor(_modelDisplay.CurrentBike.GetGUID(), _selectedSkin.GetGUID());
+            _modelDisplay.ApplySkin(skin);
+            _saves.Bikes.SelectSkinFor(_modelDisplay.CurrentBike.GetGUID(), skin.GetGUID());
             _buttonAnimator.ChangeButtonState(ButtonSides.Empty);
         }
     }

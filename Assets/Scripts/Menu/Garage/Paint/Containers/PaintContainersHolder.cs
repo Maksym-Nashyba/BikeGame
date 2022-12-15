@@ -3,17 +3,18 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using IGUIDResources;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Menu.Garage.Paint.Containers
 {
     public class PaintContainersHolder : MonoBehaviour
     {
         public event Action<PaintContainer> ContainerSelected; 
+        public PaintContainer SelectedContainer { get; private set; }
         [SerializeField] private GameObject _paintContainerPrefab;
         [SerializeField] private Vector2Int _gridSize;
         [SerializeField] private Vector2  _padding;
         private PaintContainer[] _paintContainers;
-        private PaintContainer _selectedContainer;
         
         private void Start()
         {
@@ -35,9 +36,9 @@ namespace Menu.Garage.Paint.Containers
 
         private void OnContainerClicked(PaintContainer paintContainer)
         {
-            if (_selectedContainer == paintContainer) return;
-            _selectedContainer = paintContainer;
-            if(paintContainer.Skin!= null)ContainerSelected?.Invoke(_selectedContainer);
+            if (SelectedContainer == paintContainer) return;
+            SelectedContainer = paintContainer;
+            if(paintContainer.Skin!= null)ContainerSelected?.Invoke(SelectedContainer);
         }
         
         public Task FillContainers(Skin[] skins)

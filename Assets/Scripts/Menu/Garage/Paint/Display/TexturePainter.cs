@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Threading;
+using System.Threading.Tasks;
 using Misc;
 using Misc.Extensions;
 using UnityEngine;
@@ -70,24 +71,48 @@ namespace Menu.Garage.Paint.Display
             Graphics.CopyTexture(source, _texture);
         }
 
-        public Task CleanAnimated()
+        public PatternAnimation BlinkTexture(Texture2D source, int count, float shownTime, float hiddenTime)
+        {
+            return PatternAnimation.From(async cancellationToken =>
+            {
+                PaintFromTexture(source);
+                Apply();
+                await Task.Delay((int)(shownTime * 1000));
+                if(cancellationToken.IsCancellationRequested)return;
+                for (int i = 0; i < count; i++)
+                {
+                    Clear();
+                    await Task.Delay((int)(hiddenTime * 1000));
+                    if(cancellationToken.IsCancellationRequested)return;
+                    PaintFromTexture(source);
+                    Apply();
+                    await Task.Delay((int)(shownTime * 1000));
+                    if(cancellationToken.IsCancellationRequested)return;
+                }                
+            });
+        }
+        
+        public PatternAnimation CleanAnimated()
         {
             Texture2D copy = BuildTexture(_resolution);
             Graphics.CopyTexture(_texture, copy);
             Clear();
-            return _asyncExecutor.EachFrame(1.2f, t =>
+            return PatternAnimation.From(cancellationToken =>
             {
-                Clear();
-                Color[] columnBuffer = new Color[_resolution.y];
-                for (int x = 0; x < _resolution.x; x++)
+                return _asyncExecutor.EachFrame(1.2f, t =>
                 {
-                    float horizontalPosition = (float)x / _resolution.x;
-                    int yPatternPosition = (int)(_resolution.y*horizontalPosition*t + _resolution.y*t);
-                    copy.GetPixelsNonAlloc(x, yPatternPosition, 1, _resolution.y, columnBuffer);
-                    _texture.SetPixels(x,0,1,_resolution.y, columnBuffer);
-                }
-                Apply();
-            }, EaseFunctions.EaseInCirc);
+                    Clear();
+                    Color[] columnBuffer = new Color[_resolution.y];
+                    for (int x = 0; x < _resolution.x; x++)
+                    {
+                        float horizontalPosition = (float)x / _resolution.x;
+                        int yPatternPosition = (int)(_resolution.y*horizontalPosition*t + _resolution.y*t);
+                        copy.GetPixelsNonAlloc(x, yPatternPosition, 1, _resolution.y, columnBuffer);
+                        _texture.SetPixels(x,0,1,_resolution.y, columnBuffer);
+                    }
+                    Apply();
+                }, EaseFunctions.EaseInCirc, cancellationToken);
+            });
         }
         
         public void Clear()
