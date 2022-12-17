@@ -1,11 +1,11 @@
-﻿using System;
-using SaveSystem.Front;
+﻿using SaveSystem.Front;
 using UnityEngine;
 
 namespace Menu
 {
     public class DonationPanel : MonoBehaviour
     {
+        [SerializeField] private GameObject _panel;
         private const string _playerPrefsKey = "DonationPanelShown";
         private Saves _saves;
 
@@ -16,15 +16,27 @@ namespace Menu
 
         private void Start()
         {
-            if (GameComplete() && AlreadyShown())
+            if (GameComplete() && !AlreadyShown())
             {
                 Show();
             }
         }
 
+        public void Hide()
+        {
+            _panel.SetActive(false);
+        }
+
+        public void OnDonateButton()
+        {
+            Hide();
+        }
+        
         private void Show()
         {
-            throw new NotImplementedException();
+            PlayerPrefs.SetInt(_playerPrefsKey, 1);
+            PlayerPrefs.Save();
+            _panel.SetActive(true);            
         }
 
         private bool AlreadyShown()
