@@ -3,7 +3,17 @@ guid: 1d018c40875e59143a62800c647c4574
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: NotSkinnableBikeParts
+    second: {fileID: 2100000, guid: 934b3b760e3d8a944b66884df2e79da6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SpeedySkinnableBike
+    second: {fileID: -2145318592401019288, guid: d0e123c4c5259914ab4fd84388b0432d, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
