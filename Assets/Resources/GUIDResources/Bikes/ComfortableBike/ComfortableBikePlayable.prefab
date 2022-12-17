@@ -977,7 +977,7 @@ GameObject:
   - component: {fileID: 3029580714732338665}
   - component: {fileID: 3029580714732338670}
   m_Layer: 0
-  m_Name: Fatbike
+  m_Name: ComfortableBikePlayable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1216,7 +1216,7 @@ MonoBehaviour:
   oscillationAmount: 3.5
   oscillationAffectSteerRatio: 0.2
   cycleOscillation: 0
-  rb: {fileID: 0}
+  Rigidbody: {fileID: 0}
   fWheelRb: {fileID: 0}
   rWheelRb: {fileID: 0}
   crankSpeed: 0
@@ -1229,6 +1229,7 @@ MonoBehaviour:
     rPedalOffset: {x: 0.2, y: 0.47, z: -0.2}
     pedalingSpeed: 3
   turnLeanAmount: 0
+  _brakeMultiplier: 0
   SteerInput: 0
   LeanInput: 0
   AccelerationInput: 0
@@ -4060,14 +4061,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0
-  isAirborne: 0
   hipIK: {fileID: 6169807937230714665}
   chestIK: {fileID: 6169807937367569320}
   leftFootIK: {fileID: 6169807936703868683}
   leftFootIdleIK: {fileID: 6169807936358482168}
   headIK: {fileID: 6169807938059436389}
-  cyclist: {fileID: 0}
-  externalCharacter: {fileID: 0}
 --- !u!114 &6169807936487159677
 MonoBehaviour:
   m_ObjectHideFlags: 0
