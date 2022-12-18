@@ -1,4 +1,5 @@
-﻿using LevelObjectives.LevelObjects;
+﻿using Gameplay;
+using LevelObjectives.LevelObjects;
 using Misc;
 using UnityEngine;
 

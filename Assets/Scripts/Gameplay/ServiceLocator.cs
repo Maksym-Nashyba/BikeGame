@@ -1,7 +1,5 @@
 ﻿using Effects.TransitionCover;
-using Gameplay;
 using Inputs;
-using LevelLoading;
 using LevelObjectives;
 using LevelObjectives.LevelObjects;
 using Pausing;
@@ -9,7 +7,7 @@ using SaveSystem.Front;
 using UI;
 using UnityEngine;
 
-namespace Misc
+namespace Gameplay
 {
     public class ServiceLocator : MonoBehaviour
     {
