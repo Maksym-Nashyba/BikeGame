@@ -11,7 +11,8 @@ namespace SetUp
         
         private void Awake()
         {
-            FindObjectOfType<GameSetUp>().RegisterSetUpTask(SetUpAudioVolume());
+            SetUpOperation setUpOperation = new SetUpOperation(SetUpAudioVolume, "Audio Loaded",false);
+            FindObjectOfType<GameSetUp>().RegisterSetUpTask(setUpOperation);
         }
 
         private Task SetUpAudioVolume()

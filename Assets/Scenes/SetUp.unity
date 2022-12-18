@@ -304,7 +304,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 479967343}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &232351985
 MonoBehaviour:
@@ -435,51 +435,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!1 &432337337
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 432337339}
-  - component: {fileID: 432337338}
-  m_Layer: 0
-  m_Name: SceneLoader
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &432337338
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 432337337}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db645b0b97824c1e835a3ea7e9905335, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _audioListener: {fileID: 2024252039}
---- !u!4 &432337339
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 432337337}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.9699687, y: -1.7080294, z: 1.2656208}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 479967343}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &479967342
 GameObject:
   m_ObjectHideFlags: 0
@@ -509,7 +464,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1486081671}
-  - {fileID: 432337339}
   - {fileID: 1996437565}
   - {fileID: 232351984}
   m_Father: {fileID: 0}
@@ -735,6 +689,7 @@ GameObject:
   - component: {fileID: 1486081673}
   - component: {fileID: 1486081674}
   - component: {fileID: 1486081675}
+  - component: {fileID: 1486081676}
   m_Layer: 0
   m_Name: SetUp
   m_TagString: Untagged
@@ -809,6 +764,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _savesInitializer: {fileID: 2592393706603501643}
+--- !u!114 &1486081676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1486081670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a8bfc89530b481ab1c24da91a2128dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _androidGameId: 5080673
+  _iOSGameId: 
+  _testMode: 1
 --- !u!1 &1701289251
 GameObject:
   m_ObjectHideFlags: 0
@@ -1097,7 +1067,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2592393705913606263, guid: a244af734f9ef664cbf4ae305e0bfc7c, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2592393705913606263, guid: a244af734f9ef664cbf4ae305e0bfc7c, type: 3}
       propertyPath: m_LocalPosition.x

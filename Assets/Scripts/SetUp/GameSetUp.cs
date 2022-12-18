@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace SetUp
 {
@@ -9,7 +10,7 @@ namespace SetUp
     {
         internal event Action FinishedSetUp;
         internal bool RegistrationOpen => !_startedSetUp;
-        private List<Task> _setUpTasks = new List<Task>();
+        private List<SetUpOperation> _setUpOperations = new List<SetUpOperation>();
         private bool _startedSetUp;
 
         private void Awake()
@@ -23,21 +24,31 @@ namespace SetUp
             {
                 _startedSetUp = true;
                 await PerformSetUp();
+                SceneManager.LoadScene("MainMenu");
             }
         }
 
-        internal void RegisterSetUpTask(Task task)
+        internal void RegisterSetUpTask(SetUpOperation setUpOperation)
         {
             if (!RegistrationOpen) throw new Exception("Start up tasks should be registered in Start/Awake");
             
-            _setUpTasks.Add(task);
+            _setUpOperations.Add(setUpOperation);
         }
 
         private async Task PerformSetUp()
         {
-            foreach (Task task in _setUpTasks)
+            foreach (SetUpOperation setUpOperation in _setUpOperations)
             {
-                await task;
+                try
+                {
+                    await setUpOperation.Task();
+                    Debug.Log(setUpOperation.DoneMessage);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                    if(setUpOperation.IsCritical) throw;  
+                }
             }
             FinishedSetUp?.Invoke();
         }

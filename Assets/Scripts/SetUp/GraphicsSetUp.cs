@@ -12,7 +12,8 @@ namespace SetUp
     
         private void Awake()
         {
-            FindObjectOfType<GameSetUp>().RegisterSetUpTask(SetUpQuality());
+            SetUpOperation setUpOperation = new SetUpOperation(SetUpQuality, "Graphics Loaded", false);
+            FindObjectOfType<GameSetUp>().RegisterSetUpTask(setUpOperation);
         }
 
         private Task SetUpQuality()

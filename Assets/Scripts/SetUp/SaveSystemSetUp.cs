@@ -10,7 +10,8 @@ namespace SetUp
 
         private void Awake()
         {
-            FindObjectOfType<GameSetUp>().RegisterSetUpTask(SetUpSaves());
+            SetUpOperation setUpOperation = new SetUpOperation(SetUpSaves, "Saves Loaded", true);
+            FindObjectOfType<GameSetUp>().RegisterSetUpTask(setUpOperation);
         }
 
         private Task SetUpSaves()
