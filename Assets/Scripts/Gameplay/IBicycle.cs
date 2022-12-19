@@ -1,4 +1,4 @@
-namespace Misc
+namespace Gameplay
 {
     public interface IBicycle
     {
