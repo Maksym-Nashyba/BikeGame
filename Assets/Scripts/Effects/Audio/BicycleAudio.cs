@@ -1,10 +1,12 @@
-﻿using Gameplay;
+﻿using System;
+using Gameplay;
 using Misc;
+using Pausing;
 using UnityEngine;
 
 namespace Effects.Audio
 {
-    public class BicycleAudio : MonoBehaviour
+    public class BicycleAudio : MonoBehaviour, IPausable
     {
         [SerializeField] private AudioSource _tyresAudioSource;
         [SerializeField] private GameObject _bicycleGameobject;
@@ -13,6 +15,7 @@ namespace Effects.Audio
         private void Awake()
         {
             _bicycle = _bicycleGameobject.GetComponent<IBicycle>();
+            ServiceLocator.Player.Died += OnPlayerDied;
         }
 
         private void Start()
@@ -29,6 +32,26 @@ namespace Effects.Audio
             }
             
             _tyresAudioSource.volume = EaseFunctions.EaseInCirc(_bicycle.GetCurrentSpeed() / 20f);
+        }
+
+        private void OnDestroy()
+        {
+            ServiceLocator.Player.Died -= OnPlayerDied;
+        }
+
+        private void OnPlayerDied()
+        {
+            Destroy(gameObject);
+        }
+        
+        public void Pause()
+        {
+            _tyresAudioSource.Pause();
+        }
+
+        public void Continue()
+        {
+            _tyresAudioSource.Play();
         }
     }
 }
