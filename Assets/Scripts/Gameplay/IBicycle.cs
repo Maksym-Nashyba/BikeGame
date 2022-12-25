@@ -9,5 +9,7 @@ namespace Gameplay
         public float GetTorqueY();
 
         public void SetInteractable(bool enabled);
+
+        public bool IsAirborne();
     }
 }

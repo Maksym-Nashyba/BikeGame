@@ -2658,6 +2658,7 @@ Transform:
   - {fileID: 2036791176892644486}
   - {fileID: 2879284132366426723}
   - {fileID: 8924202874154342478}
+  - {fileID: 2624380634237232838}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6183,4 +6184,70 @@ MonoBehaviour:
 Transform:
   m_CorrespondingSourceObject: {fileID: 398617219434926971, guid: 37ab77fe8f02b9440a287ffbc5b0f001, type: 3}
   m_PrefabInstance: {fileID: 2485258662492991768}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8011588308147035780
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2440735540701079708}
+    m_Modifications:
+    - target: {fileID: 2277356179623555269, guid: ae19bbc5fc6221548928394e87844c88, type: 3}
+      propertyPath: m_Name
+      value: BikeAudioPlayer
+      objectReference: {fileID: 0}
+    - target: {fileID: 5423826358987470914, guid: ae19bbc5fc6221548928394e87844c88, type: 3}
+      propertyPath: m_RootOrder
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 5423826358987470914, guid: ae19bbc5fc6221548928394e87844c88, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5423826358987470914, guid: ae19bbc5fc6221548928394e87844c88, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.579
+      objectReference: {fileID: 0}
+    - target: {fileID: 5423826358987470914, guid: ae19bbc5fc6221548928394e87844c88, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.136
+      objectReference: {fileID: 0}
+    - target: {fileID: 5423826358987470914, guid: ae19bbc5fc6221548928394e87844c88, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5423826358987470914, guid: ae19bbc5fc6221548928394e87844c88, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5423826358987470914, guid: ae19bbc5fc6221548928394e87844c88, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5423826358987470914, guid: ae19bbc5fc6221548928394e87844c88, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5423826358987470914, guid: ae19bbc5fc6221548928394e87844c88, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5423826358987470914, guid: ae19bbc5fc6221548928394e87844c88, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5423826358987470914, guid: ae19bbc5fc6221548928394e87844c88, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9011313680697394059, guid: ae19bbc5fc6221548928394e87844c88, type: 3}
+      propertyPath: _bicycleGameobject
+      value: 
+      objectReference: {fileID: 2440735540701079700}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ae19bbc5fc6221548928394e87844c88, type: 3}
+--- !u!4 &2624380634237232838 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5423826358987470914, guid: ae19bbc5fc6221548928394e87844c88, type: 3}
+  m_PrefabInstance: {fileID: 8011588308147035780}
   m_PrefabAsset: {fileID: 0}

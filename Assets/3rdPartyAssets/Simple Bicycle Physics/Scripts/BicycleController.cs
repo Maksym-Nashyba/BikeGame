@@ -643,5 +643,10 @@ namespace SBPScripts
             if(enabled) Continue();
             else Pause();
         }
+
+        public bool IsAirborne()
+        {
+            return isAirborne;
+        }
     }
 }
