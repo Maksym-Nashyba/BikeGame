@@ -11,5 +11,7 @@ namespace Gameplay
         public void SetInteractable(bool enabled);
 
         public bool IsAirborne();
+
+        public float GetAirtimeSeconds();
     }
 }

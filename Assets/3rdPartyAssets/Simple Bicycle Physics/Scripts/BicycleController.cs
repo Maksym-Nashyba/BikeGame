@@ -176,6 +176,7 @@ namespace SBPScripts
         private float _lastSpeed;
         private float _currentSpeed;
         private bool _isPaused;
+        private float _airTimeSeconds;
         #endregion
 
         private void Awake()
@@ -241,6 +242,15 @@ namespace SBPScripts
             if (DetectSidewaysSliding(Rigidbody.velocity.magnitude))
             {
                 AlignToMovementDirection();
+            }
+
+            if (isAirborne)
+            {
+                _airTimeSeconds += Time.deltaTime;
+            }
+            else
+            {
+                _airTimeSeconds = 0;
             }
         }
 
@@ -647,6 +657,11 @@ namespace SBPScripts
         public bool IsAirborne()
         {
             return isAirborne;
+        }
+
+        public float GetAirtimeSeconds()
+        {
+            return _airTimeSeconds;
         }
     }
 }
