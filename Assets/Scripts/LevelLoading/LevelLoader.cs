@@ -2,6 +2,7 @@ using System.Threading.Tasks;
 using IGUIDResources;
 using Menu.BikeSelectionMenu;
 using SaveSystem.Front;
+using SaveSystem.Models;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -24,23 +25,25 @@ namespace LevelLoading
         
         public async Task LoadLevelWithBikeSelection(string levelGUID)
         {
-            BikeModel selectedBike = await RequestBikeSelection();
+            PersistentBike selectedBike = await RequestBikeSelection();
+            BikeModel selectedBikeModel = _resourceLocator.Bikes.Get(selectedBike.GUID);
+            
             Level level = _resourceLocator.Career.GetLevelWithGUID(levelGUID);
             
             LevelLoadContext context = new CareerLevelLoadContext(level.SceneName,
-                selectedBike.Prefab, 
-                selectedBike.AllSkins[0], 
+                selectedBikeModel.Prefab, 
+                selectedBikeModel.GetSkinFor(selectedBike.SelectedSkinGUID), 
                 level,
                 Object.FindObjectOfType<Saves>().Career.IsPedalCollected(levelGUID));
             LoadLevel(context);
         }
 
-        private async Task<BikeModel> RequestBikeSelection()
+        private async Task<PersistentBike> RequestBikeSelection()
         {
             BikeSelection bikeSelection = await BikeSelection.DisplayBikeSelection();
             SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
             
-            TaskCompletionSource<BikeModel> taskCompletionSource = new TaskCompletionSource<BikeModel>();
+            TaskCompletionSource<PersistentBike> taskCompletionSource = new TaskCompletionSource<PersistentBike>();
             bikeSelection.RegisterTaskCompletionSource(taskCompletionSource);
             return await taskCompletionSource.Task;
         }

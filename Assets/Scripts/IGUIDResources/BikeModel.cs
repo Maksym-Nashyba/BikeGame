@@ -20,6 +20,17 @@ namespace IGUIDResources
             return name;
         }
 
+        public Skin GetSkinFor(string GUID)
+        {
+            Skin selectedSkin = AllSkins[0];
+            foreach (Skin skin in AllSkins)
+            {
+                if (skin.GetGUID() == GUID) selectedSkin = skin;
+            }
+
+            return selectedSkin;
+        }
+
         public PersistentBike MakeCleanSaveObject()
         {
             return new PersistentBike(

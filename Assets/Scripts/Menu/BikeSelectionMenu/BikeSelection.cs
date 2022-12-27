@@ -20,11 +20,12 @@ namespace Menu.BikeSelectionMenu
         private Saves _saves;
         private GUIDResourceLocator _resourceLocator;
         private PersistentBike[] _persistentBikes;
+        private PersistentBike _currentBike;
         private BikeModels _bikeModels;
-        private BikeModel _currentBike;
+        private BikeModel _currentBikeModel;
         private GameObject _spawnedBike;
         private int _currentIndex;
-        private TaskCompletionSource<BikeModel> _taskCompletionSource;
+        private TaskCompletionSource<PersistentBike> _taskCompletionSource;
 
         private void Awake()
         {
@@ -37,7 +38,7 @@ namespace Menu.BikeSelectionMenu
         private async void Start()
         {
             _bikeSelectionUI.SetUIState(false);
-            BikeChanged?.Invoke(_currentBike);
+            BikeChanged?.Invoke(_currentBikeModel);
             await _bikeSelectionUI.ShowUI();
             _bikeSelectionUI.SetUIState(true);
         }
@@ -97,7 +98,7 @@ namespace Menu.BikeSelectionMenu
             return FindObjectOfType<BikeSelection>();
         }
         
-        public void RegisterTaskCompletionSource(TaskCompletionSource<BikeModel> taskCompletionSource)
+        public void RegisterTaskCompletionSource(TaskCompletionSource<PersistentBike> taskCompletionSource)
         {
             _taskCompletionSource = taskCompletionSource;
         }
@@ -105,10 +106,11 @@ namespace Menu.BikeSelectionMenu
         private void DisplayBike(PersistentBike bike)
         {
             if (_spawnedBike is not null) Destroy(_spawnedBike);
-            _currentBike = _bikeModels.Get(bike.GUID);
-            _spawnedBike = Instantiate(_currentBike.EmptyPrefab, _bikeHolder.HolderTransform);
-            _spawnedBike.GetComponent<BikeSkinApplier>()?.ApplySkin(_saves.Bikes.GetSelectedSkinFor(_currentBike));
-            BikeChanged?.Invoke(_currentBike);
+            _currentBike = bike;
+            _currentBikeModel = _bikeModels.Get(bike.GUID);
+            _spawnedBike = Instantiate(_currentBikeModel.EmptyPrefab, _bikeHolder.HolderTransform);
+            _spawnedBike.GetComponent<BikeSkinApplier>()?.ApplySkin(_saves.Bikes.GetSelectedSkinFor(_currentBikeModel));
+            BikeChanged?.Invoke(_currentBikeModel);
         }
 
         private void UpdateButtonsStatus(int currentIndex, int levelsCount)
