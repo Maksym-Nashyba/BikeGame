@@ -4,6 +4,7 @@ using GameCycle;
 using Misc;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -17,6 +18,7 @@ namespace UI
         [SerializeField] private TextMeshProUGUI _expectedTimeValueText;
         [SerializeField] private Button _continueButton;
         [SerializeField] private SceneTransitionCover _blackoutTransitionCover;
+        [SerializeField] private UnityEvent Shown;
         private AsyncExecutor _executor;
         private int _displayedScore;
         private int _displayedFallCount;
@@ -44,6 +46,7 @@ namespace UI
         
         public async Task Show(LevelAchievements achievements)
         {
+            Shown.Invoke();
             _timeValueText.transform.parent.gameObject.SetActive(false);
             _fallCountValueText.transform.parent.gameObject.SetActive(false);
             
