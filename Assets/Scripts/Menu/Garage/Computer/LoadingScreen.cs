@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Misc;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace Menu.Garage.Computer
@@ -14,6 +15,7 @@ namespace Menu.Garage.Computer
         [SerializeField] private CanvasGroup _elements;
         [SerializeField] private CameraCheckpoint _cameraCheckpoint;
         [SerializeField] private Slider _loadingBarSlider;
+        [SerializeField] private UnityEvent StartedLoading;
         
         private void Awake()
         {
@@ -38,6 +40,7 @@ namespace Menu.Garage.Computer
         
         private async Task Play(float durationSeconds)
         {
+            StartedLoading.Invoke();
             _elements.alpha = 1f;
             float loadingBarDuration = durationSeconds * 0.8f;
             for (int i = 0; i < 10; i++)
