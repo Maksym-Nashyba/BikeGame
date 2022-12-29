@@ -3,11 +3,13 @@ using Gameplay;
 using LevelObjectives.LevelObjects;
 using Misc;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace UI
 {
     public sealed class PedalPickupUI : MonoBehaviour
     {
+        public UnityEvent PedalPickedUp;
         [SerializeField] private Animator _uiPedalAnimator;
         [SerializeField] private Transform _uiPedal;
         [SerializeField] private Transform _uiPedalHolder;
@@ -41,6 +43,7 @@ namespace UI
             Destroy(worldPedal.gameObject);
             _uiPedal.gameObject.SetActive(true);
             _uiPedalAnimator.Play("Collected");
+            PedalPickedUp.Invoke();
         }
 
         private Transform CreateWorldPedal(Transformation transformation)
