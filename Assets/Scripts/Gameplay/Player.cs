@@ -17,7 +17,7 @@ namespace Gameplay
             ServiceLocator.GameLoop.Started += OnGameStarted;
             ServiceLocator.GameLoop.IntroPhase.SubscribeFireAndForget(async () =>
             {
-                Respawn(0);
+                Respawn(0, false);
                 await Task.Delay(300);
                 ActivePlayerClone.SetInteractable(false);
             });
@@ -30,10 +30,10 @@ namespace Gameplay
             IsAlive = false;
         }
 
-        public async Task Respawn(int delay)
+        public async Task Respawn(int delay, bool fireEvent = true)
         {
             if(delay > 0) await Task.Delay(delay);
-            ActivePlayerClone = ServiceLocator.PlayerSpawner.SpawnPlayerClone();
+            ActivePlayerClone = ServiceLocator.PlayerSpawner.SpawnPlayerClone(fireEvent);
             Respawned?.Invoke();
             IsAlive = true;
         }
