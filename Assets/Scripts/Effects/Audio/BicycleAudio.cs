@@ -10,6 +10,7 @@ namespace Effects.Audio
         [SerializeField] private AudioSource _tyresAudioSource;
         [SerializeField] private AudioSource _windAudioSource;
         [SerializeField] private AudioSource _brakesAudioSource;
+        [SerializeField] private AudioSource _fallAudioSource;
         [SerializeField] private GameObject _bicycleGameobject;
         private AudioSource[] _audioSources;
         private IBicycle _bicycle;
@@ -18,11 +19,12 @@ namespace Effects.Audio
         {
             _audioSources = transform.GetComponentsInChildren<AudioSource>();
             _bicycle = _bicycleGameobject.GetComponent<IBicycle>();
-            ServiceLocator.Player.Died += OnPlayerDied;
         }
 
         private void Start()
         {
+            ServiceLocator.Player.Died += OnPlayerDied;
+            _bicycle.Landed += OnPlayerLanded;
             foreach (AudioSource audioSource in _audioSources)
             {
                 audioSource.volume = 0;
@@ -45,11 +47,21 @@ namespace Effects.Audio
         private void OnDestroy()
         {
             ServiceLocator.Player.Died -= OnPlayerDied;
+            _bicycle.Landed -= OnPlayerLanded;
         }
 
         private void OnPlayerDied()
         {
             Destroy(gameObject);
+        }
+        
+        private void OnPlayerLanded()
+        {
+            if(_bicycle.IsAirborne() 
+               || _fallAudioSource.isPlaying
+               || Mathf.Abs(_bicycle.GetCurrentVelocity().y) > 0.5f) return;
+            _fallAudioSource.volume = 0.15f;
+            _fallAudioSource.Play();
         }
 
         public void Pause()

@@ -177,6 +177,8 @@ namespace SBPScripts
         private float _currentSpeed;
         private bool _isPaused;
         private float _airTimeSeconds;
+        private bool _lastFrameAirborne;
+        public event Action Landed;
         #endregion
 
         private void Awake()
@@ -252,6 +254,8 @@ namespace SBPScripts
             {
                 _airTimeSeconds = 0;
             }
+            if(_lastFrameAirborne && !isAirborne) Landed.Invoke();
+            _lastFrameAirborne = isAirborne;
         }
 
         private void FixedUpdate()
@@ -662,6 +666,11 @@ namespace SBPScripts
         public float GetAirtimeSeconds()
         {
             return _airTimeSeconds;
+        }
+
+        public Vector3 GetCurrentVelocity()
+        {
+            return Rigidbody.velocity;
         }
     }
 }
