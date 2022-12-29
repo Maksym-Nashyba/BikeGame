@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44076547, g: 0.48931682, b: 0.5696371, a: 1}
+  m_IndirectSpecularColor: {r: 0.44327158, g: 0.492523, b: 0.5721824, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -755,7 +755,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: STAT 1t
+  m_text: Grip
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1573,7 +1573,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: STAT 1t
+  m_text: Speed
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3503,7 +3503,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: STAT 1t
+  m_text: Handling
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3963,6 +3963,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1780032839}
     m_Modifications:
+    - target: {fileID: 1102483535, guid: a626cde50a5e3634eb3b922b1242d58d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -36.700043
+      objectReference: {fileID: 0}
     - target: {fileID: 1625276765, guid: a626cde50a5e3634eb3b922b1242d58d, type: 3}
       propertyPath: m_Camera
       value: 
